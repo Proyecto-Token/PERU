@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PERU Token</title>
+<title>PERU Token | Proyecto Deportivo Web3</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
 <style>
 
@@ -14,6 +14,7 @@ margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
 }
 
 body{
@@ -22,95 +23,282 @@ color:white;
 overflow-x:hidden;
 }
 
-header{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-text-align:center;
-padding:20px;
-background:linear-gradient(135deg,#ff0000,#ffffff,#ff0000);
-background-size:400% 400%;
-animation:bg 10s ease infinite;
+/* ===== Fondo Animado ===== */
+
+.bg{
+position:fixed;
+width:100%;
+height:100%;
+top:0;
+left:0;
+background:
+radial-gradient(circle at top left,#ff000044,transparent 25%),
+radial-gradient(circle at bottom right,#ffffff22,transparent 25%),
+#050816;
+z-index:-2;
 }
 
-@keyframes bg{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
+.bg::before{
+content:'';
+position:absolute;
+width:200%;
+height:200%;
+background-image:
+radial-gradient(#ffffff33 1px,transparent 1px);
+background-size:50px 50px;
+animation:move 20s linear infinite;
+}
+
+@keyframes move{
+0%{transform:translate(0,0);}
+100%{transform:translate(-200px,-200px);}
+}
+
+/* ===== Navbar ===== */
+
+nav{
+position:fixed;
+width:100%;
+padding:20px 10%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(0,0,0,.35);
+backdrop-filter:blur(10px);
+z-index:999;
 }
 
 .logo{
-width:180px;
-margin-bottom:20px;
-border-radius:50%;
-box-shadow:0 0 30px rgba(255,255,255,.5);
+font-size:1.5rem;
+font-weight:800;
+color:white;
+letter-spacing:2px;
 }
 
-h1{
-font-size:4rem;
-font-weight:700;
-color:#fff;
-}
-
-p{
-max-width:700px;
-margin-top:20px;
-font-size:1.2rem;
-}
-
-.buttons{
-margin-top:30px;
+nav ul{
 display:flex;
-gap:20px;
-flex-wrap:wrap;
-justify-content:center;
+gap:30px;
+list-style:none;
 }
 
-.buttons a{
-padding:15px 30px;
-background:white;
-color:#d40000;
+nav a{
 text-decoration:none;
-font-weight:bold;
-border-radius:12px;
+color:white;
+font-weight:500;
 transition:.3s;
 }
 
-.buttons a:hover{
-transform:scale(1.05);
-}
-
-section{
-padding:80px 20px;
-max-width:1200px;
-margin:auto;
-}
-
-.card{
-background:#111827;
-padding:30px;
-border-radius:20px;
-margin-top:30px;
-box-shadow:0 0 20px rgba(255,255,255,.08);
-}
-
-h2{
-font-size:2rem;
-margin-bottom:20px;
+nav a:hover{
 color:#ff4d4d;
 }
 
-ul{
-line-height:2;
+/* ===== Hero ===== */
+
+.hero{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:120px 10%;
+gap:60px;
+flex-wrap:wrap;
 }
 
-footer{
+.hero-text{
+flex:1;
+min-width:300px;
+}
+
+.hero-text h1{
+font-size:5rem;
+font-weight:900;
+line-height:1;
+margin-bottom:20px;
+background:linear-gradient(90deg,#ff0000,#ffffff);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero-text p{
+font-size:1.2rem;
+line-height:1.8;
+color:#d6d6d6;
+margin-bottom:30px;
+max-width:650px;
+}
+
+.buttons{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.btn{
+padding:15px 35px;
+border-radius:14px;
+text-decoration:none;
+font-weight:700;
+transition:.3s;
+}
+
+.primary{
+background:linear-gradient(90deg,#ff0000,#ff4d4d);
+color:white;
+box-shadow:0 0 25px #ff000066;
+}
+
+.secondary{
+border:2px solid white;
+color:white;
+}
+
+.btn:hover{
+transform:translateY(-5px);
+}
+
+/* ===== Hero Image ===== */
+
+.hero-image{
+flex:1;
+display:flex;
+justify-content:center;
+align-items:center;
+min-width:300px;
+}
+
+.hero-image img{
+width:350px;
+animation:float 5s ease-in-out infinite;
+filter:drop-shadow(0 0 40px #ff000088);
+}
+
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-20px);}
+}
+
+/* ===== Sections ===== */
+
+section{
+padding:100px 10%;
+}
+
+.title{
+font-size:3rem;
+margin-bottom:20px;
+font-weight:800;
 text-align:center;
-padding:30px;
-background:#111827;
+}
+
+.subtitle{
+text-align:center;
+color:#bbbbbb;
+margin-bottom:60px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.card{
+background:rgba(255,255,255,.05);
+padding:35px;
+border-radius:25px;
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,.08);
+transition:.4s;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 25px rgba(255,0,0,.25);
+}
+
+.card h3{
+font-size:1.5rem;
+margin-bottom:15px;
+color:#ff4d4d;
+}
+
+.card p,
+.card li{
+color:#d5d5d5;
+line-height:1.8;
+}
+
+.card ul{
+padding-left:20px;
+}
+
+/* ===== Tokenomics ===== */
+
+.tokenomics{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:30px;
 margin-top:50px;
+}
+
+.token-box{
+background:#0d1224;
+padding:30px;
+border-radius:25px;
+width:250px;
+text-align:center;
+border:1px solid rgba(255,255,255,.08);
+}
+
+.token-box h4{
+font-size:2rem;
+color:#ff4d4d;
+margin-bottom:10px;
+}
+
+/* ===== Footer ===== */
+
+footer{
+padding:50px 10%;
+text-align:center;
+background:#0b1020;
+border-top:1px solid rgba(255,255,255,.05);
+}
+
+footer p{
+color:#9ca3af;
+margin-top:10px;
+}
+
+/* ===== Responsive ===== */
+
+@media(max-width:768px){
+
+.hero-text h1{
+font-size:3rem;
+}
+
+.title{
+font-size:2rem;
+}
+
+.hero{
+text-align:center;
+}
+
+.buttons{
+justify-content:center;
+}
+
+nav{
+padding:20px;
+}
+
+nav ul{
+display:none;
+}
+
 }
 
 </style>
@@ -118,64 +306,223 @@ margin-top:50px;
 
 <body>
 
-<header>
+<div class="bg"></div>
 
-<img src="logo.png" class="logo">
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="logo">PERU TOKEN</div>
+
+<ul>
+<li><a href="#about">Proyecto</a></li>
+<li><a href="#tokenomics">Tokenomics</a></li>
+<li><a href="#roadmap">Roadmap</a></li>
+<li><a href="#community">Comunidad</a></li>
+</ul>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-text">
 
 <h1>PERU TOKEN</h1>
 
 <p>
-Proyecto crypto solidario creado para apoyar deportistas peruanos
-de bajos recursos mediante becas, viajes, implementos y oportunidades.
+El primer proyecto Web3 peruano enfocado en apoyar deportistas de bajos recursos mediante blockchain, becas, viajes e implementos deportivos.
 </p>
 
 <div class="buttons">
-<a href="#">Comprar Token</a>
-<a href="#">Whitepaper</a>
-<a href="#">BscScan</a>
-</div>
 
-</header>
+<a href="#" class="btn primary">
+Comprar Token
+</a>
 
-<section>
-
-<div class="card">
-<h2>Misión</h2>
-
-<p>
-Impulsar el talento peruano mediante blockchain y financiamiento descentralizado.
-</p>
-</div>
-
-<div class="card">
-<h2>Tokenomics</h2>
-
-<ul>
-<li>Total Supply: 1,000,000,000</li>
-<li>Blockchain: BNB Smart Chain</li>
-<li>Liquidez bloqueada</li>
-<li>Proyecto comunitario</li>
-</ul>
+<a href="#" class="btn secondary">
+Whitepaper
+</a>
 
 </div>
 
-<div class="card">
-<h2>Roadmap</h2>
+</div>
 
-<ul>
-<li>✅ Lanzamiento del Token</li>
-<li>✅ Comunidad inicial</li>
-<li>🚀 Marketing internacional</li>
-<li>🚀 Becas deportivas</li>
-<li>🚀 Exchange Listing</li>
-</ul>
+<div class="hero-image">
+
+<img src="logo.png">
 
 </div>
 
 </section>
 
+<!-- ABOUT -->
+
+<section id="about">
+
+<h2 class="title">Proyecto Solidario Web3</h2>
+
+<p class="subtitle">
+Blockchain con impacto real en el deporte peruano
+</p>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>🏆 Becas Deportivas</h3>
+
+<p>
+Apoyo económico para jóvenes talentos peruanos que necesitan oportunidades para competir y crecer.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>✈️ Viajes y Competencias</h3>
+
+<p>
+Financiamiento de viajes nacionales e internacionales para representar al Perú.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>⚽ Implementos Deportivos</h3>
+
+<p>
+Entrega de equipamiento profesional para atletas de bajos recursos.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- TOKENOMICS -->
+
+<section id="tokenomics">
+
+<h2 class="title">Tokenomics</h2>
+
+<p class="subtitle">
+Estructura transparente y comunitaria
+</p>
+
+<div class="tokenomics">
+
+<div class="token-box">
+<h4>1B</h4>
+<p>Total Supply</p>
+</div>
+
+<div class="token-box">
+<h4>0%</h4>
+<p>Tax Buy/Sell</p>
+</div>
+
+<div class="token-box">
+<h4>LOCK</h4>
+<p>Liquidez</p>
+</div>
+
+<div class="token-box">
+<h4>BSC</h4>
+<p>Blockchain</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- ROADMAP -->
+
+<section id="roadmap">
+
+<h2 class="title">Roadmap</h2>
+
+<p class="subtitle">
+Construyendo el futuro deportivo del Perú
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>FASE 1</h3>
+<ul>
+<li>Lanzamiento</li>
+<li>Comunidad</li>
+<li>Marketing inicial</li>
+<li>Redes sociales</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>FASE 2</h3>
+<ul>
+<li>Listado en trackers</li>
+<li>Primeras alianzas</li>
+<li>Influencers crypto</li>
+<li>Expansión LATAM</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>FASE 3</h3>
+<ul>
+<li>Becas deportivas</li>
+<li>Torneos</li>
+<li>Patrocinios</li>
+<li>Exchange listing</li>
+</ul>
+</div>
+
+</div>
+
+</section>
+
+<!-- COMMUNITY -->
+
+<section id="community">
+
+<h2 class="title">Únete a la Comunidad</h2>
+
+<p class="subtitle">
+Sé parte del movimiento crypto peruano
+</p>
+
+<div class="buttons" style="justify-content:center;">
+
+<a href="#" class="btn primary">
+Telegram
+</a>
+
+<a href="#" class="btn secondary">
+X / Twitter
+</a>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
 <footer>
-© 2026 PERU Token — Todos los derechos reservados
+
+<h2>PERU TOKEN</h2>
+
+<p>
+Proyecto Web3 solidario creado para impulsar el deporte peruano.
+</p>
+
+<p>
+© 2026 PERU TOKEN — All Rights Reserved
+</p>
+
 </footer>
 
 </body>
