@@ -74,6 +74,7 @@ z-index:999;
 font-size:1.5rem;
 font-weight:800;
 letter-spacing:2px;
+color:white;
 }
 
 nav ul{
@@ -91,6 +92,43 @@ transition:.3s;
 
 nav a:hover{
 color:#ff4d4d;
+}
+
+/* ===== MENU MOBILE ===== */
+
+.menu-toggle{
+display:none;
+font-size:2rem;
+cursor:pointer;
+color:white;
+}
+
+@media(max-width:768px){
+
+.menu-toggle{
+display:block;
+}
+
+nav{
+justify-content:space-between;
+}
+
+nav ul{
+position:absolute;
+top:80px;
+left:0;
+width:100%;
+background:#0b1020;
+flex-direction:column;
+padding:30px;
+display:none;
+gap:20px;
+}
+
+nav ul.active{
+display:flex;
+}
+
 }
 
 /* ===== HERO ===== */
@@ -152,6 +190,12 @@ box-shadow:0 0 25px #ff000066;
 .secondary{
 border:2px solid white;
 color:white;
+}
+
+.discord{
+background:#5865F2;
+color:white;
+border:none;
 }
 
 .btn:hover{
@@ -293,12 +337,9 @@ text-align:center;
 justify-content:center;
 }
 
-nav{
-padding:20px;
-}
-
-nav ul{
-display:none;
+.btn{
+width:100%;
+text-align:center;
 }
 
 .hero-image img{
@@ -318,6 +359,14 @@ width:220px;
 <!-- NAVBAR -->
 
 <nav>
+
+<div class="logo">
+PERU
+</div>
+
+<div class="menu-toggle" onclick="toggleMenu()">
+☰
+</div>
 
 <ul>
 <li><a href="#about">Proyecto</a></li>
@@ -387,33 +436,24 @@ Blockchain con impacto real en el deporte peruano
 <div class="grid">
 
 <div class="card">
-
 <h3>🏆 Becas Deportivas</h3>
-
 <p>
 Apoyo económico para jóvenes talentos peruanos que necesitan oportunidades para competir y crecer.
 </p>
-
 </div>
 
 <div class="card">
-
 <h3>✈️ Viajes y Competencias</h3>
-
 <p>
 Financiamiento de viajes nacionales e internacionales para representar al Perú.
 </p>
-
 </div>
 
 <div class="card">
-
 <h3>⚽ Implementos Deportivos</h3>
-
 <p>
 Entrega de equipamiento profesional para atletas de bajos recursos.
 </p>
-
 </div>
 
 </div>
@@ -433,39 +473,30 @@ Blockchain con impacto social y deportivo para el futuro del Perú.
 <div class="grid">
 
 <div class="card">
-
 <h3>📘 Resumen Ejecutivo</h3>
-
 <p>
 PERU es un token basado en tecnología blockchain creado con el propósito
 de generar un impacto social real, apoyando a deportistas de bajos recursos
 mediante financiamiento transparente y descentralizado.
 </p>
-
 </div>
 
 <div class="card">
-
 <h3>🌎 Visión</h3>
-
 <p>
 Convertirse en el primer ecosistema cripto-social de Latinoamérica enfocado
 en impulsar el talento deportivo emergente, posicionando a Perú como un
 referente en innovación social dentro del mundo blockchain.
 </p>
-
 </div>
 
 <div class="card">
-
 <h3>🚀 Misión</h3>
-
 <p>
 Crear un sistema descentralizado donde cualquier persona pueda contribuir
 al desarrollo de deportistas con talento, garantizando transparencia,
 comunidad activa y resultados reales.
 </p>
-
 </div>
 
 </div>
@@ -485,58 +516,38 @@ PERU Token impulsa un ecosistema Web3 solidario enfocado en el deporte peruano.
 <div class="grid">
 
 <div class="card">
-
 <h3>🗳️ Gobernanza</h3>
-
 <p>
-Los holders podrán votar y participar en decisiones importantes del proyecto,
-incluyendo la elección de deportistas beneficiados por la comunidad.
+Los holders podrán votar y participar en decisiones importantes del proyecto.
 </p>
-
 </div>
 
 <div class="card">
-
-<h3>🎁 Recompensas para Holders</h3>
-
+<h3>🎁 Recompensas</h3>
 <p>
-Los miembros de la comunidad podrán acceder a recompensas especiales,
-sorteos y beneficios exclusivos por mantener PERU Token.
+Beneficios exclusivos para holders y miembros activos de la comunidad.
 </p>
-
 </div>
 
 <div class="card">
-
 <h3>💎 Staking</h3>
-
 <p>
-Sistema de staking para generar beneficios pasivos y fortalecer
-el ecosistema a largo plazo.
+Generación de beneficios pasivos para holders a largo plazo.
 </p>
-
 </div>
 
 <div class="card">
-
 <h3>🏅 Acceso Exclusivo</h3>
-
 <p>
-Acceso prioritario a futuros NFTs, eventos, colaboraciones y
-proyectos exclusivos del ecosistema PERU.
+NFTs, eventos y futuras experiencias del ecosistema PERU.
 </p>
-
 </div>
 
 <div class="card">
-
-<h3>📈 Crecimiento del Proyecto</h3>
-
+<h3>📈 Crecimiento</h3>
 <p>
-El desarrollo continuo del ecosistema buscará incrementar la utilidad,
-adopción y valor del proyecto a largo plazo.
+Desarrollo continuo para incrementar adopción y utilidad del proyecto.
 </p>
-
 </div>
 
 </div>
@@ -602,42 +613,33 @@ Construyendo el futuro deportivo del Perú
 <div class="grid">
 
 <div class="card">
-
 <h3>FASE 1</h3>
-
 <ul>
 <li>Lanzamiento</li>
 <li>Comunidad</li>
 <li>Marketing inicial</li>
 <li>Redes sociales</li>
 </ul>
-
 </div>
 
 <div class="card">
-
 <h3>FASE 2</h3>
-
 <ul>
 <li>Listado en trackers</li>
 <li>Primeras alianzas</li>
 <li>Influencers crypto</li>
 <li>Expansión LATAM</li>
 </ul>
-
 </div>
 
 <div class="card">
-
 <h3>FASE 3</h3>
-
 <ul>
 <li>Becas deportivas</li>
 <li>Torneos</li>
 <li>Patrocinios</li>
 <li>Exchange listing</li>
 </ul>
-
 </div>
 
 </div>
@@ -657,6 +659,7 @@ Sé parte del movimiento crypto peruano
 <div class="buttons" style="justify-content:center;">
 
 <a href="https://x.com/WWW__PERU"
+target="_blank"
 class="btn primary">
 Twitter
 </a>
@@ -664,7 +667,13 @@ Twitter
 <a href="https://www.tiktok.com/@token.peru"
 target="_blank"
 class="btn secondary">
-Tiktok
+TikTok
+</a>
+
+<a href="https://discord.gg/perutoken"
+target="_blank"
+class="btn discord">
+Discord
 </a>
 
 </div>
@@ -687,6 +696,13 @@ Proyecto Web3 solidario creado para impulsar el deporte peruano.
 
 </footer>
 
+<script>
+
+function toggleMenu(){
+document.querySelector("nav ul").classList.toggle("active");
+}
+
+</script>
+
 </body>
 </html>
-```
