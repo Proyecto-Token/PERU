@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>PERU Token | Proyecto Deportivo Web3</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -54,7 +55,7 @@ animation:move 20s linear infinite;
 100%{transform:translate(-200px,-200px);}
 }
 
-/* ===== Navbar ===== */
+/* ===== NAVBAR ===== */
 
 nav{
 position:fixed;
@@ -71,7 +72,6 @@ z-index:999;
 .logo{
 font-size:1.5rem;
 font-weight:800;
-color:white;
 letter-spacing:2px;
 }
 
@@ -92,7 +92,7 @@ nav a:hover{
 color:#ff4d4d;
 }
 
-/* ===== Hero ===== */
+/* ===== HERO ===== */
 
 .hero{
 min-height:100vh;
@@ -139,6 +139,7 @@ border-radius:14px;
 text-decoration:none;
 font-weight:700;
 transition:.3s;
+display:inline-block;
 }
 
 .primary{
@@ -156,7 +157,7 @@ color:white;
 transform:translateY(-5px);
 }
 
-/* ===== Hero Image ===== */
+/* ===== HERO IMAGE ===== */
 
 .hero-image{
 flex:1;
@@ -177,7 +178,7 @@ filter:drop-shadow(0 0 40px #ff000088);
 50%{transform:translateY(-20px);}
 }
 
-/* ===== Sections ===== */
+/* ===== SECTIONS ===== */
 
 section{
 padding:100px 10%;
@@ -231,6 +232,192 @@ line-height:1.8;
 .card ul{
 padding-left:20px;
 }
+
+/* ===== TOKENOMICS ===== */
+
+.tokenomics{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:30px;
+margin-top:50px;
+}
+
+.token-box{
+background:#0d1224;
+padding:30px;
+border-radius:25px;
+width:250px;
+text-align:center;
+border:1px solid rgba(255,255,255,.08);
+}
+
+.token-box h4{
+font-size:2rem;
+color:#ff4d4d;
+margin-bottom:10px;
+}
+
+/* ===== FOOTER ===== */
+
+footer{
+padding:50px 10%;
+text-align:center;
+background:#0b1020;
+border-top:1px solid rgba(255,255,255,.05);
+}
+
+footer p{
+color:#9ca3af;
+margin-top:10px;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media(max-width:768px){
+
+.hero-text h1{
+font-size:3rem;
+}
+
+.title{
+font-size:2rem;
+}
+
+.hero{
+text-align:center;
+}
+
+.buttons{
+justify-content:center;
+}
+
+nav{
+padding:20px;
+}
+
+nav ul{
+display:none;
+}
+
+.hero-image img{
+width:220px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="logo">PERU TOKEN</div>
+
+<ul>
+<li><a href="#about">Proyecto</a></li>
+<li><a href="#utility">Utilidad</a></li>
+<li><a href="#tokenomics">Tokenomics</a></li>
+<li><a href="#roadmap">Roadmap</a></li>
+<li><a href="#community">Comunidad</a></li>
+</ul>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-text">
+
+<h1>PERU TOKEN</h1>
+
+<p>
+El primer proyecto Web3 peruano enfocado en apoyar deportistas de bajos recursos mediante blockchain, becas, viajes e implementos deportivos.
+</p>
+
+<div class="buttons">
+
+<a href="https://pancakeswap.finance/swap?outputCurrency=0x1c647ebe755fe03dc43fa078ca550e837d0b4444"
+target="_blank"
+class="btn primary">
+Comprar Token
+</a>
+
+<a href="whitepaper.pdf"
+target="_blank"
+class="btn secondary">
+Whitepaper
+</a>
+
+<a href="https://bscscan.com/token/0x1c647ebe755fe03dc43fa078ca550e837d0b4444"
+target="_blank"
+class="btn secondary">
+BscScan
+</a>
+
+</div>
+
+</div>
+
+<div class="hero-image">
+
+<img src="logo.png" alt="PERU TOKEN">
+
+</div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<h2 class="title">Proyecto Solidario Web3</h2>
+
+<p class="subtitle">
+Blockchain con impacto real en el deporte peruano
+</p>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>🏆 Becas Deportivas</h3>
+
+<p>
+Apoyo económico para jóvenes talentos peruanos que necesitan oportunidades para competir y crecer.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>✈️ Viajes y Competencias</h3>
+
+<p>
+Financiamiento de viajes nacionales e internacionales para representar al Perú.
+</p>
+
+</div>
+
+<div class="card">
+
+<h3>⚽ Implementos Deportivos</h3>
+
+<p>
+Entrega de equipamiento profesional para atletas de bajos recursos.
+</p>
+
+</div>
+
+</div>
+
+</section>
 
 <!-- UTILIDAD -->
 
@@ -302,183 +489,6 @@ adopción y valor del proyecto a largo plazo.
 </div>
 
 </section>
-  
-/* ===== Tokenomics ===== */
-
-.tokenomics{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:30px;
-margin-top:50px;
-}
-
-.token-box{
-background:#0d1224;
-padding:30px;
-border-radius:25px;
-width:250px;
-text-align:center;
-border:1px solid rgba(255,255,255,.08);
-}
-
-.token-box h4{
-font-size:2rem;
-color:#ff4d4d;
-margin-bottom:10px;
-}
-
-/* ===== Footer ===== */
-
-footer{
-padding:50px 10%;
-text-align:center;
-background:#0b1020;
-border-top:1px solid rgba(255,255,255,.05);
-}
-
-footer p{
-color:#9ca3af;
-margin-top:10px;
-}
-
-/* ===== Responsive ===== */
-
-@media(max-width:768px){
-
-.hero-text h1{
-font-size:3rem;
-}
-
-.title{
-font-size:2rem;
-}
-
-.hero{
-text-align:center;
-}
-
-.buttons{
-justify-content:center;
-}
-
-nav{
-padding:20px;
-}
-
-nav ul{
-display:none;
-}
-
-}
-
-</style>
-</head>
-
-<body>
-
-<div class="bg"></div>
-
-<!-- NAVBAR -->
-
-<nav>
-
-<div class="logo">PERU TOKEN</div>
-
-<ul>
-<li><a href="#about">Proyecto</a></li>
-<li><a href="#tokenomics">Tokenomics</a></li>
-<li><a href="#roadmap">Roadmap</a></li>
-<li><a href="#community">Comunidad</a></li>
-</ul>
-
-</nav>
-
-<!-- HERO -->
-
-<section class="hero">
-
-<div class="hero-text">
-
-<h1>PERU TOKEN</h1>
-
-<p>
-El primer proyecto Web3 peruano enfocado en apoyar deportistas de bajos recursos mediante blockchain, becas, viajes e implementos deportivos.
-</p>
-
-<div class="buttons">
-
-<a href="TU_LINK_DE_COMPRA" target="_blank" class="btn primary">
-Comprar Token
-</a>
-
-<a href="whitepaper.pdf" target="_blank" class="btn secondary">
-Whitepaper
-</a>
-
-  <a href="https://bscscan.com/token/0x1c647ebe755fe03dc43fa078ca550e837d0b4444"
-target="_blank"
-class="btn secondary">
-BscScan
-</a>
-
-</div>
-
-</div>
-
-<div class="hero-image">
-
-<img src="logo.png">
-
-</div>
-
-</section>
-
-<!-- ABOUT -->
-
-<section id="about">
-
-<h2 class="title">Proyecto Solidario Web3</h2>
-
-<p class="subtitle">
-Blockchain con impacto real en el deporte peruano
-</p>
-
-<div class="grid">
-
-<div class="card">
-
-<h3>🏆 Becas Deportivas</h3>
-
-<p>
-Apoyo económico para jóvenes talentos peruanos que necesitan oportunidades para competir y crecer.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>✈️ Viajes y Competencias</h3>
-
-<p>
-Financiamiento de viajes nacionales e internacionales para representar al Perú.
-</p>
-
-</div>
-
-<div class="card">
-
-<h3>⚽ Implementos Deportivos</h3>
-
-<p>
-Entrega de equipamiento profesional para atletas de bajos recursos.
-</p>
-
-</div>
-
-</div>
-
-</section>
 
 <!-- TOKENOMICS -->
 
@@ -486,7 +496,7 @@ Entrega de equipamiento profesional para atletas de bajos recursos.
 
 <h2 class="title">Tokenomics</h2>
 
-  <div class="card">
+<div class="card">
 
 <h3>Contrato Oficial</h3>
 
@@ -504,7 +514,7 @@ Estructura transparente y comunitaria
 
 <div class="token-box">
 <h4>1,000,000,000</h4>
-  <p>Total Supply</p>
+<p>Total Supply</p>
 </div>
 
 <div class="token-box">
@@ -539,33 +549,42 @@ Construyendo el futuro deportivo del Perú
 <div class="grid">
 
 <div class="card">
+
 <h3>FASE 1</h3>
+
 <ul>
 <li>Lanzamiento</li>
 <li>Comunidad</li>
 <li>Marketing inicial</li>
 <li>Redes sociales</li>
 </ul>
+
 </div>
 
 <div class="card">
+
 <h3>FASE 2</h3>
+
 <ul>
 <li>Listado en trackers</li>
 <li>Primeras alianzas</li>
 <li>Influencers crypto</li>
 <li>Expansión LATAM</li>
 </ul>
+
 </div>
 
 <div class="card">
+
 <h3>FASE 3</h3>
+
 <ul>
 <li>Becas deportivas</li>
 <li>Torneos</li>
 <li>Patrocinios</li>
 <li>Exchange listing</li>
 </ul>
+
 </div>
 
 </div>
@@ -584,11 +603,14 @@ Sé parte del movimiento crypto peruano
 
 <div class="buttons" style="justify-content:center;">
 
-<a href="#" class="btn primary">
+<a href="#"
+class="btn primary">
 Telegram
 </a>
 
-<a href="https://x.com/WWW__PERU" target="_blank" class="btn secondary">
+<a href="https://x.com/WWW__PERU"
+target="_blank"
+class="btn secondary">
 X / Twitter
 </a>
 
