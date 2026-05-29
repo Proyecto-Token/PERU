@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 
@@ -39,8 +40,6 @@ color:white;
 overflow-x:hidden;
 }
 
-/* ===== FONDO ===== */
-
 .bg{
 position:fixed;
 width:100%;
@@ -69,8 +68,6 @@ animation:move 20s linear infinite;
 0%{transform:translate(0,0);}
 100%{transform:translate(-200px,-200px);}
 }
-
-/* ===== NAVBAR ===== */
 
 nav{
 position:fixed;
@@ -114,32 +111,6 @@ font-size:2rem;
 cursor:pointer;
 color:white;
 }
-
-@media(max-width:768px){
-
-.menu-toggle{
-display:block;
-}
-
-nav ul{
-position:absolute;
-top:80px;
-left:0;
-width:100%;
-background:#0b1020;
-flex-direction:column;
-padding:30px;
-display:none;
-gap:20px;
-}
-
-nav ul.active{
-display:flex;
-}
-
-}
-
-/* ===== HERO ===== */
 
 .hero{
 min-height:100vh;
@@ -201,12 +172,6 @@ border:2px solid white;
 color:white;
 }
 
-.discord{
-background:#5865F2;
-color:white;
-border:none;
-}
-
 .btn:hover{
 transform:translateY(-5px);
 }
@@ -216,8 +181,6 @@ transform:translateY(-5px);
 50%{transform:scale(1.05);}
 100%{transform:scale(1);}
 }
-
-/* ===== HERO IMAGE ===== */
 
 .hero-image{
 flex:1;
@@ -237,8 +200,6 @@ filter:drop-shadow(0 0 40px #ff000088);
 0%,100%{transform:translateY(0);}
 50%{transform:translateY(-20px);}
 }
-
-/* ===== SECTIONS ===== */
 
 section{
 padding:100px 10%;
@@ -293,8 +254,6 @@ line-height:1.8;
 padding-left:20px;
 }
 
-/* ===== TOKENOMICS ===== */
-
 .tokenomics{
 display:flex;
 justify-content:center;
@@ -318,8 +277,6 @@ color:#ff4d4d;
 margin-bottom:10px;
 }
 
-/* ===== FOOTER ===== */
-
 footer{
 padding:50px 10%;
 text-align:center;
@@ -331,8 +288,6 @@ footer p{
 color:#9ca3af;
 margin-top:10px;
 }
-
-/* ===== WHATSAPP ===== */
 
 .whatsapp-float{
 position:fixed;
@@ -361,9 +316,27 @@ transform:scale(1.1);
 100%{transform:translateY(0);}
 }
 
-/* ===== RESPONSIVE ===== */
-
 @media(max-width:768px){
+
+.menu-toggle{
+display:block;
+}
+
+nav ul{
+position:absolute;
+top:80px;
+left:0;
+width:100%;
+background:#0b1020;
+flex-direction:column;
+padding:30px;
+display:none;
+gap:20px;
+}
+
+nav ul.active{
+display:flex;
+}
 
 .hero-text h1{
 font-size:3rem;
@@ -407,10 +380,9 @@ right:20px;
 
 <div class="bg"></div>
 
-<!-- NAVBAR -->
-
 <nav>
 
+<div class="logo">PERU</div>
 
 <div class="menu-toggle" onclick="toggleMenu()">
 ☰
@@ -418,16 +390,14 @@ right:20px;
 
 <ul>
 <li><a href="#about">Proyecto</a></li>
-<li><a href="#executive">Resumen</a></li>
 <li><a href="#utility">Utilidad</a></li>
 <li><a href="#tokenomics">Tokenomics</a></li>
 <li><a href="#roadmap">Roadmap</a></li>
+<li><a href="#team">Equipo</a></li>
 <li><a href="#community">Comunidad</a></li>
 </ul>
 
 </nav>
-
-<!-- HERO -->
 
 <section class="hero">
 
@@ -444,7 +414,7 @@ El primer proyecto Web3 peruano enfocado en apoyar deportistas de bajos recursos
 <a href="https://pancakeswap.finance/swap?outputCurrency=0x1c647ebe755fe03dc43fa078ca550e837d0b4444"
 target="_blank"
 class="btn primary">
-Comprar
+Comprar PERU
 </a>
 
 <a href="whitepaper.pdf"
@@ -468,8 +438,6 @@ BscScan
 </div>
 
 </section>
-
-<!-- ABOUT -->
 
 <section id="about">
 
@@ -500,53 +468,220 @@ Blockchain con impacto real en el deporte peruano
 
 </section>
 
-<!-- TOKENOMICS -->
+<section id="utility">
 
-<section id="tokenomics">
-
-<h2 class="title">TOKENOMICS</h2>
-
-<div class="card">
-
-<h3>Contrato Oficial</h3>
-
-<p style="word-break:break-all;">
-0x1c647ebe755fe03dc43fa078ca550e837d0b4444
-</p>
-
-</div>
+<h2 class="title">UTILIDAD</h2>
 
 <p class="subtitle">
-Estructura transparente y comunitaria
+PERU impulsa un ecosistema Web3 solidario enfocado en el deporte peruano.
 </p>
 
-<div class="tokenomics">
+<div class="grid">
 
-<div class="token-box">
-<h4>1,000,000,000</h4>
-<p>Total Supply</p>
+<div class="card">
+<h3>🗳️ Gobernanza</h3>
+<p>Votación para elegir deportistas beneficiados.</p>
 </div>
 
-<div class="token-box">
-<h4>0%</h4>
-<p>Tax Buy/Sell</p>
+<div class="card">
+<h3>🎁 Recompensas</h3>
+<p>Beneficios exclusivos para holders.</p>
 </div>
 
-<div class="token-box">
-<h4>LOCK</h4>
-<p>Liquidez</p>
+<div class="card">
+<h3>💎 Staking</h3>
+<p>Generación de beneficios pasivos.</p>
 </div>
 
-<div class="token-box">
-<h4>BSC</h4>
-<p>Blockchain</p>
+<div class="card">
+<h3>🏅 Acceso Exclusivo</h3>
+<p>NFTs, eventos y proyectos futuros.</p>
+</div>
+
+<div class="card">
+<h3>📈 Crecimiento</h3>
+<p>Incentivo a largo plazo mediante el crecimiento del proyecto.</p>
 </div>
 
 </div>
 
 </section>
 
-<!-- COMMUNITY -->
+<section id="tokenomics">
+
+<h2 class="title">TOKENOMICS</h2>
+
+<p class="subtitle">
+Estructura transparente y comunitaria
+</p>
+
+<div class="card" style="margin-bottom:40px;">
+
+<h3>📜 Información del Token</h3>
+
+<p><strong>Nombre:</strong> PERU</p>
+<p><strong>Tipo:</strong> Token social / comunitario</p>
+<p><strong>Total Supply:</strong> 1,000,000 Tokens</p>
+
+<br>
+
+<p style="word-break:break-all;">
+<strong>Contrato Oficial:</strong><br>
+0x1c647ebe755fe03dc43fa078ca550e837d0b4444
+</p>
+
+</div>
+
+<div class="grid">
+
+<div class="card">
+<h3>💧 40%</h3>
+<p>Liquidez</p>
+</div>
+
+<div class="card">
+<h3>📈 20%</h3>
+<p>Marketing y expansión</p>
+</div>
+
+<div class="card">
+<h3>🏆 20%</h3>
+<p>Fondo social para apoyo a deportistas</p>
+</div>
+
+<div class="card">
+<h3>🛠️ 10%</h3>
+<p>Equipo de desarrollo</p>
+</div>
+
+<div class="card">
+<h3>🔒 10%</h3>
+<p>Reserva estratégica</p>
+</div>
+
+</div>
+
+</section>
+
+<section id="roadmap">
+
+<h2 class="title">ROADMAP</h2>
+
+<p class="subtitle">
+Construyendo el futuro deportivo y Web3 del Perú
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>🚀 FASE 1 – LANZAMIENTO</h3>
+<ul>
+<li>Creación del token</li>
+<li>Publicación en plataformas (Fourmeme)</li>
+<li>Inicio de comunidad</li>
+<li>Marketing inicial</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>📈 FASE 2 – CRECIMIENTO</h3>
+<ul>
+<li>Expansión en redes sociales</li>
+<li>Primeros deportistas beneficiados</li>
+<li>Listado en plataformas de seguimiento</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>🌍 FASE 3 – EXPANSIÓN</h3>
+<ul>
+<li>Desarrollo de página web oficial</li>
+<li>Implementación de sistema de votación</li>
+<li>Colaboraciones con academias</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>🏆 FASE 4 – ESCALAMIENTO GLOBAL</h3>
+<ul>
+<li>Internacionalización del proyecto</li>
+<li>Patrocinios deportivos</li>
+<li>Eventos y torneos propios</li>
+</ul>
+</div>
+
+</div>
+
+</section>
+
+<section id="team">
+
+<h2 class="title">EQUIPO</h2>
+
+<p class="subtitle">
+Desarrollo profesional enfocado en blockchain y software.
+</p>
+
+<div class="card">
+
+<p>
+Nuestro equipo está compuesto por profesionales con experiencia en desarrollo de software, blockchain y crecimiento de productos digitales.
+</p>
+
+<br>
+
+<p>
+Por motivos de privacidad y seguridad, algunos miembros operan de forma anónima, siguiendo una práctica común dentro del ecosistema Web3.
+</p>
+
+<br>
+
+<p>
+Nos enfocamos en la transparencia técnica y el desarrollo real del producto.
+</p>
+
+</div>
+
+</section>
+
+<section id="security">
+
+<h2 class="title">🛡️ SEGURIDAD Y TRANSPARENCIA</h2>
+
+<p class="subtitle">
+PERU está diseñado con enfoque en seguridad y desarrollo real.
+</p>
+
+<div class="grid">
+
+<div class="card">
+<h3>✔ Smart Contract</h3>
+<p>Contrato verificable públicamente.</p>
+</div>
+
+<div class="card">
+<h3>✔ Tokenomics Pública</h3>
+<p>Distribución transparente para toda la comunidad.</p>
+</div>
+
+<div class="card">
+<h3>✔ Liquidez Bloqueada</h3>
+<p>Mayor seguridad y estabilidad para holders.</p>
+</div>
+
+<div class="card">
+<h3>✔ Auditoría</h3>
+<p>Proceso de auditoría en desarrollo.</p>
+</div>
+
+<div class="card">
+<h3>✔ Ecosistema Activo</h3>
+<p>Desarrollo constante del proyecto y nuevas funciones.</p>
+</div>
+
+</div>
+
+</section>
 
 <section id="community">
 
@@ -574,25 +709,21 @@ TikTok
 
 </section>
 
-<!-- FOOTER -->
-
 <footer>
 
-<h2>PERU TOKEN</h2>
+<h2>PERU</h2>
 
 <p>
 Proyecto Web3 solidario creado para impulsar el deporte peruano.
 </p>
 
 <p>
-© 2026 PERU TOKEN — Community Project
+© 2026 PERU — Community Project
 </p>
 
 </footer>
 
-<!-- BOTÓN WHATSAPP -->
-
-<a href="https://wa.me/#"
+<a href="https://wa.me/51987654321"
 class="whatsapp-float"
 target="_blank">
 
