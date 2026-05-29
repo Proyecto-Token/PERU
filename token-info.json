@@ -1,0 +1,18 @@
+{
+"name": "PERU",
+"symbol": "PE",
+"description": "Proyecto Web3 peruano enfocado en apoyar deportistas de bajos recursos mediante blockchain, becas, implementos deportivos y financiamiento comunitario.",
+"chain": "BNB Smart Chain",
+"contract": "0x1c647ebe755fe03dc43fa078ca550e837d0b4444",
+"decimals": 18,
+"website": "https://proyecto-token.github.io/",
+"repository": "https://github.com/Proyecto-Token",
+"whitepaper": "https://raw.githubusercontent.com/Proyecto-Token/main/whitepaper.pdf",
+"logo": "https://raw.githubusercontent.com/Proyecto-Token/main/logo.png",
+"twitter": "https://x.com/WWW__PERU",
+"tiktok": "https://www.tiktok.com/@token.peru",
+"category": "Social Impact",
+"country": "Peru",
+"launch_year": 2026,
+"token_type": "Community Token"
+}
