@@ -381,6 +381,9 @@ right:20px;
 
 <nav>
 
+<div class="logo">
+<img src="logo.png" alt="PERU Logo" style="height:50px;">
+</div>
 
 <div class="menu-toggle" onclick="toggleMenu()">
 ☰
@@ -499,6 +502,17 @@ Crear un sistema descentralizado donde cualquier persona pueda contribuir al des
 </div>
 
 </section>
+
+<section id="stats">
+<h2 class="title">ESTADÍSTICAS</h2>
+<p class="subtitle">Comunidad y crecimiento del proyecto</p>
+<div class="grid">
+<div class="card"><h3>💎 Holders</h3><p>Comunidad en crecimiento</p></div>
+<div class="card"><h3>📈 Market Cap</h3><p>Evolución constante</p></div>
+<div class="card"><h3>🌎 Alcance</h3><p>Proyecto con visión global</p></div>
+</div>
+</section>
+
 <section id="utility">
 
 <h2 class="title">UTILIDAD</h2>
@@ -736,6 +750,24 @@ class="btn secondary">
 TikTok
 </a>
 
+<a href="https://discord.gg/TU-INVITACION"
+target="_blank"
+class="btn secondary">
+Discord
+</a>
+
+</div>
+
+</section>
+
+<section id="legal">
+
+<h2 class="title">AVISO LEGAL</h2>
+
+<div class="card">
+<p>
+PERU es un proyecto comunitario basado en blockchain. La compra de activos digitales implica riesgos. Cada participante debe realizar su propia investigación antes de tomar decisiones financieras.
+</p>
 </div>
 
 </section>
@@ -748,9 +780,12 @@ TikTok
 Proyecto Web3 solidario creado para impulsar el deporte peruano.
 </p>
 
-<p>
-© 2026 PERU — Community Project
-</p>
+<p>© 2026 PERU — Community Project</p>
+
+<div style="margin-top:20px;">
+<a href="whitepaper.pdf" class="btn secondary">Whitepaper</a>
+<a href="https://bscscan.com/token/0x1c647ebe755fe03dc43fa078ca550e837d0b4444" class="btn secondary">BSCScan</a>
+</div>
 
 </footer>
 
@@ -774,6 +809,25 @@ viewBox="0 0 24 24">
 function toggleMenu(){
 document.querySelector("nav ul").classList.toggle("active");
 }
+
+
+const cards = document.querySelectorAll('.card');
+
+const observer = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+if(entry.isIntersecting){
+entry.target.style.opacity = 1;
+entry.target.style.transform = 'translateY(0)';
+}
+});
+});
+
+cards.forEach(card => {
+card.style.opacity = 0;
+card.style.transform = 'translateY(40px)';
+card.style.transition = '.7s';
+observer.observe(card);
+});
 
 </script>
 
