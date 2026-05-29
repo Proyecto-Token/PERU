@@ -1,17 +1,24 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PERU</title>
+<title>PERU TOKEN</title>
 
 <meta name="description" content="PERU TOKEN es un proyecto Web3 solidario enfocado en apoyar deportistas peruanos mediante blockchain y financiamiento descentralizado.">
 
 <meta name="keywords" content="PERU TOKEN, crypto peru, token peruano, blockchain peru, memecoin peru">
 
 <meta name="author" content="PERU TOKEN">
+
+<meta property="og:title" content="PERU TOKEN">
+<meta property="og:description" content="Proyecto Web3 peruano enfocado en apoyar deportistas mediante blockchain.">
+<meta property="og:image" content="logo.png">
+<meta property="og:type" content="website">
 
 <link rel="icon" href="logo.png">
 
@@ -102,8 +109,6 @@ nav a:hover{
 color:#ff4d4d;
 }
 
-/* ===== MENU MOBILE ===== */
-
 .menu-toggle{
 display:none;
 font-size:2rem;
@@ -115,10 +120,6 @@ color:white;
 
 .menu-toggle{
 display:block;
-}
-
-nav{
-justify-content:space-between;
 }
 
 nav ul{
@@ -192,7 +193,8 @@ display:inline-block;
 .primary{
 background:linear-gradient(90deg,#ff0000,#ff4d4d);
 color:white;
-box-shadow:0 0 25px #ff000066;
+box-shadow:0 0 30px #ff000088;
+animation:pulse 2s infinite;
 }
 
 .secondary{
@@ -208,6 +210,12 @@ border:none;
 
 .btn:hover{
 transform:translateY(-5px);
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.05);}
+100%{transform:scale(1);}
 }
 
 /* ===== HERO IMAGE ===== */
@@ -325,6 +333,35 @@ color:#9ca3af;
 margin-top:10px;
 }
 
+/* ===== WHATSAPP ===== */
+
+.whatsapp-float{
+position:fixed;
+width:65px;
+height:65px;
+bottom:25px;
+right:25px;
+background:linear-gradient(135deg,#25D366,#1ebe5d);
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+box-shadow:0 0 25px rgba(37,211,102,.5);
+z-index:9999;
+transition:.3s;
+animation:floatWhatsapp 2s infinite ease-in-out;
+}
+
+.whatsapp-float:hover{
+transform:scale(1.1);
+}
+
+@keyframes floatWhatsapp{
+0%{transform:translateY(0);}
+50%{transform:translateY(-8px);}
+100%{transform:translateY(0);}
+}
+
 /* ===== RESPONSIVE ===== */
 
 @media(max-width:768px){
@@ -354,6 +391,13 @@ text-align:center;
 width:220px;
 }
 
+.whatsapp-float{
+width:58px;
+height:58px;
+bottom:20px;
+right:20px;
+}
+
 }
 
 </style>
@@ -368,6 +412,7 @@ width:220px;
 
 <nav>
 
+<div class="logo">PERU</div>
 
 <div class="menu-toggle" onclick="toggleMenu()">
 ☰
@@ -421,9 +466,7 @@ BscScan
 </div>
 
 <div class="hero-image">
-
 <img src="logo.png" alt="PERU TOKEN">
-
 </div>
 
 </section>
@@ -442,117 +485,17 @@ Blockchain con impacto real en el deporte peruano
 
 <div class="card">
 <h3>🏆 Becas Deportivas</h3>
-<p>
-Apoyo económico para jóvenes talentos peruanos que necesitan oportunidades para competir y crecer.
-</p>
+<p>Apoyo económico para jóvenes talentos peruanos.</p>
 </div>
 
 <div class="card">
 <h3>✈️ Viajes y Competencias</h3>
-<p>
-Financiamiento de viajes nacionales e internacionales para representar al Perú.
-</p>
+<p>Financiamiento de viajes nacionales e internacionales.</p>
 </div>
 
 <div class="card">
 <h3>⚽ Implementos Deportivos</h3>
-<p>
-Entrega de equipamiento profesional para atletas de bajos recursos.
-</p>
-</div>
-
-</div>
-
-</section>
-
-<!-- RESUMEN EJECUTIVO -->
-
-<section id="executive">
-
-<h2 class="title">RESUMEN EJECUTIVO</h2>
-
-<p class="subtitle">
-Blockchain con impacto social y deportivo para el futuro del Perú.
-</p>
-
-<div class="grid">
-
-<div class="card">
-<h3>📘 Resumen Ejecutivo</h3>
-<p>
-PERU es un token basado en tecnología blockchain creado con el propósito
-de generar un impacto social real, apoyando a deportistas de bajos recursos
-mediante financiamiento transparente y descentralizado.
-</p>
-</div>
-
-<div class="card">
-<h3>🌎 Visión</h3>
-<p>
-Convertirse en el primer ecosistema cripto-social de Latinoamérica enfocado
-en impulsar el talento deportivo emergente, posicionando a Perú como un
-referente en innovación social dentro del mundo blockchain.
-</p>
-</div>
-
-<div class="card">
-<h3>🚀 Misión</h3>
-<p>
-Crear un sistema descentralizado donde cualquier persona pueda contribuir
-al desarrollo de deportistas con talento, garantizando transparencia,
-comunidad activa y resultados reales.
-</p>
-</div>
-
-</div>
-
-</section>
-
-<!-- UTILIDAD -->
-
-<section id="utility">
-
-<h2 class="title">UTILIDAD</h2>
-
-<p class="subtitle">
-PERU Token impulsa un ecosistema Web3 solidario enfocado en el deporte peruano.
-</p>
-
-<div class="grid">
-
-<div class="card">
-<h3>🗳️ Gobernanza</h3>
-<p>
-Los holders podrán votar y participar en decisiones importantes del proyecto.
-</p>
-</div>
-
-<div class="card">
-<h3>🎁 Recompensas</h3>
-<p>
-Beneficios exclusivos para holders y miembros activos de la comunidad.
-</p>
-</div>
-
-<div class="card">
-<h3>💎 Staking</h3>
-<p>
-Generación de beneficios pasivos para holders a largo plazo.
-</p>
-</div>
-
-<div class="card">
-<h3>🏅 Acceso Exclusivo</h3>
-<p>
-NFTs, eventos y futuras experiencias del ecosistema PERU.
-</p>
-</div>
-
-<div class="card">
-<h3>📈 Crecimiento</h3>
-<p>
-Desarrollo continuo para incrementar adopción y utilidad del proyecto.
-</p>
+<p>Entrega de equipamiento profesional para atletas.</p>
 </div>
 
 </div>
@@ -605,52 +548,6 @@ Estructura transparente y comunitaria
 
 </section>
 
-<!-- ROADMAP -->
-
-<section id="roadmap">
-
-<h2 class="title">ROADMAP</h2>
-
-<p class="subtitle">
-Construyendo el futuro deportivo del Perú
-</p>
-
-<div class="grid">
-
-<div class="card">
-<h3>FASE 1</h3>
-<ul>
-<li>Lanzamiento</li>
-<li>Comunidad</li>
-<li>Marketing inicial</li>
-<li>Redes sociales</li>
-</ul>
-</div>
-
-<div class="card">
-<h3>FASE 2</h3>
-<ul>
-<li>Listado en trackers</li>
-<li>Primeras alianzas</li>
-<li>Influencers crypto</li>
-<li>Expansión LATAM</li>
-</ul>
-</div>
-
-<div class="card">
-<h3>FASE 3</h3>
-<ul>
-<li>Becas deportivas</li>
-<li>Torneos</li>
-<li>Patrocinios</li>
-<li>Exchange listing</li>
-</ul>
-</div>
-
-</div>
-
-</section>
-
 <!-- COMMUNITY -->
 
 <section id="community">
@@ -675,12 +572,6 @@ class="btn secondary">
 TikTok
 </a>
 
-<a href="https://discord.gg/XXXXXXX1491189898353442967/1491189899498356829"
-target="_blank"
-class="btn discord">
-Discord
-</a>
-
 </div>
 
 </section>
@@ -696,10 +587,27 @@ Proyecto Web3 solidario creado para impulsar el deporte peruano.
 </p>
 
 <p>
-© 2026 PERU TOKEN — All Rights Reserved
+© 2026 PERU TOKEN — Community Project
 </p>
 
 </footer>
+
+<!-- BOTÓN WHATSAPP -->
+
+<a href="https://wa.me/51987654321"
+class="whatsapp-float"
+target="_blank">
+
+<svg xmlns="http://www.w3.org/2000/svg"
+width="30"
+height="30"
+fill="white"
+viewBox="0 0 24 24">
+
+<path d="M20.52 3.48A11.77 11.77 0 0 0 12.04 0C5.5 0 .16 5.34.16 11.88c0 2.1.55 4.15 1.6 5.96L0 24l6.34-1.66a11.84 11.84 0 0 0 5.7 1.45h.01c6.54 0 11.88-5.34 11.88-11.88 0-3.17-1.24-6.15-3.41-8.43z"/>
+</svg>
+
+</a>
 
 <script>
 
@@ -710,32 +618,5 @@ document.querySelector("nav ul").classList.toggle("active");
 </script>
 
 </body>
-
-  <script>
-
-function toggleMenu(){
-document.querySelector("nav ul").classList.toggle("active");
-}
-
-</script>
-
-<!-- AQUÍ PEGAS EL BOTÓN WHATSAPP -->
-
-<a href="https://wa.me/51987654321"
-class="whatsapp-float"
-target="_blank">
-
-...
-</a>
-
-<style>
-
-.whatsapp-float{
-...
-}
-
-</style>
-
-</body>
 </html>
-</html>
+```
