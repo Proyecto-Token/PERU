@@ -371,6 +371,30 @@ right:20px;
 
 }
 
+
+.copy-btn{
+background:linear-gradient(90deg,#ff0000,#ff4d4d);
+color:#fff;
+border:none;
+padding:14px 30px;
+border-radius:14px;
+font-weight:700;
+font-size:16px;
+cursor:pointer;
+transition:.3s;
+box-shadow:0 0 25px rgba(255,0,0,.4);
+}
+
+.copy-btn:hover{
+transform:translateY(-3px);
+box-shadow:0 0 35px rgba(255,0,0,.7);
+}
+
+.copy-btn.copied{
+background:#16a34a;
+box-shadow:0 0 25px rgba(22,163,74,.5);
+}
+
 </style>
 
 </head>
@@ -575,14 +599,11 @@ Estructura transparente y comunitaria
 0x1c647ebe755fe03dc43fa078ca550e837d0b4444
 </p>
 
-  <button onclick="copyContract()">Copiar Contrato</button>
-
-<script>
-function copyContract(){
-navigator.clipboard.writeText("0x1c647ebe755fe03dc43fa078ca550e837d0b4444");
-alert("Contrato copiado");
-}
-</script>
+<div style="margin-top:20px;text-align:center;">
+<button onclick="copyContract()" class="copy-btn">
+📋 Copiar Contrato
+</button>
+</div>
 
 </div>
 
@@ -850,6 +871,35 @@ card.style.transform = 'translateY(40px)';
 card.style.transition = '.7s';
 observer.observe(card);
 });
+
+
+function copyContract(){
+
+const contract =
+"0x1c647ebe755fe03dc43fa078ca550e837d0b4444";
+
+navigator.clipboard.writeText(contract);
+
+const btn =
+document.querySelector(".copy-btn");
+
+if(!btn) return;
+
+btn.innerHTML =
+"✅ Contrato Copiado";
+
+btn.classList.add("copied");
+
+setTimeout(function(){
+
+btn.innerHTML =
+"📋 Copiar Contrato";
+
+btn.classList.remove("copied");
+
+},3000);
+
+}
 
 </script>
 
