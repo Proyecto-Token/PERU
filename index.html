@@ -1,910 +1,691 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>PERU</title>
-
-<meta name="description" content="PERU es un proyecto Web3 solidario enfocado en apoyar deportistas peruanos mediante blockchain y financiamiento descentralizado.">
-
-<meta name="keywords" content="PERU, crypto peru, token peruano, blockchain peru, memecoin peru">
-
-<meta name="author" content="PERU">
-
-<meta property="og:title" content="PERU">
-<meta property="og:description" content="Proyecto Web3 peruano enfocado en apoyar deportistas mediante blockchain.">
-<meta property="og:image" content="logo.png">
-<meta property="og:type" content="website">
-
-<link rel="icon" href="logo.png">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-scroll-behavior:smooth;
-}
-
-body{
-background:#050816;
-color:white;
-overflow-x:hidden;
-}
-
-.bg{
-position:fixed;
-width:100%;
-height:100%;
-top:0;
-left:0;
-background:
-radial-gradient(circle at top left,#ff000044,transparent 25%),
-radial-gradient(circle at bottom right,#ffffff22,transparent 25%),
-#050816;
-z-index:-2;
-}
-
-.bg::before{
-content:'';
-position:absolute;
-width:200%;
-height:200%;
-background-image:
-radial-gradient(#ffffff33 1px,transparent 1px);
-background-size:50px 50px;
-animation:move 20s linear infinite;
-}
-
-@keyframes move{
-0%{transform:translate(0,0);}
-100%{transform:translate(-200px,-200px);}
-}
-
-nav{
-position:fixed;
-width:100%;
-padding:20px 10%;
-display:flex;
-justify-content:space-between;
-align-items:center;
-background:rgba(0,0,0,.35);
-backdrop-filter:blur(10px);
-z-index:999;
-}
-
-.logo{
-font-size:1.5rem;
-font-weight:800;
-letter-spacing:2px;
-color:white;
-}
-
-nav ul{
-display:flex;
-gap:30px;
-list-style:none;
-}
-
-nav a{
-text-decoration:none;
-color:white;
-font-weight:500;
-transition:.3s;
-}
-
-nav a:hover{
-color:#ff4d4d;
-}
-
-.menu-toggle{
-display:none;
-font-size:2rem;
-cursor:pointer;
-color:white;
-}
-
-.hero{
-min-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-padding:120px 10%;
-gap:60px;
-flex-wrap:wrap;
-}
-
-.hero-text{
-flex:1;
-min-width:300px;
-}
-
-.hero-text h1{
-font-size:5rem;
-font-weight:900;
-line-height:1;
-margin-bottom:20px;
-background:linear-gradient(90deg,#ff0000,#ffffff);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-.hero-text p{
-font-size:1.2rem;
-line-height:1.8;
-color:#d6d6d6;
-margin-bottom:30px;
-max-width:650px;
-}
-
-.buttons{
-display:flex;
-gap:20px;
-flex-wrap:wrap;
-}
-
-.btn{
-padding:15px 35px;
-border-radius:14px;
-text-decoration:none;
-font-weight:700;
-transition:.3s;
-display:inline-block;
-}
-
-.primary{
-background:linear-gradient(90deg,#ff0000,#ff4d4d);
-color:white;
-box-shadow:0 0 30px #ff000088;
-animation:pulse 2s infinite;
-}
-
-.secondary{
-border:2px solid white;
-color:white;
-}
-
-.btn:hover{
-transform:translateY(-5px);
-}
-
-@keyframes pulse{
-0%{transform:scale(1);}
-50%{transform:scale(1.05);}
-100%{transform:scale(1);}
-}
-
-.hero-image{
-flex:1;
-display:flex;
-justify-content:center;
-align-items:center;
-min-width:300px;
-}
-
-.hero-image img{
-width:350px;
-animation:float 5s ease-in-out infinite;
-filter:drop-shadow(0 0 40px #ff000088);
-}
-
-@keyframes float{
-0%,100%{transform:translateY(0);}
-50%{transform:translateY(-20px);}
-}
-
-section{
-padding:100px 10%;
-}
-
-.title{
-font-size:3rem;
-margin-bottom:20px;
-font-weight:800;
-text-align:center;
-}
-
-.subtitle{
-text-align:center;
-color:#bbbbbb;
-margin-bottom:60px;
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:30px;
-}
-
-.card{
-background:rgba(255,255,255,.05);
-padding:35px;
-border-radius:25px;
-backdrop-filter:blur(10px);
-border:1px solid rgba(255,255,255,.08);
-transition:.4s;
-}
-
-.card:hover{
-transform:translateY(-10px);
-box-shadow:0 0 25px rgba(255,0,0,.25);
-}
-
-.card h3{
-font-size:1.5rem;
-margin-bottom:15px;
-color:#ff4d4d;
-}
-
-.card p,
-.card li{
-color:#d5d5d5;
-line-height:1.8;
-}
-
-.card ul{
-padding-left:20px;
-}
-
-.tokenomics{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:30px;
-margin-top:50px;
-}
-
-.token-box{
-background:#0d1224;
-padding:30px;
-border-radius:25px;
-width:250px;
-text-align:center;
-border:1px solid rgba(255,255,255,.08);
-}
-
-.token-box h4{
-font-size:2rem;
-color:#ff4d4d;
-margin-bottom:10px;
-}
-
-footer{
-padding:50px 10%;
-text-align:center;
-background:#0b1020;
-border-top:1px solid rgba(255,255,255,.05);
-}
-
-footer p{
-color:#9ca3af;
-margin-top:10px;
-}
-
-.whatsapp-float{
-position:fixed;
-width:65px;
-height:65px;
-bottom:25px;
-right:25px;
-background:linear-gradient(135deg,#25D366,#1ebe5d);
-border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-box-shadow:0 0 25px rgba(37,211,102,.5);
-z-index:9999;
-transition:.3s;
-animation:floatWhatsapp 2s infinite ease-in-out;
-}
-
-.whatsapp-float:hover{
-transform:scale(1.1);
-}
-
-@keyframes floatWhatsapp{
-0%{transform:translateY(0);}
-50%{transform:translateY(-8px);}
-100%{transform:translateY(0);}
-}
-
-@media(max-width:768px){
-
-.menu-toggle{
-display:block;
-}
-
-nav ul{
-position:absolute;
-top:80px;
-left:0;
-width:100%;
-background:#0b1020;
-flex-direction:column;
-padding:30px;
-display:none;
-gap:20px;
-}
-
-nav ul.active{
-display:flex;
-}
-
-.hero-text h1{
-font-size:3rem;
-}
-
-.title{
-font-size:2rem;
-}
-
-.hero{
-text-align:center;
-}
-
-.buttons{
-justify-content:center;
-}
-
-.btn{
-width:100%;
-text-align:center;
-}
-
-.hero-image img{
-width:220px;
-}
-
-.whatsapp-float{
-width:58px;
-height:58px;
-bottom:20px;
-right:20px;
-}
-
-}
-
-
-.copy-btn{
-background:linear-gradient(90deg,#ff0000,#ff4d4d);
-color:#fff;
-border:none;
-padding:14px 30px;
-border-radius:14px;
-font-weight:700;
-font-size:16px;
-cursor:pointer;
-transition:.3s;
-box-shadow:0 0 25px rgba(255,0,0,.4);
-}
-
-.copy-btn:hover{
-transform:translateY(-3px);
-box-shadow:0 0 35px rgba(255,0,0,.7);
-}
-
-.copy-btn.copied{
-background:#16a34a;
-box-shadow:0 0 25px rgba(22,163,74,.5);
-}
-
-</style>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROYECTO PERU (PERU) - Token Oficial</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #0a0b0d;
+            --bg-card: rgba(22, 24, 30, 0.7);
+            --primary: #ff2a4b;
+            --primary-glow: rgba(255, 42, 75, 0.4);
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            font-size: 18px;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 42, 75, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(255, 42, 75, 0.03) 0%, transparent 40%);
+        }
+
+        /* Header / Navbar */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 5%;
+            background: rgba(10, 11, 13, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+            border-radius: 50%;
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .logo-text {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+            text-shadow: 0 0 8px var(--primary-glow);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 5% 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            min-height: 80vh;
+            justify-content: center;
+        }
+
+        .badge {
+            background: rgba(255, 42, 75, 0.1);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+            box-shadow: 0 0 10px rgba(255, 42, 75, 0.2);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        h1 span {
+            color: var(--primary);
+            text-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        /* Contract Widget */
+        .contract-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 16px 24px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            max-width: 650px;
+            width: 100%;
+            backdrop-filter: blur(8px);
+            margin-bottom: 45px;
+        }
+
+        .contract-label {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.8rem;
+            color: var(--primary);
+            font-weight: 700;
+            white-space: nowrap;
+        }
+
+        .contract-input-wrapper {
+            display: flex;
+            width: 100%;
+            background: rgba(0,0,0,0.3);
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.05);
+            overflow: hidden;
+        }
+
+        .contract-value {
+            width: 100%;
+            background: transparent;
+            border: none;
+            padding: 10px 12px;
+            color: var(--text-main);
+            font-family: monospace;
+            font-size: 0.9rem;
+            user-select: all;
+        }
+
+        .copy-btn {
+            background: var(--primary);
+            border: none;
+            color: white;
+            padding: 0 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .copy-btn:hover {
+            background: #e01b3c;
+        }
+
+        /* Action Buttons */
+        .cta-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 4px 20px var(--primary-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255, 42, 75, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* Global Sections Layout */
+        section {
+            padding: 80px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+            margin: 15px auto 0;
+            box-shadow: 0 0 8px var(--primary-glow);
+        }
+
+        /* Grid Framework */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        /* Cards Style (Glassmorphism) */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 35px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(255, 42, 75, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 42, 75, 0.05);
+        }
+
+        .card-icon {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .card h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Tokenomics Bars */
+        .tokenomics-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 20px;
+        }
+
+        .stat-row {
+            margin-bottom: 25px;
+        }
+
+        .stat-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .stat-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .stat-label {
+            color: var(--text-main);
+        }
+
+        .stat-value {
+            color: var(--primary);
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .progress-bar-bg {
+            background: rgba(255,255,255,0.05);
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.02);
+        }
+
+        .progress-bar-fill {
+            background: linear-gradient(to right, #ff2a4b, #ff6b81);
+            height: 100%;
+            border-radius: 5px;
+            box-shadow: 0 0 10px var(--primary-glow);
+        }
+
+        /* Roadmap Timeline */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 45px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -35px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 4px solid var(--bg-dark);
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        .timeline-phase {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .timeline-content {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        .timeline-content ul {
+            list-style: none;
+        }
+
+        .timeline-content li {
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .timeline-content li::before {
+            content: '✓';
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(6, 7, 8, 0.95);
+            border-top: 1px solid var(--border-color);
+            padding: 50px 5% 30px;
+            text-align: center;
+        }
+
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            font-size: 1.3rem;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-icon:hover {
+            color: #fff;
+            background: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px var(--primary-glow);
+        }
+
+        .footer-info p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        /* Responsive Mobile optimization */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 5%;
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            nav a {
+                margin-left: 0;
+                padding: 5px 10px;
+                font-size: 0.85rem;
+            }
+            .hero {
+                padding-top: 200px;
+            }
+            h1 {
+                font-size: 2.3rem;
+            }
+            .contract-box {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .contract-label {
+                text-align: center;
+            }
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="bg"></div>
-
-<nav>
-
-<div class="logo">
-<img src="logo.png" alt="PERU Logo" style="height:50px;">
-</div>
-
-<div class="menu-toggle" onclick="toggleMenu()">
-☰
-</div>
-
-<ul>
-<li><a href="#about">Proyecto</a></li>
-<li><a href="#utility">Utilidad</a></li>
-<li><a href="#tokenomics">Tokenomics</a></li>
-<li><a href="#roadmap">Roadmap</a></li>
-<li><a href="#team">Equipo</a></li>
-<li><a href="#community">Comunidad</a></li>
-</ul>
-
-</nav>
-
-<section class="hero">
-
-<div class="hero-text">
-
-<h1>PERU</h1>
-
-<p>
-El primer proyecto Web3 peruano enfocado en apoyar deportistas de bajos recursos mediante blockchain, becas, viajes e implementos deportivos.
-</p>
-
-<div class="buttons">
-
-<a href="https://pancakeswap.finance/swap?outputCurrency=0x1c647ebe755fe03dc43fa078ca550e837d0b4444"
-target="_blank"
-class="btn primary">
-Comprar PERU
-</a>
-
-<a href="whitepaper.pdf"
-target="_blank"
-class="btn secondary">
-Whitepaper
-</a>
-
-<a href="https://bscscan.com/token/0x1c647ebe755fe03dc43fa078ca550e837d0b4444"
-target="_blank"
-class="btn secondary">
-BscScan
-</a>
-
-</div>
-
-</div>
-
-<div class="hero-image">
-<img src="logo.png" alt="PERU">
-</div>
-
-</section>
-
-<section id="about">
-
-<h2 class="title">PROYECTO</h2>
-
-<p class="subtitle">
-Blockchain con impacto real en el deporte peruano
-</p>
-
-<!-- Resumen Ejecutivo (Tarjeta de ancho completo) -->
-<div class="card" style="margin-bottom:40px;">
-<h3 style="text-align: center;">📄 Introduccion</h3>
-<p>
-PERU es un token basado en tecnología blockchain creado con el propósito de generar un impacto social real, apoyando a deportistas de bajos recursos mediante financiamiento transparente y descentralizado.
-</p>
-<br>
-<p>
-El proyecto busca conectar a la comunidad cripto con jóvenes talentos que necesitan oportunidades para desarrollarse en el deporte, facilitando el acceso a becas, equipamiento y participación en competencias nacionales e internacionales.
-</p>
-<br>
-<p style="text-align: center; color: #ff4d4d; font-weight: 500;">
-<em>PERU no es solo un token, es una herramienta para cambiar vidas.</em>
-</p>
-</div>
-
-<!-- Visión y Misión (Grid de 2 columnas) -->
-<div class="grid" style="margin-bottom:40px;">
-<div class="card">
-<h3>Visión</h3>
-<p>
-Convertirse en el primer ecosistema cripto-social de Latinoamérica enfocado en impulsar el talento deportivo emergente, posicionando a Perú como un referente en innovación social dentro del mundo blockchain.
-</p>
-</div>
-
-<div class="card">
-<h3>Misión</h3>
-<p>
-Crear un sistema descentralizado donde cualquier persona pueda contribuir al desarrollo de deportistas con talento, garantizando transparencia, comunidad activa y resultados reales.
-</p>
-</div>
-</div>
-
-<!-- Pilares de Apoyo (Tu grid original) -->
-<h3 style="text-align: center; color: white; margin: 60px 0 30px 0; font-size: 2rem;">¿Cómo apoyamos?</h3>
-
-<div class="grid">
-<div class="card">
-<h3>🏆 Becas Deportivas</h3>
-<p>Apoyo económico para jóvenes talentos peruanos.</p>
-</div>
-
-<div class="card">
-<h3>✈️ Viajes y Competencias</h3>
-<p>Financiamiento de viajes nacionales e internacionales.</p>
-</div>
-
-<div class="card">
-<h3>⚽ Implementos Deportivos</h3>
-<p>Entrega de equipamiento profesional para atletas.</p>
-</div>
-</div>
-
-</section>
-
-<section id="stats">
-<h2 class="title">ESTADÍSTICAS</h2>
-<p class="subtitle">Comunidad y crecimiento del proyecto</p>
-<div class="grid">
-<div class="card"><h3>💎 Holders</h3><p>Comunidad en crecimiento</p></div>
-<div class="card"><h3>📈 Market Cap</h3><p>Evolución constante</p></div>
-<div class="card"><h3>🌎 Alcance</h3><p>Proyecto con visión global</p></div>
-</div>
-</section>
-
-<section id="utility">
-
-<h2 class="title">UTILIDAD</h2>
-
-<p class="subtitle">
-PERU impulsa un ecosistema Web3 solidario enfocado en el deporte peruano.
-</p>
-
-<div class="grid">
-
-<div class="card">
-<h3>🗳️ Gobernanza</h3>
-<p>Votación para elegir deportistas beneficiados.</p>
-</div>
-
-<div class="card">
-<h3>🎁 Recompensas</h3>
-<p>Beneficios exclusivos para holders.</p>
-</div>
-
-<div class="card">
-<h3>💎 Staking</h3>
-<p>Generación de beneficios pasivos.</p>
-</div>
-
-<div class="card">
-<h3>🏅 Acceso Exclusivo</h3>
-<p>NFTs, eventos y proyectos futuros.</p>
-</div>
-
-<div class="card">
-<h3>📈 Crecimiento</h3>
-<p>Incentivo a largo plazo mediante el crecimiento del proyecto.</p>
-</div>
-
-</div>
-
-</section>
-
-<section id="tokenomics">
-
-<h2 class="title">TOKENOMICS</h2>
-
-<p class="subtitle">
-Estructura transparente y comunitaria
-</p>
-
-<div class="card" style="margin-bottom:40px;">
-
-<h3>📜 Información del Token</h3>
-
-<p><strong>Nombre:</strong> PERU</p>
-<p><strong>Tipo:</strong> Token social / comunitario</p>
-<p><strong>Total Supply:</strong> 1,000,000 Tokens</p>
-
-<br>
-
-<p style="word-break:break-all;">
-<strong>Contrato Oficial:</strong><br>
-0x1c647ebe755fe03dc43fa078ca550e837d0b4444
-</p>
-
-<div style="margin-top:20px;text-align:center;">
-<button onclick="copyContract()" class="copy-btn">
-📋 Copiar Contrato
-</button>
-</div>
-
-</div>
-
-<div class="grid">
-
-<div class="card">
-<h3>💧 40%</h3>
-<p>Liquidez</p>
-</div>
-
-<div class="card">
-<h3>📈 20%</h3>
-<p>Marketing y expansión</p>
-</div>
-
-<div class="card">
-<h3>🏆 20%</h3>
-<p>Fondo social para apoyo a deportistas</p>
-</div>
-
-<div class="card">
-<h3>🛠️ 10%</h3>
-<p>Equipo de desarrollo</p>
-</div>
-
-<div class="card">
-<h3>🔒 10%</h3>
-<p>Reserva estratégica</p>
-</div>
-
-</div>
-
-</section>
-
-<section id="roadmap">
-
-<h2 class="title">ROADMAP</h2>
-
-<p class="subtitle">
-Construyendo el futuro deportivo y Web3 del Perú
-</p>
-
-<div class="grid">
-
-<div class="card">
-<h3>🚀 FASE 1 – LANZAMIENTO</h3>
-<ul>
-<li>Creación del token</li>
-<li>Publicación en plataformas (Fourmeme)</li>
-<li>Inicio de comunidad</li>
-<li>Marketing inicial</li>
-</ul>
-</div>
-
-<div class="card">
-<h3>📈 FASE 2 – CRECIMIENTO</h3>
-<ul>
-<li>Expansión en redes sociales</li>
-<li>Primeros deportistas beneficiados</li>
-<li>Listado en plataformas de seguimiento</li>
-</ul>
-</div>
-
-<div class="card">
-<h3>🌍 FASE 3 – EXPANSIÓN</h3>
-<ul>
-<li>Desarrollo de página web oficial</li>
-<li>Implementación de sistema de votación</li>
-<li>Colaboraciones con academias</li>
-</ul>
-</div>
-
-<div class="card">
-<h3>🏆 FASE 4 – ESCALAMIENTO GLOBAL</h3>
-<ul>
-<li>Internacionalización del proyecto</li>
-<li>Patrocinios deportivos</li>
-<li>Eventos y torneos propios</li>
-</ul>
-</div>
-
-</div>
-
-</section>
-
-<section id="team">
-
-<h2 class="title">EQUIPO</h2>
-
-<p class="subtitle">
-Desarrollo profesional enfocado en blockchain y software.
-</p>
-
-<div class="card">
-
-<p>
-Nuestro equipo está compuesto por profesionales con experiencia en desarrollo de software, blockchain y crecimiento de productos digitales.
-</p>
-
-<br>
-
-<p>
-Por motivos de privacidad y seguridad, algunos miembros operan de forma anónima, siguiendo una práctica común dentro del ecosistema Web3.
-</p>
-
-<br>
-
-<p>
-Nos enfocamos en la transparencia técnica y el desarrollo real del producto.
-</p>
-
-</div>
-
-</section>
-
-<section id="security">
-
-<h2 class="title">🛡️ SEGURIDAD Y TRANSPARENCIA</h2>
-
-<p class="subtitle">
-PERU está diseñado con enfoque en seguridad y desarrollo real.
-</p>
-
-<div class="grid">
-
-<div class="card">
-<h3>✔ Smart Contract</h3>
-<p>Contrato verificable públicamente.</p>
-</div>
-
-<div class="card">
-<h3>✔ Tokenomics Pública</h3>
-<p>Distribución transparente para toda la comunidad.</p>
-</div>
-
-<div class="card">
-<h3>✔ Liquidez Bloqueada</h3>
-<p>Mayor seguridad y estabilidad para holders.</p>
-</div>
-
-<div class="card">
-<h3>✔ Auditoría</h3>
-<p>Proceso de auditoría en desarrollo.</p>
-</div>
-
-<div class="card">
-<h3>✔ Ecosistema Activo</h3>
-<p>Desarrollo constante del proyecto y nuevas funciones.</p>
-</div>
-
-</div>
-
-</section>
-
-  
-
-<section id="community">
-
-<h2 class="title">ÚNETE A LA COMUNIDAD</h2>
-
-<p class="subtitle">
-Sé parte del movimiento crypto peruano
-</p>
-
-<div class="buttons" style="justify-content:center;">
-
-<a href="https://x.com/WWW__PERU"
-target="_blank"
-class="btn primary">
-Twitter
-</a>
-
-<a href="https://www.tiktok.com/@token.peru"
-target="_blank"
-class="btn secondary">
-TikTok
-</a>
-
-<a href="https://discord.gg/TU-INVITACION"
-target="_blank"
-class="btn secondary">
-Discord
-</a>
-
-</div>
-
-</section>
-
-<section id="legal">
-
-<h2 class="title">AVISO LEGAL</h2>
-
-<div class="card">
-<p>
-PERU es un proyecto comunitario basado en blockchain. La compra de activos digitales implica riesgos. Cada participante debe realizar su propia investigación antes de tomar decisiones financieras.
-</p>
-</div>
-
-</section>
-
-<footer>
-
-<h2>PERU</h2>
-
-<p>
-Proyecto Web3 solidario creado para impulsar el deporte peruano.
-</p>
-
-<p>
-📧 Contacto:
-<a href="mailto:www.peru@outlook.es" style="color:white;">
-www.peru@outlook.es
-</a>
-</p>
-
-<p>
-🌐 Portal Oficial:
-<a href="https://www-token-peru.blogspot.com/"
-target="_blank"
-style="color:white;">
-www-token-peru.blogspot.com
-</a>
-</p>
-
-<p>
-© 2026 PERU — Community Project
-</p>
-
-</footer>
-
-<a href="https://wa.me/51987654321"
-class="whatsapp-float"
-target="_blank">
-
-<svg xmlns="http://www.w3.org/2000/svg"
-width="30"
-height="30"
-fill="white"
-viewBox="0 0 24 24">
-
-<path d="M20.52 3.48A11.77 11.77 0 0 0 12.04 0C5.5 0 .16 5.34.16 11.88c0 2.1.55 4.15 1.6 5.96L0 24l6.34-1.66a11.84 11.84 0 0 0 5.7 1.45h.01c6.54 0 11.88-5.34 11.88-11.88 0-3.17-1.24-6.15-3.41-8.43z"/>
-</svg>
-
-</a>
-
-<script>
-
-function toggleMenu(){
-document.querySelector("nav ul").classList.toggle("active");
-}
-
-
-const cards = document.querySelectorAll('.card');
-
-const observer = new IntersectionObserver(entries => {
-entries.forEach(entry => {
-if(entry.isIntersecting){
-entry.target.style.opacity = 1;
-entry.target.style.transform = 'translateY(0)';
-}
-});
-});
-
-cards.forEach(card => {
-card.style.opacity = 0;
-card.style.transform = 'translateY(40px)';
-card.style.transition = '.7s';
-observer.observe(card);
-});
-
-
-function copyContract(){
-
-const contract =
-"0x1c647ebe755fe03dc43fa078ca550e837d0b4444";
-
-navigator.clipboard.writeText(contract);
-
-const btn =
-document.querySelector(".copy-btn");
-
-if(!btn) return;
-
-btn.innerHTML =
-"✅ Contrato Copiado";
-
-btn.classList.add("copied");
-
-setTimeout(function(){
-
-btn.innerHTML =
-"📋 Copiar Contrato";
-
-btn.classList.remove("copied");
-
-},3000);
-
-}
-
-</script>
-
+    <!-- Navegación -->
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="Logo PERU" class="logo-img" onerror="this.style.display='none'">
+            <div class="logo-text">PERU TOKEN</div>
+        </div>
+        <nav>
+            <a href="#caracteristicas">Características</a>
+            <a href="#tokenomics">Tokenomics</a>
+            <a href="#roadmap">Ruta</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <!-- Héroe / Presentación principal -->
+    <section class="hero" id="inicio">
+        <div class="badge">Binance Smart Chain (BEP-20)</div>
+        <h1>El Futuro Digital del <span>Orgullo Peruano</span></h1>
+        <p>Una criptomoneda creada para descentralizar la identidad, potenciar la comunidad y construir utilidades digitales escalables con el respaldo de nuestra cultura.</p>
+        
+        <!-- Widget del Contrato -->
+        <div class="contract-box">
+            <div class="contract-label"><i class="fa-solid fa-file-contract"></i> SMART CONTRACT:</div>
+            <div class="contract-input-wrapper">
+                <input type="text" class="contract-value" id="contractAddress" value="0xc03ba6804be859341ef9db9378ff05fdfa06fb56" readonly>
+                <button class="copy-btn" id="copyBtn" title="Copiar contrato"><i class="fa-regular fa-copy"></i></button>
+            </div>
+        </div>
+
+        <div class="cta-group">
+            <a href="https://pancakeswap.finance/swap?outputCurrency=0xc03ba6804be859341ef9db9378ff05fdfa06fb56" target="_blank" class="btn btn-primary">
+                <i class="fa-solid fa-wallet"></i> Comprar en PancakeSwap
+            </a>
+            <a href="whitepaper.pdf" target="_blank" class="btn btn-secondary">
+                <i class="fa-solid fa-file-invoice-dollar"></i> Leer Whitepaper
+            </a>
+        </div>
+    </section>
+
+    <!-- Características -->
+    <section id="caracteristicas">
+        <h2 class="section-title">Por qué elegir PERU Token</h2>
+        <div class="grid-3">
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3>Seguridad Blockchain</h3>
+                <p>Construido sobre la Binance Smart Chain (BSC), garantizando transacciones ultrarrápidas, de bajo costo y protegidas por una infraestructura criptográfica líder.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-users"></i></div>
+                <h3>Comunidad Fuerte</h3>
+                <p>Una iniciativa guiada y desarrollada por el impulso de la comunidad, orientada a retribuir valor y promover la adopción real en el ecosistema.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <h3>Visión de Crecimiento</h3>
+                <p>Diseño enfocado en la escasez planificada, el desarrollo orgánico y la incorporación paulatina a utilidades DeFi del mundo real.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tokenomics -->
+    <section id="tokenomics">
+        <h2 class="section-title">Tokenomics</h2>
+        <div class="tokenomics-container">
+            <div class="stat-row">
+                <div class="stat-info">
+                    <span class="stat-label">Suministro Total Disponible</span>
+                    <span class="stat-value">100%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" style="width: 100%"></div>
+                </div>
+            </div>
+            <div class="stat-row">
+                <div class="stat-info">
+                    <span class="stat-label">Liquidez Bloqueada Inicial</span>
+                    <span class="stat-value">60%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" style="width: 60%"></div>
+                </div>
+            </div>
+            <div class="stat-row">
+                <div class="stat-info">
+                    <span class="stat-label">Desarrollo y Alianzas</span>
+                    <span class="stat-value">20%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" style="width: 20%"></div>
+                </div>
+            </div>
+            <div class="stat-row">
+                <div class="stat-info">
+                    <span class="stat-label">Marketing y Eventos Comunitarios</span>
+                    <span class="stat-value">20%</span>
+                </div>
+                <div class="progress-bar-bg">
+                    <div class="progress-bar-fill" style="width: 20%"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap -->
+    <section id="roadmap">
+        <h2 class="section-title">Nuestra Ruta de Trabajo</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-phase">Fase 1: Lanzamiento</div>
+                <div class="timeline-content">
+                    <ul>
+                        <li>Creación del Smart Contract e Infraestructura Inicial.</li>
+                        <li>Despliegue Oficial en PancakeSwap.</li>
+                        <li>Campañas iniciales de Marketing Digital de guerrilla.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-phase">Fase 2: Expansión</div>
+                <div class="timeline-content">
+                    <ul>
+                        <li>Crecimiento de comunidades en Telegram y Redes Sociales.</li>
+                        <li>Asociaciones estratégicas con creadores del entorno Web3.</li>
+                        <li>Primeros listados en rastreadores cripto globales.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-phase">Fase 3: Ecosistema</div>
+                <div class="timeline-content">
+                    <ul>
+                        <li>Diseño de utilidades exclusivas basadas en el Token.</li>
+                        <li>Expansión a listados en exchanges centralizados (CEX).</li>
+                        <li>Desarrollo continuo e integraciones Web3 del ecosistema PERU.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto e Identidad Social -->
+    <footer id="contacto">
+        <div class="footer-socials">
+            <a href="https://x.com/ProyectoToken" target="_blank" class="social-icon" title="Síguenos en X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://t.me/proyectotokenperu" target="_blank" class="social-icon" title="Únete a Telegram"><i class="fa-brands fa-telegram"></i></a>
+            <a href="https://www.tiktok.com/@proyectotoken" target="_blank" class="social-icon" title="Síguenos en TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="mailto:proyectotoken@hotmail.com" class="social-icon" title="Contáctanos por Correo"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+        <div class="footer-info">
+            <p>&copy; 2026 PROYECTO TOKEN (PERU). Todos los derechos reservados.</p>
+            <p style="font-size: 0.8rem; opacity: 0.5;">Disclaimer: Las inversiones en criptoactivos conllevan riesgos de mercado. Invierte con responsabilidad.</p>
+        </div>
+    </footer>
+
+    <!-- Lógica de Copiado Interactiva -->
+    <script>
+        const copyBtn = document.getElementById('copyBtn');
+        const contractInput = document.getElementById('contractAddress');
+
+        copyBtn.addEventListener('click', () => {
+            contractInput.select();
+            contractInput.setSelectionRange(0, 99999); // Para móviles
+            
+            navigator.clipboard.writeText(contractInput.value)
+                .then(() => {
+                    copyBtn.innerHTML = '<i class="fa-solid fa-check" style="color: #00ff88;"></i>';
+                    setTimeout(() => {
+                        copyBtn.innerHTML = '<i class="fa-regular fa-copy"></i>';
+                    }, 2000);
+                })
+                .catch(err => {
+                    console.error('Error al copiar el texto: ', err);
+                });
+        });
+    </script>
 </body>
 </html>
-```
