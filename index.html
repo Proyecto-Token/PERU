@@ -223,58 +223,124 @@ grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:30px;
 }
 
-.card{
-background:rgba(255,255,255,.05);
-padding:35px;
-border-radius:25px;
-backdrop-filter:blur(10px);
-border:1px solid rgba(255,255,255,.08);
-transition:.4s;
+/* ==========================================
+   ESTILOS PREMIUM DE TARJETAS (REDISEÑADOS)
+   ========================================== */
+.card {
+background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+padding: 35px;
+border-radius: 20px;
+backdrop-filter: blur(12px);
+-webkit-backdrop-filter: blur(12px);
+border: 1px solid rgba(255, 255, 255, 0.08);
+position: relative;
+overflow: hidden;
+transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease;
 }
 
-.card:hover{
-transform:translateY(-10px);
-box-shadow:0 0 25px rgba(255,0,0,.25);
+.card::before {
+content: '';
+position: absolute;
+top: 0;
+left: -100%;
+width: 100%;
+height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+transition: 0.5s;
 }
 
-.card h3{
-font-size:1.5rem;
-margin-bottom:15px;
-color:#ff4d4d;
+.card:hover {
+transform: translateY(-10px);
+border-color: rgba(255, 77, 77, 0.4);
+box-shadow: 0 15px 35px rgba(255, 0, 0, 0.15), inset 0 0 15px rgba(255, 255, 255, 0.05);
+}
+
+.card:hover::before {
+left: 100%;
+}
+
+.card h3 {
+font-size: 1.4rem;
+margin-bottom: 18px;
+color: #ffffff;
+font-weight: 700;
+display: flex;
+align-items: center;
+gap: 10px;
+position: relative;
+}
+
+/* Subrayado premium para títulos de tarjeta */
+.card h3::after {
+content: '';
+position: absolute;
+bottom: -6px;
+left: 0;
+width: 35px;
+height: 2px;
+background: linear-gradient(90deg, #ff4d4d, transparent);
 }
 
 .card p,
-.card li{
-color:#d5d5d5;
-line-height:1.8;
+.card li {
+color: #cbd5e1;
+line-height: 1.7;
+font-size: 0.98rem;
+font-weight: 300;
 }
 
-.card ul{
-padding-left:20px;
+.card ul {
+padding-left: 20px;
+list-style: none;
 }
 
-.tokenomics{
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:30px;
-margin-top:50px;
+.card ul li {
+position: relative;
+margin-bottom: 12px;
+padding-left: 5px;
 }
 
-.token-box{
-background:#0d1224;
-padding:30px;
-border-radius:25px;
-width:250px;
-text-align:center;
-border:1px solid rgba(255,255,255,.08);
+/* Indicador Premium para ítems de listas */
+.card ul li::before {
+content: "•";
+color: #ff4d4d;
+font-weight: bold;
+display: inline-block;
+width: 1em;
+margin-left: -1em;
+text-shadow: 0 0 8px #ff0000;
 }
 
-.token-box h4{
-font-size:2rem;
-color:#ff4d4d;
-margin-bottom:10px;
+/* Contenedores Premium de distribución Tokenomics */
+.token-progress-wrapper {
+margin-top: 15px;
 }
+
+.token-progress-bg {
+background: rgba(255, 255, 255, 0.05);
+height: 6px;
+border-radius: 10px;
+overflow: hidden;
+margin-top: 8px;
+border: 1px solid rgba(255,255,255,0.02);
+}
+
+.token-progress-fill {
+background: linear-gradient(90deg, #ff0000, #ff4d4d);
+height: 100%;
+border-radius: 10px;
+box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+/* Ajustes específicos para que textos destacados mantengan consistencia */
+.card em {
+color: #ff4d4d;
+font-style: normal;
+font-weight: 600;
+letter-spacing: 0.5px;
+}
+
+/* ========================================== */
 
 footer{
 padding:50px 10%;
@@ -474,7 +540,7 @@ Blockchain con impacto real en el deporte peruano
 
 <!-- Resumen Ejecutivo (Tarjeta de ancho completo) -->
 <div class="card" style="margin-bottom:40px;">
-<h3 style="text-align: center;">📄 Introduccion</h3>
+<h3 style="justify-content: center;">📄 Introducción</h3>
 <p>
 PERU es un token basado en tecnología blockchain creado con el propósito de generar un impacto social real, apoyando a deportistas de bajos recursos mediante financiamiento transparente y descentralizado.
 </p>
@@ -500,12 +566,12 @@ Convertirse en el primer ecosistema cripto-social de Latinoamérica enfocado en 
 <div class="card">
 <h3>Misión</h3>
 <p>
-Crear un sistema descentralizado donde cualquier persona pueda contribuir al desarrollo de deportistas con talento, garantizando transparencia, comunidad activa y resultados reales.
+Crear un systema descentralizado donde cualquier persona pueda contribuir al desarrollo de deportistas con talento, garantizando transparencia, comunidad activa y resultados reales.
 </p>
 </div>
 </div>
 
-<!-- Pilares de Apoyo (Tu grid original) -->
+<!-- Pilares de Apoyo -->
 <h3 style="text-align: center; color: white; margin: 60px 0 30px 0; font-size: 2rem;">¿Cómo apoyamos?</h3>
 
 <div class="grid">
@@ -612,26 +678,41 @@ Estructura transparente y comunitaria
 <div class="card">
 <h3>💧 40%</h3>
 <p>Liquidez</p>
+<div class="token-progress-wrapper">
+<div class="token-progress-bg"><div class="token-progress-fill" style="width: 40%;"></div></div>
+</div>
 </div>
 
 <div class="card">
 <h3>📈 20%</h3>
 <p>Marketing y expansión</p>
+<div class="token-progress-wrapper">
+<div class="token-progress-bg"><div class="token-progress-fill" style="width: 20%;"></div></div>
+</div>
 </div>
 
 <div class="card">
 <h3>🏆 20%</h3>
 <p>Fondo social para apoyo a deportistas</p>
+<div class="token-progress-wrapper">
+<div class="token-progress-bg"><div class="token-progress-fill" style="width: 20%;"></div></div>
+</div>
 </div>
 
 <div class="card">
 <h3>🛠️ 10%</h3>
 <p>Equipo de desarrollo</p>
+<div class="token-progress-wrapper">
+<div class="token-progress-bg"><div class="token-progress-fill" style="width: 10%;"></div></div>
+</div>
 </div>
 
 <div class="card">
 <h3>🔒 10%</h3>
 <p>Reserva estratégica</p>
+<div class="token-progress-wrapper">
+<div class="token-progress-bg"><div class="token-progress-fill" style="width: 10%;"></div></div>
+</div>
 </div>
 
 </div>
@@ -907,4 +988,3 @@ btn.classList.remove("copied");
 
 </body>
 </html>
-```
