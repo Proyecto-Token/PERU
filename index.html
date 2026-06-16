@@ -91,6 +91,7 @@ nav ul{
 display:flex;
 gap:30px;
 list-style:none;
+align-items:center;
 }
 
 nav a{
@@ -161,6 +162,24 @@ border:none;
 cursor:pointer;
 }
 
+.nav-donate-btn {
+padding: 8px 20px;
+border-radius: 10px;
+font-weight: 700;
+font-size: 0.9rem;
+background: linear-gradient(90deg, #eab308, #ca8a04);
+color: white;
+box-shadow: 0 0 15px rgba(234, 179, 8, 0.4);
+border: none;
+cursor: pointer;
+transition: .3s;
+}
+
+.nav-donate-btn:hover {
+transform: translateY(-2px);
+box-shadow: 0 0 25px rgba(234, 179, 8, 0.7);
+}
+
 .primary{
 background:linear-gradient(90deg,#ff0000,#ff4d4d);
 color:white;
@@ -172,17 +191,6 @@ animation:pulse 2s infinite;
 border:2px solid white;
 color:white;
 background:transparent;
-}
-
-.donate-btn {
-background: linear-gradient(90deg, #eab308, #ca8a04);
-color: white;
-box-shadow: 0 0 25px rgba(234, 179, 8, 0.4);
-border: none;
-}
-
-.donate-btn:hover {
-box-shadow: 0 0 35px rgba(234, 179, 8, 0.7);
 }
 
 .btn:hover {
@@ -443,6 +451,12 @@ bottom:20px;
 right:20px;
 }
 
+.nav-donate-btn {
+width: 100%;
+text-align: center;
+padding: 12px;
+}
+
 }
 
 .copy-btn{
@@ -492,6 +506,8 @@ box-shadow:0 0 25px rgba(22,163,74,.5);
 <li><a href="#utility">Utilidad</a></li>
 <li><a href="#tokenomics">Tokenomics</a></li>
 <li><a href="#roadmap">Roadmap</a></li>
+<!-- EL BOTÓN SE UBICA AL COSTADO DE ROADMAP -->
+<li><button onclick="sendDonation()" class="nav-donate-btn">🪙 Donar BNB</button></li>
 </ul>
 
 </nav>
@@ -512,31 +528,26 @@ El primer proyecto Web3 peruano enfocado en apoyar deportistas de bajos recursos
 target="_blank"
 class="btn primary">
 Comprar PERU
-</a>[cite: 1]
-
-<!-- NUEVO BOTÓN DE DONACIÓN WEB3 -->
-<button onclick="sendDonation()" class="btn donate-btn">
-🪙 Donar BNB
-</button>
+</a>
 
 <a href="whitepaper.pdf"
 target="_blank"
 class="btn secondary">
 Whitepaper
-</a>[cite: 1]
+</a>
 
 <a href="https://bscscan.com/token/0x1c647ebe755fe03dc43fa078ca550e837d0b4444"
 target="_blank"
 class="btn secondary">
 BscScan
-</a>[cite: 1]
+</a>
 
 </div>
 
 </div>
 
 <div class="hero-image">
-<img src="logo.png" alt="PERU">[cite: 1]
+<img src="logo.png" alt="PERU">
 </div>
 
 </section>
@@ -546,38 +557,38 @@ BscScan
 <h2 class="title">PROYECTO</h2>
 
 <p class="subtitle">
-Blockchain con impacto real en el deporte peruano[cite: 1]
+Blockchain con impacto real en el deporte peruano
 </p>
 
-<!-- Resumen Ejecutivo (Tarjeta de ancho completo) -->
+<!-- Resumen Ejecutivo -->
 <div class="card" style="margin-bottom:40px;">
 <h3 style="justify-content: center;">📄 Introducción</h3>
 <p>
-PERU es un token basado en tecnología blockchain creado con el propósito de generar un impacto social real, apoyando a deportistas de bajos recursos mediante financiamiento transparente y descentralizado.[cite: 1]
+PERU es un token basado en tecnología blockchain creado con el propósito de generar un impacto social real, apoyando a deportistas de bajos recursos mediante financiamiento transparente y descentralizado.
 </p>
 <br>
 <p>
-El proyecto busca conectar a la comunidad cripto con jóvenes talentos que necesitan oportunidades para desarrollarse en el deporte, facilitando el acceso a becas, equipamiento y participación en competencias nacionales e internacionales.[cite: 1]
+El proyecto busca conectar a la comunidad cripto con jóvenes talentos que necesitan oportunidades para desarrollarse en el deporte, facilitando el acceso a becas, equipamiento y participación en competencias nacionales e internacionales.
 </p>
 <br>
 <p style="text-align: center; color: #ff4d4d; font-weight: 500;">
-<em>PERU no es solo un token, es una herramienta para cambiar vidas.</em>[cite: 1]
+<em>PERU no es solo un token, es una herramienta para cambiar vidas.</em>
 </p>
 </div>
 
-<!-- Visión y Misión (Grid de 2 columnas) -->
+<!-- Visión y Misión -->
 <div class="grid" style="margin-bottom:40px;">
 <div class="card">
 <h3>Visión</h3>
 <p>
-Convertirse en el primer ecosistema cripto-social de Latinoamérica enfocado en impulsar el talento deportivo emergente, posicionando a Perú como un referente en innovación social dentro del mundo blockchain.[cite: 1]
+Convertirse en el primer ecosistema cripto-social de Latinoamérica enfocado en impulsar el talento deportivo emergente, posicionando a Perú como un referente en innovación social dentro del mundo blockchain.
 </p>
 </div>
 
 <div class="card">
 <h3>Misión</h3>
 <p>
-Crear un sistema descentralizado donde cualquier persona pueda contribuir al desarrollo de deportistas con talento, garantizando transparencia, comunidad activa y resultados reales.[cite: 1]
+Crear un sistema descentralizado donde cualquier persona pueda contribuir al desarrollo de deportistas con talento, garantizando transparencia, comunidad activa y resultados reales.
 </p>
 </div>
 </div>
@@ -588,17 +599,17 @@ Crear un sistema descentralizado donde cualquier persona pueda contribuir al des
 <div class="grid">
 <div class="card">
 <h3>🏆 Becas Deportivas</h3>
-<p>Apoyo económico para jóvenes talentos peruanos.[cite: 1]</p>
+<p>Apoyo económico para jóvenes talentos peruanos.</p>
 </div>
 
 <div class="card">
 <h3>✈️ Viajes y Competencias</h3>
-<p>Financiamiento de viajes nacionales e internacionales.[cite: 1]</p>
+<p>Financiamiento de viajes nacionales e internacionales.</p>
 </div>
 
 <div class="card">
 <h3>⚽ Implementos Deportivos</h3>
-<p>Entrega de equipamiento profesional para atletas.[cite: 1]</p>
+<p>Entrega de equipamiento profesional para atletas.</p>
 </div>
 </div>
 
@@ -609,24 +620,24 @@ Crear un sistema descentralizado donde cualquier persona pueda contribuir al des
 <h2 class="title">ESTADÍSTICAS</h2>
 
 <p class="subtitle">
-Comunidad y crecimiento del proyecto[cite: 1]
+Comunidad y crecimiento del proyecto
 </p>
 
 <div class="grid">
 
 <div class="card">
 <h3>💎 Holders</h3>
-<p>Comunidad en crecimiento[cite: 1]</p>
+<p>Comunidad en crecimiento</p>
 </div>
 
 <div class="card">
 <h3>📈 Market Cap</h3>
-<p>Evolución constante[cite: 1]</p>
+<p>Evolución constante</p>
 </div>
 
 <div class="card">
 <h3>🌎 Alcance</h3>
-<p>Proyecto con visión global[cite: 1]</p>
+<p>Proyecto con visión global</p>
 </div>
 
 </div>
@@ -638,34 +649,34 @@ Comunidad y crecimiento del proyecto[cite: 1]
 <h2 class="title">UTILIDAD</h2>
 
 <p class="subtitle">
-PERU impulsa un ecosistema Web3 solidario enfocado en el deporte peruano.[cite: 1]
+PERU impulsa un ecosistema Web3 solidario enfocado en el deporte peruano.
 </p>
 
 <div class="grid">
 
 <div class="card">
 <h3>🗳️ Gobernanza</h3>
-<p>Votación para elegir deportistas beneficiados.[cite: 1]</p>
+<p>Votación para elegir deportistas beneficiados.</p>
 </div>
 
 <div class="card">
 <h3>🎁 Recompensas</h3>
-<p>Beneficios exclusivos para holders.[cite: 1]</p>
+<p>Beneficios exclusivos para holders.</p>
 </div>
 
 <div class="card">
 <h3>💎 Staking</h3>
-<p>Generación de beneficios pasivos.[cite: 1]</p>
+<p>Generación de beneficios pasivos.</p>
 </div>
 
 <div class="card">
 <h3>🏅 Acceso Exclusivo</h3>
-<p>NFTs, eventos y proyectos futuros.[cite: 1]</p>
+<p>NFTs, eventos y proyectos futuros.</p>
 </div>
 
 <div class="card">
 <h3>📈 Crecimiento</h3>
-<p>Incentivo a largo plazo mediante el crecimiento del proyecto.[cite: 1]</p>
+<p>Incentivo a largo plazo mediante el crecimiento del proyecto.</p>
 </div>
 
 </div>
@@ -677,28 +688,28 @@ PERU impulsa un ecosistema Web3 solidario enfocado en el deporte peruano.[cite: 
 <h2 class="title">TOKENOMICS</h2>
 
 <p class="subtitle">
-Estructura transparente y comunitaria[cite: 1]
+Estructura transparente y comunitaria
 </p>
 
 <div class="card" style="margin-bottom:40px;">
 
 <h3>📜 Información del Token</h3>
 
-<p><strong>Nombre:</strong> PERU[cite: 1]</p>
-<p><strong>Tipo:</strong> Token social / comunitario[cite: 1]</p>
-<p><strong>Total Supply:</strong> 1,000,000 Tokens[cite: 1]</p>
+<p><strong>Nombre:</strong> PERU</p>
+<p><strong>Tipo:</strong> Token social / comunitario</p>
+<p><strong>Total Supply:</strong> 1,000,000 Tokens</p>
 
 <br>
 
 <p style="word-break:break-all;">
 <strong>Contrato Oficial:</strong><br>
-0x1c647ebe755fe03dc43fa078ca550e837d0b4444[cite: 1]
+0x1c647ebe755fe03dc43fa078ca550e837d0b4444
 </p>
 
 <div style="margin-top:20px;text-align:center;">
 <button onclick="copyContract()" class="copy-btn">
 📋 Copiar Contrato
-</button>[cite: 1]
+</button>
 </div>
 
 </div>
@@ -707,7 +718,7 @@ Estructura transparente y comunitaria[cite: 1]
 
 <div class="card">
 <h3>💧 40%</h3>
-<p>Liquidez[cite: 1]</p>
+<p>Liquidez</p>
 <div class="token-progress-wrapper">
 <div class="token-progress-bg"><div class="token-progress-fill" style="width: 40%;"></div></div>
 </div>
@@ -715,7 +726,7 @@ Estructura transparente y comunitaria[cite: 1]
 
 <div class="card">
 <h3>📈 20%</h3>
-<p>Marketing y expansión[cite: 1]</p>
+<p>Marketing y expansión</p>
 <div class="token-progress-wrapper">
 <div class="token-progress-bg"><div class="token-progress-fill" style="width: 20%;"></div></div>
 </div>
@@ -723,7 +734,7 @@ Estructura transparente y comunitaria[cite: 1]
 
 <div class="card">
 <h3>🏆 20%</h3>
-<p>Fondo social para apoyo a deportistas[cite: 1]</p>
+<p>Fondo social para apoyo a deportistas</p>
 <div class="token-progress-wrapper">
 <div class="token-progress-bg"><div class="token-progress-fill" style="width: 20%;"></div></div>
 </div>
@@ -731,7 +742,7 @@ Estructura transparente y comunitaria[cite: 1]
 
 <div class="card">
 <h3>🛠️ 10%</h3>
-<p>Equipo de desarrollo[cite: 1]</p>
+<p>Equipo de desarrollo</p>
 <div class="token-progress-wrapper">
 <div class="token-progress-bg"><div class="token-progress-fill" style="width: 10%;"></div></div>
 </div>
@@ -739,7 +750,7 @@ Estructura transparente y comunitaria[cite: 1]
 
 <div class="card">
 <h3>🔒 10%</h3>
-<p>Reserva estratégica[cite: 1]</p>
+<p>Reserva estratégica</p>
 <div class="token-progress-wrapper">
 <div class="token-progress-bg"><div class="token-progress-fill" style="width: 10%;"></div></div>
 </div>
@@ -754,7 +765,7 @@ Estructura transparente y comunitaria[cite: 1]
 <h2 class="title">ROADMAP</h2>
 
 <p class="subtitle">
-Construyendo el futuro deportivo y Web3 del Perú[cite: 1]
+Construyendo el futuro deportivo y Web3 del Perú
 </p>
 
 <div class="grid">
@@ -762,37 +773,37 @@ Construyendo el futuro deportivo y Web3 del Perú[cite: 1]
 <div class="card">
 <h3>🚀 FASE 1 – LANZAMIENTO</h3>
 <ul>
-<li>Creación del token[cite: 1]</li>
-<li>Publicación en plataformas (Fourmeme)[cite: 1]</li>
-<li>Inicio de comunidad[cite: 1]</li>
-<li>Marketing inicial[cite: 1]</li>
+<li>Creación del token</li>
+<li>Publicación en plataformas (Fourmeme)</li>
+<li>Inicio de comunidad</li>
+<li>Marketing inicial</li>
 </ul>
 </div>
 
 <div class="card">
 <h3>📈 FASE 2 – CRECIMIENTO</h3>
 <ul>
-<li>Expansión en redes sociales[cite: 1]</li>
-<li>Primeros deportistas beneficiados[cite: 1]</li>
-<li>Listado en plataformas de seguimiento[cite: 1]</li>
+<li>Expansión en redes sociales</li>
+<li>Primeros deportistas beneficiados</li>
+<li>Listado en plataformas de seguimiento</li>
 </ul>
 </div>
 
 <div class="card">
 <h3>🌍 FASE 3 – EXPANSIÓN</h3>
 <ul>
-<li>Desarrollo de página web oficial[cite: 1]</li>
-<li>Implementación de sistema de votación[cite: 1]</li>
-<li>Colaboraciones con academias[cite: 1]</li>
+<li>Desarrollo de página web oficial</li>
+<li>Implementación de sistema de votación</li>
+<li>Colaboraciones con academias</li>
 </ul>
 </div>
 
 <div class="card">
 <h3>🏆 FASE 4 – ESCALAMIENTO GLOBAL</h3>
 <ul>
-<li>Internacionalización del proyecto[cite: 1]</li>
-<li>Patrocinios deportivos[cite: 1]</li>
-<li>Eventos y torneos propios[cite: 1]</li>
+<li>Internacionalización del proyecto</li>
+<li>Patrocinios deportivos</li>
+<li>Eventos y torneos propios</li>
 </ul>
 </div>
 
@@ -805,25 +816,25 @@ Construyendo el futuro deportivo y Web3 del Perú[cite: 1]
 <h2 class="title">EQUIPO</h2>
 
 <p class="subtitle">
-Desarrollo profesional enfocado en blockchain y software.[cite: 1]
+Desarrollo profesional enfocado en blockchain y software.
 </p>
 
 <div class="card">
 
 <p>
-Nuestro equipo está compuesto por profesionales con experiencia en desarrollo de software, blockchain y crecimiento de productos digitales.[cite: 1]
+Nuestro equipo está compuesto por profesionales con experiencia en desarrollo de software, blockchain y crecimiento de productos digitales.
 </p>
 
 <br>
 
 <p>
-Por motivos de privacidad y seguridad, algunos miembros operan de forma anónima, siguiendo una práctica común dentro del ecosistema Web3.[cite: 1]
+Por motivos de privacidad y seguridad, algunos miembros operan de forma anónima, siguiendo una práctica común dentro del ecosistema Web3.
 </p>
 
 <br>
 
 <p>
-Nos enfocamos en la transparencia técnica y el desarrollo real del producto.[cite: 1]
+Nos enfocamos en la transparencia técnica y el desarrollo real del producto.
 </p>
 
 </div>
@@ -835,34 +846,34 @@ Nos enfocamos en la transparencia técnica y el desarrollo real del producto.[ci
 <h2 class="title">🛡️ SEGURIDAD Y TRANSPARENCIA</h2>
 
 <p class="subtitle">
-PERU está diseñado con enfoque en seguridad y desarrollo real.[cite: 1]
+PERU está diseñado con enfoque en seguridad y desarrollo real.
 </p>
 
 <div class="grid">
 
 <div class="card">
 <h3>✔ Smart Contract</h3>
-<p>Contrato verificable públicamente.[cite: 1]</p>
+<p>Contrato verificable públicamente.</p>
 </div>
 
 <div class="card">
 <h3>✔ Tokenomics Pública</h3>
-<p>Distribución transparente para toda la comunidad.[cite: 1]</p>
+<p>Distribución transparente para toda la comunidad.</p>
 </div>
 
 <div class="card">
 <h3>✔ Liquidez Bloqueada</h3>
-<p>Mayor seguridad y estabilidad para holders.[cite: 1]</p>
+<p>Mayor seguridad y estabilidad para holders.</p>
 </div>
 
 <div class="card">
 <h3>✔ Auditoría</h3>
-<p>Proceso de auditoría en desarrollo.[cite: 1]</p>
+<p>Proceso de auditoría en desarrollo.</p>
 </div>
 
 <div class="card">
 <h3>✔ Ecosistema Activo</h3>
-<p>Desarrollo constante del proyecto y nuevas funciones.[cite: 1]</p>
+<p>Desarrollo constante del proyecto y nuevas funciones.</p>
 </div>
 
 </div>
@@ -874,7 +885,7 @@ PERU está diseñado con enfoque en seguridad y desarrollo real.[cite: 1]
 <h2 class="title">ÚNETE A LA COMUNIDAD</h2>
 
 <p class="subtitle">
-Sé parte del movimiento crypto peruano[cite: 1]
+Sé parte del movimiento crypto peruano
 </p>
 
 <div class="buttons" style="justify-content:center;">
@@ -883,19 +894,19 @@ Sé parte del movimiento crypto peruano[cite: 1]
 target="_blank"
 class="btn primary">
 Twitter
-</a>[cite: 1]
+</a>
 
 <a href="https://www.tiktok.com/@token.peru"
 target="_blank"
 class="btn secondary">
 TikTok
-</a>[cite: 1]
+</a>
 
 <a href="https://discord.gg/TU-INVITACION"
 target="_blank"
 class="btn secondary">
 Discord
-</a>[cite: 1]
+</a>
 
 </div>
 
@@ -907,8 +918,7 @@ Discord
 
 <div class="card">
 <p>
-PERU es un proyecto comunitario basado en blockchain. La compra de activos digitales implica riesgos. Cada participante debe realizar su propia investigación antes de tomar decisiones financieras.[cite: 1]
-</p>
+PERU es un proyecto comunitario basado en blockchain. La compra de activos digitales implica riesgos. Cada participante debe realizar su propia investigación antes de tomar decisiones financieras.</p>
 </div>
 
 </section>
@@ -918,14 +928,14 @@ PERU es un proyecto comunitario basado en blockchain. La compra de activos digit
 <h2>PERU</h2>
 
 <p>
-Proyecto Web3 solidario creado para impulsar el deporte peruano.[cite: 1]
+Proyecto Web3 solidario creado para impulsar el deporte peruano.
 </p>
 
 <p>
 📧 Contacto:
 <a href="mailto:www.peru@outlook.es" style="color:white;">
 www.peru@outlook.es
-</a>[cite: 1]
+</a>
 </p>
 
 <p>
@@ -934,11 +944,11 @@ www.peru@outlook.es
 target="_blank"
 style="color:white;">
 www-token-peru.blogspot.com
-</a>[cite: 1]
+</a>
 </p>
 
 <p>
-© 2026 PERU — Community Project[cite: 1]
+© 2026 PERU — Community Project
 </p>
 
 </footer>
@@ -956,7 +966,7 @@ viewBox="0 0 24 24">
 <path d="M20.52 3.48A11.77 11.77 0 0 0 12.04 0C5.5 0 .16 5.34.16 11.88c0 2.1.55 4.15 1.6 5.96L0 24l6.34-1.66a11.84 11.84 0 0 0 5.7 1.45h.01c6.54 0 11.88-5.34 11.88-11.88 0-3.17-1.24-6.15-3.41-8.43z"/>
 </svg>
 
-</a>[cite: 1]
+</a>
 
 <script>
 
@@ -987,7 +997,7 @@ observer.observe(card);
 function copyContract(){
 
 const contract =
-"0x1c647ebe755fe03dc43fa078ca550e837d0b4444";[cite: 1]
+"0x1c647ebe755fe03dc43fa078ca550e837d0b4444";
 
 navigator.clipboard.writeText(contract);
 
@@ -1004,7 +1014,7 @@ btn.classList.add("copied");
 setTimeout(function(){
 
 btn.innerHTML =
-"📋 Copiar Contrato";[cite: 1]
+"📋 Copiar Contrato";
 
 btn.classList.remove("copied");
 
@@ -1012,18 +1022,15 @@ btn.classList.remove("copied");
 
 }
 
-// LÓGICA DE DONACIÓN WEB3 (Ddirecto a tu Wallet de Recaudación)
+// LÓGICA DE DONACIÓN WEB3
 async function sendDonation() {
-    // Reemplaza esta dirección por tu wallet personal o la del fondo de donación si es distinta
-    const destinationWallet = "0x1c647ebe755fe03dc43fa078ca550e837d0b4444";[cite: 1]
+    const destinationWallet = "0x1c647ebe755fe03dc43fa078ca550e837d0b4444";
 
     if (typeof window.ethereum !== 'undefined') {
         try {
-            // Solicitar conexión a la billetera si no está conectada
             const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
             const fromAccount = accounts[0];
 
-            // Preguntar al usuario cuánto desea donar
             const amountInBNB = prompt("Ingresa la cantidad de BNB que deseas donar al proyecto:");
             
             if (!amountInBNB || isNaN(amountInBNB) || parseFloat(amountInBNB) <= 0) {
@@ -1031,18 +1038,15 @@ async function sendDonation() {
                 return;
             }
 
-            // Convertir BNB a formato hexadecimal Wei (1 BNB = 10^18 Wei)
             const weiValue = (parseFloat(amountInBNB) * 1e18).toString(16);
             const hexWeiValue = "0x" + weiValue;
 
-            // Parámetros de la transacción
             const transactionParameters = {
                 to: destinationWallet,
                 from: fromAccount,
                 value: hexWeiValue,
             };
 
-            // Enviar la transacción a la red (BSC)
             const txHash = await window.ethereum.request({
                 method: 'eth_sendTransaction',
                 params: [transactionParameters],
