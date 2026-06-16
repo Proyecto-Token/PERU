@@ -506,7 +506,6 @@ box-shadow:0 0 25px rgba(22,163,74,.5);
 <li><a href="#utility">Utilidad</a></li>
 <li><a href="#tokenomics">Tokenomics</a></li>
 <li><a href="#roadmap">Roadmap</a></li>
-<!-- EL BOTÓN SE UBICA AL COSTADO DE ROADMAP -->
 <li><button onclick="sendDonation()" class="nav-donate-btn">🪙 Donar BNB</button></li>
 </ul>
 
@@ -560,7 +559,6 @@ BscScan
 Blockchain con impacto real en el deporte peruano
 </p>
 
-<!-- Resumen Ejecutivo -->
 <div class="card" style="margin-bottom:40px;">
 <h3 style="justify-content: center;">📄 Introducción</h3>
 <p>
@@ -576,7 +574,6 @@ El proyecto busca conectar a la comunidad cripto con jóvenes talentos que neces
 </p>
 </div>
 
-<!-- Visión y Misión -->
 <div class="grid" style="margin-bottom:40px;">
 <div class="card">
 <h3>Visión</h3>
@@ -593,7 +590,6 @@ Crear un sistema descentralizado donde cualquier persona pueda contribuir al des
 </div>
 </div>
 
-<!-- Pilares de Apoyo -->
 <h3 style="text-align: center; color: white; margin: 60px 0 30px 0; font-size: 2rem;">¿Cómo apoyamos?</h3>
 
 <div class="grid">
@@ -683,79 +679,95 @@ PERU impulsa un ecosistema Web3 solidario enfocado en el deporte peruano.
 
 </section>
 
+<!-- ==========================================
+     SECCIÓN TOKENOMICS MEJORADA Y PREMIUM
+     ========================================== -->
 <section id="tokenomics">
 
 <h2 class="title">TOKENOMICS</h2>
+<p class="subtitle">Estructura transparente, segura y orientada a la comunidad</p>
 
-<p class="subtitle">
-Estructura transparente y comunitaria
-</p>
+<div class="tokenomics-container" style="display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-start;">
+    
+    <!-- COLUMNA IZQUIERDA: INFORMACIÓN GENERAL -->
+    <div class="card" style="flex: 1; min-width: 320px;">
+        <h3>📜 Información del Token</h3>
+        <p style="margin-bottom: 12px; display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
+            <span style="color: #94a3b8;">Nombre:</span> <strong>PERU</strong>
+        </p>
+        <p style="margin-bottom: 12px; display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
+            <span style="color: #94a3b8;">Tipo:</span> <strong>Token social / comunitario</strong>
+        </p>
+        <p style="margin-bottom: 25px; display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
+            <span style="color: #94a3b8;">Total Supply:</span> <strong>1,000,000 Tokens</strong>
+        </p>
 
-<div class="card" style="margin-bottom:40px;">
+        <!-- Bloque de Contrato Estilizado -->
+        <div style="background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); text-align: center;">
+            <span style="font-size: 0.85rem; color: #ff4d4d; font-weight: 600; display: block; margin-bottom: 8px; letter-spacing: 1px;">CONTRATO OFICIAL (BSC)</span>
+            <p style="word-break: break-all; font-family: monospace; font-size: 0.9rem; color: #cbd5e1; margin-bottom: 15px; background: rgba(255,255,255,0.02); padding: 10px; border-radius: 6px;">
+                0x1c647ebe755fe03dc43fa078ca550e837d0b4444
+            </p>
+            <button onclick="copyContract()" class="copy-btn" style="width: 100%; padding: 12px;">
+                📋 Copiar Contrato
+            </button>
+        </div>
+    </div>
 
-<h3>📜 Información del Token</h3>
+    <!-- COLUMNA DERECHA: DISTRIBUCIÓN -->
+    <div style="flex: 1.3; min-width: 320px; display: flex; flex-direction: column; gap: 20px;">
+        
+        <!-- Tarjeta Liquidez -->
+        <div class="card" style="padding: 20px 25px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <h3 style="margin: 0; font-size: 1.2rem;">💧 Liquidez Inicial</h3>
+                <span style="color: #ff4d4d; font-weight: 800; font-size: 1.3rem;">40%</span>
+            </div>
+            <p style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 10px;">Asignada al pool para garantizar un comercio estable y descentralizado.</p>
+            <div class="token-progress-bg"><div class="token-progress-fill" style="width: 40%;"></div></div>
+        </div>
 
-<p><strong>Nombre:</strong> PERU</p>
-<p><strong>Tipo:</strong> Token social / comunitario</p>
-<p><strong>Total Supply:</strong> 1,000,000 Tokens</p>
+        <!-- Tarjeta Marketing -->
+        <div class="card" style="padding: 20px 25px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <h3 style="margin: 0; font-size: 1.2rem;">📈 Marketing y Expansión</h3>
+                <span style="color: #ff4d4d; font-weight: 800; font-size: 1.3rem;">20%</span>
+            </div>
+            <p style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 10px;">Destinado a campañas de difusión, listados en exchanges y crecimiento de comunidad.</p>
+            <div class="token-progress-bg"><div class="token-progress-fill" style="width: 20%;"></div></div>
+        </div>
 
-<br>
+        <!-- Tarjeta Fondo Social -->
+        <div class="card" style="padding: 20px 25px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <h3 style="margin: 0; font-size: 1.2rem;">🏆 Fondo Social (Apoyo Deportivo)</h3>
+                <span style="color: #ff4d4d; font-weight: 800; font-size: 1.3rem;">20%</span>
+            </div>
+            <p style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 10px;">Pilar del proyecto: financiamiento directo para becas, pasajes y equipo de atletas peruanos.</p>
+            <div class="token-progress-bg"><div class="token-progress-fill" style="width: 20%;"></div></div>
+        </div>
 
-<p style="word-break:break-all;">
-<strong>Contrato Oficial:</strong><br>
-0x1c647ebe755fe03dc43fa078ca550e837d0b4444
-</p>
+        <!-- Tarjeta Devs -->
+        <div class="card" style="padding: 20px 25px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <h3 style="margin: 0; font-size: 1.2rem;">🛠️ Equipo de Desarrollo</h3>
+                <span style="color: #ff4d4d; font-weight: 800; font-size: 1.3rem;">10%</span>
+            </div>
+            <p style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 10px;">Incentivo para los desarrolladores, diseñadores y soporte técnico de la plataforma.</p>
+            <div class="token-progress-bg"><div class="token-progress-fill" style="width: 10%;"></div></div>
+        </div>
 
-<div style="margin-top:20px;text-align:center;">
-<button onclick="copyContract()" class="copy-btn">
-📋 Copiar Contrato
-</button>
-</div>
+        <!-- Tarjeta Reserva -->
+        <div class="card" style="padding: 20px 25px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                <h3 style="margin: 0; font-size: 1.2rem;">🔒 Reserva Estratégica</h3>
+                <span style="color: #ff4d4d; font-weight: 800; font-size: 1.3rem;">10%</span>
+            </div>
+            <p style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 10px;">Fondos resguardados para futuras alianzas institucionales o emergencias del protocolo.</p>
+            <div class="token-progress-bg"><div class="token-progress-fill" style="width: 10%;"></div></div>
+        </div>
 
-</div>
-
-<div class="grid">
-
-<div class="card">
-<h3>💧 40%</h3>
-<p>Liquidez</p>
-<div class="token-progress-wrapper">
-<div class="token-progress-bg"><div class="token-progress-fill" style="width: 40%;"></div></div>
-</div>
-</div>
-
-<div class="card">
-<h3>📈 20%</h3>
-<p>Marketing y expansión</p>
-<div class="token-progress-wrapper">
-<div class="token-progress-bg"><div class="token-progress-fill" style="width: 20%;"></div></div>
-</div>
-</div>
-
-<div class="card">
-<h3>🏆 20%</h3>
-<p>Fondo social para apoyo a deportistas</p>
-<div class="token-progress-wrapper">
-<div class="token-progress-bg"><div class="token-progress-fill" style="width: 20%;"></div></div>
-</div>
-</div>
-
-<div class="card">
-<h3>🛠️ 10%</h3>
-<p>Equipo de desarrollo</p>
-<div class="token-progress-wrapper">
-<div class="token-progress-bg"><div class="token-progress-fill" style="width: 10%;"></div></div>
-</div>
-</div>
-
-<div class="card">
-<h3>🔒 10%</h3>
-<p>Reserva estratégica</p>
-<div class="token-progress-wrapper">
-<div class="token-progress-bg"><div class="token-progress-fill" style="width: 10%;"></div></div>
-</div>
-</div>
-
+    </div>
 </div>
 
 </section>
@@ -1022,7 +1034,6 @@ btn.classList.remove("copied");
 
 }
 
-// LÓGICA DE DONACIÓN WEB3
 async function sendDonation() {
     const destinationWallet = "0x1c647ebe755fe03dc43fa078ca550e837d0b4444";
 
