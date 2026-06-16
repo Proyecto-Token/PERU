@@ -22,8 +22,6 @@
 <link rel="icon" href="logo.png">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-<!-- CDN de Chart.js para el gráfico de Tokenomics -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
 
@@ -176,7 +174,18 @@ color:white;
 background:transparent;
 }
 
-.btn:hover{
+.donate-btn {
+background: linear-gradient(90deg, #eab308, #ca8a04);
+color: white;
+box-shadow: 0 0 25px rgba(234, 179, 8, 0.4);
+border: none;
+}
+
+.donate-btn:hover {
+box-shadow: 0 0 35px rgba(234, 179, 8, 0.7);
+}
+
+.btn:hover {
 transform:translateY(-5px);
 }
 
@@ -341,104 +350,6 @@ font-weight: 600;
 letter-spacing: 0.5px;
 }
 
-/* Estilos de la nueva sección de Gráfico circular */
-.tokenomics-split {
-display: flex;
-align-items: center;
-justify-content: center;
-gap: 50px;
-flex-wrap: wrap;
-margin-top: 40px;
-}
-
-.chart-container {
-width: 100%;
-max-width: 350px;
-position: relative;
-}
-
-/* Estilos de los pasos "Cómo comprar" */
-.step-number {
-position: absolute;
-top: 20px;
-right: 25px;
-font-size: 3.5rem;
-font-weight: 900;
-color: rgba(255, 77, 77, 0.15);
-line-height: 1;
-}
-
-/* Estilos de las preguntas frecuentes (FAQ Accordion) */
-.faq-container {
-max-width: 800px;
-margin: 0 auto;
-display: flex;
-flex-direction: column;
-gap: 15px;
-}
-
-.faq-item {
-background: rgba(255, 255, 255, 0.03);
-border: 1px solid rgba(255, 255, 255, 0.08);
-border-radius: 14px;
-overflow: hidden;
-transition: 0.3s;
-}
-
-.faq-question {
-padding: 22px 30px;
-font-size: 1.1rem;
-font-weight: 600;
-cursor: pointer;
-display: flex;
-justify-content: space-between;
-align-items: center;
-user-select: none;
-}
-
-.faq-question:hover {
-background: rgba(255, 77, 77, 0.05);
-color: #ff4d4d;
-}
-
-.faq-answer {
-padding: 0 30px;
-max-height: 0;
-overflow: hidden;
-transition: max-height 0.3s ease-out, padding 0.3s ease-out;
-color: #cbd5e1;
-line-height: 1.6;
-font-size: 0.95rem;
-background: rgba(0, 0, 0, 0.1);
-}
-
-.faq-item.active .faq-answer {
-padding: 20px 30px 25px 30px;
-max-height: 200px;
-}
-
-.faq-icon {
-transition: transform 0.3s;
-font-size: 1.2rem;
-}
-
-.faq-item.active .faq-icon {
-transform: rotate(45deg);
-color: #ff4d4d;
-}
-
-/* Meta-atleta Progress Card */
-.athlete-tag {
-background: rgba(255, 77, 77, 0.15);
-color: #ff4d4d;
-padding: 4px 12px;
-border-radius: 20px;
-font-size: 0.8rem;
-font-weight: 700;
-display: inline-block;
-margin-bottom: 10px;
-}
-
 footer{
 padding:50px 10%;
 text-align:center;
@@ -532,10 +443,6 @@ bottom:20px;
 right:20px;
 }
 
-.tokenomics-split {
-flex-direction: column-reverse;
-}
-
 }
 
 .copy-btn{
@@ -581,12 +488,10 @@ box-shadow:0 0 25px rgba(22,163,74,.5);
 
 <ul>
 <li><a href="#about">Proyecto</a></li>
-<li><a href="#athletes">Impacto</a></li>
-<li><a href="#how-to-buy">Cómo Comprar</a></li>
+<li><a href="#stats">Estadísticas</a></li>
 <li><a href="#utility">Utilidad</a></li>
 <li><a href="#tokenomics">Tokenomics</a></li>
 <li><a href="#roadmap">Roadmap</a></li>
-<li><a href="#faq">FAQ</a></li>
 </ul>
 
 </nav>
@@ -598,7 +503,7 @@ box-shadow:0 0 25px rgba(22,163,74,.5);
 <h1>PERU</h1>
 
 <p>
-El primer proyecto Web3 peruano enfocado en apoyar deportistas de bajos recursos mediante blockchain, becas, viajes e implementos deportivos.[cite: 1]
+El primer proyecto Web3 peruano enfocado en apoyar deportistas de bajos recursos mediante blockchain, becas, viajes e implementos deportivos.
 </p>
 
 <div class="buttons">
@@ -608,6 +513,11 @@ target="_blank"
 class="btn primary">
 Comprar PERU
 </a>[cite: 1]
+
+<!-- NUEVO BOTÓN DE DONACIÓN WEB3 -->
+<button onclick="sendDonation()" class="btn donate-btn">
+🪙 Donar BNB
+</button>
 
 <a href="whitepaper.pdf"
 target="_blank"
@@ -620,10 +530,6 @@ target="_blank"
 class="btn secondary">
 BscScan
 </a>[cite: 1]
-
-<button onclick="addTokenToWallet()" class="btn secondary" style="border-color: #ff4d4d;">
-🦊 Agregar a MetaMask
-</button>
 
 </div>
 
@@ -698,75 +604,33 @@ Crear un sistema descentralizado donde cualquier persona pueda contribuir al des
 
 </section>
 
-<!-- MEJORA 1: Historias de Impacto / Atletas Beneficiados -->
-<section id="athletes">
-<h2 class="title">HISTORIAS DE IMPACTO</h2>
-<p class="subtitle">Casos piloto e iniciativas proyectadas para financiamiento comunitario</p>
-<div class="grid">
-<div class="card">
-<span class="athlete-tag">🥋 Artes Marciales</span>
-<h3>Caso Proyecto #1</h3>
-<p>Financiamiento de pasajes e indumentaria de competencia para el campeonato sudamericano juvenil.</p>
-<div class="token-progress-wrapper" style="margin-top:20px;">
-<div style="display:flex; justify-content:space-between; font-size:0.85rem; color:#bbbbbb;">
-<span>Fondo Asignado</span>
-<span style="color:#ff4d4d; font-weight:700;">Próximamente</span>
-</div>
-<div class="token-progress-bg"><div class="token-progress-fill" style="width: 15%;"></div></div>
-</div>
-</div>
-
-<div class="card">
-<span class="athlete-tag">🏃‍♂️ Atletismo</span>
-<h3>Caso Proyecto #2</h3>
-<p>Implementación de calzado técnico especializado y suplementación para entrenamientos de alta competencia en provincias.</p>
-<div class="token-progress-wrapper" style="margin-top:20px;">
-<div style="display:flex; justify-content:space-between; font-size:0.85rem; color:#bbbbbb;">
-<span>Fondo Asignado</span>
-<span style="color:#ff4d4d; font-weight:700;">Próximamente</span>
-</div>
-<div class="token-progress-bg"><div class="token-progress-fill" style="width: 15%;"></div></div>
-</div>
-</div>
-</div>
-</section>
-
-<!-- MEJORA 2: Sección Cómo comprar paso a paso -->
-<section id="how-to-buy">
-<h2 class="title">CÓMO COMPRAR</h2>
-<p class="subtitle">Sigue estos sencillos pasos para adquirir tus tokens PERU</p>
-<div class="grid">
-<div class="card">
-<div class="step-number">01</div>
-<h3>Wallets Cripto</h3>
-<p>Descarga e instala una billetera descentralizada confiable como MetaMask o Trust Wallet desde sus tiendas oficiales.</p>
-</div>
-<div class="card">
-<div class="step-number">02</div>
-<h3>Carga de BNB</h3>
-<p>Adquiere BNB (Binance Coin) en tu exchange preferido y envíalo a tu billetera a través de la red Binance Smart Chain (BSC - BEP20).</p>
-</div>
-<div class="card">
-<div class="step-number">03</div>
-<h3>PancakeSwap</h3>
-<p>Visita PancakeSwap, conecta tu wallet y pega la dirección de nuestro contrato oficial verificado.[cite: 1]</p>
-</div>
-<div class="card">
-<div class="step-number">04</div>
-<h3>Intercambio</h3>
-<p>Define la cantidad de BNB que deseas cambiar por PERU, ajusta el deslizamiento (slippage) según el mercado y confirma la transacción.</p>
-</div>
-</div>
-</section>
-
 <section id="stats">
+
 <h2 class="title">ESTADÍSTICAS</h2>
-<p class="subtitle">Comunidad y crecimiento del proyecto[cite: 1]</p>
+
+<p class="subtitle">
+Comunidad y crecimiento del proyecto[cite: 1]
+</p>
+
 <div class="grid">
-<div class="card"><h3>💎 Holders</h3><p>Comunidad en crecimiento[cite: 1]</p></div>
-<div class="card"><h3>📈 Market Cap</h3><p>Evolución constante[cite: 1]</p></div>
-<div class="card"><h3>🌎 Alcance</h3><p>Proyecto con visión global[cite: 1]</p></div>
+
+<div class="card">
+<h3>💎 Holders</h3>
+<p>Comunidad en crecimiento[cite: 1]</p>
 </div>
+
+<div class="card">
+<h3>📈 Market Cap</h3>
+<p>Evolución constante[cite: 1]</p>
+</div>
+
+<div class="card">
+<h3>🌎 Alcance</h3>
+<p>Proyecto con visión global[cite: 1]</p>
+</div>
+
+</div>
+
 </section>
 
 <section id="utility">
@@ -808,7 +672,6 @@ PERU impulsa un ecosistema Web3 solidario enfocado en el deporte peruano.[cite: 
 
 </section>
 
-<!-- MEJORA 3: Tokenomics Premium con división de Gráfico Circular -->
 <section id="tokenomics">
 
 <h2 class="title">TOKENOMICS</h2>
@@ -840,8 +703,7 @@ Estructura transparente y comunitaria[cite: 1]
 
 </div>
 
-<div class="tokenomics-split">
-<div class="grid" style="flex:1; min-width:300px;">
+<div class="grid">
 
 <div class="card">
 <h3>💧 40%</h3>
@@ -883,11 +745,6 @@ Estructura transparente y comunitaria[cite: 1]
 </div>
 </div>
 
-</div>
-
-<div class="chart-container">
-<canvas id="tokenomicsChart"></canvas>
-</div>
 </div>
 
 </section>
@@ -1010,26 +867,6 @@ PERU está diseñado con enfoque en seguridad y desarrollo real.[cite: 1]
 
 </div>
 
-</section>
-
-<!-- MEJORA 4: Sección de Preguntas Frecuentes (FAQ) -->
-<section id="faq">
-<h2 class="title">PREGUNTAS FRECUENTES</h2>
-<p class="subtitle">Despeja tus dudas rápidas sobre el funcionamiento de PERU</p>
-<div class="faq-container">
-<div class="faq-item">
-<div class="faq-question"><span>¿Cuál es el propósito central de PERU Token?</span><span class="faq-icon">+</span></div>
-<div class="faq-answer">Es un proyecto cripto-social diseñado para financiar de forma directa y auditable mediante contratos inteligentes a deportistas peruanos talentosos sin recursos económicos.[cite: 1]</div>
-</div>
-<div class="faq-item">
-<div class="faq-question"><span>¿Cómo se eligen los deportistas beneficiarios?</span><span class="faq-icon">+</span></div>
-<div class="faq-answer">Los holders del token podrán participar activamente mediante un portal de gobernanza votando de forma democrática por los atletas y los proyectos postulados.[cite: 1]</div>
-</div>
-<div class="faq-item">
-<div class="faq-question"><span>¿El contrato inteligente es seguro?</span><span class="faq-icon">+</span></div>
-<div class="faq-answer">Sí, está desplegado en la Binance Smart Chain, cuenta con tokenomics fijas transparentes y su liquidez inicial está planificada para dar estabilidad comunitaria.[cite: 1]</div>
-</div>
-</div>
 </section>
 
 <section id="community">
@@ -1175,59 +1012,50 @@ btn.classList.remove("copied");
 
 }
 
-// Lógica JavaScript interactiva para Preguntas Frecuentes (FAQ)
-document.querySelectorAll('.faq-question').forEach(question => {
-    question.addEventListener('click', () => {
-        const item = question.parentElement;
-        item.classList.toggle('active');
-    });
-});
+// LÓGICA DE DONACIÓN WEB3 (Ddirecto a tu Wallet de Recaudación)
+async function sendDonation() {
+    // Reemplaza esta dirección por tu wallet personal o la del fondo de donación si es distinta
+    const destinationWallet = "0x1c647ebe755fe03dc43fa078ca550e837d0b4444";[cite: 1]
 
-// Renderizador dinámico de Gráfico Circular usando Chart.js
-const ctx = document.getElementById('tokenomicsChart').getContext('2d');
-new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-        labels: ['Liquidez (40%)', 'Marketing (20%)', 'Fondo Social (20%)', 'Desarrollo (10%)', 'Reserva (10%)'],[cite: 1]
-        datasets: [{
-            data: [40, 20, 20, 10, 10],[cite: 1]
-            backgroundColor: ['#ff0000', '#ff4d4d', '#ff7676', '#ff9e9e', '#ffffff'],
-            borderWidth: 1,
-            borderColor: '#050816'
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: {
-            legend: { display: false }
-        }
-    }
-});
+    if (typeof window.ethereum !== 'undefined') {
+        try {
+            // Solicitar conexión a la billetera si no está conectada
+            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+            const fromAccount = accounts[0];
 
-// MEJORA 5: Inyección del token a la wallet Web3 vinculada
-async function addTokenToWallet() {
-    const tokenAddress = '0x1c647ebe755fe03dc43fa078ca550e837d0b4444';[cite: 1]
-    const tokenSymbol = 'PERU';[cite: 1]
-    const tokenDecimals = 18;
+            // Preguntar al usuario cuánto desea donar
+            const amountInBNB = prompt("Ingresa la cantidad de BNB que deseas donar al proyecto:");
+            
+            if (!amountInBNB || isNaN(amountInBNB) || parseFloat(amountInBNB) <= 0) {
+                alert("Por favor, ingresa una cantidad válida de BNB.");
+                return;
+            }
 
-    try {
-        if (typeof window.ethereum !== 'undefined') {
-            await window.ethereum.request({
-                method: 'wallet_watchAsset',
-                params: {
-                    type: 'ERC20',
-                    options: {
-                        address: tokenAddress,
-                        symbol: tokenSymbol,
-                        decimals: tokenDecimals,
-                    },
-                },
+            // Convertir BNB a formato hexadecimal Wei (1 BNB = 10^18 Wei)
+            const weiValue = (parseFloat(amountInBNB) * 1e18).toString(16);
+            const hexWeiValue = "0x" + weiValue;
+
+            // Parámetros de la transacción
+            const transactionParameters = {
+                to: destinationWallet,
+                from: fromAccount,
+                value: hexWeiValue,
+            };
+
+            // Enviar la transacción a la red (BSC)
+            const txHash = await window.ethereum.request({
+                method: 'eth_sendTransaction',
+                params: [transactionParameters],
             });
-        } else {
-            alert('Por favor instala una extensión Web3 compatible como MetaMask para usar esta función.');
+
+            alert(`¡Muchas gracias por tu apoyo! Transacción enviada con éxito. Hash: ${txHash}`);
+
+        } catch (error) {
+            console.error("Error al procesar la donación:", error);
+            alert("La donación fue cancelada o ocurrió un error al procesar.");
         }
-    } catch (error) {
-        console.error(error);
+    } else {
+        alert("No se detectó ninguna wallet Web3. Por favor instala MetaMask o Trust Wallet para realizar donaciones directas.");
     }
 }
 </script>
