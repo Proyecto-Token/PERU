@@ -568,6 +568,27 @@ background:#16a34a;
 box-shadow:0 0 25px rgba(22,163,74,.5);
 }
 
+/* Estilo personalizado para el botón de copiado de donación */
+.donate-copy-btn {
+background: linear-gradient(90deg, #eab308, #ca8a04);
+color: white;
+border: none;
+padding: 12px 25px;
+border-radius: 12px;
+font-weight: 700;
+cursor: pointer;
+transition: .3s;
+box-shadow: 0 0 15px rgba(234, 179, 8, 0.3);
+}
+.donate-copy-btn:hover {
+transform: translateY(-2px);
+box-shadow: 0 0 25px rgba(234, 179, 8, 0.6);
+}
+.donate-copy-btn.copied {
+background: #16a34a;
+box-shadow: 0 0 15px rgba(22, 163, 74, 0.5);
+}
+
 </style>
 
 </head>
@@ -588,6 +609,7 @@ box-shadow:0 0 25px rgba(22,163,74,.5);
 
 <ul>
 <li><a href="#about">Proyecto</a></li>
+<li><a href="#donate-section">Donar</a></li>
 <li><a href="#stats">Estadísticas</a></li>
 <li><a href="#utility">Utilidad</a></li>
 <li><a href="#tokenomics">Tokenomics</a></li>
@@ -668,6 +690,31 @@ BscScan
         </div>
     </div>
 
+</div>
+
+<!-- ==========================================
+     SOLUCIÓN 1: SECCIÓN DE DONACIÓN MANUAL INTEGRADA
+     ========================================== -->
+<div id="donate-section" class="card" style="max-width: 800px; margin: 50px auto 0 auto; text-align: center; border: 2px dashed rgba(234, 179, 8, 0.4); backdrop-filter: blur(15px);">
+    <div style="font-size: 3rem; margin-bottom: 10px;">🎁</div>
+    <h3 style="justify-content: center; font-size: 1.6rem; color: #eab308; margin-bottom: 10px;">Apoya al Proyecto (Donaciones)</h3>
+    <p style="color: #cbd5e1; font-size: 1rem; max-width: 650px; margin: 0 auto 20px auto; line-height: 1.6;">
+        Si usas celular, exchanges (Binance, OKX, etc.) u otras wallets de criptomonedas, puedes enviar tu aporte voluntario directamente copiando la siguiente dirección pública oficial:
+    </p>
+    
+    <div style="background: rgba(0,0,0,0.4); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); display: inline-block; width: 100%; max-width: 550px; margin-bottom: 20px;">
+        <span style="font-size: 0.75rem; color: #ca8a04; font-weight: 700; display: block; margin-bottom: 5px; letter-spacing: 1px;">DIRECCIÓN OFICIAL DE TESORERÍA (BSC)</span>
+        <p id="donation-address" style="word-break: break-all; font-family: monospace; font-size: 0.95rem; color: #ffffff; margin-bottom: 15px; font-weight: bold;">
+            0xE7A8096362f14152375E9FF0631114044dCe0f91
+        </p>
+        <button onclick="copyDonationWallet()" class="donate-copy-btn">
+            📋 Copiar Dirección
+        </button>
+    </div>
+    
+    <p style="font-size: 0.85rem; color: #94a3b8;">
+        ⚠️ Recuerda enviar tus fondos únicamente a través de la red **Binance Smart Chain (BSC / BEP20)** para evitar pérdidas. ¡Gracias por impulsar el deporte peruano!
+    </p>
 </div>
 
 <h3 style="text-align: center; color: white; margin: 80px 0 30px 0; font-size: 2rem; font-weight: 800;">¿Cómo apoyamos?</h3>
@@ -754,7 +801,7 @@ BscScan
 
     <div class="card">
         <h3>🏅 Acceso y NFTs de Atletas</h3>
-        <p>Derecho preferencial a experiences exclusivas y colecciones de NFTs oficiales cuyos beneficios van destinados en su totalidad a los propios deportistas.</p>
+        <p>Derecho preferencial a experiencias exclusivas y colecciones de NFTs oficiales cuyos beneficios van destinados en su totalidad a los propios deportistas.</p>
     </div>
 
 </div>
@@ -1121,6 +1168,23 @@ btn.classList.remove("copied");
 
 },3000);
 
+}
+
+// Función exclusiva para copiar la wallet de donación manual
+function copyDonationWallet() {
+    const addressText = "0xE7A8096362f14152375E9FF0631114044dCe0f91";
+    navigator.clipboard.writeText(addressText);
+
+    const btn = document.querySelector(".donate-copy-btn");
+    if(!btn) return;
+
+    btn.innerHTML = "✅ ¡Dirección Copiada!";
+    btn.classList.add("copied");
+
+    setTimeout(function(){
+        btn.innerHTML = "📋 Copiar Dirección";
+        btn.classList.remove("copied");
+    }, 3000);
 }
 
 async function sendDonation() {
