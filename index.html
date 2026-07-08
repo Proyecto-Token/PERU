@@ -614,7 +614,6 @@ box-shadow: 0 0 15px rgba(22, 163, 74, 0.5);
 <li><a href="#utility">Utilidad</a></li>
 <li><a href="#tokenomics">Tokenomics</a></li>
 <li><a href="#roadmap">Roadmap</a></li>
-<li><button onclick="sendDonation()" class="nav-donate-btn">🪙 Donar BNB</button></li>
 </ul>
 
 </nav>
@@ -659,9 +658,6 @@ BscScan
 
 </section>
 
-<!-- ==========================================
-     SECCIÓN: PROYECTO Y CÓMO APOYAMOS MEJORADA
-     ========================================== -->
 <section id="about">
 
 <h2 class="title">PROYECTO</h2>
@@ -692,9 +688,6 @@ BscScan
 
 </div>
 
-<!-- ==========================================
-     SOLUCIÓN 1: SECCIÓN DE DONACIÓN MANUAL INTEGRADA
-     ========================================== -->
 <div id="donate-section" class="card" style="max-width: 800px; margin: 50px auto 0 auto; text-align: center; border: 2px dashed rgba(234, 179, 8, 0.4); backdrop-filter: blur(15px);">
     <div style="font-size: 3rem; margin-bottom: 10px;">🎁</div>
     <h3 style="justify-content: center; font-size: 1.6rem; color: #eab308; margin-bottom: 10px;">Apoya al Proyecto (Donaciones)</h3>
@@ -742,9 +735,6 @@ BscScan
 
 </section>
 
-<!-- ==========================================
-     SECCIÓN: ESTADÍSTICAS MEJORADA
-     ========================================== -->
 <section id="stats" style="background: rgba(255,255,255,0.01); border-top: 1px solid rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.02);">
 
 <h2 class="title">ESTADÍSTICAS</h2>
@@ -774,9 +764,6 @@ BscScan
 
 </section>
 
-<!-- ==========================================
-     SECCIÓN: UTILIDAD MEJORADA
-     ========================================== -->
 <section id="utility">
 
 <h2 class="title">UTILIDAD</h2>
@@ -808,9 +795,6 @@ BscScan
 
 </section>
 
-<!-- ==========================================
-     SECCIÓN: TOKENOMICS PREMIUM
-     ========================================== -->
 <section id="tokenomics">
 
 <h2 class="title">TOKENOMICS</h2>
@@ -893,9 +877,6 @@ BscScan
 
 </section>
 
-<!-- ==========================================
-     SECCIÓN: ROADMAP MEJORADA
-     ========================================== -->
 <section id="roadmap">
 
 <h2 class="title">ROADMAP</h2>
@@ -956,9 +937,6 @@ BscScan
 
 </section>
 
-<!-- ==========================================
-     SECCIÓN: EQUIPO MEJORADA
-     ========================================== -->
 <section id="team">
 
 <h2 class="title">EQUIPO</h2>
@@ -994,9 +972,6 @@ BscScan
 
 </section>
 
-<!-- ==========================================
-     SECCIÓN: SEGURIDAD Y TRANSPARENCIA MEJORADA
-     ========================================== -->
 <section id="security" style="background: rgba(255,255,255,0.01); border-top: 1px solid rgba(255,255,255,0.02);">
 
 <h2 class="title">🛡️ SEGURIDAD Y TRANSPARENCIA</h2>
@@ -1185,47 +1160,6 @@ function copyDonationWallet() {
         btn.innerHTML = "📋 Copiar Dirección";
         btn.classList.remove("copied");
     }, 3000);
-}
-
-async function sendDonation() {
-    // DIRECCIÓN DE DESTINO CORREGIDA CON TU BILLETERA DE METAMASK
-    const destinationWallet = "0xE7A8096362f14152375E9FF0631114044dCe0f91";
-
-    if (typeof window.ethereum !== 'undefined') {
-        try {
-            const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-            const fromAccount = accounts[0];
-
-            const amountInBNB = prompt("Ingresa la cantidad de BNB que deseas donar al proyecto:");
-            
-            if (!amountInBNB || isNaN(amountInBNB) || parseFloat(amountInBNB) <= 0) {
-                alert("Por favor, ingresa una cantidad válida de BNB.");
-                return;
-            }
-
-            const weiValue = (parseFloat(amountInBNB) * 1e18).toString(16);
-            const hexWeiValue = "0x" + weiValue;
-
-            const transactionParameters = {
-                to: destinationWallet,
-                from: fromAccount,
-                value: hexWeiValue,
-            };
-
-            const txHash = await window.ethereum.request({
-                method: 'eth_sendTransaction',
-                params: [transactionParameters],
-            });
-
-            alert(`¡Muchas gracias por tu apoyo! Transacción enviada con éxito. Hash: ${txHash}`);
-
-        } catch (error) {
-            console.error("Error al procesar la donación:", error);
-            alert("La donación fue cancelada o ocurrió un error al procesar.");
-        }
-    } else {
-        alert("No se detectó ninguna wallet Web3. Por favor instala MetaMask o Trust Wallet para realizar donaciones directas.");
-    }
 }
 </script>
 
