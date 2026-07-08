@@ -317,6 +317,53 @@
             text-shadow: 0 0 8px #ff0000;
         }
 
+        /* Estilos específicos para las tarjetas de Beneficiarios */
+        .beneficiary-card {
+            text-align: center;
+            padding: 25px;
+        }
+        
+        .beneficiary-img-wrapper {
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 20px auto;
+            border-radius: 50%;
+            padding: 3px;
+            background: linear-gradient(135deg, #ff0000, #ff4d4d);
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
+        }
+
+        .beneficiary-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+            background: #0b1020;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+        }
+
+        .status-active {
+            background: rgba(22, 163, 74, 0.15);
+            color: #22c55e;
+            border: 1px solid rgba(22, 163, 74, 0.3);
+        }
+
+        .status-review {
+            background: rgba(234, 179, 8, 0.15);
+            color: #eab308;
+            border: 1px solid rgba(234, 179, 8, 0.3);
+        }
+
         .token-progress-bg {
             background: rgba(255, 255, 255, 0.05);
             height: 6px;
@@ -643,6 +690,7 @@
             <li><a href="#about" onclick="closeMenu()">Proyecto</a></li>
             <li><a href="#donate-section" onclick="closeMenu()">Donar</a></li>
             <li><a href="#stats" onclick="closeMenu()">Estadísticas</a></li>
+            <li><a href="#beneficiaries" onclick="closeMenu()">Beneficiarios</a></li>
             <li><a href="#utility" onclick="closeMenu()">Utilidad</a></li>
             <li><a href="#tokenomics" onclick="closeMenu()">Tokenomics</a></li>
             <li><a href="#roadmap" onclick="closeMenu()">Roadmap</a></li>
@@ -739,6 +787,46 @@
                 <div class="stat-number">20%</div>
                 <h4 style="font-weight: 600; color: #cbd5e1; font-size: 1.1rem; margin-bottom: 5px;">Fondo de Impacto</h4>
                 <p style="font-size: 0.85rem; color: #64748b;">Reservado estrictamente para los atletas</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- NUEVA SECCIÓN: BENEFICIARIOS -->
+    <section id="beneficiaries">
+        <h2 class="title reveal">BENEFICIARIOS</h2>
+        <p class="subtitle reveal">Nuestros atletas respaldados y próximas convocatorias abiertas</p>
+        
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+            <!-- Beneficiario 1 -->
+            <div class="card reveal beneficiary-card">
+                <span class="status-badge status-active">Activo • Becado</span>
+                <div class="beneficiary-img-wrapper">
+                    <!-- Puedes reemplazar este silueta placeholder por la URL de la foto del deportista -->
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2364748b'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>" alt="Atleta PERU">
+                </div>
+                <h3 style="justify-content: center; font-size: 1.25rem; margin-bottom: 5px;">Caso #001: Atletismo</h3>
+                <p style="font-size: 0.85rem; color: #ff4d4d; font-weight: 600; margin-bottom: 15px;">Liga Nacional Juvenil</p>
+                <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.6;">Asignación de bolsa mensual para suplementación de alta competencia e indumentaria técnica de carrera para controles clasificatorios.</p>
+            </div>
+
+            <!-- Beneficiario 2 -->
+            <div class="card reveal beneficiary-card">
+                <span class="status-badge status-active">Activo • Pasaje</span>
+                <div class="beneficiary-img-wrapper">
+                    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2364748b'><path d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/></svg>" alt="Atleta PERU">
+                </div>
+                <h3 style="justify-content: center; font-size: 1.25rem; margin-bottom: 5px;">Caso #002: Deportes de Contacto</h3>
+                <p style="font-size: 0.85rem; color: #ff4d4d; font-weight: 600; margin-bottom: 15px;">Federación de Judo / Karate</p>
+                <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.6;">Financiamiento total del boleto aéreo internacional y viáticos de estadía para el torneo Sudamericano de la disciplina.</p>
+            </div>
+
+            <!-- Tarjeta Convocatoria / Postulación -->
+            <div class="card reveal beneficiary-card" style="border: 2px dashed rgba(255, 77, 77, 0.3); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 35px 25px;">
+                <span class="status-badge status-review">Próximamente</span>
+                <div style="font-size: 3rem; margin-bottom: 15px; filter: drop-shadow(0 0 10px rgba(255,255,255,0.1));">🏅</div>
+                <h3 style="justify-content: center; font-size: 1.25rem; margin-bottom: 10px;">¿Eres deportista?</h3>
+                <p style="font-size: 0.9rem; color: #cbd5e1; line-height: 1.6; margin-bottom: 20px;">Muy pronto abriremos el portal de gobernanza para que los atletas peruanos puedan enviar sus postulaciones directamente a la comunidad.</p>
+                <a href="#community" class="btn secondary" style="padding: 10px 25px; font-size: 0.85rem; border-radius: 10px; width: auto;">Estar Atento</a>
             </div>
         </div>
     </section>
