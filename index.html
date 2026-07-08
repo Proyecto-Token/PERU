@@ -104,73 +104,12 @@
             user-select: none;
         }
 
-        /* --- NUEVO ESTILO: MARCADOR EN TIEMPO REAL --- */
-        .ticker-container {
-            padding: 120px 10% 0 10%;
-            display: flex;
-            justify-content: center;
-        }
-
-        .ticker-box {
-            width: 100%;
-            max-width: 1100px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 24px;
-            padding: 30px 40px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            align-items: center;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-        }
-
-        .ticker-item {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .ticker-item:not(:last-child) {
-            border-right: 1px solid rgba(255, 255, 255, 0.08);
-            padding-right: 20px;
-        }
-
-        .ticker-label {
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 700;
-            color: #94a3b8;
-        }
-
-        .ticker-value {
-            font-size: 2.2rem;
-            font-weight: 900;
-        }
-
-        .ticker-price {
-            color: #10b981; /* Verde exacto */
-        }
-
-        .ticker-badge {
-            background: rgba(255, 255, 255, 0.08);
-            padding: 6px 16px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            display: inline-block;
-            width: fit-content;
-        }
-        /* -------------------------------------------- */
-
         .hero {
-            min-height: 80vh;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 40px 10% 120px 10%;
+            padding: 120px 10%;
             gap: 60px;
             flex-wrap: wrap;
         }
@@ -233,7 +172,7 @@
         }
 
         @keyframes pulse {
-            0 { transform: scale(1); }
+            0% { transform: scale(1); }
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
@@ -284,6 +223,7 @@
             gap: 30px;
         }
 
+        /* Clases de animación por Scroll (Seguras para SEO) */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -574,29 +514,6 @@
                 display: flex;
             }
 
-            /* Adaptación móvil del Ticker */
-            .ticker-container {
-                padding: 100px 5% 0 5%;
-            }
-
-            .ticker-box {
-                grid-template-columns: 1fr;
-                gap: 25px;
-                padding: 20px;
-                text-align: center;
-            }
-
-            .ticker-item:not(:last-child) {
-                border-right: none;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-                padding-right: 0;
-                padding-bottom: 15px;
-            }
-
-            .ticker-item {
-                align-items: center;
-            }
-
             .hero-text h1 {
                 font-size: 3rem;
             }
@@ -607,7 +524,6 @@
 
             .hero {
                 text-align: center;
-                padding-top: 20px;
             }
 
             .buttons {
@@ -664,25 +580,6 @@
             <li><a href="#team" onclick="closeMenu()">Equipo</a></li>
         </ul>
     </nav>
-
-    <!-- === NUEVA SECCIÓN: PRECIOS Y DATOS EN TIEMPO REAL === -->
-    <div class="ticker-container">
-        <div class="ticker-box">
-            <div class="ticker-item">
-                <span class="ticker-label">Precio del Token ($USD)</span>
-                <span id="live-price" class="ticker-value ticker-price">$0.002150</span>
-            </div>
-            <div class="ticker-item">
-                <span class="ticker-label">Variación 24H</span>
-                <span id="live-change" class="ticker-badge">0.00%</span>
-            </div>
-            <div class="ticker-item">
-                <span class="ticker-label">Inversores (Holders)</span>
-                <span id="live-holders" class="ticker-value">1,248</span>
-            </div>
-        </div>
-    </div>
-    <!-- ==================================================== -->
 
     <section class="hero">
         <div class="hero-text">
@@ -1006,6 +903,7 @@
             document.querySelector("nav ul").classList.remove("active");
         }
 
+        // Animación por Scroll optimizada para SEO (clase .reveal)
         const itemsToReveal = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
@@ -1046,49 +944,6 @@
                 btn.classList.remove("copied");
             }, 3000);
         }
-
-        // === SCRIPT PARA DATOS EN TIEMPO REAL DESDE LA API DE GECKOTERMINAL ===
-        async function fetchTokenData() {
-            const tokenAddress = "0x1c647ebe755fe03dc43fa078ca550e837d0b4444";
-            // Usamos el endpoint de GeckoTerminal para BSC de forma directa y limpia
-            const url = `https://api.geckoterminal.com/api/v2/networks/bsc/tokens/${tokenAddress}`;
-
-            try {
-                const response = await fetch(url);
-                if (!response.ok) throw new Error("Error en la solicitud");
-                
-                const json = await response.json();
-                const attributes = json.data.attributes;
-
-                // 1. Procesar precio exacto
-                const price = parseFloat(attributes.price_usd);
-                document.getElementById("live-price").innerText = `$${price.toFixed(6)}`;
-
-                // 2. Procesar variación de 24 Horas
-                const change24h = parseFloat(attributes.price_change_percentage?.h24 || 0);
-                const changeEl = document.getElementById("live-change");
-                changeEl.innerText = `${change24h >= 0 ? '+' : ''}${change24h.toFixed(2)}%`;
-                
-                // Color dinámico según la variación del mercado
-                if (change24h >= 0) {
-                    changeEl.style.background = "rgba(16, 185, 129, 0.15)";
-                    changeEl.style.color = "#10b981";
-                } else {
-                    changeEl.style.background = "rgba(239, 68, 68, 0.15)";
-                    changeEl.style.color = "#ef4444";
-                }
-
-                // 3. Obtener estimación de inversores/transacciones o tracking alternativo. 
-                // Nota: Las APIs libres no siempre exponen el conteo exacto de holders (requiere BscScan privada). 
-                // Dejamos el valor estático o mapeamos el volumen / transacciones si deseas. Puedes actualizarlo manualmente o vía Web3.js
-            } catch (error) {
-                console.error("No se pudieron cargar los datos en tiempo real: ", error);
-            }
-        }
-
-        // Ejecutar al cargar la página y refrescar cada 30 segundos
-        fetchTokenData();
-        setInterval(fetchTokenData, 30000);
     </script>
 </body>
 </html>
