@@ -11,11 +11,14 @@
 
     <meta property="og:title" content="PERU - Deporte & Blockchain">
     <meta property="og:description" content="Proyecto Web3 peruano enfocado en apoyar deportistas mediante blockchain.">
-    <meta property="og:image" content="https://tu-dominio.com/logo.png"> <!-- CAMBIAR POR TU URL REAL -->
+    <meta property="og:image" content="https://proyecto-token.github.io/PERU/logo.png"> 
     <meta property="og:type" content="website">
 
     <link rel="icon" href="logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Librería para el Gráfico de Tokenomics -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
         * {
@@ -29,7 +32,13 @@
         body {
             background: #050816;
             color: white;
+        }
+
+        /* Envoltura global segura para evitar desbordamiento sin romper scroll elástico */
+        .app-wrapper {
+            width: 100%;
             overflow-x: hidden;
+            position: relative;
         }
 
         .bg {
@@ -98,6 +107,8 @@
 
         .menu-toggle {
             display: none;
+            background: none;
+            border: none;
             font-size: 2rem;
             cursor: pointer;
             color: white;
@@ -115,7 +126,7 @@
         }
 
         .hero-text {
-            flex: 1;
+            flex: 1.2;
             min-width: 300px;
         }
 
@@ -173,27 +184,29 @@
 
         @keyframes pulse {
             0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            50% { transform: scale(1.03); }
             100% { transform: scale(1); }
         }
 
         .hero-image {
-            flex: 1;
+            flex: 0.8;
             display: flex;
             justify-content: center;
             align-items: center;
             min-width: 300px;
+            position: relative;
         }
 
         .hero-image img {
-            width: 350px;
+            width: 100%;
+            max-width: 380px;
             animation: float 5s ease-in-out infinite;
             filter: drop-shadow(0 0 40px #ff000088);
         }
 
         @keyframes float {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+            50% { transform: translateY(-15px); }
         }
 
         section {
@@ -223,10 +236,9 @@
             gap: 30px;
         }
 
-        /* Clases de animación por Scroll (Seguras para SEO) */
         .reveal {
             opacity: 0;
-            transform: translateY(40px);
+            transform: translateY(30px);
             transition: all 0.7s ease;
         }
 
@@ -235,13 +247,14 @@
             transform: translateY(0);
         }
 
+        /* Glassmorphism Mejorado con Mayor Contraste */
         .card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
             padding: 35px;
             border-radius: 20px;
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
             overflow: hidden;
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease;
@@ -275,8 +288,14 @@
             font-weight: 700;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             position: relative;
+        }
+
+        .card h3 svg {
+            width: 24px;
+            height: 24px;
+            fill: #ff4d4d;
         }
 
         .card h3::after {
@@ -317,28 +336,9 @@
             text-shadow: 0 0 8px #ff0000;
         }
 
-        /* Estilos específicos para las tarjetas de Beneficiarios */
         .beneficiary-card {
             text-align: center;
             padding: 25px;
-        }
-        
-        .beneficiary-img-wrapper {
-            width: 110px;
-            height: 110px;
-            margin: 0 auto 20px auto;
-            border-radius: 50%;
-            padding: 3px;
-            background: linear-gradient(135deg, #ff0000, #ff4d4d);
-            box-shadow: 0 0 20px rgba(255, 0, 0, 0.3);
-        }
-
-        .beneficiary-img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-            background: #0b1020;
         }
 
         .status-badge {
@@ -352,40 +352,18 @@
             margin-bottom: 15px;
         }
 
-        .status-active {
-            background: rgba(22, 163, 74, 0.15);
-            color: #22c55e;
-            border: 1px solid rgba(22, 163, 74, 0.3);
-        }
-
         .status-review {
             background: rgba(234, 179, 8, 0.15);
             color: #eab308;
             border: 1px solid rgba(234, 179, 8, 0.3);
         }
 
-        .token-progress-bg {
-            background: rgba(255, 255, 255, 0.05);
-            height: 6px;
-            border-radius: 10px;
-            overflow: hidden;
-            margin-top: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.02);
-        }
-
-        .token-progress-fill {
-            background: linear-gradient(90deg, #ff0000, #ff4d4d);
-            height: 100%;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
-        }
-
         .stat-box {
             text-align: center;
             padding: 40px 20px;
             border-radius: 20px;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
             transition: 0.3s;
         }
 
@@ -454,29 +432,38 @@
             border: 1px solid rgba(255, 77, 77, 0.2);
         }
 
-        .whatsapp-float {
+        /* Flotante Web3 nativo cambiado de WhatsApp a Telegram */
+        .telegram-float {
             position: fixed;
-            width: 65px;
-            height: 65px;
+            width: 60px;
+            height: 60px;
             bottom: 25px;
             right: 25px;
-            background: linear-gradient(135deg, #ff0000, #cc0000);
-            border: 3px solid #ffffff;
+            background: linear-gradient(135deg, #229ED9, #177aa7);
+            border: 2px solid rgba(255,255,255,0.2);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 0 25px rgba(255, 0, 0, 0.6);
+            box-shadow: 0 0 25px rgba(34, 158, 217, 0.5);
             z-index: 9999;
             transition: .3s;
-            animation: floatWhatsapp 2s infinite ease-in-out;
+            animation: floatTelegram 2s infinite ease-in-out;
         }
 
-        .whatsapp-float:hover {
+        .telegram-float:hover {
             transform: scale(1.1);
+            box-shadow: 0 0 35px rgba(34, 158, 217, 0.8);
         }
 
-        @keyframes floatWhatsapp {
+        .telegram-float svg {
+            width: 28px;
+            height: 28px;
+            fill: white;
+            transform: translate(-2px, 1px);
+        }
+
+        @keyframes floatTelegram {
             0% { transform: translateY(0); }
             50% { transform: translateY(-8px); }
             100% { transform: translateY(0); }
@@ -527,7 +514,24 @@
             box-shadow: 0 0 15px rgba(22, 163, 74, 0.5);
         }
 
-        /* Estilos Optimizados del Footer Moderno Web3 */
+        /* Estructura Tokenomics Mejorada con Chart incorporado */
+        .tokenomics-container {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .chart-wrapper {
+            flex: 1;
+            min-width: 300px;
+            max-width: 450px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
         footer {
             padding: 60px 10%;
             text-align: center;
@@ -644,9 +648,9 @@
                 width: 220px;
             }
 
-            .whatsapp-float {
-                width: 58px;
-                height: 58px;
+            .telegram-float {
+                width: 55px;
+                height: 55px;
                 bottom: 20px;
                 right: 20px;
             }
@@ -678,380 +682,344 @@
 </head>
 
 <body>
+    <div class="app-wrapper">
+        <div class="bg"></div>
 
-    <div class="bg"></div>
-
-    <nav>
-        <div class="logo">
-            <img src="logo.png" alt="PERU Logo" style="height:50px;">
-        </div>
-        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-        <ul>
-            <li><a href="#about" onclick="closeMenu()">Proyecto</a></li>
-            <li><a href="#donate-section" onclick="closeMenu()">Donar</a></li>
-            <li><a href="#stats" onclick="closeMenu()">Estadísticas</a></li>
-            <li><a href="#beneficiaries" onclick="closeMenu()">Beneficiarios</a></li>
-            <li><a href="#utility" onclick="closeMenu()">Utilidad</a></li>
-            <li><a href="#tokenomics" onclick="closeMenu()">Tokenomics</a></li>
-            <li><a href="#roadmap" onclick="closeMenu()">Roadmap</a></li>
-            <li><a href="#team" onclick="closeMenu()">Equipo</a></li>
-        </ul>
-    </nav>
-
-    <section class="hero">
-        <div class="hero-text">
-            <h1>PERU</h1>
-            <p>El primer proyecto Web3 peruano enfocado en apoyar deportistas de bajos recursos mediante blockchain, becas, viajes e implementos deportivos.</p>
-            <div class="buttons">
-                <a href="https://pancakeswap.finance/swap?outputCurrency=0x1c647ebe755fe03dc43fa078ca550e837d0b4444" target="_blank" class="btn primary">Comprar PERU</a>
-                <a href="whitepaper.pdf" target="_blank" class="btn secondary">Whitepaper</a>
-                <a href="https://bscscan.com/token/0x1c647ebe755fe03dc43fa078ca550e837d0b4444" target="_blank" class="btn secondary">BscScan</a>
+        <nav>
+            <div class="logo">
+                <img src="logo.png" alt="PERU Logo" style="height:50px;">
             </div>
-        </div>
-        <div class="hero-image">
-            <img src="logo.png" alt="PERU">
-        </div>
-    </section>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Abrir menú de navegación">☰</button>
+            <ul>
+                <li><a href="#about" onclick="closeMenu()">Proyecto</a></li>
+                <li><a href="#donate-section" onclick="closeMenu()">Donar</a></li>
+                <li><a href="#stats" onclick="closeMenu()">Estadísticas</a></li>
+                <li><a href="#beneficiaries" onclick="closeMenu()">Beneficiarios</a></li>
+                <li><a href="#utility" onclick="closeMenu()">Utilidad</a></li>
+                <li><a href="#tokenomics" onclick="closeMenu()">Tokenomics</a></li>
+                <li><a href="#roadmap" onclick="closeMenu()">Roadmap</a></li>
+                <li><a href="#team" onclick="closeMenu()">Equipo</a></li>
+            </ul>
+        </nav>
 
-    <section id="about">
-        <h2 class="title reveal">PROYECTO</h2>
-        <p class="subtitle reveal">Blockchain con impacto real en el deporte peruano</p>
-
-        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin-bottom: 60px;">
-            <div class="card reveal" style="display: flex; flex-direction: column; justify-content: center;">
-                <h3>📄 Introducción al Ecosistema</h3>
-                <p style="margin-bottom: 15px;">PERU es un activo digital basado en tecnología blockchain creado con un propósito social claro: transformar el futuro de atletas de bajos recursos mediante financiamiento transparente, directo y descentralizado.</p>
-                <p>Conectamos inversores y entusiastas Web3 con jóvenes talentos nacionales, reduciendo intermediarios y asegurando que cada aporte genere un cambio real en su carrera competitiva.</p>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 25px;">
-                <div class="card reveal" style="padding: 25px;">
-                    <h3 style="font-size: 1.25rem;">👁️ Visión</h3>
-                    <p style="font-size: 0.95rem;">Liderar el ecosistema cripto-social en Latinoamérica, posicionando a Perú como referente en innovación social aplicada y descentralizada a través de blockchain.</p>
-                </div>
-                <div class="card reveal" style="padding: 25px;">
-                    <h3 style="font-size: 1.25rem;">🎯 Misión</h3>
-                    <p style="font-size: 0.95rem;">Facilitar a deportistas destacados el acceso a recursos óptimos de entrenamiento mediante la gobernanza transparente y activa de nuestra comunidad.</p>
+        <section class="hero">
+            <div class="hero-text">
+                <h1>PERU</h1>
+                <p>El primer proyecto Web3 peruano enfocado en apoyar deportistas de bajos recursos mediante blockchain, becas, viajes e implementos deportivos.</p>
+                <div class="buttons">
+                    <a href="https://pancakeswap.finance/swap?outputCurrency=0x1c647ebe755fe03dc43fa078ca550e837d0b4444" target="_blank" class="btn primary">Comprar PERU</a>
+                    <a href="whitepaper.pdf" target="_blank" class="btn secondary">Whitepaper</a>
+                    <a href="https://bscscan.com/token/0x1c647ebe755fe03dc43fa078ca550e837d0b4444" target="_blank" class="btn secondary">BscScan</a>
                 </div>
             </div>
-        </div>
+            <div class="hero-image">
+                <img src="logo.png" alt="Ecosistema PERU Token">
+            </div>
+        </section>
 
-        <div id="donate-section" class="card reveal" style="max-width: 800px; margin: 50px auto 0 auto; text-align: center; border: 2px dashed rgba(234, 179, 8, 0.4); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);">
-            <div style="font-size: 3rem; margin-bottom: 10px;">🎁</div>
-            <h3 style="justify-content: center; font-size: 1.6rem; color: #eab308; margin-bottom: 10px;">Apoya al Proyecto (Donaciones)</h3>
-            <p style="color: #cbd5e1; font-size: 1rem; max-width: 650px; margin: 0 auto 20px auto; line-height: 1.6;">Si usas celular, exchanges (Binance, OKX, etc.) u otras wallets de criptomonedas, puedes enviar tu aporte voluntario directamente copiando la siguiente dirección pública oficial:</p>
-            <div style="background: rgba(0,0,0,0.4); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); display: inline-block; width: 100%; max-width: 550px; margin-bottom: 20px;">
-                <span style="font-size: 0.75rem; color: #ca8a04; font-weight: 700; display: block; margin-bottom: 5px; letter-spacing: 1px;">DIRECCIÓN OFICIAL DE TESORERÍA (BSC)</span>
-                <p id="donation-address" style="word-break: break-all; font-family: monospace; font-size: 0.95rem; color: #ffffff; margin-bottom: 15px; font-weight: bold;">0xE7A8096362f14152375E9FF0631114044dCe0f91</p>
-                <button onclick="copyDonationWallet()" class="donate-copy-btn">📋 Copiar Dirección</button>
-            </div>
-            <p style="font-size: 0.85rem; color: #94a3b8;">⚠️ Recuerda enviar tus fondos únicamente a través de la red **Binance Smart Chain (BSC / BEP20)** para evitar pérdidas. ¡Gracias por impulsar el deporte peruano!</p>
-        </div>
+        <section id="about">
+            <h2 class="title reveal">PROYECTO</h2>
+            <p class="subtitle reveal">Blockchain con impacto real en el deporte peruano</p>
 
-        <h3 class="reveal" style="text-align: center; color: white; margin: 80px 0 30px 0; font-size: 2rem; font-weight: 800;">¿Cómo apoyamos?</h3>
-        <p class="subtitle reveal" style="margin-bottom: 40px;">Nuestros pilares de distribución de fondos de ayuda</p>
-
-        <div class="grid">
-            <div class="card reveal" style="text-align: center;">
-                <div style="font-size: 2.5rem; margin-bottom: 15px;">🏆</div>
-                <h3 style="justify-content: center; font-size: 1.3rem;">Becas Deportivas</h3>
-                <p style="font-size: 0.9rem; color: #94a3b8;">Sustento económico directo mensual asignado a atletas de alto rendimiento para cubrir sus gastos básicos de preparación.</p>
-            </div>
-            <div class="card reveal" style="text-align: center;">
-                <div style="font-size: 2.5rem; margin-bottom: 15px;">✈️</div>
-                <h3 style="justify-content: center; font-size: 1.3rem;">Viajes y Competencias</h3>
-                <p style="font-size: 0.9rem; color: #94a3b8;">Financiamiento integral de boletos, hospedajes y viáticos para torneos oficiales a nivel nacional e internacional.</p>
-            </div>
-            <div class="card reveal" style="text-align: center;">
-                <div style="font-size: 2.5rem; margin-bottom: 15px;">⚽</div>
-                <h3 style="justify-content: center; font-size: 1.3rem;">Implementos Profesionales</h3>
-                <p style="font-size: 0.9rem; color: #94a3b8;">Dotación de indumentaria, accesorios técnicos y herramientas especializadas según los requerimientos de cada disciplina.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="stats" style="background: rgba(255,255,255,0.01); border-top: 1px solid rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.02);">
-        <h2 class="title reveal">ESTADÍSTICAS</h2>
-        <p class="subtitle reveal">Métricas clave e impacto comunitario en tiempo real</p>
-        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px;">
-            <div class="stat-box reveal">
-                <div class="stat-number">100%</div>
-                <h4 style="font-weight: 600; color: #cbd5e1; font-size: 1.1rem; margin-bottom: 5px;">Descentralizado</h4>
-                <p style="font-size: 0.85rem; color: #64748b;">Sin entidades financieras intermediarias</p>
-            </div>
-            <div class="stat-box reveal">
-                <div class="stat-number">1M</div>
-                <h4 style="font-weight: 600; color: #cbd5e1; font-size: 1.1rem; margin-bottom: 5px;">Supply Máximo</h4>
-                <p style="font-size: 0.85rem; color: #64748b;">Emisión fija sin acuñación posterior</p>
-            </div>
-            <div class="stat-box reveal">
-                <div class="stat-number">20%</div>
-                <h4 style="font-weight: 600; color: #cbd5e1; font-size: 1.1rem; margin-bottom: 5px;">Fondo de Impacto</h4>
-                <p style="font-size: 0.85rem; color: #64748b;">Reservado estrictamente para los atletas</p>
-            </div>
-        </div>
-    </section>
-
-   <!-- SECCIÓN: BENEFICIARIOS (EN INICIOS / CONVOCATORIA) -->
-    <section id="beneficiaries">
-        <h2 class="title reveal">BENEFICIARIOS</h2>
-        <p class="subtitle reveal">Próximas convocatorias abiertas para atletas nacionales</p>
-        
-        <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
-            <!-- Tarjeta única de Convocatoria centralizada -->
-            <div class="card reveal beneficiary-card" style="border: 2px dashed rgba(255, 77, 77, 0.4); max-width: 500px; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 45px 30px; background: rgba(5, 8, 22, 0.65);">
-                <span class="status-badge status-review" style="margin-bottom: 25px; padding: 6px 16px; font-size: 0.8rem;">Próximamente</span>
-                
-                <!-- Icono de Medalla Deportiva -->
-                <div style="font-size: 3.5rem; margin-bottom: 20px; filter: drop-shadow(0 0 15px rgba(234, 179, 8, 0.4));">🏅</div>
-                
-                <h3 style="justify-content: center; font-size: 1.6rem; margin-bottom: 15px; font-weight: 700; border: none;">¿Eres deportista?</h3>
-                
-                <p style="font-size: 1rem; color: #cbd5e1; line-height: 1.7; margin-bottom: 30px; text-align: center; font-weight: 300;">
-                    Muy pronto abriremos el portal de gobernanza para que los atletas peruanos puedan enviar sus postulaciones directamente a la comunidad.
-                </p>
-                
-                <a href="#community" class="btn secondary" style="padding: 12px 35px; font-size: 0.95rem; border-radius: 12px; width: auto; font-weight: 600;">Estar Atento</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="utility">
-        <h2 class="title reveal">UTILIDAD</h2>
-        <p class="subtitle reveal">Casos de uso reales que impulsan la economía interna del token</p>
-        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-            <div class="card reveal">
-                <h3>🗳️ Gobernanza Descentralizada</h3>
-                <p>Los holders deciden. Utiliza tus tokens para votar qué deportistas, disciplinas o proyectos recibirán los fondos de financiamiento social en las convocatorias periódicas.</p>
-            </div>
-            <div class="card reveal">
-                <h3>🎁 Recompensas de Ecosistema</h3>
-                <p>Acceso directo a beneficios comunitarios exclusivos, sorteos de equipamientos y preventas preferenciales de lanzamientos del ecosistema PERU.</p>
-            </div>
-            <div class="card reveal">
-                <h3>💎 Protocolo de Staking</h3>
-                <p>Inmoviliza tus activos de forma segura dentro de la plataforma para respaldar la liquidez general a cambio de rendimientos pasivos sustentables en el tiempo.</p>
-            </div>
-            <div class="card reveal">
-                <h3>🏅 Acceso y NFTs de Atletas</h3>
-                <p>Derecho preferencial a experiencias exclusivas y colecciones de NFTs oficiales cuyos beneficios van destinados en su totalidad a los propios deportistas.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="tokenomics">
-        <h2 class="title reveal">TOKENOMICS</h2>
-        <p class="subtitle reveal">Estructura transparente, segura y orientada a la comunidad</p>
-        <div class="tokenomics-container" style="display: flex; gap: 40px; flex-wrap: wrap; align-items: flex-start;">
-            <div class="card reveal" style="flex: 1; min-width: 320px;">
-                <h3>📜 Información del Token</h3>
-                <p style="margin-bottom: 12px; display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
-                    <span style="color: #94a3b8;">Nombre:</span> <strong>PERU</strong>
-                </p>
-                <p style="margin-bottom: 12px; display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
-                    <span style="color: #94a3b8;">Tipo:</span> <strong>Token social / comunitario</strong>
-                </p>
-                <p style="margin-bottom: 25px; display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
-                    <span style="color: #94a3b8;">Total Supply:</span> <strong>1,000,000 Tokens</strong>
-                </p>
-                <div style="background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); text-align: center;">
-                    <span style="font-size: 0.85rem; color: #ff4d4d; font-weight: 600; display: block; margin-bottom: 8px; letter-spacing: 1px;">CONTRATO OFICIAL (BSC)</span>
-                    <p style="word-break: break-all; font-family: monospace; font-size: 0.9rem; color: #cbd5e1; margin-bottom: 15px; background: rgba(255,255,255,0.02); padding: 10px; border-radius: 6px;">0x1c647ebe755fe03dc43fa078ca550e837d0b4444</p>
-                    <button onclick="copyContract()" class="copy-btn" style="width: 100%; padding: 12px;">📋 Copiar Contrato</button>
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin-bottom: 60px;">
+                <div class="card reveal" style="display: flex; flex-direction: column; justify-content: center;">
+                    <h3>
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                        Introducción al Ecosistema
+                    </h3>
+                    <p style="margin-bottom: 15px;">PERU es un activo digital basado en tecnología blockchain creado con un propósito social claro: transformar el futuro de atletas de bajos recursos mediante financiamiento transparente, directo y descentralizado.</p>
+                    <p>Conectamos inversores y entusiastas Web3 con jóvenes talentos nacionales, reduciendo intermediarios y asegurando que cada aporte genere un cambio real en su carrera competitiva.</p>
                 </div>
-            </div>
-            <div style="flex: 1.3; min-width: 320px; display: flex; flex-direction: column; gap: 20px;">
-                <div class="card reveal" style="padding: 20px 25px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                        <h3 style="margin: 0; font-size: 1.2rem;">💧 Liquidez Inicial</h3>
-                        <span style="color: #ff4d4d; font-weight: 800; font-size: 1.3rem;">40%</span>
+                <div style="display: flex; flex-direction: column; gap: 25px;">
+                    <div class="card reveal" style="padding: 25px;">
+                        <h3>
+                            <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+                            Visión
+                        </h3>
+                        <p style="font-size: 0.95rem;">Liderar el ecosistema cripto-social en Latinoamérica, posicionando a Perú como referente en innovación social aplicada y descentralizada a través de blockchain.</p>
                     </div>
-                    <p style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 10px;">Asignada al pool para garantizar un comercio estable y descentralizado.</p>
-                    <div class="token-progress-bg"><div class="token-progress-fill" style="width: 40%;"></div></div>
-                </div>
-                <div class="card reveal" style="padding: 20px 25px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                        <h3 style="margin: 0; font-size: 1.2rem;">📈 Marketing y Expansión</h3>
-                        <span style="color: #ff4d4d; font-weight: 800; font-size: 1.3rem;">20%</span>
+                    <div class="card reveal" style="padding: 25px;">
+                        <h3>
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.25z"/></svg>
+                            Misión
+                        </h3>
+                        <p style="font-size: 0.95rem;">Facilitar a deportistas destacados el acceso a recursos óptimos de entrenamiento mediante la gobernanza transparente y activa de nuestra comunidad.</p>
                     </div>
-                    <p style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 10px;">Destinado a campañas de difusión, listados en exchanges y crecimiento de comunidad.</p>
-                    <div class="token-progress-bg"><div class="token-progress-fill" style="width: 20%;"></div></div>
                 </div>
-                <div class="card reveal" style="padding: 20px 25px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                        <h3 style="margin: 0; font-size: 1.2rem;">🏆 Fondo Social (Apoyo Deportivo)</h3>
-                        <span style="color: #ff4d4d; font-weight: 800; font-size: 1.3rem;">20%</span>
+            </div>
+
+            <div id="donate-section" class="card reveal" style="max-width: 800px; margin: 50px auto 0 auto; text-align: center; border: 2px dashed rgba(234, 179, 8, 0.4); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);">
+                <div style="font-size: 3rem; margin-bottom: 10px;">🎁</div>
+                <h3 style="justify-content: center; font-size: 1.6rem; color: #eab308; margin-bottom: 10px; border: none;">Apoya al Proyecto (Donaciones)</h3>
+                <p style="color: #cbd5e1; font-size: 1rem; max-width: 650px; margin: 0 auto 20px auto; line-height: 1.6;">Si usas celular, exchanges u otras wallets, puedes enviar tu aporte voluntario directamente copiando la siguiente dirección pública oficial:</p>
+                <div style="background: rgba(0,0,0,0.4); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); display: inline-block; width: 100%; max-width: 550px; margin-bottom: 20px;">
+                    <span style="font-size: 0.75rem; color: #ca8a04; font-weight: 700; display: block; margin-bottom: 5px; letter-spacing: 1px;">DIRECCIÓN OFICIAL DE TESORERÍA (BSC)</span>
+                    <p id="donation-address" style="word-break: break-all; font-family: monospace; font-size: 0.95rem; color: #ffffff; margin-bottom: 15px; font-weight: bold;">0xE7A8096362f14152375E9FF0631114044dCe0f91</p>
+                    <button onclick="copyDonationWallet()" class="donate-copy-btn">📋 Copiar Dirección</button>
+                </div>
+                <p style="font-size: 0.85rem; color: #94a3b8;">⚠️ Recuerda enviar tus fondos únicamente a través de la red **Binance Smart Chain (BSC / BEP20)** para evitar pérdidas.</p>
+            </div>
+
+            <h3 class="reveal" style="text-align: center; color: white; margin: 80px 0 30px 0; font-size: 2rem; font-weight: 800;">¿Cómo apoyamos?</h3>
+            <p class="subtitle reveal" style="margin-bottom: 40px;">Nuestros pilares de distribución de fondos de ayuda</p>
+
+            <div class="grid">
+                <div class="card reveal" style="text-align: center;">
+                    <div style="font-size: 2.5rem; margin-bottom: 15px;">🏆</div>
+                    <h3 style="justify-content: center; font-size: 1.3rem;">Becas Deportivas</h3>
+                    <p style="font-size: 0.9rem; color: #94a3b8;">Sustento económico directo mensual asignado a atletas de alto rendimiento para cubrir sus gastos básicos de preparación.</p>
+                </div>
+                <div class="card reveal" style="text-align: center;">
+                    <div style="font-size: 2.5rem; margin-bottom: 15px;">✈️</div>
+                    <h3 style="justify-content: center; font-size: 1.3rem;">Viajes y Competencias</h3>
+                    <p style="font-size: 0.9rem; color: #94a3b8;">Financiamiento integral de boletos, hospedajes y viáticos para torneos oficiales a nivel nacional e internacional.</p>
+                </div>
+                <div class="card reveal" style="text-align: center;">
+                    <div style="font-size: 2.5rem; margin-bottom: 15px;">⚽</div>
+                    <h3 style="justify-content: center; font-size: 1.3rem;">Implementos Profesionales</h3>
+                    <p style="font-size: 0.9rem; color: #94a3b8;">Dotación de indumentaria, accesorios técnicos y herramientas especializadas según los requerimientos de cada disciplina.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="stats" style="background: rgba(255,255,255,0.01); border-top: 1px solid rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.02);">
+            <h2 class="title reveal">ESTADÍSTICAS</h2>
+            <p class="subtitle reveal">Métricas clave e impacto comunitario en tiempo real</p>
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px;">
+                <div class="stat-box reveal">
+                    <div class="stat-number">100%</div>
+                    <h4 style="font-weight: 600; color: #cbd5e1; font-size: 1.1rem; margin-bottom: 5px;">Descentralizado</h4>
+                    <p style="font-size: 0.85rem; color: #64748b;">Sin entidades financieras intermediarias</p>
+                </div>
+                <div class="stat-box reveal">
+                    <div class="stat-number">1M</div>
+                    <h4 style="font-weight: 600; color: #cbd5e1; font-size: 1.1rem; margin-bottom: 5px;">Supply Máximo</h4>
+                    <p style="font-size: 0.85rem; color: #64748b;">Emisión fija sin acuñación posterior</p>
+                </div>
+                <div class="stat-box reveal">
+                    <div class="stat-number">20%</div>
+                    <h4 style="font-weight: 600; color: #cbd5e1; font-size: 1.1rem; margin-bottom: 5px;">Fondo de Impacto</h4>
+                    <p style="font-size: 0.85rem; color: #64748b;">Reservado estrictamente para los atletas</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="beneficiaries">
+            <h2 class="title reveal">BENEFICIARIOS</h2>
+            <p class="subtitle reveal">Próximas convocatorias abiertas para atletas nacionales</p>
+            
+            <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
+                <div class="card reveal beneficiary-card" style="border: 2px dashed rgba(255, 77, 77, 0.4); max-width: 500px; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 45px 30px; background: rgba(5, 8, 22, 0.65);">
+                    <span class="status-badge status-review" style="margin-bottom: 25px; padding: 6px 16px; font-size: 0.8rem;">Próximamente</span>
+                    <div style="font-size: 3.5rem; margin-bottom: 20px; filter: drop-shadow(0 0 15px rgba(234, 179, 8, 0.4));">🏅</div>
+                    <h3 style="justify-content: center; font-size: 1.6rem; margin-bottom: 15px; font-weight: 700; border: none;">¿Eres deportista?</h3>
+                    <p style="font-size: 1rem; color: #cbd5e1; line-height: 1.7; margin-bottom: 30px; text-align: center; font-weight: 300;">
+                        Muy pronto abriremos el portal de gobernanza para que los atletas peruanos puedan enviar sus postulaciones directamente a la comunidad.
+                    </p>
+                    <a href="#community" class="btn secondary" style="padding: 12px 35px; font-size: 0.95rem; border-radius: 12px; width: auto; font-weight: 600;">Estar Atento</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="utility">
+            <h2 class="title reveal">UTILIDAD</h2>
+            <p class="subtitle reveal">Casos de uso reales que impulsan la economía interna del token</p>
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                <div class="card reveal">
+                    <h3>🗳️ Gobernanza Descentralizada</h3>
+                    <p>Los holders deciden. Utiliza tus tokens para votar qué deportistas, disciplinas o proyectos recibirán los fondos de financiamiento social en las convocatorias periódicas.</p>
+                </div>
+                <div class="card reveal">
+                    <h3>🎁 Recompensas de Ecosistema</h3>
+                    <p>Acceso directo a beneficios comunitarios exclusivos, sorteos de equipamientos y preventas preferenciales de lanzamientos del ecosistema PERU.</p>
+                </div>
+                <div class="card reveal">
+                    <h3>💎 Protocolo de Staking</h3>
+                    <p>Inmoviliza tus activos de forma segura dentro de la plataforma para respaldar la liquidez general a cambio de rendimientos pasivos sustentables en el tiempo.</p>
+                </div>
+                <div class="card reveal">
+                    <h3>🏅 Acceso y NFTs de Atletas</h3>
+                    <p>Derecho preferencial a experiencias exclusivas y colecciones de NFTs oficiales cuyos beneficios van destinados en su totalidad a los propios deportistas.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="tokenomics">
+            <h2 class="title reveal">TOKENOMICS</h2>
+            <p class="subtitle reveal">Estructura transparente, segura y orientada a la comunidad</p>
+            
+            <div class="tokenomics-container">
+                <!-- Información del Contrato -->
+                <div class="card reveal" style="flex: 1; min-width: 320px;">
+                    <h3>📜 Información del Token</h3>
+                    <p style="margin-bottom: 12px; display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
+                        <span style="color: #94a3b8;">Nombre:</span> <strong>PERU</strong>
+                    </p>
+                    <p style="margin-bottom: 12px; display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
+                        <span style="color: #94a3b8;">Tipo:</span> <strong>Token social / comunitario</strong>
+                    </p>
+                    <p style="margin-bottom: 25px; display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 8px;">
+                        <span style="color: #94a3b8;">Total Supply:</span> <strong>1,000,000 Tokens</strong>
+                    </p>
+                    <div style="background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); text-align: center;">
+                        <span style="font-size: 0.85rem; color: #ff4d4d; font-weight: 600; display: block; margin-bottom: 8px; letter-spacing: 1px;">CONTRATO OFICIAL (BSC)</span>
+                        <p style="word-break: break-all; font-family: monospace; font-size: 0.9rem; color: #cbd5e1; margin-bottom: 15px; background: rgba(255,255,255,0.02); padding: 10px; border-radius: 6px;">0x1c647ebe755fe03dc43fa078ca550e837d0b4444</p>
+                        <button onclick="copyContract()" class="copy-btn" style="width: 100%; padding: 12px;">📋 Copiar Contrato</button>
                     </div>
-                    <p style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 10px;">Pilar del proyecto: financiamiento directo para becas, pasajes y equipo de atletas peruanos.</p>
-                    <div class="token-progress-bg"><div class="token-progress-fill" style="width: 20%;"></div></div>
                 </div>
-                <div class="card reveal" style="padding: 20px 25px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                        <h3 style="margin: 0; font-size: 1.2rem;">🛠️ Equipo de Desarrollo</h3>
-                        <span style="color: #ff4d4d; font-weight: 800; font-size: 1.3rem;">10%</span>
+
+                <!-- Gráfico Interactivo Web3 -->
+                <div class="chart-wrapper reveal">
+                    <canvas id="tokenomicsChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="roadmap">
+            <h2 class="title reveal">ROADMAP</h2>
+            <p class="subtitle reveal">Fases de desarrollo técnico y social programadas a mediano y largo plazo</p>
+            <div class="timeline">
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="card">
+                        <h3 style="font-size: 1.2rem; color: #ff4d4d;">🚀 FASE 1 – Despliegue & Lanzamiento</h3>
+                        <ul style="margin-top: 10px;">
+                            <li>Despliegue e indexación del Smart Contract en Binance Smart Chain.</li>
+                            <li>Lanzamiento y puesta en marcha del portal comunitario inicial (Fourmeme).</li>
+                            <li>Configuración de canales globales de comunicación y branding.</li>
+                            <li>Fase Alfa de marketing estratégico enfocado en micro-influencers Web3.</li>
+                        </ul>
                     </div>
-                    <p style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 10px;">Incentivo para los desarrolladores, diseñadores y soporte técnico de la plataforma.</p>
-                    <div class="token-progress-bg"><div class="token-progress-fill" style="width: 10%;"></div></div>
                 </div>
-                <div class="card reveal" style="padding: 20px 25px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                        <h3 style="margin: 0; font-size: 1.2rem;">🔒 Reserva Estratégica</h3>
-                        <span style="color: #ff4d4d; font-weight: 800; font-size: 1.3rem;">10%</span>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot" style="border-color: #64748b; box-shadow: none;"></div>
+                    <div class="card">
+                        <h3 style="font-size: 1.2rem;">📈 FASE 2 – Consolidación & Primer Impacto</h3>
+                        <ul style="margin-top: 10px;">
+                            <li>Expansión orgánica y crecimiento escalonado en plataformas de difusión masiva.</li>
+                            <li>Selección y auditoría de los primeros deportistas peruanos beneficiados.</li>
+                            <li>Postulación e integración de métricas en rastreadores de capitalización.</li>
+                        </ul>
                     </div>
-                    <p style="font-size: 0.9rem; color: #94a3b8; margin-bottom: 10px;">Fondos resguardados para futuras alianzas institucionales o emergencias del protocolo.</p>
-                    <div class="token-progress-bg"><div class="token-progress-fill" style="width: 10%;"></div></div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot" style="border-color: #64748b; box-shadow: none;"></div>
+                    <div class="card">
+                        <h3 style="font-size: 1.2rem;">🌍 FASE 3 – Infraestructura & Utilidad</h3>
+                        <ul style="margin-top: 10px;">
+                            <li>Estructuración avanzada del portal web oficial de gobernanza descentralizada.</li>
+                            <li>Integración funcional de sistemas de votación Web3 (`Snapshot` o propiedad).</li>
+                            <li>Alianzas formales con federaciones, academias de entrenamiento y clubes deportivos locales.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot" style="border-color: #64748b; box-shadow: none;"></div>
+                    <div class="card">
+                        <h3 style="font-size: 1.2rem;">🏆 FASE 4 – Escalamiento Global</h3>
+                        <ul style="margin-top: 10px;">
+                            <li>Internacionalización del modelo de financiamiento social Web3.</li>
+                            <li>Patrocinios de gran escala en eventos competitivos internacionales.</li>
+                            <li>Organización de torneos y copas deportivas oficiales bajo la marca PERU.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="roadmap">
-        <h2 class="title reveal">ROADMAP</h2>
-        <p class="subtitle reveal">Fases de desarrollo técnico y social programadas a mediano y largo plazo</p>
-        <div class="timeline">
-            <div class="timeline-item reveal">
-                <div class="timeline-dot"></div>
-                <div class="card">
-                    <h3 style="font-size: 1.2rem; color: #ff4d4d;">🚀 FASE 1 – Despliegue & Lanzamiento</h3>
-                    <ul style="margin-top: 10px;">
-                        <li>Despliegue e indexación del Smart Contract en Binance Smart Chain.</li>
-                        <li>Lanzamiento y puesta en marcha del portal comunitario inicial (Fourmeme).</li>
-                        <li>Configuración de canales globales de comunicación y branding.</li>
-                        <li>Fase Alfa de marketing estratégico enfocado en micro-influencers Web3.</li>
-                    </ul>
+        <section id="team">
+            <h2 class="title reveal">EQUIPO</h2>
+            <p class="subtitle reveal">Estructura organizativa enfocada en el desarrollo tecnológico y social</p>
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <div class="card reveal" style="text-align: center;">
+                    <span class="team-badge">Ingeniería Web3</span>
+                    <h3 style="justify-content: center; margin-bottom: 10px;">Core Developers</h3>
+                    <p style="font-size: 0.9rem; color: #94a3b8;">Especialistas en desarrollo de contratos inteligentes, arquitectura blockchain, seguridad de código de red e implementaciones front-end.</p>
+                </div>
+                <div class="card reveal" style="text-align: center;">
+                    <span class="team-badge">Crecimiento y Difusión</span>
+                    <h3 style="justify-content: center; margin-bottom: 10px;">Marketing & Social Ops</h3>
+                    <p style="font-size: 0.9rem; color: #94a3b8;">Profesionales dedicados al crecimiento de audiencias, relaciones públicas, gestión de comunidades Web3 y posicionamiento de marca digital.</p>
+                </div>
+                <div class="card reveal" style="text-align: center;">
+                    <span class="team-badge">Gobernanza y Nexos</span>
+                    <h3 style="justify-content: center; margin-bottom: 10px;">Coordinación Social</h3>
+                    <p style="font-size: 0.9rem; color: #94a3b8;">Encargados de auditar los casos postulados, coordinar de forma directa la entrega transparente de los recursos económicos y supervisar el impacto real.</p>
                 </div>
             </div>
-            <div class="timeline-item reveal">
-                <div class="timeline-dot" style="border-color: #64748b; box-shadow: none;"></div>
-                <div class="card">
-                    <h3 style="font-size: 1.2rem;">📈 FASE 2 – Consolidación & Primer Impacto</h3>
-                    <ul style="margin-top: 10px;">
-                        <li>Expansión orgánica y crecimiento escalonado en plataformas de difusión masiva.</li>
-                        <li>Selección y auditoría de los primeros deportistas peruanos beneficiados.</li>
-                        <li>Postulación e integración de métricas en rastreadores de capitalización.</li>
-                    </ul>
-                </div>
+            <div class="card reveal" style="margin-top: 40px; text-align: center; border-style: dashed; border-color: rgba(255,255,255,0.15);">
+                <p style="font-size: 0.95rem; color: #94a3b8; max-width: 800px; margin: 0 auto;">Por estrictas razones de seguridad informática y resguardo personal, el equipo opera bajo pseudónimos verificables en la red, una metodología estándar dentro del ecosistema cripto.</p>
             </div>
-            <div class="timeline-item reveal">
-                <div class="timeline-dot" style="border-color: #64748b; box-shadow: none;"></div>
-                <div class="card">
-                    <h3 style="font-size: 1.2rem;">🌍 FASE 3 – Infraestructura & Utilidad</h3>
-                    <ul style="margin-top: 10px;">
-                        <li>Estructuración avanzada del portal web oficial de gobernanza descentralizada.</li>
-                        <li>Integración funcional de sistemas de votación Web3 (`Snapshot` o propiedad).</li>
-                        <li>Alianzas formales con federaciones, academias de entrenamiento y clubes deportivos locales.</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="timeline-item reveal">
-                <div class="timeline-dot" style="border-color: #64748b; box-shadow: none;"></div>
-                <div class="card">
-                    <h3 style="font-size: 1.2rem;">🏆 FASE 4 – Escalamiento Global</h3>
-                    <ul style="margin-top: 10px;">
-                        <li>Internacionalización del modelo de financiamiento social Web3.</li>
-                        <li>Patrocinios de gran escala en eventos competitivos internacionales.</li>
-                        <li>Organización de torneos y copas deportivas oficiales bajo la marca PERU.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="team">
-        <h2 class="title reveal">EQUIPO</h2>
-        <p class="subtitle reveal">Estructura organizativa enfocada en el desarrollo tecnológico y social</p>
-        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-            <div class="card reveal" style="text-align: center;">
-                <span class="team-badge">Ingeniería Web3</span>
-                <h3 style="justify-content: center; margin-bottom: 10px;">Core Developers</h3>
-                <p style="font-size: 0.9rem; color: #94a3b8;">Especialistas en desarrollo de contratos inteligentes, arquitectura blockchain, seguridad de código de red e implementaciones front-end en aplicaciones descentralizadas.</p>
+        <section id="security" style="background: rgba(255,255,255,0.01); border-top: 1px solid rgba(255,255,255,0.02);">
+            <h2 class="title reveal">🛡️ SEGURIDAD Y TRANSPARENCIA</h2>
+            <p class="subtitle reveal">Protocolos técnicos diseñados para salvaguardar el ecosistema</p>
+            <div class="grid">
+                <div class="card reveal">
+                    <h3 style="font-size: 1.15rem; color: #ff4d4d;">✔ Contrato Verificado</h3>
+                    <p style="font-size: 0.9rem; color: #cbd5e1;">Código fuente abierto e indexado públicamente en BscScan, permitiendo auditorías de lógica transaccional en cualquier momento.</p>
+                </div>
+                <div class="card reveal">
+                    <h3 style="font-size: 1.15rem; color: #ff4d4d;">✔ Distribución Fija</h3>
+                    <p style="font-size: 0.9rem; color: #cbd5e1;">Tokenomics matemática inmutable que previene modificaciones imprevistas en los porcentajes de asignación.</p>
+                </div>
+                <div class="card reveal">
+                    <h3 style="font-size: 1.15rem; color: #ff4d4d;">✔ Liquidez Protegida</h3>
+                    <p style="font-size: 0.9rem; color: #cbd5e1;">Mecanismo de resguardo que restringe retiros maliciosos y aporta un entorno transaccional saludable.</p>
+                </div>
+                <div class="card reveal">
+                    <h3 style="font-size: 1.15rem; color: #ff4d4d;">✔ Trazabilidad Absoluta</h3>
+                    <p style="font-size: 0.9rem; color: #cbd5e1;">Cada aporte, retiro, donación o asignación al fondo social queda registrado de forma permanente en la blockchain.</p>
+                </div>
             </div>
-            <div class="card reveal" style="text-align: center;">
-                <span class="team-badge">Crecimiento y Difusión</span>
-                <h3 style="justify-content: center; margin-bottom: 10px;">Marketing & Social Ops</h3>
-                <p style="font-size: 0.9rem; color: #94a3b8;">Profesionales dedicados al crecimiento de audiencias, relaciones públicas, gestión de comunidades Web3 y posicionamiento de marca digital.</p>
-            </div>
-            <div class="card reveal" style="text-align: center;">
-                <span class="team-badge">Gobernanza y Nexos</span>
-                <h3 style="justify-content: center; margin-bottom: 10px;">Coordinación Social</h3>
-                <p style="font-size: 0.9rem; color: #94a3b8;">Encargados de auditar los casos postulados, coordinar de forma directa la entrega transparente de los recursos económicos y supervisar el impacto real.</p>
-            </div>
-        </div>
-        <div class="card reveal" style="margin-top: 40px; text-align: center; border-style: dashed; border-color: rgba(255,255,255,0.15);">
-            <p style="font-size: 0.95rem; color: #94a3b8; max-width: 800px; margin: 0 auto;">Por estrictas razones de seguridad informática y resguardo personal, el equipo opera bajo pseudónimos verificables en la red, una metodología estándar, respetada y ampliamente eficaz dentro del desarrollo de software descentralizado global.</p>
-        </div>
-    </section>
+        </section>
 
-    <section id="security" style="background: rgba(255,255,255,0.01); border-top: 1px solid rgba(255,255,255,0.02);">
-        <h2 class="title reveal">🛡️ SEGURIDAD Y TRANSPARENCIA</h2>
-        <p class="subtitle reveal">Protocolos técnicos diseñados para salvaguardar el ecosistema</p>
-        <div class="grid">
+        <section id="community">
+            <h2 class="title reveal">ÚNETE A LA COMUNIDAD</h2>
+            <p class="subtitle reveal">Sé parte del movimiento crypto peruano</p>
+            <div class="buttons" style="justify-content:center;">
+                <a href="https://x.com/WWW__PERU" target="_blank" class="btn primary">Twitter</a>
+                <a href="https://www.tiktok.com/@token.peru" target="_blank" class="btn secondary">TikTok</a>
+                <a href="https://discord.gg/TU-INVITACION" target="_blank" class="btn secondary">Discord</a>
+            </div>
+        </section>
+
+        <section id="legal">
+            <h2 class="title reveal">AVISO LEGAL</h2>
             <div class="card reveal">
-                <h3 style="font-size: 1.15rem; color: #ff4d4d;">✔ Contrato Verificado</h3>
-                <p style="font-size: 0.9rem; color: #cbd5e1;">Código fuente abierto e indexado públicamente en BscScan, permitiendo auditorías de lógica transaccional por cualquier entidad externa en cualquier momento.</p>
+                <p>PERU es un proyecto comunitario basado en blockchain. La compra de activos digitales implica riesgos. Cada participante debe realizar su propia investigación antes de tomar decisiones financieras.</p>
             </div>
-            <div class="card reveal">
-                <h3 style="font-size: 1.15rem; color: #ff4d4d;">✔ Distribución Fija</h3>
-                <p style="font-size: 0.9rem; color: #cbd5e1;">Las reglas del juego claras desde el origen. Tokenomics matemática inmutable que previene modificaciones imprevistas en los porcentajes de asignación.</p>
+        </section>
+
+        <footer>
+            <h2>PERU</h2>
+            <p class="footer-desc">Proyecto Web3 solidario creado para impulsar el deporte peruano mediante tecnología descentralizada.</p>
+            
+            <div class="footer-links">
+                <a href="mailto:www.peru@outlook.es" class="footer-link-item">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                    www.peru@outlook.es
+                </a>
+                <a href="https://www-token-peru.blogspot.com/" target="_blank" class="footer-link-item">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95a15.65 15.65 0 0 0-1.38-3.56A8.03 8.03 0 0 1 18.92 8zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.34-.14 2 0 .67.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56A8.03 8.03 0 0 1 5.08 16zm2.95-8H5.08a8.03 8.03 0 0 1 3.56-3.56A15.65 15.65 0 0 0 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.34-.16-2 0-.67.07-1.35.16-2h4.68c.09.65.16 1.33.16 2 0 .66-.07 1.34-.16 2zm.24 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56zM16.36 14c.08-.66.14-1.34.14-2 0-.67-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/>
+                    </svg>
+                    www-token-peru.blogspot.com
+                </a>
             </div>
-            <div class="card reveal">
-                <h3 style="font-size: 1.15rem; color: #ff4d4d;">✔ Liquidez Protegida</h3>
-                <p style="font-size: 0.9rem; color: #cbd5e1;">Mecanismo de resguardo que restringe retiros maliciosos y aporta un entorno transaccional saludable para los agentes del mercado.</p>
-            </div>
-            <div class="card reveal">
-                <h3 style="font-size: 1.15rem; color: #ff4d4d;">✔ Trazabilidad Absoluta</h3>
-                <p style="font-size: 0.9rem; color: #cbd5e1;">Cada aporte, retiro, donación o asignación al fondo social queda registrado de forma perpetua en el registro público de la blockchain.</p>
-            </div>
-        </div>
-    </section>
+            <p class="copyright">© 2026 PERU — Community Project. Todos los derechos reservados.</p>
+        </footer>
 
-    <section id="community">
-        <h2 class="title reveal">ÚNETE A LA COMUNIDAD</h2>
-        <p class="subtitle reveal">Sé parte del movimiento crypto peruano</p>
-        <div class="buttons" style="justify-content:center;">
-            <a href="https://x.com/WWW__PERU" target="_blank" class="btn primary">Twitter</a>
-            <a href="https://www.tiktok.com/@token.peru" target="_blank" class="btn secondary">TikTok</a>
-            <a href="https://discord.gg/TU-INVITACION" target="_blank" class="btn secondary">Discord</a>
-        </div>
-    </section>
-
-    <section id="legal">
-        <h2 class="title reveal">AVISO LEGAL</h2>
-        <div class="card reveal">
-            <p>PERU es un proyecto comunitario basado en blockchain. La compra de activos digitales implica riesgos. Cada participante debe realizar su propia investigación antes de tomar decisiones financieras.</p>
-        </div>
-    </section>
-
-    <!-- FOOTER MODIFICADO Y OPTIMIZADO STYLE WEB3 -->
-    <footer>
-        <h2>PERU</h2>
-        <p class="footer-desc">Proyecto Web3 solidario creado para impulsar el deporte peruano mediante tecnología descentralizada.</p>
-        
-        <div class="footer-links">
-            <!-- Enlace de Correo -->
-            <a href="mailto:www.peru@outlook.es" class="footer-link-item">
-                <svg viewBox="0 0 24 24">
-                    <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                </svg>
-                www.peru@outlook.es
-            </a>
-
-            <!-- Enlace de Portal Web Oficial -->
-            <a href="https://www-token-peru.blogspot.com/" target="_blank" class="footer-link-item">
-                <svg viewBox="0 0 24 24">
-                    <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95a15.65 15.65 0 0 0-1.38-3.56A8.03 8.03 0 0 1 18.92 8zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.34-.14 2 0 .67.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56A8.03 8.03 0 0 1 5.08 16zm2.95-8H5.08a8.03 8.03 0 0 1 3.56-3.56A15.65 15.65 0 0 0 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.34-.16-2 0-.67.07-1.35.16-2h4.68c.09.65.16 1.33.16 2 0 .66-.07 1.34-.16 2zm.24 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56zM16.36 14c.08-.66.14-1.34.14-2 0-.67-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/>
-                </svg>
-                www-token-peru.blogspot.com
-            </a>
-        </div>
-
-        <p class="copyright">© 2026 PERU — Community Project. Todos los derechos reservados.</p>
-    </footer>
-
-    <a href="https://wa.me/51987654321" class="whatsapp-float" target="_blank">
-        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" viewBox="0 0 24 24">
-            <path d="M20.52 3.48A11.77 11.77 0 0 0 12.04 0C5.5 0 .16 5.34.16 11.88c0 2.1.55 4.15 1.6 5.96L0 24l6.34-1.66a11.84 11.84 0 0 0 5.7 1.45h.01c6.54 0 11.88-5.34 11.88-11.88 0-3.17-1.24-6.15-3.41-8.43z" />
-        </svg>
-    </a>
+        <!-- Flotante Oficial de Telegram con Estilo Web3 Premium -->
+        <a href="https://t.me/TuGrupoDeTelegram" class="telegram-float" target="_blank" aria-label="Unirse a Telegram">
+            <svg viewBox="0 0 24 24">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.24-5.54 3.65-.52.36-1 .53-1.42.52-.47-.01-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.24.35-.49.97-.74 3.79-1.65 6.32-2.74 7.57-3.27 3.61-1.5 4.36-1.76 4.85-1.77.11 0 .35.03.5.15.13.12.17.29.18.41-.01.06-.01.14-.02.2z"/>
+            </svg>
+        </a>
+    </div>
 
     <script>
         function toggleMenu() {
@@ -1062,7 +1030,6 @@
             document.querySelector("nav ul").classList.remove("active");
         }
 
-        // Animación por Scroll optimizada para SEO (clase .reveal)
         const itemsToReveal = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
@@ -1103,6 +1070,53 @@
                 btn.classList.remove("copied");
             }, 3000);
         }
+
+        // Renderizado del Gráfico de Tokenomics Inteligente y Neón
+        document.addEventListener("DOMContentLoaded", function() {
+            const ctx = document.getElementById('tokenomicsChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: [
+                        'Liquidez Inicial (40%)', 
+                        'Marketing y Expansión (20%)', 
+                        'Fondo Social / Atletas (20%)', 
+                        'Equipo de Desarrollo (10%)', 
+                        'Reserva Estratégica (10%)'
+                    ],
+                    datasets: [{
+                        data: [40, 20, 20, 10, 10],
+                        backgroundColor: [
+                            '#ff0000', // Rojo Intenso
+                            '#ff4d4d', // Rojo Claro
+                            '#eab308', // Dorado Solidario
+                            '#1f2937', // Gris Oscuro Técnico
+                            '#4b5563'  // Gris Neutro
+                        ],
+                        borderColor: 'rgba(5, 8, 22, 1)',
+                        borderWidth: 3,
+                        hoverOffset: 15
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#cbd5e1',
+                                font: {
+                                    family: "'Poppins', sans-serif",
+                                    size: 12
+                                },
+                                padding: 20
+                            }
+                        }
+                    },
+                    cutout: '70%'
+                }
+            });
+        });
     </script>
 </body>
 </html>
