@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PROYECTO - PERU</title>
+    <title>PERU - Web3 Solidario</title>
     <meta name="description" content="PERU es un proyecto Web3 solidario enfocado en apoyar deportistas peruanos mediante blockchain y financiamiento descentralizado.">
     <meta name="keywords" content="PERU, crypto peru, token peruano, blockchain peru, memecoin peru">
     <meta name="author" content="PERU">
@@ -40,7 +40,7 @@
             color: white;
         }
 
-        /* === PANTALLA DE BIENVENIDA (SPLASH SCREEN) === */
+        /* === PANTALLA DE BIENVENIDA (SPLASH SCREEN con robot.png) === */
         #welcome-screen {
             position: fixed;
             top: 0;
@@ -502,38 +502,37 @@
             border: 1px solid rgba(255, 77, 77, 0.2);
         }
 
-        /* Flotante Web3 nativo cambiado de WhatsApp a Telegram */
-        .telegram-float {
+        /* === MODIFICADO: Flotante Oficial de WhatsApp con Estilo Web3 Premium === */
+        .whatsapp-float {
             position: fixed;
             width: 60px;
             height: 60px;
             bottom: 25px;
             right: 25px;
-            background: linear-gradient(135deg, #229ED9, #177aa7);
+            background: linear-gradient(135deg, #25D366, #128C7E);
             border: 2px solid rgba(255,255,255,0.2);
             border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 0 25px rgba(34, 158, 217, 0.5);
+            box-shadow: 0 0 25px rgba(37, 211, 102, 0.5);
             z-index: 9999;
             transition: .3s;
-            animation: floatTelegram 2s infinite ease-in-out;
+            animation: floatWhatsapp 2s infinite ease-in-out;
         }
 
-        .telegram-float:hover {
+        .whatsapp-float:hover {
             transform: scale(1.1);
-            box-shadow: 0 0 35px rgba(34, 158, 217, 0.8);
+            box-shadow: 0 0 35px rgba(37, 211, 102, 0.8);
         }
 
-        .telegram-float svg {
-            width: 28px;
-            height: 28px;
+        .whatsapp-float svg {
+            width: 32px;
+            height: 32px;
             fill: white;
-            transform: translate(-2px, 1px);
         }
 
-        @keyframes floatTelegram {
+        @keyframes floatWhatsapp {
             0% { transform: translateY(0); }
             50% { transform: translateY(-8px); }
             100% { transform: translateY(0); }
@@ -718,7 +717,8 @@
                 width: 220px;
             }
 
-            .telegram-float {
+            /* === Adaptación móvil del flotante de WhatsApp === */
+            .whatsapp-float {
                 width: 55px;
                 height: 55px;
                 bottom: 20px;
@@ -1098,10 +1098,10 @@
             <p class="copyright">© 2026 PERU — Community Project. Todos los derechos reservados.</p>
         </footer>
 
-        <!-- Flotante Oficial de Telegram con Estilo Web3 Premium -->
-        <a href="https://t.me/TuGrupoDeTelegram" class="telegram-float" target="_blank" aria-label="Unirse a Telegram">
+        <!-- MODIFICADO: Flotante Oficial de WhatsApp con Link Configurable (Recuerda poner tu número en el href) -->
+        <a href="https://wa.me/51900000000" class="whatsapp-float" target="_blank" aria-label="Contacto por WhatsApp">
             <svg viewBox="0 0 24 24">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.24-5.54 3.65-.52.36-1 .53-1.42.52-.47-.01-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.24.35-.49.97-.74 3.79-1.65 6.32-2.74 7.57-3.27 3.61-1.5 4.36-1.76 4.85-1.77.11 0 .35.03.5.15.13.12.17.29.18.41-.01.06-.01.14-.02.2z"/>
+                <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.503-5.73-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.413 9.863-9.847.001-2.63-1.019-5.101-2.873-6.958C16.6 1.983 14.129.962 11.501.961c-5.44 0-9.863 4.414-9.866 9.85-.001 1.763.483 3.486 1.4 5.013L1.97 20.317l4.677-1.163zm14.39-7.904c-.3-.15-1.77-.875-2.045-.974-.275-.1-.475-.15-.675.15-.2.3-.775.974-.95 1.174-.175.2-.35.225-.65.075-.3-.15-1.265-.467-2.41-1.485-.89-.795-1.49-1.777-1.665-2.077-.175-.3-.018-.463.13-.61.135-.133.3-.35.45-.525.15-.175.2-.3.3-.5.1-.2.05-.375-.025-.525-.075-.15-.675-1.625-.925-2.225-.244-.589-.491-.51-.675-.52-.175-.01-.375-.01-.575-.01-.2 0-.525.075-.8 1.05-.275.975-1.05 2.55-1.05 2.625 0 .075.112.553.525 1.125.688.95 1.55 1.45 2.55 1.85 1 .4 1.8 1.5 1.8 1.5.3-.075 1.025-.25 1.025-.25s.6-.15.825-.05c.225.1 1.425.575 1.625.675.2.1.35.225.4.3.05.075.05.425-.1.825-.15.4-.775.825-1.075.85-.3.025-.575-.05-2.475-.825z"/>
             </svg>
         </a>
     </div>
