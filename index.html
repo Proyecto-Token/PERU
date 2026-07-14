@@ -29,10 +29,77 @@
             scroll-behavior: smooth;
         }
 
+        /* EVITA EL SCROLL MIENTRAS LA PANTALLA DE BIENVENIDA ESTÉ ACTIVA */
+        body.no-scroll {
+            overflow: hidden;
+        }
+
         body {
             background: #050816;
             color: white;
         }
+
+        /* === PANTALLA DE BIENVENIDA (SPLASH SCREEN) === */
+        #welcome-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, #11162d, #050816);
+            z-index: 10000; /* Por encima de todo, incluso del menú */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            transition: opacity 0.8s ease, visibility 0.8s ease;
+        }
+
+        /* Clase que aplicará JS para ocultarla */
+        #welcome-screen.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .welcome-content {
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .welcome-logo {
+            width: 150px;
+            height: auto;
+            filter: drop-shadow(0 0 30px #ff0000aa);
+            animation: floatWelcome 4s ease-in-out infinite;
+        }
+
+        .welcome-title {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, #ff0000, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+
+        .welcome-text {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        @keyframes floatWelcome {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* ============================================== */
 
         /* Envoltura global segura para evitar desbordamiento sin romper scroll elástico */
         .app-wrapper {
@@ -681,7 +748,20 @@
     </style>
 </head>
 
-<body>
+<!-- AGREGADA LA CLASE no-scroll AL BODY POR DEFECTO -->
+<body class="no-scroll">
+
+    <!-- === NUEVA PANTALLA DE BIENVENIDA === -->
+    <div id="welcome-screen">
+        <div class="welcome-content">
+            <img src="logo.png" alt="PERU Logo" class="welcome-logo">
+            <h1 class="welcome-title">BIENVENIDO A PERU</h1>
+            <p class="welcome-text">El primer proyecto Web3 solidario enfocado en transformar el futuro de atletas de bajos recursos en el Perú mediante tecnología blockchain.</p>
+            <button onclick="enterSite()" class="btn primary" style="font-size: 1.2rem; padding: 18px 45px;">Ingresar al Proyecto</button>
+        </div>
+    </div>
+    <!-- ==================================== -->
+
     <div class="app-wrapper">
         <div class="bg"></div>
 
@@ -1022,6 +1102,15 @@
     </div>
 
     <script>
+        // === NUEVA FUNCIÓN JAVASCRIPT PARA ENTRAR A LA WEB ===
+        function enterSite() {
+            // Oculta la pantalla de bienvenida con la animación CSS
+            document.getElementById("welcome-screen").classList.add("hidden");
+            // Reactiva el scroll vertical del sitio
+            document.body.classList.remove("no-scroll");
+        }
+        // ====================================================
+
         function toggleMenu() {
             document.querySelector("nav ul").classList.toggle("active");
         }
