@@ -380,30 +380,7 @@
             font-weight: 300;
         }
 
-        .card ul {
-            padding-left: 20px;
-            list-style: none;
-        }
-
-        .card ul li {
-            position: relative;
-            margin-bottom: 12px;
-            padding-left: 5px;
-        }
-
-        .card ul li::before {
-            content: "•";
-            color: #ff4d4d;
-            font-weight: bold;
-            display: inline-block;
-            width: 1em;
-            margin-left: -1em;
-            text-shadow: 0 0 8px #ff0000;
-        }
-
-        /* ==========================================
-           PILARES DE ACCIÓN DIRECTA (REDiseñado)
-           ========================================== */
+        /* PILARES DE ACCIÓN DIRECTA */
         .pillar-card {
             background: linear-gradient(145deg, rgba(20, 25, 45, 0.8) 0%, rgba(8, 12, 28, 0.9) 100%);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -508,9 +485,7 @@
             transform: translateY(-10px);
         }
 
-        /* ==========================================
-           ESTADÍSTICAS DASHBOARD (REDiseñado)
-           ========================================== */
+        /* ESTADÍSTICAS DASHBOARD */
         .stats-dashboard {
             background: linear-gradient(180deg, rgba(7, 11, 25, 0.7) 0%, rgba(5, 8, 22, 0.95) 100%);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -566,6 +541,230 @@
             font-size: 0.82rem;
             color: #64748b;
             font-weight: 400;
+        }
+
+        /* ==========================================
+           SECCIÓN UTILIDAD (MEJORADA Y REDISEÑADA)
+           ========================================== */
+        .utility-card {
+            background: linear-gradient(145deg, rgba(15, 20, 38, 0.85) 0%, rgba(7, 10, 22, 0.95) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 35px 28px;
+            position: relative;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .utility-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 77, 77, 0.4);
+            box-shadow: 0 18px 40px rgba(255, 0, 0, 0.15);
+        }
+
+        .utility-icon-wrapper {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            background: rgba(255, 77, 77, 0.1);
+            border: 1px solid rgba(255, 77, 77, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            transition: 0.3s ease;
+        }
+
+        .utility-card:hover .utility-icon-wrapper {
+            background: rgba(255, 77, 77, 0.2);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 77, 77, 0.3);
+        }
+
+        .utility-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .utility-desc {
+            font-size: 0.92rem;
+            color: #94a3b8;
+            line-height: 1.65;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .utility-tag {
+            align-self: flex-start;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #ff4d4d;
+            background: rgba(255, 77, 77, 0.08);
+            padding: 4px 12px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 77, 77, 0.2);
+            letter-spacing: 0.5px;
+        }
+
+        /* ==========================================
+           SECCIÓN EQUIPO (MEJORADA Y REDISEÑADA)
+           ========================================== */
+        .team-card-modern {
+            background: linear-gradient(135deg, rgba(20, 26, 48, 0.7) 0%, rgba(10, 14, 28, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            backdrop-filter: blur(14px);
+            transition: all 0.4s ease;
+        }
+
+        .team-card-modern:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 77, 77, 0.35);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 25px rgba(255, 77, 77, 0.12);
+        }
+
+        .team-avatar-box {
+            width: 85px;
+            height: 85px;
+            margin: 0 auto 20px auto;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(255, 77, 77, 0.2), rgba(255, 255, 255, 0.05));
+            border: 2px solid rgba(255, 77, 77, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            box-shadow: 0 0 20px rgba(255, 77, 77, 0.15);
+            transition: 0.4s ease;
+        }
+
+        .team-card-modern:hover .team-avatar-box {
+            transform: scale(1.08);
+            border-color: #ff4d4d;
+            box-shadow: 0 0 30px rgba(255, 77, 77, 0.4);
+        }
+
+        .team-role-badge {
+            display: inline-block;
+            background: rgba(255, 77, 77, 0.12);
+            color: #ff4d4d;
+            border: 1px solid rgba(255, 77, 77, 0.25);
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 15px;
+        }
+
+        .team-name {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .team-bio {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .team-disclaimer {
+            margin-top: 40px;
+            background: linear-gradient(90deg, rgba(255, 77, 77, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border: 1px dashed rgba(255, 77, 77, 0.3);
+            border-radius: 16px;
+            padding: 22px 30px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .team-disclaimer-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .team-disclaimer-text {
+            font-size: 0.88rem;
+            color: #cbd5e1;
+            line-height: 1.5;
+            font-weight: 300;
+            text-align: left;
+        }
+
+        /* ==========================================
+           SECCIÓN SEGURIDAD (MEJORADA Y REDISEÑADA)
+           ========================================== */
+        .security-section {
+            background: linear-gradient(180deg, rgba(5, 8, 22, 0.95) 0%, rgba(10, 15, 30, 0.95) 100%);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+        }
+
+        .security-card-modern {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 20px;
+            padding: 30px 25px;
+            position: relative;
+            backdrop-filter: blur(10px);
+            transition: all 0.35s ease;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .security-card-modern:hover {
+            transform: translateY(-6px);
+            border-color: rgba(34, 197, 94, 0.4);
+            background: rgba(34, 197, 94, 0.03);
+            box-shadow: 0 12px 30px rgba(34, 197, 94, 0.1);
+        }
+
+        .security-check-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(34, 197, 94, 0.12);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #22c55e;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .security-info h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .security-info p {
+            font-size: 0.88rem;
+            color: #94a3b8;
+            line-height: 1.6;
+            font-weight: 300;
         }
 
         .beneficiary-card {
@@ -625,18 +824,6 @@
             border: 4px solid #ff4d4d;
             z-index: 2;
             box-shadow: 0 0 15px #ff0000;
-        }
-
-        .team-badge {
-            background: rgba(255, 77, 77, 0.1);
-            color: #ff4d4d;
-            padding: 5px 15px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            display: inline-block;
-            margin-bottom: 15px;
-            border: 1px solid rgba(255, 77, 77, 0.2);
         }
 
         .whatsapp-float {
@@ -700,9 +887,7 @@
             box-shadow: 0 0 25px rgba(22, 163, 74, .5);
         }
 
-        /* ==========================================
-           SECCIÓN DONACIONES (COMPACTA Y MODERNA)
-           ========================================== */
+        /* SECCIÓN DONACIONES */
         .donate-card-compact {
             max-width: 680px !important;
             margin: 40px auto 0 auto !important;
@@ -1023,6 +1208,15 @@
                 width: 100%;
                 padding: 12px;
             }
+
+            .team-disclaimer {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .team-disclaimer-text {
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -1057,6 +1251,7 @@
                 <li><a href="#tokenomics" onclick="closeMenu()">Tokenomics</a></li>
                 <li><a href="#roadmap" onclick="closeMenu()">Roadmap</a></li>
                 <li><a href="#team" onclick="closeMenu()">Equipo</a></li>
+                <li><a href="#security" onclick="closeMenu()">Seguridad</a></li>
             </ul>
         </nav>
 
@@ -1106,7 +1301,7 @@
                 </div>
             </div>
 
-            <!-- SECCIÓN DONACIONES MODERNA Y COMPACTA -->
+            <!-- SECCIÓN DONACIONES -->
             <div id="donate-section" class="card reveal donate-card-compact">
                 <div class="donate-header">
                     <div class="donate-badge">
@@ -1129,7 +1324,7 @@
             </div>
         </section>
 
-        <!-- === PILARES DE ACCIÓN DIRECTA (REDiseñado) === -->
+        <!-- PILARES DE ACCIÓN DIRECTA -->
         <section id="pilares">
             <h2 class="title reveal">PILARES DE ACCIÓN DIRECTA</h2>
             <p class="subtitle reveal">Estructura estratégica de financiamiento e impacto para nuestros atletas</p>
@@ -1167,7 +1362,7 @@
             </div>
         </section>
 
-        <!-- === ESTADÍSTICAS DASHBOARD (REDiseñado) === -->
+        <!-- ESTADÍSTICAS DASHBOARD -->
         <section id="stats" class="stats-dashboard">
             <h2 class="title reveal">ESTADÍSTICAS DEL ECOSISTEMA</h2>
             <p class="subtitle reveal">Métricas clave e impacto comunitario transparente en la cadena</p>
@@ -1220,25 +1415,46 @@
             </div>
         </section>
 
+        <!-- === SECCIÓN UTILIDAD (REDISEÑADA Y MODERNIZADA) === -->
         <section id="utility">
-            <h2 class="title reveal">UTILIDAD</h2>
-            <p class="subtitle reveal">Casos de uso reales que impulsan la economía interna del token</p>
-            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-                <div class="card reveal">
-                    <h3>🗳️ Gobernanza Descentralizada</h3>
-                    <p>Los holders deciden. Utiliza tus tokens para votar qué deportistas, disciplinas o proyectos recibirán los fondos de financiamiento social en las convocatorias periódicas.</p>
+            <h2 class="title reveal">UTILIDAD DEL TOKEN</h2>
+            <p class="subtitle reveal">Infraestructura funcional que impulsa el valor intrínseco del ecosistema</p>
+            
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+                <div class="utility-card reveal">
+                    <div>
+                        <div class="utility-icon-wrapper">🗳️</div>
+                        <h3 class="utility-title">Gobernanza DAO</h3>
+                        <p class="utility-desc">Toma el control directo de las decisiones clave. Los holders votan en la selección de deportistas beneficiares y en la asignación periódica de fondos comunitarios.</p>
+                    </div>
+                    <span class="utility-tag">Voto en Cadena</span>
                 </div>
-                <div class="card reveal">
-                    <h3>🎁 Recompensas de Ecosistema</h3>
-                    <p>Acceso directo a beneficios comunitarios exclusivos, sorteos de equipamientos y preventas preferenciales de lanzamientos del ecosistema PERU.</p>
+
+                <div class="utility-card reveal">
+                    <div>
+                        <div class="utility-icon-wrapper">💎</div>
+                        <h3 class="utility-title">Staking & Ratios</h3>
+                        <p class="utility-desc">Inmoviliza tus tokens PERU en el contrato oficial para fortalecer la liquidez de red mientras generas recompensas sustentables en el tiempo.</p>
+                    </div>
+                    <span class="utility-tag">Yield DeFi</span>
                 </div>
-                <div class="card reveal">
-                    <h3>💎 Protocolo de Staking</h3>
-                    <p>Inmoviliza tus activos de forma segura dentro de la plataforma para respaldar la liquidez general a cambio de rendimientos pasivos sustentables en el tiempo.</p>
+
+                <div class="utility-card reveal">
+                    <div>
+                        <div class="utility-icon-wrapper">🏅</div>
+                        <h3 class="utility-title">Pase NFT de Atletas</h3>
+                        <p class="utility-desc">Acceso prioritario y exclusivo a colecciones NFT oficiales. El 100% de las regalías va destinado a la adquisición de indumentaria para atletas.</p>
+                    </div>
+                    <span class="utility-tag">Coleccionables</span>
                 </div>
-                <div class="card reveal">
-                    <h3>🏅 Acceso y NFTs de Atletas</h3>
-                    <p>Derecho preferencial a experiencias exclusivas y colecciones de NFTs oficiales cuyos beneficios van destinados en su totalidad a los propios deportistas.</p>
+
+                <div class="utility-card reveal">
+                    <div>
+                        <div class="utility-icon-wrapper">🎁</div>
+                        <h3 class="utility-title">Experiencias VIP</h3>
+                        <p class="utility-desc">Accede a sorteos de equipamiento deportivo firmado, boletos VIP para torneos nacionales e incentivos comunitarios exclusivos.</p>
+                    </div>
+                    <span class="utility-tag">Beneficios Holders</span>
                 </div>
             </div>
         </section>
@@ -1280,11 +1496,11 @@
                     <div class="timeline-dot"></div>
                     <div class="card">
                         <h3 style="font-size: 1.2rem; color: #ff4d4d;">🚀 FASE 1 – Despliegue & Lanzamiento</h3>
-                        <ul style="margin-top: 10px;">
-                            <li>Despliegue e indexación del Smart Contract en Binance Smart Chain.</li>
-                            <li>Lanzamiento y puesta en marcha del portal comunitario inicial (Fourmeme).</li>
-                            <li>Configuración de canales globales de comunicación y branding.</li>
-                            <li>Fase Alfa de marketing estratégico enfocado en micro-influencers Web3.</li>
+                        <ul style="margin-top: 10px; list-style: none;">
+                            <li style="margin-bottom: 8px;">• Despliegue e indexación del Smart Contract en Binance Smart Chain.</li>
+                            <li style="margin-bottom: 8px;">• Lanzamiento y puesta en marcha del portal comunitario inicial (Fourmeme).</li>
+                            <li style="margin-bottom: 8px;">• Configuración de canales globales de comunicación y branding.</li>
+                            <li>• Fase Alfa de marketing estratégico enfocado en micro-influencers Web3.</li>
                         </ul>
                     </div>
                 </div>
@@ -1292,10 +1508,10 @@
                     <div class="timeline-dot" style="border-color: #64748b; box-shadow: none;"></div>
                     <div class="card">
                         <h3 style="font-size: 1.2rem;">📈 FASE 2 – Consolidación & Primer Impacto</h3>
-                        <ul style="margin-top: 10px;">
-                            <li>Expansión orgánica y crecimiento escalonado en plataformas de difusión masiva.</li>
-                            <li>Selección y auditoría de los primeros deportistas peruanos beneficiados.</li>
-                            <li>Postulación e integración de métricas en rastreadores de capitalización.</li>
+                        <ul style="margin-top: 10px; list-style: none;">
+                            <li style="margin-bottom: 8px;">• Expansión orgánica y crecimiento escalonado en plataformas de difusión masiva.</li>
+                            <li style="margin-bottom: 8px;">• Selección y auditoría de los primeros deportistas peruanos beneficiados.</li>
+                            <li>• Postulación e integración de métricas en rastreadores de capitalización.</li>
                         </ul>
                     </div>
                 </div>
@@ -1303,10 +1519,10 @@
                     <div class="timeline-dot" style="border-color: #64748b; box-shadow: none;"></div>
                     <div class="card">
                         <h3 style="font-size: 1.2rem;">🌍 FASE 3 – Infraestructura & Utilidad</h3>
-                        <ul style="margin-top: 10px;">
-                            <li>Estructuración avanzada del portal web oficial de gobernanza descentralizada.</li>
-                            <li>Integración funcional de sistemas de votación Web3.</li>
-                            <li>Alianzas formales con federaciones, academias de entrenamiento y clubes deportivos locales.</li>
+                        <ul style="margin-top: 10px; list-style: none;">
+                            <li style="margin-bottom: 8px;">• Estructuración avanzada del portal web oficial de gobernanza descentralizada.</li>
+                            <li style="margin-bottom: 8px;">• Integración funcional de sistemas de votación Web3.</li>
+                            <li>• Alianzas formales con federaciones, academias de entrenamiento y clubes deportivos locales.</li>
                         </ul>
                     </div>
                 </div>
@@ -1314,60 +1530,88 @@
                     <div class="timeline-dot" style="border-color: #64748b; box-shadow: none;"></div>
                     <div class="card">
                         <h3 style="font-size: 1.2rem;">🏆 FASE 4 – Escalamiento Global</h3>
-                        <ul style="margin-top: 10px;">
-                            <li>Internacionalización del modelo de financiamiento social Web3.</li>
-                            <li>Patrocinios de gran escala en eventos competitivos internacionales.</li>
-                            <li>Organización de torneos y copas deportivas oficiales bajo la marca PERU.</li>
+                        <ul style="margin-top: 10px; list-style: none;">
+                            <li style="margin-bottom: 8px;">• Internacionalización del modelo de financiamiento social Web3.</li>
+                            <li style="margin-bottom: 8px;">• Patrocinios de gran escala en eventos competitivos internacionales.</li>
+                            <li>• Organización de torneos y copas deportivas oficiales bajo la marca PERU.</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- === SECCIÓN EQUIPO (REDISEÑADA Y MODERNIZADA) === -->
         <section id="team">
-            <h2 class="title reveal">EQUIPO</h2>
-            <p class="subtitle reveal">Estructura organizativa enfocada en el desarrollo tecnológico y social</p>
-            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-                <div class="card reveal" style="text-align: center;">
-                    <span class="team-badge">Ingeniería Web3</span>
-                    <h3 style="justify-content: center; margin-bottom: 10px;">Core Developers</h3>
-                    <p style="font-size: 0.9rem; color: #94a3b8;">Especialistas en desarrollo de contratos inteligentes, arquitectura blockchain, seguridad de código de red e implementaciones front-end.</p>
+            <h2 class="title reveal">EQUIPO DESARROLLADOR</h2>
+            <p class="subtitle reveal">Estructura organizativa especializada responsable del crecimiento del proyecto</p>
+            
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+                <div class="team-card-modern reveal">
+                    <div class="team-avatar-box">💻</div>
+                    <span class="team-role-badge">Arquitectura Blockchain</span>
+                    <h3 class="team-name">Core Developers</h3>
+                    <p class="team-bio">Ingenieros de software a cargo del despliegue de Smart Contracts, auditoría constante de código, seguridad en BSC y desarrollo front-end.</p>
                 </div>
-                <div class="card reveal" style="text-align: center;">
-                    <span class="team-badge">Crecimiento y Difusión</span>
-                    <h3 style="justify-content: center; margin-bottom: 10px;">Marketing & Social Ops</h3>
-                    <p style="font-size: 0.9rem; color: #94a3b8;">Profesionales dedicados al crecimiento de audiencias, relaciones públicas, gestión de comunidades Web3 y posicionamiento de marca digital.</p>
+
+                <div class="team-card-modern reveal">
+                    <div class="team-avatar-box">📣</div>
+                    <span class="team-role-badge">Estrategia Digital</span>
+                    <h3 class="team-name">Marketing & Social Ops</h3>
+                    <p class="team-bio">Especialistas encargados del crecimiento orgánico de la comunidad, alianzas con creadores Web3, prensa y posicionamiento de marca.</p>
                 </div>
-                <div class="card reveal" style="text-align: center;">
-                    <span class="team-badge">Gobernanza y Nexos</span>
-                    <h3 style="justify-content: center; margin-bottom: 10px;">Coordinación Social</h3>
-                    <p style="font-size: 0.9rem; color: #94a3b8;">Encargados de auditar los casos postulados, coordinar de forma directa la entrega transparente de los recursos económicos y supervisar el impacto real.</p>
+
+                <div class="team-card-modern reveal">
+                    <div class="team-avatar-box">🤝</div>
+                    <span class="team-role-badge">Impacto Social</span>
+                    <h3 class="team-name">Coordinación Deportiva</h3>
+                    <p class="team-bio">Equipo encargado de verificar los expedientes de deportistas, coordinar las convocatorias y garantizar la asignación transparente de los recursos.</p>
                 </div>
             </div>
-            <div class="card reveal" style="margin-top: 40px; text-align: center; border-style: dashed; border-color: rgba(255,255,255,0.15);">
-                <p style="font-size: 0.95rem; color: #94a3b8; max-width: 800px; margin: 0 auto;">Por estrictas razones de seguridad informática y resguardo personal, el equipo opera bajo pseudónimos verificables en la red, una metodología estándar dentro del ecosistema cripto.</p>
+
+            <div class="team-disclaimer reveal">
+                <span class="team-disclaimer-icon">🛡️</span>
+                <p class="team-disclaimer-text">
+                    <strong>Resguardo Cripto-Estándar:</strong> Por motivos estricto resguardo personal y seguridad cibernética, el equipo opera bajo seudónimos digitales verificados en la red, garantizando un enfoque 100% centrado en el desarrollo de producto y neutralidad comunitaria.
+                </p>
             </div>
         </section>
 
-        <section id="security" style="background: rgba(255,255,255,0.01); border-top: 1px solid rgba(255,255,255,0.02);">
-            <h2 class="title reveal">🛡️ SEGURIDAD Y TRANSPARENCIA</h2>
-            <p class="subtitle reveal">Protocolos técnicos diseñados para salvaguardar el ecosistema</p>
-            <div class="grid">
-                <div class="card reveal">
-                    <h3 style="font-size: 1.15rem; color: #ff4d4d;">✔ Contrato Verificado</h3>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">Código fuente abierto e indexado públicamente en BscScan, permitiendo auditorías de lógica transaccional en cualquier momento.</p>
+        <!-- === SECCIÓN SEGURIDAD (REDISEÑADA Y MODERNIZADA) === -->
+        <section id="security" class="security-section">
+            <h2 class="title reveal">SEGURIDAD Y TRANSPARENCIA</h2>
+            <p class="subtitle reveal">Protocolos y arquitectura técnica diseñados para proteger los fondos de los inversores</p>
+            
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+                <div class="security-card-modern reveal">
+                    <div class="security-check-icon">✓</div>
+                    <div class="security-info">
+                        <h4>Contrato Verificado</h4>
+                        <p>Código fuente completamente abierto, público y rastreable en BscScan, permitiendo auditar la lógica interna en todo momento.</p>
+                    </div>
                 </div>
-                <div class="card reveal">
-                    <h3 style="font-size: 1.15rem; color: #ff4d4d;">✔ Distribución Fija</h3>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">Tokenomics matemática inmutable que previene modificaciones imprevistas en los porcentajes de asignación.</p>
+
+                <div class="security-card-modern reveal">
+                    <div class="security-check-icon">✓</div>
+                    <div class="security-info">
+                        <h4>Emisión Fija e Inmutable</h4>
+                        <p>Tokenomics blindada mediante contrato. No existe posibilidad técnica de acuñar nuevas monedas (Mint disabled).</p>
+                    </div>
                 </div>
-                <div class="card reveal">
-                    <h3 style="font-size: 1.15rem; color: #ff4d4d;">✔ Liquidez Protegida</h3>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">Mecanismo de resguardo que restringe retiros maliciosos y aporta un entorno transaccional saludable.</p>
+
+                <div class="security-card-modern reveal">
+                    <div class="security-check-icon">✓</div>
+                    <div class="security-info">
+                        <h4>Trazabilidad en Cadena</h4>
+                        <p>Cada donación, gasto o retiro ejecutado por la DAO queda registrado de forma pública e indeleble en la blockchain.</p>
+                    </div>
                 </div>
-                <div class="card reveal">
-                    <h3 style="font-size: 1.15rem; color: #ff4d4d;">✔ Trazabilidad Absoluta</h3>
-                    <p style="font-size: 0.9rem; color: #cbd5e1;">Cada aporte, retiro, donación o asignación al fondo social queda registrado de forma permanente en la blockchain.</p>
+
+                <div class="security-card-modern reveal">
+                    <div class="security-check-icon">✓</div>
+                    <div class="security-info">
+                        <h4>Sin Impuestos Ocultos</h4>
+                        <p>Comercio completamente libre (0% Tax de compra / 0% Tax de venta), otorgando la máxima flexibilidad de trading a la comunidad.</p>
+                    </div>
                 </div>
             </div>
         </section>
