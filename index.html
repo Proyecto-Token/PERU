@@ -401,26 +401,43 @@
             text-shadow: 0 0 8px #ff0000;
         }
 
-        .beneficiary-card {
+        /* ESTILOS MEJORADOS SECCIÓN BENEFICIARIOS */
+        .beneficiary-hero {
+            background: linear-gradient(135deg, rgba(255, 77, 77, 0.05) 0%, rgba(5, 8, 22, 0.9) 100%);
+            border: 1px solid rgba(255, 77, 77, 0.2);
+            border-radius: 24px;
+            padding: 40px;
             text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .beneficiary-step-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
             padding: 25px;
+            transition: all 0.3s ease;
         }
 
-        .status-badge {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
+        .beneficiary-step-card:hover {
+            border-color: rgba(255, 77, 77, 0.4);
+            transform: translateY(-5px);
+            background: rgba(255, 77, 77, 0.03);
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #ff0000, #ff4d4d);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.1rem;
             margin-bottom: 15px;
-        }
-
-        .status-review {
-            background: rgba(234, 179, 8, 0.15);
-            color: #eab308;
-            border: 1px solid rgba(234, 179, 8, 0.3);
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
         }
 
         .stat-box {
@@ -881,6 +898,10 @@
                 width: 100%;
                 padding: 12px;
             }
+
+            .beneficiary-hero {
+                padding: 25px 15px;
+            }
         }
     </style>
 </head>
@@ -907,13 +928,13 @@
             <button class="menu-toggle" onclick="toggleMenu()" aria-label="Abrir menú de navegación">☰</button>
             <ul>
                 <li><a href="#about" onclick="closeMenu()">Proyecto</a></li>
-                <li><a href="#donate-section" onclick="closeMenu()">Donar</a></li>
                 <li><a href="#stats" onclick="closeMenu()">Estadísticas</a></li>
                 <li><a href="#beneficiaries" onclick="closeMenu()">Beneficiarios</a></li>
                 <li><a href="#utility" onclick="closeMenu()">Utilidad</a></li>
                 <li><a href="#tokenomics" onclick="closeMenu()">Tokenomics</a></li>
                 <li><a href="#roadmap" onclick="closeMenu()">Roadmap</a></li>
                 <li><a href="#team" onclick="closeMenu()">Equipo</a></li>
+                <li><a href="#donate-section" onclick="closeMenu()">Donar</a></li>
             </ul>
         </nav>
 
@@ -963,28 +984,6 @@
                 </div>
             </div>
 
-            <!-- SECCIÓN DONACIONES MODERNA Y COMPACTA -->
-            <div id="donate-section" class="card reveal donate-card-compact">
-                <div class="donate-header">
-                    <div class="donate-badge">
-                        <span class="pulse-dot"></span> Donaciones Abiertas
-                    </div>
-                    <h3 class="donate-title">Fondo Social de Apoyo</h3>
-                    <p class="donate-subtext">Tu contribución va directamente a financiar becas, viajes e implementos para deportistas peruanos.</p>
-                </div>
-
-                <div class="donate-body">
-                    <div class="donate-address-wrapper">
-                        <div class="donate-network-tag">RED BSC (BEP20)</div>
-                        <code id="donation-address" class="donate-code">0xE7A8096362f14152375E9FF0631114044dCe0f91</code>
-                    </div>
-                    <button onclick="copyDonationWallet()" class="donate-copy-btn">
-                        <svg viewBox="0 0 24 24" class="copy-icon"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-                        <span>Copiar Dirección</span>
-                    </button>
-                </div>
-            </div>
-
             <h3 class="reveal" style="text-align: center; color: white; margin: 80px 0 30px 0; font-size: 2rem; font-weight: 800;">¿Cómo apoyamos?</h3>
             <p class="subtitle reveal" style="margin-bottom: 40px;">Nuestros pilares de distribución de fondos de ayuda</p>
 
@@ -1029,19 +1028,42 @@
             </div>
         </section>
 
+        <!-- === SECCIÓN BENEFICIARIOS (MEJORADA) === -->
         <section id="beneficiaries">
-            <h2 class="title reveal">BENEFICIARIOS</h2>
-            <p class="subtitle reveal">Próximas convocatorias abiertas para atletas nacionales</p>
+            <h2 class="title reveal">BENEFICIARIOS & CONVOCATORIA</h2>
+            <p class="subtitle reveal">El camino transparente para respaldar al talento nacional</p>
             
-            <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
-                <div class="card reveal beneficiary-card" style="border: 2px dashed rgba(255, 77, 77, 0.4); max-width: 500px; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 45px 30px; background: rgba(5, 8, 22, 0.65);">
-                    <span class="status-badge status-review" style="margin-bottom: 25px; padding: 6px 16px; font-size: 0.8rem;">Próximamente</span>
-                    <div style="font-size: 3.5rem; margin-bottom: 20px; filter: drop-shadow(0 0 15px rgba(234, 179, 8, 0.4));">🏅</div>
-                    <h3 style="justify-content: center; font-size: 1.6rem; margin-bottom: 15px; font-weight: 700; border: none;">¿Eres deportista?</h3>
-                    <p style="font-size: 1rem; color: #cbd5e1; line-height: 1.7; margin-bottom: 30px; text-align: center; font-weight: 300;">
-                        Muy pronto abriremos el portal de gobernanza para que los atletas peruanos puedan enviar sus postulaciones directamente a la comunidad.
-                    </p>
-                    <a href="#community" class="btn secondary" style="padding: 12px 35px; font-size: 0.95rem; border-radius: 12px; width: auto; font-weight: 600;">Estar Atento</a>
+            <div class="beneficiary-hero reveal">
+                <span class="status-badge status-review" style="margin-bottom: 15px; font-size: 0.85rem; padding: 6px 18px;">Próxima Convocatoria 2026</span>
+                <h3 style="font-size: 1.8rem; font-weight: 800; color: #ffffff; margin-bottom: 15px;">¿Eres un deportista o buscas postular a un talento?</h3>
+                <p style="max-width: 700px; margin: 0 auto 25px auto; color: #cbd5e1; font-size: 1rem; line-height: 1.6;">
+                    El Fondo Social Web3 destinará recursos económicos verificables en cadena para financiar entrenamientos, indumentaria y pasajes de atletas peruanos emergentes.
+                </p>
+                <a href="#community" class="btn primary" style="padding: 12px 30px; font-size: 0.95rem;">Unirse a la Comunidad para Notificaciones</a>
+            </div>
+
+            <h3 class="reveal" style="text-align: center; color: white; margin: 50px 0 30px 0; font-size: 1.6rem; font-weight: 700;">Proceso de Selección Transparente</h3>
+
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+                <div class="beneficiary-step-card reveal">
+                    <div class="step-number">1</div>
+                    <h4 style="font-size: 1.15rem; color: #fff; margin-bottom: 10px;">Postulación Pública</h4>
+                    <p style="font-size: 0.9rem; color: #94a3b8;">Envío de historia, trayectoria y presupuesto detallado del atleta a través de nuestro portal.</p>
+                </div>
+                <div class="beneficiary-step-card reveal">
+                    <div class="step-number">2</div>
+                    <h4 style="font-size: 1.15rem; color: #fff; margin-bottom: 10px;">Auditoría Comunitaria</h4>
+                    <p style="font-size: 0.9rem; color: #94a3b8;">Verificación de datos e impacto real del financiamiento por el equipo y la comunidad PERU.</p>
+                </div>
+                <div class="beneficiary-step-card reveal">
+                    <div class="step-number">3</div>
+                    <h4 style="font-size: 1.15rem; color: #fff; margin-bottom: 10px;">Votación On-Chain</h4>
+                    <p style="font-size: 0.9rem; color: #94a3b8;">Los holders del token deciden la asignación de fondos a través del módulo de gobernanza.</p>
+                </div>
+                <div class="beneficiary-step-card reveal">
+                    <div class="step-number">4</div>
+                    <h4 style="font-size: 1.15rem; color: #fff; margin-bottom: 10px;">Desembolso & Reporte</h4>
+                    <p style="font-size: 0.9rem; color: #94a3b8;">Entrega transparente de los recursos y publicación de pruebas de uso de fondos en BscScan.</p>
                 </div>
             </div>
         </section>
@@ -1171,7 +1193,7 @@
                 </div>
             </div>
             <div class="card reveal" style="margin-top: 40px; text-align: center; border-style: dashed; border-color: rgba(255,255,255,0.15);">
-                <p style="font-size: 0.95rem; color: #94a3b8; max-width: 800px; margin: 0 auto;">Por estrictas razones de seguridad informática y resguardo personal, el equipo opera bajo pseudónimos verificables en la red, una metodología estándar dentro del ecosistema cripto.</p>
+                <p style="font-size: 0.95rem; color: #94a3b8; max-width: 800px; margin: 0 auto;">Por strictly razones de seguridad informática y resguardo personal, el equipo opera bajo pseudónimos verificables en la red, una metodología estándar dentro del ecosistema cripto.</p>
             </div>
         </section>
 
@@ -1212,6 +1234,28 @@
             <h2 class="title reveal">AVISO LEGAL</h2>
             <div class="card reveal">
                 <p>PERU es un proyecto comunitario basado en blockchain. La compra de activos digitales implica riesgos. Cada participante debe realizar su propia investigación antes de tomar decisiones financieras.</p>
+            </div>
+
+            <!-- SECCIÓN DONACIONES UBICADA ABAJO DE AVISO LEGAL -->
+            <div id="donate-section" class="card reveal donate-card-compact">
+                <div class="donate-header">
+                    <div class="donate-badge">
+                        <span class="pulse-dot"></span> Donaciones Abiertas
+                    </div>
+                    <h3 class="donate-title">Fondo Social de Apoyo</h3>
+                    <p class="donate-subtext">Tu contribución va directamente a financiar becas, viajes e implementos para deportistas peruanos.</p>
+                </div>
+
+                <div class="donate-body">
+                    <div class="donate-address-wrapper">
+                        <div class="donate-network-tag">RED BSC (BEP20)</div>
+                        <code id="donation-address" class="donate-code">0xE7A8096362f14152375E9FF0631114044dCe0f91</code>
+                    </div>
+                    <button onclick="copyDonationWallet()" class="donate-copy-btn">
+                        <svg viewBox="0 0 24 24" class="copy-icon"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                        <span>Copiar Dirección</span>
+                    </button>
+                </div>
             </div>
         </section>
 
