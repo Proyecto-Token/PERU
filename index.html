@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PERU</title>
+    <title>PERU - Deporte & Blockchain</title>
     <meta name="description" content="PERU es un proyecto Web3 solidario enfocado en apoyar deportistas peruanos mediante blockchain y financiamiento descentralizado.">
     <meta name="keywords" content="PERU, crypto peru, token peruano, blockchain peru, memecoin peru">
     <meta name="author" content="PERU">
@@ -30,7 +30,6 @@
             scroll-behavior: smooth;
         }
 
-        /* EVITA EL SCROLL MIENTRAS LA PANTALLA DE BIENVENIDA ESTÉ ACTIVA */
         body.no-scroll {
             overflow: hidden;
         }
@@ -40,7 +39,7 @@
             color: white;
         }
 
-        /* === PANTALLA DE BIENVENIDA (SPLASH SCREEN con robot.png) === */
+        /* === PANTALLA DE BIENVENIDA (SPLASH SCREEN) === */
         #welcome-screen {
             position: fixed;
             top: 0;
@@ -155,7 +154,7 @@
 
         nav ul {
             display: flex;
-            gap: 30px;
+            gap: 25px;
             list-style: none;
             align-items: center;
         }
@@ -164,6 +163,7 @@
             text-decoration: none;
             color: white;
             font-weight: 500;
+            font-size: 0.9rem;
             transition: .3s;
         }
 
@@ -325,62 +325,246 @@
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease;
         }
 
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
-            transition: 0.5s;
-        }
-
         .card:hover {
             transform: translateY(-10px);
             border-color: rgba(255, 77, 77, 0.4);
             box-shadow: 0 15px 35px rgba(255, 0, 0, 0.15), inset 0 0 15px rgba(255, 255, 255, 0.05);
         }
 
-        .card:hover::before {
-            left: 100%;
+        /* ==========================================
+           SECCIÓN PROYECTO (MEJORADA Y REDISEÑADA)
+           ========================================== */
+        .project-main-card {
+            background: linear-gradient(145deg, rgba(20, 25, 48, 0.85) 0%, rgba(8, 12, 28, 0.95) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            backdrop-filter: blur(16px);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
         }
 
-        .card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 18px;
-            color: #ffffff;
+        .project-main-card:hover {
+            border-color: rgba(255, 77, 77, 0.4);
+            box-shadow: 0 20px 40px rgba(255, 0, 0, 0.12);
+        }
+
+        .project-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 77, 77, 0.12);
+            color: #ff4d4d;
+            border: 1px solid rgba(255, 77, 77, 0.25);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.75rem;
             font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .project-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 18px;
+            line-height: 1.3;
+        }
+
+        .project-paragraph {
+            color: #cbd5e1;
+            font-size: 1rem;
+            line-height: 1.75;
+            font-weight: 300;
+            margin-bottom: 18px;
+        }
+
+        .project-subcard {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(12px);
+            transition: all 0.35s ease;
+            height: 100%;
+        }
+
+        .project-subcard:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 77, 77, 0.35);
+            background: rgba(255, 77, 77, 0.03);
+        }
+
+        .project-subcard-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            background: rgba(255, 77, 77, 0.12);
+            border: 1px solid rgba(255, 77, 77, 0.25);
             display: flex;
             align-items: center;
-            gap: 12px;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .project-subcard-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        /* ==========================================
+           SECCIÓN BENEFICIARIOS (MEJORADA Y REDISEÑADA)
+           ========================================== */
+        .beneficiary-box-modern {
+            max-width: 850px;
+            margin: 0 auto;
+            background: linear-gradient(145deg, rgba(18, 24, 45, 0.9) 0%, rgba(8, 12, 28, 0.95) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 28px;
+            padding: 50px 40px;
+            backdrop-filter: blur(20px);
+            text-align: center;
             position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
         }
 
-        .card h3 svg {
-            width: 24px;
-            height: 24px;
-            fill: #ff4d4d;
-        }
-
-        .card h3::after {
+        .beneficiary-box-modern::before {
             content: '';
             position: absolute;
-            bottom: -6px;
+            top: 0;
             left: 0;
-            width: 35px;
-            height: 2px;
-            background: linear-gradient(90deg, #ff4d4d, transparent);
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #eab308, transparent);
         }
 
-        .card p, .card li {
+        .beneficiary-badge-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(234, 179, 8, 0.12);
+            color: #eab308;
+            border: 1px solid rgba(234, 179, 8, 0.3);
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+        }
+
+        .beneficiary-hero-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            filter: drop-shadow(0 0 20px rgba(234, 179, 8, 0.3));
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .beneficiary-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        .beneficiary-desc {
+            font-size: 1.05rem;
             color: #cbd5e1;
             line-height: 1.7;
-            font-size: 0.98rem;
+            max-width: 650px;
+            margin: 0 auto 40px auto;
             font-weight: 300;
         }
 
-        /* PILARES DE ACCIÓN DIRECTA */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            text-align: left;
+            margin-bottom: 40px;
+        }
+
+        .step-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 20px;
+            border-radius: 16px;
+        }
+
+        .step-number {
+            color: #ff4d4d;
+            font-weight: 900;
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+        }
+
+        .step-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .step-text {
+            font-size: 0.82rem;
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+
+        /* ==========================================
+           SECCIÓN AVISO LEGAL (MEJORADA Y REDISEÑADA)
+           ========================================== */
+        .legal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .legal-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 20px;
+            padding: 30px 25px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .legal-card:hover {
+            border-color: rgba(255, 77, 77, 0.3);
+            background: rgba(255, 255, 255, 0.03);
+            transform: translateY(-5px);
+        }
+
+        .legal-card-icon {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .legal-card-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .legal-card-text {
+            font-size: 0.88rem;
+            color: #94a3b8;
+            line-height: 1.65;
+            font-weight: 300;
+        }
+
+        /* SECCIONES PREVIAS */
         .pillar-card {
             background: linear-gradient(145deg, rgba(20, 25, 45, 0.8) 0%, rgba(8, 12, 28, 0.9) 100%);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -389,33 +573,16 @@
             position: relative;
             overflow: hidden;
             backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            transition: all 0.4s ease;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
         }
 
-        .pillar-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #ff4d4d, transparent);
-            opacity: 0.3;
-            transition: 0.4s;
-        }
-
         .pillar-card:hover {
             transform: translateY(-12px);
             border-color: rgba(255, 77, 77, 0.35);
-            box-shadow: 0 20px 40px rgba(255, 0, 0, 0.15), 0 0 20px rgba(255, 77, 77, 0.1);
-        }
-
-        .pillar-card:hover::before {
-            opacity: 1;
+            box-shadow: 0 20px 40px rgba(255, 0, 0, 0.15);
         }
 
         .pillar-badge {
@@ -443,14 +610,6 @@
             justify-content: center;
             font-size: 2.2rem;
             margin-bottom: 25px;
-            box-shadow: inset 0 0 15px rgba(255, 255, 255, 0.02);
-            transition: 0.4s;
-        }
-
-        .pillar-card:hover .pillar-icon-box {
-            background: rgba(255, 77, 77, 0.15);
-            border-color: rgba(255, 77, 77, 0.4);
-            transform: scale(1.08) rotate(-3deg);
         }
 
         .pillar-title {
@@ -458,7 +617,6 @@
             font-weight: 800;
             color: #ffffff;
             margin-bottom: 12px;
-            line-height: 1.3;
         }
 
         .pillar-desc {
@@ -477,30 +635,20 @@
             color: rgba(255, 255, 255, 0.02);
             user-select: none;
             pointer-events: none;
-            transition: 0.4s;
         }
 
-        .pillar-card:hover .pillar-number {
-            color: rgba(255, 77, 77, 0.06);
-            transform: translateY(-10px);
-        }
-
-        /* ESTADÍSTICAS DASHBOARD */
         .stats-dashboard {
             background: linear-gradient(180deg, rgba(7, 11, 25, 0.7) 0%, rgba(5, 8, 22, 0.95) 100%);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            position: relative;
-            overflow: hidden;
         }
 
         .stat-card-modern {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+            background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 20px;
             padding: 35px 25px;
             text-align: center;
-            position: relative;
             backdrop-filter: blur(10px);
             transition: all 0.35s ease;
         }
@@ -509,20 +657,17 @@
             transform: translateY(-8px);
             border-color: rgba(255, 77, 77, 0.4);
             box-shadow: 0 15px 30px rgba(255, 0, 0, 0.12);
-            background: linear-gradient(135deg, rgba(255, 77, 77, 0.06) 0%, rgba(255, 255, 255, 0.02) 100%);
         }
 
         .stat-icon {
             font-size: 2rem;
             margin-bottom: 15px;
             display: inline-block;
-            filter: drop-shadow(0 0 10px rgba(255, 77, 77, 0.3));
         }
 
         .stat-number-modern {
             font-size: 3.2rem;
             font-weight: 900;
-            letter-spacing: -1px;
             background: linear-gradient(135deg, #ffffff 30%, #ff4d4d 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -540,20 +685,14 @@
         .stat-subtext {
             font-size: 0.82rem;
             color: #64748b;
-            font-weight: 400;
         }
 
-        /* ==========================================
-           SECCIÓN UTILIDAD (MEJORADA Y REDISEÑADA)
-           ========================================== */
         .utility-card {
             background: linear-gradient(145deg, rgba(15, 20, 38, 0.85) 0%, rgba(7, 10, 22, 0.95) 100%);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 24px;
             padding: 35px 28px;
-            position: relative;
             backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
             transition: all 0.4s ease;
             display: flex;
             flex-direction: column;
@@ -577,13 +716,6 @@
             justify-content: center;
             font-size: 1.8rem;
             margin-bottom: 20px;
-            transition: 0.3s ease;
-        }
-
-        .utility-card:hover .utility-icon-wrapper {
-            background: rgba(255, 77, 77, 0.2);
-            transform: scale(1.1);
-            box-shadow: 0 0 20px rgba(255, 77, 77, 0.3);
         }
 
         .utility-title {
@@ -610,19 +742,14 @@
             padding: 4px 12px;
             border-radius: 50px;
             border: 1px solid rgba(255, 77, 77, 0.2);
-            letter-spacing: 0.5px;
         }
 
-        /* ==========================================
-           SECCIÓN EQUIPO (MEJORADA Y REDISEÑADA)
-           ========================================== */
         .team-card-modern {
             background: linear-gradient(135deg, rgba(20, 26, 48, 0.7) 0%, rgba(10, 14, 28, 0.9) 100%);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 24px;
             padding: 40px 30px;
             text-align: center;
-            position: relative;
             backdrop-filter: blur(14px);
             transition: all 0.4s ease;
         }
@@ -630,7 +757,7 @@
         .team-card-modern:hover {
             transform: translateY(-10px);
             border-color: rgba(255, 77, 77, 0.35);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 25px rgba(255, 77, 77, 0.12);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
         }
 
         .team-avatar-box {
@@ -644,14 +771,6 @@
             align-items: center;
             justify-content: center;
             font-size: 2.2rem;
-            box-shadow: 0 0 20px rgba(255, 77, 77, 0.15);
-            transition: 0.4s ease;
-        }
-
-        .team-card-modern:hover .team-avatar-box {
-            transform: scale(1.08);
-            border-color: #ff4d4d;
-            box-shadow: 0 0 30px rgba(255, 77, 77, 0.4);
         }
 
         .team-role-badge {
@@ -664,7 +783,6 @@
             font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
             margin-bottom: 15px;
         }
 
@@ -688,34 +806,15 @@
             border: 1px dashed rgba(255, 77, 77, 0.3);
             border-radius: 16px;
             padding: 22px 30px;
-            text-align: center;
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 15px;
         }
 
-        .team-disclaimer-icon {
-            font-size: 1.5rem;
-            flex-shrink: 0;
-        }
-
-        .team-disclaimer-text {
-            font-size: 0.88rem;
-            color: #cbd5e1;
-            line-height: 1.5;
-            font-weight: 300;
-            text-align: left;
-        }
-
-        /* ==========================================
-           SECCIÓN SEGURIDAD (MEJORADA Y REDISEÑADA)
-           ========================================== */
         .security-section {
             background: linear-gradient(180deg, rgba(5, 8, 22, 0.95) 0%, rgba(10, 15, 30, 0.95) 100%);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
             border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            position: relative;
         }
 
         .security-card-modern {
@@ -723,19 +822,16 @@
             border: 1px solid rgba(255, 255, 255, 0.07);
             border-radius: 20px;
             padding: 30px 25px;
-            position: relative;
-            backdrop-filter: blur(10px);
-            transition: all 0.35s ease;
             display: flex;
             gap: 20px;
             align-items: flex-start;
+            transition: all 0.35s ease;
         }
 
         .security-card-modern:hover {
             transform: translateY(-6px);
             border-color: rgba(34, 197, 94, 0.4);
             background: rgba(34, 197, 94, 0.03);
-            box-shadow: 0 12px 30px rgba(34, 197, 94, 0.1);
         }
 
         .security-check-icon {
@@ -750,7 +846,6 @@
             color: #22c55e;
             font-size: 1.2rem;
             flex-shrink: 0;
-            margin-top: 2px;
         }
 
         .security-info h4 {
@@ -765,28 +860,6 @@
             color: #94a3b8;
             line-height: 1.6;
             font-weight: 300;
-        }
-
-        .beneficiary-card {
-            text-align: center;
-            padding: 25px;
-        }
-
-        .status-badge {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 15px;
-        }
-
-        .status-review {
-            background: rgba(234, 179, 8, 0.15);
-            color: #eab308;
-            border: 1px solid rgba(234, 179, 8, 0.3);
         }
 
         .timeline {
@@ -842,12 +915,10 @@
             z-index: 9999;
             transition: .3s;
             animation: floatWhatsapp 2s infinite ease-in-out;
-            transform: translate3d(0, 0, 0);
-            backface-visibility: hidden;
         }
 
         .whatsapp-float:hover {
-            transform: scale(1.1) translate3d(0, 0, 0);
+            transform: scale(1.1);
             box-shadow: 0 0 35px rgba(37, 211, 102, 0.8);
         }
 
@@ -855,13 +926,11 @@
             width: 32px;
             height: 32px;
             fill: white;
-            image-rendering: -webkit-optimize-contrast;
         }
 
         @keyframes floatWhatsapp {
-            0% { transform: translateY(0) translate3d(0, 0, 0); }
-            50% { transform: translateY(-8px) translate3d(0, 0, 0); }
-            100% { transform: translateY(0) translate3d(0, 0, 0); }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
         }
 
         .copy-btn {
@@ -887,14 +956,12 @@
             box-shadow: 0 0 25px rgba(22, 163, 74, .5);
         }
 
-        /* SECCIÓN DONACIONES */
         .donate-card-compact {
             max-width: 680px !important;
             margin: 40px auto 0 auto !important;
             padding: 28px 24px !important;
             background: linear-gradient(135deg, rgba(234, 179, 8, 0.08) 0%, rgba(5, 8, 22, 0.85) 100%) !important;
             border: 1px solid rgba(234, 179, 8, 0.3) !important;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
             border-radius: 20px;
         }
 
@@ -913,7 +980,6 @@
             font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
             padding: 4px 14px;
             border-radius: 50px;
             margin-bottom: 12px;
@@ -931,26 +997,6 @@
         @keyframes pulseDot {
             0%, 100% { opacity: 0.4; transform: scale(0.9); }
             50% { opacity: 1; transform: scale(1.2); }
-        }
-
-        .donate-title {
-            font-size: 1.35rem !important;
-            color: #ffffff !important;
-            justify-content: center !important;
-            margin-bottom: 6px !important;
-            border: none !important;
-        }
-
-        .donate-title::after {
-            display: none !important;
-        }
-
-        .donate-subtext {
-            font-size: 0.88rem !important;
-            color: #94a3b8 !important;
-            margin: 0 auto;
-            max-width: 500px;
-            line-height: 1.4;
         }
 
         .donate-body {
@@ -974,7 +1020,6 @@
             font-size: 0.65rem;
             color: #eab308;
             font-weight: 700;
-            letter-spacing: 0.5px;
         }
 
         .donate-code {
@@ -999,26 +1044,11 @@
             font-size: 0.85rem;
             cursor: pointer;
             transition: all 0.25s ease;
-            white-space: nowrap;
-            box-shadow: 0 4px 15px rgba(234, 179, 8, 0.25);
         }
 
         .donate-copy-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(234, 179, 8, 0.4);
             background: linear-gradient(135deg, #facc15, #eab308);
-        }
-
-        .donate-copy-btn.copied {
-            background: #16a34a !important;
-            color: #ffffff !important;
-            box-shadow: 0 4px 15px rgba(22, 163, 74, 0.4) !important;
-        }
-
-        .copy-icon {
-            width: 16px;
-            height: 16px;
-            fill: currentColor;
         }
 
         .tokenomics-container {
@@ -1043,13 +1073,11 @@
             text-align: center;
             background: #070b19;
             border-top: 1px solid rgba(255, 255, 255, .05);
-            position: relative;
         }
 
         footer h2 {
             font-size: 2.2rem;
             font-weight: 900;
-            letter-spacing: 2px;
             background: linear-gradient(90deg, #ff0000, #ffffff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -1108,14 +1136,8 @@
         }
 
         @media(max-width:768px) {
-            nav .logo {
-                display: none !important;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
+            nav .logo { display: none !important; }
+            .menu-toggle { display: block; }
             nav ul {
                 position: absolute;
                 top: 80px;
@@ -1128,95 +1150,20 @@
                 gap: 20px;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             }
-
-            nav ul.active {
-                display: flex;
-            }
-
-            .hero-text h1 {
-                font-size: 3rem;
-            }
-
-            .title {
-                font-size: 2.3rem;
-            }
-
-            .hero {
-                text-align: center;
-            }
-
-            .buttons {
-                justify-content: center;
-            }
-
-            .btn {
-                width: 100%;
-                text-align: center;
-            }
-
-            .hero-image img {
-                width: 220px;
-            }
-
-            .whatsapp-float {
-                width: 55px;
-                height: 55px;
-                bottom: 20px;
-                right: 20px;
-            }
-
-            .timeline::before {
-                left: 20px;
-            }
-
-            .timeline-item {
-                padding-left: 50px;
-            }
-
-            .timeline-dot {
-                left: 8px;
-            }
-
-            .footer-links {
-                flex-direction: column;
-                gap: 15px;
-                align-items: center;
-            }
-
-            .footer-link-item {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .donate-body {
-                flex-direction: column;
-                align-items: stretch;
-                gap: 12px;
-                padding: 14px;
-                text-align: center;
-            }
-
-            .donate-code {
-                font-size: 0.8rem;
-                word-break: break-all;
-                white-space: normal;
-                margin-top: 4px;
-            }
-
-            .donate-copy-btn {
-                justify-content: center;
-                width: 100%;
-                padding: 12px;
-            }
-
-            .team-disclaimer {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .team-disclaimer-text {
-                text-align: center;
-            }
+            nav ul.active { display: flex; }
+            .hero-text h1 { font-size: 3rem; }
+            .title { font-size: 2.3rem; }
+            .hero { text-align: center; }
+            .buttons { justify-content: center; }
+            .btn { width: 100%; text-align: center; }
+            .hero-image img { width: 220px; }
+            .timeline::before { left: 20px; }
+            .timeline-item { padding-left: 50px; }
+            .timeline-dot { left: 8px; }
+            .footer-links { flex-direction: column; align-items: center; }
+            .donate-body { flex-direction: column; align-items: stretch; text-align: center; }
+            .beneficiary-box-modern { padding: 35px 20px; }
+            .project-main-card { padding: 25px; }
         }
     </style>
 </head>
@@ -1270,33 +1217,40 @@
             </div>
         </section>
 
+        <!-- === SECCIÓN PROYECTO (REDISEÑADA Y MODERNIZADA) === -->
         <section id="about">
             <h2 class="title reveal">PROYECTO</h2>
-            <p class="subtitle reveal">Blockchain con impacto real en el deporte peruano</p>
+            <p class="subtitle reveal">Tecnología Web3 con impacto social real y trazable</p>
 
-            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin-bottom: 60px;">
-                <div class="card reveal" style="display: flex; flex-direction: column; justify-content: center;">
-                    <h3>
-                        <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
-                        Introducción al Ecosistema
-                    </h3>
-                    <p style="margin-bottom: 15px;">PERU es un activo digital basado en tecnología blockchain creado con un propósito social claro: transformar el futuro de atletas de bajos recursos mediante financiamiento transparente, directo y descentralizado.</p>
-                    <p>Conectamos inversores y entusiastas Web3 con jóvenes talentos nacionales, reduciendo intermediarios y asegurando que cada aporte genere un cambio real en su carrera competitiva.</p>
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin-bottom: 40px; gap: 30px;">
+                <!-- Tarjeta Principal de Introducción -->
+                <div class="project-main-card reveal">
+                    <span class="project-tag">🌐 Impacto Social Descentralizado</span>
+                    <h3 class="project-title">Reinventando el Patrocinio Deportivo Nacional</h3>
+                    <p class="project-paragraph">
+                        PERU es una iniciativa digital comunitaria que une la transparencia de la cadena de bloques con el potencial competitivo de nuestros talentos. Eliminamos la burocracia tradicional para asegurar que el apoyo económico llegue directo y sin fisuras a los deportistas que más lo necesitan.
+                    </p>
+                    <p class="project-paragraph" style="margin-bottom: 0;">
+                        Medición transparente, contratos inteligentes sin comisiones ocultas y votación colectiva forman la base de una infraestructura diseñada para impulsar la representación nacional en competencias internacionales.
+                    </p>
                 </div>
+
+                <!-- Visión y Misión Grid -->
                 <div style="display: flex; flex-direction: column; gap: 25px;">
-                    <div class="card reveal" style="padding: 25px;">
-                        <h3>
-                            <svg viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-                            Visión
-                        </h3>
-                        <p style="font-size: 0.95rem;">Liderar el ecosistema cripto-social en Latinoamérica, posicionando a Perú como referente en innovación social aplicada y descentralizada a través de blockchain.</p>
+                    <div class="project-subcard reveal">
+                        <div class="project-subcard-icon">👁️</div>
+                        <h4 class="project-subcard-title">Visión Estratégica</h4>
+                        <p style="color: #94a3b8; font-size: 0.92rem; line-height: 1.6; font-weight: 300;">
+                            Consolidar el ecosistema cripto-social más influyente de Latinoamérica, posicionando a Perú como referente de innovación social descentralizada aplicada al alto rendimiento deportivo.
+                        </p>
                     </div>
-                    <div class="card reveal" style="padding: 25px;">
-                        <h3>
-                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.25z"/></svg>
-                            Misión
-                        </h3>
-                        <p style="font-size: 0.95rem;">Facilitar a deportistas destacados el acceso a recursos óptimos de entrenamiento mediante la gobernanza transparente y activa de nuestra comunidad.</p>
+
+                    <div class="project-subcard reveal">
+                        <div class="project-subcard-icon">🎯</div>
+                        <h4 class="project-subcard-title">Misión Operativa</h4>
+                        <p style="color: #94a3b8; font-size: 0.92rem; line-height: 1.6; font-weight: 300;">
+                            Garantizar financiamiento continuo, equipamiento profesional y viáticos a atletas destacados mediante la gobernanza transparente y participativa de nuestra comunidad.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -1305,10 +1259,12 @@
             <div id="donate-section" class="card reveal donate-card-compact">
                 <div class="donate-header">
                     <div class="donate-badge">
-                        <span class="pulse-dot"></span> Donaciones Abiertas
+                        <span class="pulse-dot"></span> Fondo de Apoyo Social
                     </div>
-                    <h3 class="donate-title">Fondo Social de Apoyo</h3>
-                    <p class="donate-subtext">Tu contribución va directamente a financiar becas, viajes e implementos para deportistas peruanos.</p>
+                    <h3 style="font-size: 1.35rem; color: white; margin-bottom: 6px;">Donaciones Directas en Cadena</h3>
+                    <p style="font-size: 0.88rem; color: #94a3b8; max-width: 500px; margin: 0 auto; line-height: 1.4;">
+                        Tu contribución financia directamente pasajes, inscripciones y equipamiento para nuestros deportistas.
+                    </p>
                 </div>
 
                 <div class="donate-body">
@@ -1317,7 +1273,6 @@
                         <code id="donation-address" class="donate-code">0xE7A8096362f14152375E9FF0631114044dCe0f91</code>
                     </div>
                     <button onclick="copyDonationWallet()" class="donate-copy-btn">
-                        <svg viewBox="0 0 24 24" class="copy-icon"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
                         <span>Copiar Dirección</span>
                     </button>
                 </div>
@@ -1398,24 +1353,49 @@
             </div>
         </section>
 
+        <!-- === SECCIÓN BENEFICIARIOS (REDISEÑADA Y MODERNIZADA) === -->
         <section id="beneficiaries">
             <h2 class="title reveal">BENEFICIARIOS</h2>
-            <p class="subtitle reveal">Próximas convocatorias abiertas para atletas nacionales</p>
+            <p class="subtitle reveal">El puente entre la comunidad Web3 y las promesas del deporte peruano</p>
             
-            <div style="display: flex; justify-content: center; align-items: center; width: 100%;">
-                <div class="card reveal beneficiary-card" style="border: 2px dashed rgba(255, 77, 77, 0.4); max-width: 500px; width: 100%; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 45px 30px; background: rgba(5, 8, 22, 0.65);">
-                    <span class="status-badge status-review" style="margin-bottom: 25px; padding: 6px 16px; font-size: 0.8rem;">Próximamente</span>
-                    <div style="font-size: 3.5rem; margin-bottom: 20px; filter: drop-shadow(0 0 15px rgba(234, 179, 8, 0.4));">🏅</div>
-                    <h3 style="justify-content: center; font-size: 1.6rem; margin-bottom: 15px; font-weight: 700; border: none;">¿Eres deportista?</h3>
-                    <p style="font-size: 1rem; color: #cbd5e1; line-height: 1.7; margin-bottom: 30px; text-align: center; font-weight: 300;">
-                        Muy pronto abriremos el portal de gobernanza para que los atletas peruanos puedan enviar sus postulaciones directamente a la comunidad.
-                    </p>
-                    <a href="#community" class="btn secondary" style="padding: 12px 35px; font-size: 0.95rem; border-radius: 12px; width: auto; font-weight: 600;">Estar Atento</a>
+            <div class="beneficiary-box-modern reveal">
+                <div class="beneficiary-badge-status">
+                    <span class="pulse-dot"></span> Fase de Preparación — Portal DAO
                 </div>
+                
+                <span class="beneficiary-hero-icon">🥇</span>
+                
+                <h3 class="beneficiary-title">Próxima Convocatoria Abierta</h3>
+                <p class="beneficiary-desc">
+                    Estamos construyendo la infraestructura de votación para que la comunidad elija a los deportistas nacionales que recibirán apoyo directo de la tesorería social.
+                </p>
+
+                <!-- Pasos de preparación para deportistas -->
+                <div class="steps-grid">
+                    <div class="step-item">
+                        <div class="step-number">01</div>
+                        <div class="step-title">Expediente Deportivo</div>
+                        <div class="step-text">Consolidación de logros, categoría y plan de competencias internacionales.</div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">02</div>
+                        <div class="step-title">Postulación Abierta</div>
+                        <div class="step-text">Envío del perfil a través del formulario de verificación oficial.</div>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">03</div>
+                        <div class="step-title">Votación en Cadena</div>
+                        <div class="step-text">Los holders de $PERU votan de forma transparente la asignación de fondos.</div>
+                    </div>
+                </div>
+
+                <a href="#community" class="btn primary" style="padding: 14px 38px; font-size: 0.95rem; border-radius: 14px;">
+                    Unirse a la Comunidad
+                </a>
             </div>
         </section>
 
-        <!-- === SECCIÓN UTILIDAD (REDISEÑADA Y MODERNIZADA) === -->
+        <!-- SECCIÓN UTILIDAD -->
         <section id="utility">
             <h2 class="title reveal">UTILIDAD DEL TOKEN</h2>
             <p class="subtitle reveal">Infraestructura funcional que impulsa el valor intrínseco del ecosistema</p>
@@ -1425,7 +1405,7 @@
                     <div>
                         <div class="utility-icon-wrapper">🗳️</div>
                         <h3 class="utility-title">Gobernanza DAO</h3>
-                        <p class="utility-desc">Toma el control directo de las decisiones clave. Los holders votan en la selección de deportistas beneficiares y en la asignación periódica de fondos comunitarios.</p>
+                        <p class="utility-desc">Toma el control directo de las decisiones clave. Los holders votan en la selección de deportistas beneficiarios y en la asignación periódica de fondos comunitarios.</p>
                     </div>
                     <span class="utility-tag">Voto en Cadena</span>
                 </div>
@@ -1459,6 +1439,7 @@
             </div>
         </section>
 
+        <!-- TOKENOMICS -->
         <section id="tokenomics">
             <h2 class="title reveal">TOKENOMICS</h2>
             <p class="subtitle reveal">Estructura transparente, segura y orientada a la comunidad</p>
@@ -1488,6 +1469,7 @@
             </div>
         </section>
 
+        <!-- ROADMAP -->
         <section id="roadmap">
             <h2 class="title reveal">ROADMAP</h2>
             <p class="subtitle reveal">Fases de desarrollo técnico y social programadas a mediano y largo plazo</p>
@@ -1498,7 +1480,7 @@
                         <h3 style="font-size: 1.2rem; color: #ff4d4d;">🚀 FASE 1 – Despliegue & Lanzamiento</h3>
                         <ul style="margin-top: 10px; list-style: none;">
                             <li style="margin-bottom: 8px;">• Despliegue e indexación del Smart Contract en Binance Smart Chain.</li>
-                            <li style="margin-bottom: 8px;">• Lanzamiento y puesta en marcha del portal comunitario inicial (Fourmeme).</li>
+                            <li style="margin-bottom: 8px;">• Lanzamiento y puesta en marcha del portal comunitario inicial.</li>
                             <li style="margin-bottom: 8px;">• Configuración de canales globales de comunicación y branding.</li>
                             <li>• Fase Alfa de marketing estratégico enfocado en micro-influencers Web3.</li>
                         </ul>
@@ -1509,7 +1491,7 @@
                     <div class="card">
                         <h3 style="font-size: 1.2rem;">📈 FASE 2 – Consolidación & Primer Impacto</h3>
                         <ul style="margin-top: 10px; list-style: none;">
-                            <li style="margin-bottom: 8px;">• Expansión orgánica y crecimiento escalonado en plataformas de difusión masiva.</li>
+                            <li style="margin-bottom: 8px;">• Expansión orgánica y crecimiento escalonado en plataformas masivas.</li>
                             <li style="margin-bottom: 8px;">• Selección y auditoría de los primeros deportistas peruanos beneficiados.</li>
                             <li>• Postulación e integración de métricas en rastreadores de capitalización.</li>
                         </ul>
@@ -1520,9 +1502,9 @@
                     <div class="card">
                         <h3 style="font-size: 1.2rem;">🌍 FASE 3 – Infraestructura & Utilidad</h3>
                         <ul style="margin-top: 10px; list-style: none;">
-                            <li style="margin-bottom: 8px;">• Estructuración avanzada del portal web oficial de gobernanza descentralizada.</li>
+                            <li style="margin-bottom: 8px;">• Estructuración avanzada del portal web oficial de gobernanza.</li>
                             <li style="margin-bottom: 8px;">• Integración funcional de sistemas de votación Web3.</li>
-                            <li>• Alianzas formales con federaciones, academias de entrenamiento y clubes deportivos locales.</li>
+                            <li>• Alianzas formales con academias y clubes deportivos locales.</li>
                         </ul>
                     </div>
                 </div>
@@ -1533,14 +1515,14 @@
                         <ul style="margin-top: 10px; list-style: none;">
                             <li style="margin-bottom: 8px;">• Internacionalización del modelo de financiamiento social Web3.</li>
                             <li style="margin-bottom: 8px;">• Patrocinios de gran escala en eventos competitivos internacionales.</li>
-                            <li>• Organización de torneos y copas deportivas oficiales bajo la marca PERU.</li>
+                            <li>• Organización de torneos oficiales bajo la marca PERU.</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- === SECCIÓN EQUIPO (REDISEÑADA Y MODERNIZADA) === -->
+        <!-- EQUIPO -->
         <section id="team">
             <h2 class="title reveal">EQUIPO DESARROLLADOR</h2>
             <p class="subtitle reveal">Estructura organizativa especializada responsable del crecimiento del proyecto</p>
@@ -1569,14 +1551,14 @@
             </div>
 
             <div class="team-disclaimer reveal">
-                <span class="team-disclaimer-icon">🛡️</span>
-                <p class="team-disclaimer-text">
-                    <strong>Resguardo Cripto-Estándar:</strong> Por motivos estricto resguardo personal y seguridad cibernética, el equipo opera bajo seudónimos digitales verificados en la red, garantizando un enfoque 100% centrado en el desarrollo de producto y neutralidad comunitaria.
+                <span style="font-size: 1.5rem;">🛡️</span>
+                <p style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.5; font-weight: 300;">
+                    <strong>Resguardo Cripto-Estándar:</strong> Por motivos de estricto resguardo personal y seguridad cibernética, el equipo opera bajo seudónimos digitales verificados en la red, garantizando un enfoque 100% centrado en el desarrollo del producto y neutralidad comunitaria.
                 </p>
             </div>
         </section>
 
-        <!-- === SECCIÓN SEGURIDAD (REDISEÑADA Y MODERNIZADA) === -->
+        <!-- SEGURIDAD -->
         <section id="security" class="security-section">
             <h2 class="title reveal">SEGURIDAD Y TRANSPARENCIA</h2>
             <p class="subtitle reveal">Protocolos y arquitectura técnica diseñados para proteger los fondos de los inversores</p>
@@ -1616,6 +1598,7 @@
             </div>
         </section>
 
+        <!-- COMUNIDAD -->
         <section id="community">
             <h2 class="title reveal">ÚNETE A LA COMUNIDAD</h2>
             <p class="subtitle reveal">Sé parte del movimiento crypto peruano</p>
@@ -1626,10 +1609,35 @@
             </div>
         </section>
 
+        <!-- === SECCIÓN AVISO LEGAL (REDISEÑADA Y MODERNIZADA) === -->
         <section id="legal">
-            <h2 class="title reveal">AVISO LEGAL</h2>
-            <div class="card reveal">
-                <p>PERU es un proyecto comunitario basado en blockchain. La compra de activos digitales implica riesgos. Cada participante debe realizar su propia investigación antes de tomar decisiones financieras.</p>
+            <h2 class="title reveal">AVISO LEGAL & DISCLAIMER</h2>
+            <p class="subtitle reveal">Términos, exención de responsabilidad y marco regulatorio transparente</p>
+            
+            <div class="legal-grid reveal">
+                <div class="legal-card">
+                    <span class="legal-card-icon">⚠️</span>
+                    <h4 class="legal-card-title">Naturaleza del Activo</h4>
+                    <p class="legal-card-text">
+                        $PERU es un token utilitario y comunitario basado en la blockchain de BSC. No constituye un título valor, fondo de inversión ni contrato de valores según ninguna regulación gubernamental.
+                    </p>
+                </div>
+
+                <div class="legal-card">
+                    <span class="legal-card-icon">📉</span>
+                    <h4 class="legal-card-title">Riesgo de Mercado</h4>
+                    <p class="legal-card-text">
+                        Los mercados de criptomonedas son inherentemente volátiles y están sujetos a fluctuaciones impredecibles. Invierta únicamente el capital que esté dispuesto a perder. Haga su propia investigación (DYOR).
+                    </p>
+                </div>
+
+                <div class="legal-card">
+                    <span class="legal-card-icon">⚖️</span>
+                    <h4 class="legal-card-title">Sin Asesoramiento Financiero</h4>
+                    <p class="legal-card-text">
+                        La información disponible en este sitio web no constituye asesoramiento financiero, legal ni comercial. Todo participante asume de forma voluntaria la gestión de sus activos digitales.
+                    </p>
+                </div>
             </div>
         </section>
 
@@ -1639,22 +1647,18 @@
             
             <div class="footer-links">
                 <a href="mailto:www.peru@outlook.es" class="footer-link-item">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
-                    </svg>
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                     www.peru@outlook.es
                 </a>
                 <a href="https://www-token-peru.blogspot.com/" target="_blank" class="footer-link-item">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95a15.65 15.65 0 0 0-1.38-3.56A8.03 8.03 0 0 1 18.92 8zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.34-.14 2 0 .67.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56A8.03 8.03 0 0 1 5.08 16zm2.95-8H5.08a8.03 8.03 0 0 1 3.56-3.56A15.65 15.65 0 0 0 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.34-.16-2 0-.67.07-1.35.16-2h4.68c.09.65.16 1.33.16 2 0 .66-.07 1.34-.16 2zm.24 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56zM16.36 14c.08-.66.14-1.34.14-2 0-.67-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/>
-                    </svg>
+                    <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95a15.65 15.65 0 0 0-1.38-3.56A8.03 8.03 0 0 1 18.92 8zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.34-.14 2 0 .67.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56A8.03 8.03 0 0 1 5.08 16zm2.95-8H5.08a8.03 8.03 0 0 1 3.56-3.56A15.65 15.65 0 0 0 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.34-.16-2 0-.67.07-1.35.16-2h4.68c.09.65.16 1.33.16 2 0 .66-.07 1.34-.16 2zm.24 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56zM16.36 14c.08-.66.14-1.34.14-2 0-.67-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></svg>
                     www-token-peru.blogspot.com
                 </a>
             </div>
             <p class="copyright">© 2026 PERU — Community Project. Todos los derechos reservados.</p>
         </footer>
 
-        <!-- === BOTÓN DE WHATSAPP FLOTANTE === -->
+        <!-- BOTÓN DE WHATSAPP FLOTANTE -->
         <a href="https://wa.me/00000000000" class="whatsapp-float" target="_blank" aria-label="Contacto por WhatsApp">
             <svg width="24" height="24" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path d="M12.004 2c-5.51 0-9.993 4.483-9.993 9.993 0 1.763.457 3.483 1.323 5.007L2 22l5.136-1.343a9.927 9.927 0 0 0 4.868 1.272h.004c5.51 0 9.993-4.483 9.993-9.993C21.997 6.483 17.514 2 12.004 2zm5.823 14.129c-.242.678-1.196 1.25-1.637 1.293-.418.04-1.335.215-3.16-.543-2.33-.967-3.83-3.333-3.947-3.488-.117-.156-.957-1.27-1.144-2.428-.188-1.158.39-1.745.598-1.964.207-.22.47-.328.625-.328.156 0 .313.004.445.012.14.008.328-.055.512.39.188.457.645 1.57.7 1.68.055.11.094.238.016.394-.078.156-.117.254-.234.39-.117.137-.246.305-.352.41-.12.12-.246.25-.105.492.14.242.625 1.031 1.34 1.668.922.82 1.7.1.1.2.5 0-.1.2.5 0 .2.3 0-.1 1.7 1.2 1.9-.3.1-.3-.3.1-.2.4.2-.3.4.1-.2.1.2 0-.2.2.1.5.3.3.4.1-.3.1-.2 1.2.6 1.4.3.1.5.1.1.5.0.0.1-.1.4-.4.1-.3.5-.8.6-1.2.1-.4-.1-.7-.2-.9-.1-.2-.5-.3-.9-.5z"/>
@@ -1676,14 +1680,11 @@
             document.querySelector("nav ul").classList.remove("active");
         }
 
-        // Animación de aparición con IntersectionObserver
         const itemsToReveal = document.querySelectorAll('.reveal');
         const observer = new IntersectionObserver(entries => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
-                    
-                    // Disparar animación de contador si pertenece a las estadísticas
                     if (entry.target.classList.contains('stat-card-modern')) {
                         animateCounter(entry.target);
                     }
@@ -1693,7 +1694,6 @@
 
         itemsToReveal.forEach(item => observer.observe(item));
 
-        // Función para animar contadores numéricos de estadísticas
         function animateCounter(cardElement) {
             const numEl = cardElement.querySelector('.stat-number-modern');
             if (!numEl || numEl.dataset.animated) return;
@@ -1741,18 +1741,14 @@
             const btn = document.querySelector(".donate-copy-btn");
             if (!btn) return;
 
-            btn.innerHTML = `
-                <svg viewBox="0 0 24 24" class="copy-icon"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                <span>¡Copiado!</span>
-            `;
-            btn.classList.add("copied");
+            btn.innerHTML = `<span>¡Copiado!</span>`;
+            btn.style.background = "#16a34a";
+            btn.style.color = "#ffffff";
 
             setTimeout(function () {
-                btn.innerHTML = `
-                    <svg viewBox="0 0 24 24" class="copy-icon"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-                    <span>Copiar Dirección</span>
-                `;
-                btn.classList.remove("copied");
+                btn.innerHTML = `<span>Copiar Dirección</span>`;
+                btn.style.background = "linear-gradient(135deg, #eab308, #ca8a04)";
+                btn.style.color = "#050816";
             }, 2500);
         }
 
