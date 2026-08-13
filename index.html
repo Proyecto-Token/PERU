@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PERU</title>
+    <title>PERU - Deporte & Web3</title>
     <meta name="description" content="PERU es un proyecto Web3 solidario enfocado en apoyar deportistas peruanos mediante blockchain y financiamiento descentralizado.">
     <meta name="keywords" content="PERU, crypto peru, token peruano, blockchain peru, memecoin peru">
     <meta name="author" content="PERU">
@@ -20,6 +20,9 @@
     
     <!-- Librería para el Gráfico de Tokenomics -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Librerías Web3 (Ethers.js v5 y Web3Modal) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ethers/5.7.2/ethers.umd.min.js"></script>
 
     <style>
         * {
@@ -138,14 +141,15 @@
         nav {
             position: fixed;
             width: 100%;
-            padding: 20px 10%;
+            padding: 15px 8%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(0, 0, 0, .35);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, .55);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             z-index: 999;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .logo {
@@ -155,7 +159,7 @@
 
         nav ul {
             display: flex;
-            gap: 30px;
+            gap: 20px;
             list-style: none;
             align-items: center;
         }
@@ -164,11 +168,41 @@
             text-decoration: none;
             color: white;
             font-weight: 500;
+            font-size: 0.95rem;
             transition: .3s;
         }
 
         nav a:hover {
             color: #ff4d4d;
+        }
+
+        .btn-wallet {
+            background: linear-gradient(90deg, #ff0000, #cc0000);
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-wallet:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.7);
+            background: linear-gradient(90deg, #ff1a1a, #e60000);
+        }
+
+        .btn-wallet.connected {
+            background: rgba(16, 185, 129, 0.15);
+            border: 1px solid rgba(16, 185, 129, 0.5);
+            color: #10b981;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
         }
 
         .menu-toggle {
@@ -439,7 +473,7 @@
         }
 
         .stat-number {
-            font-size: 3.5rem;
+            font-size: 3.2rem;
             font-weight: 900;
             background: linear-gradient(135deg, #ff4d4d, #ffffff);
             -webkit-background-clip: text;
@@ -558,7 +592,7 @@
             box-shadow: 0 0 25px rgba(22, 163, 74, .5);
         }
 
-        .donate-copy-btn {
+        .donate-copy-btn, .web3-donate-btn {
             background: linear-gradient(90deg, #eab308, #ca8a04);
             color: white;
             border: none;
@@ -570,7 +604,7 @@
             box-shadow: 0 0 15px rgba(234, 179, 8, 0.3);
         }
 
-        .donate-copy-btn:hover {
+        .donate-copy-btn:hover, .web3-donate-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 0 25px rgba(234, 179, 8, 0.6);
         }
@@ -595,6 +629,26 @@
             display: flex;
             justify-content: center;
             align-items: center;
+        }
+
+        /* WEB3 INPUT STYLING */
+        .web3-input {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 12px 15px;
+            border-radius: 10px;
+            font-size: 1rem;
+            width: 100%;
+            max-width: 200px;
+            text-align: center;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .web3-input:focus {
+            border-color: #eab308;
+            box-shadow: 0 0 10px rgba(234, 179, 8, 0.4);
         }
 
         footer {
@@ -677,7 +731,7 @@
 
             nav ul {
                 position: absolute;
-                top: 80px;
+                top: 75px;
                 left: 0;
                 width: 100%;
                 background: #0b1020;
@@ -758,7 +812,7 @@
             <img src="robot.png" alt="PERU Welcome Robot" class="welcome-logo">
             <h1 class="welcome-title">PERU</h1>
             <p class="welcome-text">Deporte, Blockchain & Futuro.</p>
-            <button onclick="enterSite()" class="btn primary" style="font-size: 1.1rem; padding: 15px 40px;">Ingresar</button>
+            <button id="enter-btn" class="btn primary" style="font-size: 1.1rem; padding: 15px 40px;">Ingresar</button>
         </div>
     </div>
 
@@ -767,18 +821,24 @@
 
         <nav>
             <div class="logo">
-                <img src="logo.png" alt="PERU Logo" style="height:55px;">
+                <img src="logo.png" alt="PERU Logo" style="height:50px;">
             </div>
-            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Abrir menú de navegación">☰</button>
+            <button class="menu-toggle" id="menu-toggle-btn" aria-label="Abrir menú de navegación">☰</button>
             <ul>
-                <li><a href="#about" onclick="closeMenu()">Proyecto</a></li>
-                <li><a href="#donate-section" onclick="closeMenu()">Donar</a></li>
-                <li><a href="#stats" onclick="closeMenu()">Estadísticas</a></li>
-                <li><a href="#beneficiaries" onclick="closeMenu()">Beneficiarios</a></li>
-                <li><a href="#utility" onclick="closeMenu()">Utilidad</a></li>
-                <li><a href="#tokenomics" onclick="closeMenu()">Tokenomics</a></li>
-                <li><a href="#roadmap" onclick="closeMenu()">Roadmap</a></li>
-                <li><a href="#team" onclick="closeMenu()">Equipo</a></li>
+                <li><a href="#about" class="nav-link">Proyecto</a></li>
+                <li><a href="#donate-section" class="nav-link">Donar</a></li>
+                <li><a href="#stats" class="nav-link">Estadísticas</a></li>
+                <li><a href="#beneficiaries" class="nav-link">Beneficiarios</a></li>
+                <li><a href="#utility" class="nav-link">Utilidad</a></li>
+                <li><a href="#tokenomics" class="nav-link">Tokenomics</a></li>
+                <li><a href="#roadmap" class="nav-link">Roadmap</a></li>
+                <li><a href="#team" class="nav-link">Equipo</a></li>
+                <li>
+                    <button id="connect-wallet-btn" class="btn-wallet">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></svg>
+                        <span id="wallet-btn-text">Conectar Wallet</span>
+                    </button>
+                </li>
             </ul>
         </nav>
 
@@ -828,14 +888,22 @@
                 </div>
             </div>
 
+            <!-- SECCIÓN DE DONACIONES WEB3 ACTUALIZADA -->
             <div id="donate-section" class="card reveal" style="max-width: 800px; margin: 50px auto 0 auto; text-align: center; border: 2px dashed rgba(234, 179, 8, 0.4); backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);">
                 <div style="font-size: 3rem; margin-bottom: 10px;">🎁</div>
                 <h3 style="justify-content: center; font-size: 1.6rem; color: #eab308; margin-bottom: 10px; border: none;">Apoya al Proyecto (Donaciones)</h3>
-                <p style="color: #cbd5e1; font-size: 1rem; max-width: 650px; margin: 0 auto 20px auto; line-height: 1.6;">Si usas celular, exchanges u otras wallets, puedes enviar tu aporte voluntario directamente copiando la siguiente dirección pública oficial:</p>
-                <div style="background: rgba(0,0,0,0.4); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); display: inline-block; width: 100%; max-width: 550px; margin-bottom: 20px;">
+                <p style="color: #cbd5e1; font-size: 1rem; max-width: 650px; margin: 0 auto 20px auto; line-height: 1.6;">Puedes enviar tu aporte voluntario en BNB usando tu Wallet conectada o copiando la dirección pública oficial:</p>
+                
+                <div style="background: rgba(0,0,0,0.4); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); display: inline-block; width: 100%; max-width: 550px; margin-bottom: 20px;">
                     <span style="font-size: 0.75rem; color: #ca8a04; font-weight: 700; display: block; margin-bottom: 5px; letter-spacing: 1px;">DIRECCIÓN OFICIAL DE TESORERÍA (BSC)</span>
                     <p id="donation-address" style="word-break: break-all; font-family: monospace; font-size: 0.95rem; color: #ffffff; margin-bottom: 15px; font-weight: bold;">0xE7A8096362f14152375E9FF0631114044dCe0f91</p>
-                    <button onclick="copyDonationWallet()" class="donate-copy-btn">📋 Copiar Dirección</button>
+                    
+                    <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 15px;">
+                        <input type="number" id="donate-amount" class="web3-input" placeholder="Cantidad BNB" step="0.01" min="0.001" value="0.05">
+                        <button id="web3-donate-btn" class="web3-donate-btn">⚡ Donar BNB con Wallet</button>
+                    </div>
+
+                    <button id="copy-donation-btn" class="donate-copy-btn">📋 Copiar Dirección</button>
                 </div>
                 <p style="font-size: 0.85rem; color: #94a3b8;">⚠️ Recuerda enviar tus fondos únicamente a través de la red <strong>Binance Smart Chain (BSC / BEP20)</strong> para evitar pérdidas.</p>
             </div>
@@ -862,9 +930,10 @@
             </div>
         </section>
 
+        <!-- SECCIÓN DE ESTADÍSTICAS ACTUALIZADA CON DATOS LEYDOS EN TIEMPO REAL -->
         <section id="stats" style="background: rgba(255,255,255,0.01); border-top: 1px solid rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.02);">
-            <h2 class="title reveal">ESTADÍSTICAS</h2>
-            <p class="subtitle reveal">Métricas clave e impacto comunitario en tiempo real</p>
+            <h2 class="title reveal">ESTADÍSTICAS WEB3</h2>
+            <p class="subtitle reveal">Métricas clave e impacto comunitario leídos directamente de la red</p>
             <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 40px;">
                 <div class="stat-box reveal">
                     <div class="stat-number">100%</div>
@@ -872,14 +941,14 @@
                     <p style="font-size: 0.85rem; color: #64748b;">Sin entidades financieras intermediarias</p>
                 </div>
                 <div class="stat-box reveal">
-                    <div class="stat-number">1M</div>
-                    <h4 style="font-weight: 600; color: #cbd5e1; font-size: 1.1rem; margin-bottom: 5px;">Supply Máximo</h4>
-                    <p style="font-size: 0.85rem; color: #64748b;">Emisión fija sin acuñación posterior</p>
+                    <div class="stat-number" id="live-total-supply">1,000,000</div>
+                    <h4 style="font-weight: 600; color: #cbd5e1; font-size: 1.1rem; margin-bottom: 5px;">Supply On-Chain</h4>
+                    <p style="font-size: 0.85rem; color: #64748b;">Lectura directa en Smart Contract</p>
                 </div>
                 <div class="stat-box reveal">
-                    <div class="stat-number">20%</div>
-                    <h4 style="font-weight: 600; color: #cbd5e1; font-size: 1.1rem; margin-bottom: 5px;">Fondo de Impacto</h4>
-                    <p style="font-size: 0.85rem; color: #64748b;">Reservado estrictamente para los atletas</p>
+                    <div class="stat-number" id="user-token-balance">0.00</div>
+                    <h4 style="font-weight: 600; color: #cbd5e1; font-size: 1.1rem; margin-bottom: 5px;">Tu Balance PERU</h4>
+                    <p style="font-size: 0.85rem; color: #64748b;">Conecta tu Wallet para ver tus fondos</p>
                 </div>
             </div>
         </section>
@@ -943,7 +1012,7 @@
                     <div style="background: rgba(0,0,0,0.2); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); text-align: center;">
                         <span style="font-size: 0.85rem; color: #ff4d4d; font-weight: 600; display: block; margin-bottom: 8px; letter-spacing: 1px;">CONTRATO OFICIAL (BSC)</span>
                         <p style="word-break: break-all; font-family: monospace; font-size: 0.9rem; color: #cbd5e1; margin-bottom: 15px; background: rgba(255,255,255,0.02); padding: 10px; border-radius: 6px;">0x1c647ebe755fe03dc43fa078ca550e837d0b4444</p>
-                        <button onclick="copyContract()" class="copy-btn" style="width: 100%; padding: 12px;">📋 Copiar Contrato</button>
+                        <button id="copy-contract-btn" class="copy-btn" style="width: 100%; padding: 12px;">📋 Copiar Contrato</button>
                     </div>
                 </div>
 
@@ -1083,7 +1152,7 @@
                 </a>
                 <a href="https://www-token-peru.blogspot.com/" target="_blank" class="footer-link-item">
                     <svg viewBox="0 0 24 24">
-                        <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95a15.65 15.65 0 0 0-1.38-3.56A8.03 8.03 0 0 1 18.92 8zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.34-.14 2 0 .67.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56A8.03 8.03 0 0 1 5.08 16zm2.95-8H5.08a8.03 8.03 0 0 1 3.56-3.56A15.65 15.65 0 0 0 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.34-.16-2 0-.67.07-1.35.16-2h4.68c.09.65.16 1.33.16 2 0 .66-.07 1.34-.16 2zm.24 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56zM16.36 14c.08-.66.14-1.34.14-2 0-.67-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/>
+                        <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95a15.65 15.65 0 0 0-1.38-3.56A8.03 8.03 0 0 1 18.92 8zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.34-.14 2 0 .67.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56A8.03 8.03 0 0 1 5.08 16zm2.95-8H5.08a8.03 8.03 0 0 1 3.56-3.56A15.65 15.65 0 0 0 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM4.34 14H9.66c-.09-.66-.16-1.34-.16-2 0-.67.07-1.35.16-2h4.68c.09.65.16 1.33.16 2 0 .66-.07 1.34-.16 2zm.24 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56zM16.36 14c.08-.66.14-1.34.14-2 0-.67-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/>
                     </svg>
                     www-token-peru.blogspot.com
                 </a>
@@ -1100,36 +1169,224 @@
     </div>
 
     <script>
-        function enterSite() {
-            document.getElementById("welcome-screen").classList.add("hidden");
-            document.body.classList.remove("no-scroll");
-        }
+        // === CONFIGURACIÓN Y CONSTANTES WEB3 ===
+        const BSC_CHAIN_ID = '0x38'; // Decimal 56
+        const TOKEN_CONTRACT_ADDRESS = "0x1c647ebe755fe03dc43fa078ca550e837d0b4444";
+        const TREASURY_ADDRESS = "0xE7A8096362f14152375E9FF0631114044dCe0f91";
+        
+        // ABI mínima ERC-20 para consultas básicas (balanceOf, totalSupply, decimals)
+        const ERC20_ABI = [
+            "function totalSupply() view returns (uint256)",
+            "function balanceOf(address owner) view returns (uint256)",
+            "function decimals() view returns (uint8)"
+        ];
 
-        function toggleMenu() {
-            document.querySelector("nav ul").classList.toggle("active");
-        }
+        let provider = null;
+        let signer = null;
+        let userAddress = null;
 
-        function closeMenu() {
-            document.querySelector("nav ul").classList.remove("active");
-        }
+        // === EVENT LISTENERS Y MANEJO DEL DOM ===
+        document.addEventListener("DOMContentLoaded", function () {
+            // Animaciones Reveal al hacer Scroll
+            const itemsToReveal = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, { threshold: 0.1 });
+            itemsToReveal.forEach(item => observer.observe(item));
 
-        const itemsToReveal = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
+            // Botón Ingresar de la Pantalla Splash
+            document.getElementById("enter-btn").addEventListener("click", function() {
+                document.getElementById("welcome-screen").classList.add("hidden");
+                document.body.classList.remove("no-scroll");
             });
-        }, { threshold: 0.1 });
 
-        itemsToReveal.forEach(item => observer.observe(item));
+            // Menú Hamburguesa
+            document.getElementById("menu-toggle-btn").addEventListener("click", function() {
+                document.querySelector("nav ul").classList.toggle("active");
+            });
+
+            document.querySelectorAll(".nav-link").forEach(link => {
+                link.addEventListener("click", function() {
+                    document.querySelector("nav ul").classList.remove("active");
+                });
+            });
+
+            // Botones de Copiar
+            document.getElementById("copy-contract-btn").addEventListener("click", copyContract);
+            document.getElementById("copy-donation-btn").addEventListener("click", copyDonationWallet);
+
+            // Botones Web3
+            document.getElementById("connect-wallet-btn").addEventListener("click", handleWalletConnect);
+            document.getElementById("web3-donate-btn").addEventListener("click", executeWeb3Donation);
+
+            // Cargar Tokenomics Chart
+            initTokenomicsChart();
+
+            // Cargar Métricas On-Chain públicas (vía Provider RPC Público)
+            loadPublicOnChainData();
+        });
+
+        // === INTEGRACIÓN WEB3 (Ethers.js) ===
+
+        async function handleWalletConnect() {
+            if (userAddress) {
+                // Desconectar si ya está conectado
+                userAddress = null;
+                provider = null;
+                signer = null;
+                updateWalletUI(false);
+                document.getElementById("user-token-balance").innerText = "0.00";
+                return;
+            }
+
+            if (typeof window.ethereum === 'undefined') {
+                alert("No se detectó ninguna Wallet Web3 (MetaMask, TrustWallet, etc.). Por favor instala una extensión o navegador Web3.");
+                return;
+            }
+
+            try {
+                // Solicitar acceso a las cuentas
+                const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+                userAddress = accounts[0];
+
+                // Verificar y cambiar a la red Binance Smart Chain si es necesario
+                const currentChainId = await window.ethereum.request({ method: 'eth_chainId' });
+                if (currentChainId !== BSC_CHAIN_ID) {
+                    await switchToBSCNetwork();
+                }
+
+                provider = new ethers.providers.Web3Provider(window.ethereum);
+                signer = provider.getSigner();
+
+                updateWalletUI(true);
+                await loadUserTokenBalance();
+
+            } catch (error) {
+                console.error("Error al conectar wallet:", error);
+                alert("Error al conectar la wallet: " + error.message);
+            }
+        }
+
+        async function switchToBSCNetwork() {
+            try {
+                await window.ethereum.request({
+                    method: 'wallet_switchEthereumChain',
+                    params: [{ chainId: BSC_CHAIN_ID }],
+                });
+            } catch (switchError) {
+                // Si la red BSC no está agregada en la wallet, la solicitamos agregar
+                if (switchError.code === 4902) {
+                    try {
+                        await window.ethereum.request({
+                            method: 'wallet_addEthereumChain',
+                            params: [{
+                                chainId: BSC_CHAIN_ID,
+                                chainName: 'Binance Smart Chain Mainnet',
+                                nativeCurrency: { name: 'BNB', symbol: 'BNB', decimals: 18 },
+                                rpcUrls: ['https://bsc-dataseed.binance.org/'],
+                                blockExplorerUrls: ['https://bscscan.com/']
+                            }],
+                        });
+                    } catch (addError) {
+                        console.error("Error agregando red BSC:", addError);
+                    }
+                }
+            }
+        }
+
+        function updateWalletUI(connected) {
+            const btn = document.getElementById("connect-wallet-btn");
+            const btnText = document.getElementById("wallet-btn-text");
+
+            if (connected && userAddress) {
+                const shortAddress = `${userAddress.substring(0, 4)}...${userAddress.substring(userAddress.length - 4)}`;
+                btnText.innerText = shortAddress;
+                btn.classList.add("connected");
+            } else {
+                btnText.innerText = "Conectar Wallet";
+                btn.classList.remove("connected");
+            }
+        }
+
+        async function loadPublicOnChainData() {
+            try {
+                // Conexión vía RPC Público para lecturas sin necesidad de wallet obligatoria
+                const publicProvider = new ethers.providers.JsonRpcProvider('https://bsc-dataseed.binance.org/');
+                const contract = new ethers.Contract(TOKEN_CONTRACT_ADDRESS, ERC20_ABI, publicProvider);
+
+                const rawSupply = await contract.totalSupply();
+                const decimals = await contract.decimals();
+                const formattedSupply = ethers.utils.formatUnits(rawSupply, decimals);
+
+                const supplyNumber = parseFloat(formattedSupply).toLocaleString('en-US', { maximumFractionDigits: 0 });
+                document.getElementById("live-total-supply").innerText = supplyNumber;
+            } catch (error) {
+                console.warn("Uso de fallback para métricas públicas:", error);
+            }
+        }
+
+        async function loadUserTokenBalance() {
+            if (!userAddress || !provider) return;
+
+            try {
+                const contract = new ethers.Contract(TOKEN_CONTRACT_ADDRESS, ERC20_ABI, provider);
+                const rawBalance = await contract.balanceOf(userAddress);
+                const decimals = await contract.decimals();
+                const formattedBalance = ethers.utils.formatUnits(rawBalance, decimals);
+
+                const balanceNumber = parseFloat(formattedBalance).toLocaleString('en-US', { maximumFractionDigits: 2 });
+                document.getElementById("user-token-balance").innerText = balanceNumber;
+            } catch (error) {
+                console.error("Error leyendo balance del usuario:", error);
+            }
+        }
+
+        async function executeWeb3Donation() {
+            if (!userAddress || !signer) {
+                alert("Por favor, primero conecta tu wallet para realizar la donación.");
+                await handleWalletConnect();
+                return;
+            }
+
+            const amountInput = document.getElementById("donate-amount").value;
+            if (!amountInput || parseFloat(amountInput) <= 0) {
+                alert("Ingresa un monto válido en BNB.");
+                return;
+            }
+
+            try {
+                const txBtn = document.getElementById("web3-donate-btn");
+                txBtn.innerText = "⏳ Procesando...";
+                txBtn.disabled = true;
+
+                const tx = await signer.sendTransaction({
+                    to: TREASURY_ADDRESS,
+                    value: ethers.utils.parseEther(amountInput.toString())
+                });
+
+                alert(`Transacción enviada. Hash: ${tx.hash}\nEsperando confirmación...`);
+                await tx.wait();
+
+                alert("🎉 ¡Muchas gracias por tu donación al proyecto PERU!");
+                txBtn.innerText = "⚡ Donar BNB con Wallet";
+                txBtn.disabled = false;
+            } catch (error) {
+                console.error("Error ejecutando donación:", error);
+                alert("Ocurrió un error en la transacción: " + (error.reason || error.message));
+                document.getElementById("web3-donate-btn").innerText = "⚡ Donar BNB con Wallet";
+                document.getElementById("web3-donate-btn").disabled = false;
+            }
+        }
+
+        // === FUNCIONES UTILITARIAS DE COPIADO ===
 
         function copyContract() {
-            const contract = "0x1c647ebe755fe03dc43fa078ca550e837d0b4444";
-            navigator.clipboard.writeText(contract);
-            const btn = document.querySelector(".copy-btn");
-            if (!btn) return;
-
+            navigator.clipboard.writeText(TOKEN_CONTRACT_ADDRESS);
+            const btn = document.getElementById("copy-contract-btn");
             btn.innerHTML = "✅ Contrato Copiado";
             btn.classList.add("copied");
 
@@ -1140,11 +1397,8 @@
         }
 
         function copyDonationWallet() {
-            const addressText = "0xE7A8096362f14152375E9FF0631114044dCe0f91";
-            navigator.clipboard.writeText(addressText);
-            const btn = document.querySelector(".donate-copy-btn");
-            if (!btn) return;
-
+            navigator.clipboard.writeText(TREASURY_ADDRESS);
+            const btn = document.getElementById("copy-donation-btn");
             btn.innerHTML = "✅ ¡Dirección Copiada!";
             btn.classList.add("copied");
 
@@ -1154,7 +1408,9 @@
             }, 3000);
         }
 
-        document.addEventListener("DOMContentLoaded", function() {
+        // === GRÁFICO DE TOKENOMICS ===
+
+        function initTokenomicsChart() {
             const ctx = document.getElementById('tokenomicsChart').getContext('2d');
             new Chart(ctx, {
                 type: 'doughnut',
@@ -1198,7 +1454,7 @@
                     cutout: '70%'
                 }
             });
-        });
+        }
     </script>
 </body>
 </html>
