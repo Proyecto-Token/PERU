@@ -367,20 +367,21 @@
         }
 
         /* ==========================================
-           ESTILOS MEJORADOS - SECCIÓN PROYECTO (MODERNA)
+           SECCIÓN PROYECTO OPTIMIZADA Y SIN ESPACIOS VACÍOS
            ========================================== */
         .project-hero-grid {
             display: grid;
             grid-template-columns: 1.1fr 0.9fr;
             gap: 30px;
             margin-bottom: 50px;
+            align-items: stretch;
         }
 
         .project-main-card {
             background: linear-gradient(135deg, rgba(255, 0, 0, 0.08) 0%, rgba(20, 25, 45, 0.7) 100%);
             border: 1px solid rgba(255, 77, 77, 0.25);
             border-radius: 24px;
-            padding: 40px;
+            padding: 35px;
             position: relative;
             backdrop-filter: blur(16px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
@@ -412,28 +413,29 @@
             font-size: 1.02rem;
             color: #cbd5e1;
             line-height: 1.7;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
-        /* Dashboard de Tabuladores (Misión/Visión/Valores) */
+        /* Dashboard de Tabuladores Compacto y Ajustado */
         .tabs-container {
             background: rgba(10, 15, 30, 0.8);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 24px;
-            padding: 30px;
+            padding: 28px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: flex-start;
+            gap: 15px;
         }
 
         .tabs-header {
             display: flex;
-            gap: 10px;
+            gap: 8px;
             background: rgba(255, 255, 255, 0.03);
-            padding: 6px;
+            padding: 5px;
             border-radius: 14px;
             border: 1px solid rgba(255, 255, 255, 0.05);
-            margin-bottom: 25px;
+            margin-bottom: 5px;
         }
 
         .tab-btn {
@@ -457,6 +459,11 @@
 
         .tab-content {
             display: none;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 22px;
+            flex: 1;
             animation: fadeIn 0.4s ease-in-out forwards;
         }
 
@@ -470,22 +477,41 @@
         }
 
         .tab-content h4 {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: #fff;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             gap: 10px;
         }
 
         .tab-content p {
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             color: #94a3b8;
             line-height: 1.6;
         }
 
-        /* Tarjetas de Pilares con Neon Hover */
+        .tabs-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.78rem;
+            color: #64748b;
+        }
+
+        .tabs-status-dot {
+            width: 6px;
+            height: 6px;
+            background: #ff4d4d;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 8px #ff4d4d;
+        }
+
+        /* Tarjetas de Pilares */
         .pillar-card {
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -1069,7 +1095,7 @@
             </div>
         </section>
 
-        <!-- === SECCIÓN PROYECTO (COMPLETAMENTE REDISEÑADA Y MODERNA) === -->
+        <!-- === SECCIÓN PROYECTO (MODERNA Y OPTIMIZADA) === -->
         <section id="about">
             <h2 class="title reveal">EL PROYECTO</h2>
             <p class="subtitle reveal">Tecnología descentralizada al servicio del talento deportivo nacional</p>
@@ -1083,21 +1109,21 @@
                         PERU nace para eliminar la falta de financiamiento en el deporte nacional. A través de la tecnología Binance Smart Chain, conectamos a una comunidad global de inversores directamente con jóvenes promesas que necesitan apoyo económico urgente.
                     </p>
                     <p class="project-main-desc" style="margin-bottom: 0;">
-                        Garantizamos trazabilidad pública e inmutable: cada token aporta liquidez y respaldo a un fondo de impacto audited en cadena.
+                        Garantizamos trazabilidad pública e inmutable: cada token aporta liquidez y respaldo a un fondo de impacto auditado en cadena.
                     </p>
                 </div>
 
-                <!-- Dashboard de Pestañas Interactivas (Misión / Visión / Valores) -->
+                <!-- Dashboard de Pestañas Interactivas (Misión / Visión / Valores - COMPACTO) -->
                 <div class="tabs-container">
                     <div class="tabs-header">
-                        <button class="tab-btn active" onclick="switchTab('vision')">Visión</button>
-                        <button class="tab-btn" onclick="switchTab('mision')">Misión</button>
-                        <button class="tab-btn" onclick="switchTab('valores')">Valores</button>
+                        <button class="tab-btn active" onclick="switchTab(event, 'vision')">Visión</button>
+                        <button class="tab-btn" onclick="switchTab(event, 'mision')">Misión</button>
+                        <button class="tab-btn" onclick="switchTab(event, 'valores')">Valores</button>
                     </div>
 
                     <div id="tab-vision" class="tab-content active">
                         <h4>🚀 Liderazgo Regional</h4>
-                        <p>Consolidarnos como el referente indiscutible de financiamiento deportivo Web3 en Latinoamérica, demostrando que la blockchain puede generar transformaciones sociales sostenibles en el mundo real.</p>
+                        <p>Consolidarnos como el referente indiscutible de financiamiento deportivo Web3 en Latinoamérica, demostrando que la tecnología blockchain puede generar transformaciones sociales sostenibles y transparentes en el mundo real.</p>
                     </div>
 
                     <div id="tab-mision" class="tab-content">
@@ -1107,12 +1133,17 @@
 
                     <div id="tab-valores" class="tab-content">
                         <h4>🛡️ Pilares Fundamentales</h4>
-                        <p>Transparencia absoluta en la cadena de bloques, descentralización en la toma de decisiones, compromiso social inquebrantable y seguridad criptográfica para toda la comunidad.</p>
+                        <p>Transparencia absoluta respaldada en la cadena de bloques, descentralización en la toma de decisiones, compromiso social inquebrantable y seguridad criptográfica para toda la comunidad.</p>
+                    </div>
+
+                    <div class="tabs-footer">
+                        <span><span class="tabs-status-dot"></span> Gobernanza Web3</span>
+                        <span>BSC Verified</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Pilares de Apoyo Rediseñados -->
+            <!-- Pilares de Apoyo -->
             <h3 class="reveal" style="text-align: center; color: white; margin: 60px 0 30px 0; font-size: 1.8rem; font-weight: 800;">Pilares de Acción Directa</h3>
 
             <div class="grid">
@@ -1322,7 +1353,7 @@
                 </div>
             </div>
             <div class="card reveal" style="margin-top: 40px; text-align: center; border-style: dashed; border-color: rgba(255,255,255,0.15);">
-                <p style="font-size: 0.95rem; color: #94a3b8; max-width: 800px; margin: 0 auto;">Por strictly razones de seguridad informática y resguardo personal, el equipo opera bajo pseudónimos verificables en la red, una metodología estándar dentro del ecosistema cripto.</p>
+                <p style="font-size: 0.95rem; color: #94a3b8; max-width: 800px; margin: 0 auto;">Por razones de seguridad informática y resguardo personal, el equipo opera bajo pseudónimos verificables en la red, una metodología estándar dentro del ecosistema cripto.</p>
             </div>
         </section>
 
@@ -1429,15 +1460,15 @@
             document.querySelector("nav ul").classList.remove("active");
         }
 
-        /* LÓGICA DE INTERACCIÓN DE TABULADORES DE LA SECCIÓN PROYECTO */
-        function switchTab(tabName) {
+        /* LÓGICA DE PESTAÑAS (CORREGIDA) */
+        function switchTab(evt, tabName) {
             const tabs = document.querySelectorAll('.tab-btn');
             const contents = document.querySelectorAll('.tab-content');
 
             tabs.forEach(tab => tab.classList.remove('active'));
             contents.forEach(content => content.classList.remove('active'));
 
-            event.currentTarget.classList.add('active');
+            evt.currentTarget.classList.add('active');
             document.getElementById('tab-' + tabName).classList.add('active');
         }
 
