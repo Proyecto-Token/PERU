@@ -332,7 +332,7 @@
         }
 
         /* ==========================================
-           SECCIÓN PROYECTO (MEJORADA Y REDISEÑADA)
+           SECCIÓN PROYECTO
            ========================================== */
         .project-main-card {
             background: linear-gradient(145deg, rgba(20, 25, 48, 0.85) 0%, rgba(8, 12, 28, 0.95) 100%);
@@ -419,7 +419,7 @@
         }
 
         /* ==========================================
-           SECCIÓN BENEFICIARIOS (MEJORADA Y REDISEÑADA)
+           SECCIÓN BENEFICIARIOS
            ========================================== */
         .beneficiary-box-modern {
             max-width: 850px;
@@ -521,7 +521,7 @@
         }
 
         /* ==========================================
-           SECCIÓN AVISO LEGAL (MEJORADA Y REDISEÑADA)
+           SECCIÓN AVISO LEGAL
            ========================================== */
         .legal-grid {
             display: grid;
@@ -862,10 +862,13 @@
             font-weight: 300;
         }
 
+        /* ==========================================
+           SECCIÓN ROADMAP (MEJORADA Y REDISEÑADA)
+           ========================================== */
         .timeline {
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 35px;
             position: relative;
             max-width: 900px;
             margin: 0 auto;
@@ -874,30 +877,135 @@
         .timeline::before {
             content: '';
             position: absolute;
-            left: 30px;
-            top: 10px;
-            bottom: 10px;
-            width: 2px;
-            background: linear-gradient(180deg, #ff0000, rgba(255, 255, 255, 0.05));
+            left: 24px;
+            top: 20px;
+            bottom: 20px;
+            width: 3px;
+            background: linear-gradient(180deg, #ff0000 0%, #eab308 50%, rgba(255, 255, 255, 0.1) 100%);
+            border-radius: 2px;
         }
 
         .timeline-item {
             position: relative;
-            padding-left: 80px;
+            padding-left: 75px;
         }
 
         .timeline-dot {
             position: absolute;
-            left: 17px;
-            top: 35px;
-            width: 28px;
-            height: 28px;
+            left: 12px;
+            top: 28px;
+            width: 26px;
+            height: 26px;
             border-radius: 50%;
             background: #050816;
             border: 4px solid #ff4d4d;
             z-index: 2;
-            box-shadow: 0 0 15px #ff0000;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+            transition: all 0.3s ease;
         }
+
+        .timeline-item.completed .timeline-dot {
+            border-color: #22c55e;
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.8);
+        }
+
+        .timeline-item.in-progress .timeline-dot {
+            border-color: #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.8);
+            animation: pulseDot 2s infinite ease-in-out;
+        }
+
+        .roadmap-card {
+            background: linear-gradient(145deg, rgba(20, 25, 45, 0.85) 0%, rgba(8, 12, 28, 0.95) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 22px;
+            padding: 32px 35px;
+            backdrop-filter: blur(16px);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .roadmap-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 77, 77, 0.4);
+            box-shadow: 0 15px 35px rgba(255, 0, 0, 0.12);
+        }
+
+        .roadmap-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 15px;
+        }
+
+        .roadmap-phase-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .roadmap-status-badge {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 5px 14px;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .badge-active {
+            background: rgba(34, 197, 94, 0.12);
+            color: #22c55e;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .badge-progress {
+            background: rgba(234, 179, 8, 0.12);
+            color: #eab308;
+            border: 1px solid rgba(234, 179, 8, 0.3);
+        }
+
+        .badge-future {
+            background: rgba(148, 163, 184, 0.1);
+            color: #94a3b8;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+        }
+
+        .roadmap-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .roadmap-list li {
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            line-height: 1.6;
+            font-weight: 300;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .roadmap-list li span.icon {
+            font-weight: 700;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .roadmap-list li.done span.icon { color: #22c55e; }
+        .roadmap-list li.pending span.icon { color: #ff4d4d; }
 
         .whatsapp-float {
             position: fixed;
@@ -1157,13 +1265,14 @@
             .buttons { justify-content: center; }
             .btn { width: 100%; text-align: center; }
             .hero-image img { width: 220px; }
-            .timeline::before { left: 20px; }
-            .timeline-item { padding-left: 50px; }
-            .timeline-dot { left: 8px; }
+            .timeline::before { left: 15px; }
+            .timeline-item { padding-left: 45px; }
+            .timeline-dot { left: 4px; }
             .footer-links { flex-direction: column; align-items: center; }
             .donate-body { flex-direction: column; align-items: stretch; text-align: center; }
             .beneficiary-box-modern { padding: 35px 20px; }
             .project-main-card { padding: 25px; }
+            .roadmap-card { padding: 25px 20px; }
         }
     </style>
 </head>
@@ -1217,7 +1326,7 @@
             </div>
         </section>
 
-        <!-- === SECCIÓN PROYECTO (REDISEÑADA Y MODERNIZADA) === -->
+        <!-- === SECCIÓN PROYECTO === -->
         <section id="about">
             <h2 class="title reveal">PROYECTO</h2>
             <p class="subtitle reveal">Tecnología Web3 con impacto social real y trazable</p>
@@ -1353,7 +1462,7 @@
             </div>
         </section>
 
-        <!-- === SECCIÓN BENEFICIARIOS (REDISEÑADA Y MODERNIZADA) === -->
+        <!-- === SECCIÓN BENEFICIARIOS === -->
         <section id="beneficiaries">
             <h2 class="title reveal">BENEFICIARIOS</h2>
             <p class="subtitle reveal">El puente entre la comunidad Web3 y las promesas del deporte peruano</p>
@@ -1469,53 +1578,84 @@
             </div>
         </section>
 
-        <!-- ROADMAP -->
+        <!-- === ROADMAP (SECCIÓN MEJORADA) === -->
         <section id="roadmap">
             <h2 class="title reveal">ROADMAP</h2>
-            <p class="subtitle reveal">Fases de desarrollo técnico y social programadas a mediano y largo plazo</p>
+            <p class="subtitle reveal">Hoja de ruta estratégica para el desarrollo técnico, adopción comunitaria e impacto deportivo</p>
+            
             <div class="timeline">
-                <div class="timeline-item reveal">
+                <!-- FASE 1 -->
+                <div class="timeline-item completed reveal">
                     <div class="timeline-dot"></div>
-                    <div class="card">
-                        <h3 style="font-size: 1.2rem; color: #ff4d4d;">🚀 FASE 1 – Despliegue & Lanzamiento</h3>
-                        <ul style="margin-top: 10px; list-style: none;">
-                            <li style="margin-bottom: 8px;">• Despliegue e indexación del Smart Contract en Binance Smart Chain.</li>
-                            <li style="margin-bottom: 8px;">• Lanzamiento y puesta en marcha del portal comunitario inicial.</li>
-                            <li style="margin-bottom: 8px;">• Configuración de canales globales de comunicación y branding.</li>
-                            <li>• Fase Alfa de marketing estratégico enfocado en micro-influencers Web3.</li>
+                    <div class="roadmap-card">
+                        <div class="roadmap-header">
+                            <div class="roadmap-phase-title">
+                                <span>🚀</span> FASE 1 — Despliegue & Fundación
+                            </div>
+                            <span class="roadmap-status-badge badge-active">Completado</span>
+                        </div>
+                        <ul class="roadmap-list">
+                            <li class="done"><span class="icon">✓</span> Despliegue, verificación e indexación del Smart Contract en Binance Smart Chain (BSC).</li>
+                            <li class="done"><span class="icon">✓</span> Creación del sitio web oficial e infraestructura digital comunitaria.</li>
+                            <li class="done"><span class="icon">✓</span> Apertura y verificación de canales sociales principales (X, TikTok, Discord, Telegram).</li>
+                            <li class="done"><span class="icon">✓</span> Publicación oficial del Whitepaper estructurado y documentación de Tokenomics.</li>
                         </ul>
                     </div>
                 </div>
-                <div class="timeline-item reveal">
-                    <div class="timeline-dot" style="border-color: #64748b; box-shadow: none;"></div>
-                    <div class="card">
-                        <h3 style="font-size: 1.2rem;">📈 FASE 2 – Consolidación & Primer Impacto</h3>
-                        <ul style="margin-top: 10px; list-style: none;">
-                            <li style="margin-bottom: 8px;">• Expansión orgánica y crecimiento escalonado en plataformas masivas.</li>
-                            <li style="margin-bottom: 8px;">• Selección y auditoría de los primeros deportistas peruanos beneficiados.</li>
-                            <li>• Postulación e integración de métricas en rastreadores de capitalización.</li>
+
+                <!-- FASE 2 -->
+                <div class="timeline-item in-progress reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="roadmap-card">
+                        <div class="roadmap-header">
+                            <div class="roadmap-phase-title">
+                                <span>📈</span> FASE 2 — Consolidación & Primer Impacto
+                            </div>
+                            <span class="roadmap-status-badge badge-progress">En Progreso</span>
+                        </div>
+                        <ul class="roadmap-list">
+                            <li class="done"><span class="icon">✓</span> Lanzamiento del Fondo Social de Donaciones Directas en Cadena (BEP20).</li>
+                            <li class="pending"><span class="icon">→</span> Campañas de concientización y difusión con micro-influencers Web3 nacionales.</li>
+                            <li class="pending"><span class="icon">→</span> Primera convocatoria para auditoría y selección del deportista beneficiario inicial.</li>
+                            <li class="pending"><span class="icon">→</span> Aplicación e integración de métricas en plataformas de seguimiento (CoinGecko / CoinMarketCap).</li>
                         </ul>
                     </div>
                 </div>
+
+                <!-- FASE 3 -->
                 <div class="timeline-item reveal">
                     <div class="timeline-dot" style="border-color: #64748b; box-shadow: none;"></div>
-                    <div class="card">
-                        <h3 style="font-size: 1.2rem;">🌍 FASE 3 – Infraestructura & Utilidad</h3>
-                        <ul style="margin-top: 10px; list-style: none;">
-                            <li style="margin-bottom: 8px;">• Estructuración avanzada del portal web oficial de gobernanza.</li>
-                            <li style="margin-bottom: 8px;">• Integración funcional de sistemas de votación Web3.</li>
-                            <li>• Alianzas formales con academias y clubes deportivos locales.</li>
+                    <div class="roadmap-card">
+                        <div class="roadmap-header">
+                            <div class="roadmap-phase-title">
+                                <span>🌐</span> FASE 3 — Gobernanza & Infraestructura
+                            </div>
+                            <span class="roadmap-status-badge badge-future">Próximamente</span>
+                        </div>
+                        <ul class="roadmap-list">
+                            <li class="pending"><span class="icon">→</span> Desarrollo e implementación del portal de Gobernanza DAO para votaciones en cadena.</li>
+                            <li class="pending"><span class="icon">→</span> Lanzamiento del sistema de Staking / Yield para recompensar a holders de largo plazo.</li>
+                            <li class="pending"><span class="icon">→</span> Alianzas estratégicas formales con academias deportivas, clubes y federaciones peruanas.</li>
+                            <li class="pending"><span class="icon">→</span> Lanzamiento de la primera colección oficial de NFT de Atletas con beneficio directo a deportistas.</li>
                         </ul>
                     </div>
                 </div>
+
+                <!-- FASE 4 -->
                 <div class="timeline-item reveal">
                     <div class="timeline-dot" style="border-color: #64748b; box-shadow: none;"></div>
-                    <div class="card">
-                        <h3 style="font-size: 1.2rem;">🏆 FASE 4 – Escalamiento Global</h3>
-                        <ul style="margin-top: 10px; list-style: none;">
-                            <li style="margin-bottom: 8px;">• Internacionalización del modelo de financiamiento social Web3.</li>
-                            <li style="margin-bottom: 8px;">• Patrocinios de gran escala en eventos competitivos internacionales.</li>
-                            <li>• Organización de torneos oficiales bajo la marca PERU.</li>
+                    <div class="roadmap-card">
+                        <div class="roadmap-header">
+                            <div class="roadmap-phase-title">
+                                <span>🏆</span> FASE 4 — Escalamiento & Expansión Global
+                            </div>
+                            <span class="roadmap-status-badge badge-future">Planificado</span>
+                        </div>
+                        <ul class="roadmap-list">
+                            <li class="pending"><span class="icon">→</span> Expansión del modelo de financiamiento crypto-social hacia otros países de Latinoamérica.</li>
+                            <li class="pending"><span class="icon">→</span> Patrocinio integral en torneos e itinerarios competitivos internacionales de alto nivel.</li>
+                            <li class="pending"><span class="icon">→</span> Organización de competencias y torneos deportivos oficiales bajo el sello PERU Web3.</li>
+                            <li class="pending"><span class="icon">→</span> Negociación y cotización en Intercambios Centralizados (CEX) estratégicos.</li>
                         </ul>
                     </div>
                 </div>
@@ -1609,7 +1749,7 @@
             </div>
         </section>
 
-        <!-- === SECCIÓN AVISO LEGAL (REDISEÑADA Y MODERNIZADA) === -->
+        <!-- === SECCIÓN AVISO LEGAL === -->
         <section id="legal">
             <h2 class="title reveal">AVISO LEGAL & DISCLAIMER</h2>
             <p class="subtitle reveal">Términos, exención de responsabilidad y marco regulatorio transparente</p>
