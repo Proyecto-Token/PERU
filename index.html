@@ -226,7 +226,10 @@
             text-decoration: none;
             font-weight: 700;
             transition: .3s;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             border: none;
             cursor: pointer;
         }
@@ -617,7 +620,7 @@
            ========================================== */
         .legal-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
         }
 
@@ -1327,6 +1330,7 @@
                 <li><a href="#roadmap" onclick="closeMenu()">Roadmap</a></li>
                 <li><a href="#team" onclick="closeMenu()">Equipo</a></li>
                 <li><a href="#security" onclick="closeMenu()">Seguridad</a></li>
+                <li><a href="#community" onclick="closeMenu()">Comunidad</a></li>
             </ul>
         </nav>
 
@@ -1710,7 +1714,7 @@
             <h2 class="title reveal">EQUIPO DESARROLLADOR</h2>
             <p class="subtitle reveal">Estructura organizativa especializada responsable del crecimiento del proyecto</p>
             
-            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px;">
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
                 <div class="team-card-modern reveal">
                     <div class="team-avatar-box">💻</div>
                     <span class="team-role-badge">Arquitectura Blockchain</span>
@@ -1730,13 +1734,6 @@
                     <span class="team-role-badge">Impacto Social</span>
                     <h3 class="team-name">Coordinación Deportiva</h3>
                     <p class="team-bio">Equipo encargado de verificar los expedientes de deportistas, coordinar las convocatorias y garantizar la asignación transparente de los recursos.</p>
-                </div>
-
-                <div class="team-card-modern reveal">
-                    <div class="team-avatar-box">⚖️</div>
-                    <span class="team-role-badge">Marco Regulatorio</span>
-                    <h3 class="team-name">Asesoría Legal & Compliance</h3>
-                    <p class="team-bio">Especialistas legales enfocados en la estructuración de donaciones, cumplimiento normativo para iniciativas sociales y marco Web3.</p>
                 </div>
             </div>
 
@@ -1788,14 +1785,41 @@
             </div>
         </section>
 
-        <!-- COMUNIDAD -->
+        <!-- === COMUNIDAD (ACTUALIZADA) === -->
         <section id="community">
             <h2 class="title reveal">ÚNETE A LA COMUNIDAD</h2>
-            <p class="subtitle reveal">Sé parte del movimiento crypto peruano</p>
+            <p class="subtitle reveal">Sé parte de la primera comunidad Web3 que impulsa el talento deportivo peruano.</p>
+
+            <!-- Bloques de valor comunitarios -->
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto 40px auto;">
+                <div class="card reveal" style="padding: 25px 20px; text-align: center;">
+                    <span style="font-size: 2rem; display: block; margin-bottom: 10px;">🗳️</span>
+                    <h4 style="font-size: 1.1rem; margin-bottom: 6px; color: #fff;">Voto en Cadena</h4>
+                    <p style="font-size: 0.85rem; color: #94a3b8; line-height: 1.5; font-weight: 300;">Participa activamente en la DAO para elegir a los deportistas beneficiados.</p>
+                </div>
+                <div class="card reveal" style="padding: 25px 20px; text-align: center;">
+                    <span style="font-size: 2rem; display: block; margin-bottom: 10px;">⚡</span>
+                    <h4 style="font-size: 1.1rem; margin-bottom: 6px; color: #fff;">Avances Exclusivos</h4>
+                    <p style="font-size: 0.85rem; color: #94a3b8; line-height: 1.5; font-weight: 300;">Acceso anticipado a anuncios, convocatorias y eventos comunitarios.</p>
+                </div>
+                <div class="card reveal" style="padding: 25px 20px; text-align: center;">
+                    <span style="font-size: 2rem; display: block; margin-bottom: 10px;">🤝</span>
+                    <h4 style="font-size: 1.1rem; margin-bottom: 6px; color: #fff;">Red de Impacto</h4>
+                    <p style="font-size: 0.85rem; color: #94a3b8; line-height: 1.5; font-weight: 300;">Conecta directamente con la comunidad de holders, atletas y desarrolladores.</p>
+                </div>
+            </div>
+
+            <!-- Botones CTA principales -->
             <div class="buttons" style="justify-content:center;">
-                <a href="https://x.com/WWW__PERU" target="_blank" class="btn primary">Twitter</a>
-                <a href="https://www.tiktok.com/@token.peru" target="_blank" class="btn secondary">TikTok</a>
-                <a href="https://discord.gg/TU-INVITACION" target="_blank" class="btn secondary">Discord</a>
+                <a href="https://x.com/WWW__PERU" target="_blank" class="btn primary">
+                    <span>𝕏 / Twitter</span>
+                </a>
+                <a href="https://discord.gg/TU-INVITACION" target="_blank" class="btn secondary">
+                    <span>Discord</span>
+                </a>
+                <a href="https://www.tiktok.com/@token.peru" target="_blank" class="btn secondary">
+                    <span>TikTok</span>
+                </a>
             </div>
         </section>
 
@@ -1826,14 +1850,6 @@
                     <h4 class="legal-card-title">Sin Asesoramiento Financiero</h4>
                     <p class="legal-card-text">
                         La información disponible en este sitio web no constituye asesoramiento financiero, legal ni comercial. Todo participante asume de forma voluntaria la gestión de sus activos digitales.
-                    </p>
-                </div>
-
-                <div class="legal-card">
-                    <span class="legal-card-icon">🛠️</span>
-                    <h4 class="legal-card-title">Riesgos de Smart Contracts</h4>
-                    <p class="legal-card-text">
-                        A pesar de contar con un contrato verificado e inmutable, interactuar con redes blockchain implica riesgos tecnológicos inherentes (desconexiones de red, fallos en billeteras de terceros, etc.).
                     </p>
                 </div>
             </div>
