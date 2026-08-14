@@ -332,7 +332,7 @@
         }
 
         /* ==========================================
-           SECCIÓN PROYECTO
+           SECCIÓN PROYECTO (CON PILARES INTEGRADOS)
            ========================================== */
         .project-main-card {
             background: linear-gradient(145deg, rgba(20, 25, 48, 0.85) 0%, rgba(8, 12, 28, 0.95) 100%);
@@ -416,6 +416,98 @@
             font-weight: 700;
             color: #ffffff;
             margin-bottom: 12px;
+        }
+
+        /* PILARES DE ACCIÓN DIRECTA */
+        .pillars-section-title {
+            text-align: center;
+            margin-top: 70px;
+            margin-bottom: 35px;
+        }
+
+        .pillars-section-title h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .pillars-section-title p {
+            color: #94a3b8;
+            font-size: 0.98rem;
+            font-weight: 300;
+        }
+
+        .pillar-card {
+            background: linear-gradient(145deg, rgba(20, 25, 45, 0.8) 0%, rgba(8, 12, 28, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 40px 30px;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(16px);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-12px);
+            border-color: rgba(255, 77, 77, 0.35);
+            box-shadow: 0 20px 40px rgba(255, 0, 0, 0.15);
+        }
+
+        .pillar-badge {
+            align-self: flex-start;
+            background: rgba(255, 77, 77, 0.12);
+            color: #ff4d4d;
+            border: 1px solid rgba(255, 77, 77, 0.25);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .pillar-icon-box {
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+        }
+
+        .pillar-title {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .pillar-desc {
+            font-size: 0.92rem;
+            color: #94a3b8;
+            line-height: 1.65;
+            font-weight: 300;
+        }
+
+        .pillar-number {
+            position: absolute;
+            bottom: -15px;
+            right: 15px;
+            font-size: 6rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.02);
+            user-select: none;
+            pointer-events: none;
         }
 
         /* ==========================================
@@ -564,79 +656,7 @@
             font-weight: 300;
         }
 
-        /* SECCIONES PREVIAS */
-        .pillar-card {
-            background: linear-gradient(145deg, rgba(20, 25, 45, 0.8) 0%, rgba(8, 12, 28, 0.9) 100%);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 24px;
-            padding: 40px 30px;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(16px);
-            transition: all 0.4s ease;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .pillar-card:hover {
-            transform: translateY(-12px);
-            border-color: rgba(255, 77, 77, 0.35);
-            box-shadow: 0 20px 40px rgba(255, 0, 0, 0.15);
-        }
-
-        .pillar-badge {
-            align-self: flex-start;
-            background: rgba(255, 77, 77, 0.12);
-            color: #ff4d4d;
-            border: 1px solid rgba(255, 77, 77, 0.25);
-            padding: 6px 14px;
-            border-radius: 50px;
-            font-size: 0.72rem;
-            font-weight: 700;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 25px;
-        }
-
-        .pillar-icon-box {
-            width: 70px;
-            height: 70px;
-            border-radius: 18px;
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.2rem;
-            margin-bottom: 25px;
-        }
-
-        .pillar-title {
-            font-size: 1.45rem;
-            font-weight: 800;
-            color: #ffffff;
-            margin-bottom: 12px;
-        }
-
-        .pillar-desc {
-            font-size: 0.92rem;
-            color: #94a3b8;
-            line-height: 1.65;
-            font-weight: 300;
-        }
-
-        .pillar-number {
-            position: absolute;
-            bottom: -15px;
-            right: 15px;
-            font-size: 6rem;
-            font-weight: 900;
-            color: rgba(255, 255, 255, 0.02);
-            user-select: none;
-            pointer-events: none;
-        }
-
+        /* OTRAS SECCIONES */
         .stats-dashboard {
             background: linear-gradient(180deg, rgba(7, 11, 25, 0.7) 0%, rgba(5, 8, 22, 0.95) 100%);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -863,7 +883,7 @@
         }
 
         /* ==========================================
-           SECCIÓN ROADMAP (MEJORADA Y REDISEÑADA)
+           SECCIÓN ROADMAP
            ========================================== */
         .timeline {
             display: flex;
@@ -1300,7 +1320,6 @@
             <ul>
                 <li><a href="#about" onclick="closeMenu()">Proyecto</a></li>
                 <li><a href="#donate-section" onclick="closeMenu()">Donar</a></li>
-                <li><a href="#pilares" onclick="closeMenu()">Pilares</a></li>
                 <li><a href="#stats" onclick="closeMenu()">Estadísticas</a></li>
                 <li><a href="#beneficiaries" onclick="closeMenu()">Beneficiarios</a></li>
                 <li><a href="#utility" onclick="closeMenu()">Utilidad</a></li>
@@ -1326,10 +1345,10 @@
             </div>
         </section>
 
-        <!-- === SECCIÓN PROYECTO === -->
+        <!-- === SECCIÓN PROYECTO (INCLUYE PILARES DE ACCIÓN DIRECTA) === -->
         <section id="about">
             <h2 class="title reveal">PROYECTO</h2>
-            <p class="subtitle reveal">Tecnología Web3 con impacto social real y trazable</p>
+            <p class="subtitle reveal">Tecnología Web3 con impacto social real, directo y trazable</p>
 
             <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin-bottom: 40px; gap: 30px;">
                 <!-- Tarjeta Principal de Introducción -->
@@ -1364,34 +1383,11 @@
                 </div>
             </div>
 
-            <!-- SECCIÓN DONACIONES -->
-            <div id="donate-section" class="card reveal donate-card-compact">
-                <div class="donate-header">
-                    <div class="donate-badge">
-                        <span class="pulse-dot"></span> Fondo de Apoyo Social
-                    </div>
-                    <h3 style="font-size: 1.35rem; color: white; margin-bottom: 6px;">Donaciones Directas en Cadena</h3>
-                    <p style="font-size: 0.88rem; color: #94a3b8; max-width: 500px; margin: 0 auto; line-height: 1.4;">
-                        Tu contribución financia directamente pasajes, inscripciones y equipamiento para nuestros deportistas.
-                    </p>
-                </div>
-
-                <div class="donate-body">
-                    <div class="donate-address-wrapper">
-                        <div class="donate-network-tag">RED BSC (BEP20)</div>
-                        <code id="donation-address" class="donate-code">0xE7A8096362f14152375E9FF0631114044dCe0f91</code>
-                    </div>
-                    <button onclick="copyDonationWallet()" class="donate-copy-btn">
-                        <span>Copiar Dirección</span>
-                    </button>
-                </div>
+            <!-- PILARES DE ACCIÓN DIRECTA (INTEGRADOS DENTRO DE LA SECCIÓN PROYECTO) -->
+            <div class="pillars-section-title reveal">
+                <h3>Pilares de Acción Directa</h3>
+                <p>Estructura estratégica de financiamiento e impacto para nuestros atletas dentro del proyecto</p>
             </div>
-        </section>
-
-        <!-- PILARES DE ACCIÓN DIRECTA -->
-        <section id="pilares">
-            <h2 class="title reveal">PILARES DE ACCIÓN DIRECTA</h2>
-            <p class="subtitle reveal">Estructura estratégica de financiamiento e impacto para nuestros atletas</p>
 
             <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
                 <div class="pillar-card reveal">
@@ -1422,6 +1418,29 @@
                         <p class="pillar-desc">Dotación de indumentaria de alta competencia, accesorios de última tecnología e instrumental requerido según la disciplina.</p>
                     </div>
                     <span class="pillar-number">03</span>
+                </div>
+            </div>
+
+            <!-- SECCIÓN DONACIONES -->
+            <div id="donate-section" class="card reveal donate-card-compact">
+                <div class="donate-header">
+                    <div class="donate-badge">
+                        <span class="pulse-dot"></span> Fondo de Apoyo Social
+                    </div>
+                    <h3 style="font-size: 1.35rem; color: white; margin-bottom: 6px;">Donaciones Directas en Cadena</h3>
+                    <p style="font-size: 0.88rem; color: #94a3b8; max-width: 500px; margin: 0 auto; line-height: 1.4;">
+                        Tu contribución financia directamente pasajes, inscripciones y equipamiento para nuestros deportistas.
+                    </p>
+                </div>
+
+                <div class="donate-body">
+                    <div class="donate-address-wrapper">
+                        <div class="donate-network-tag">RED BSC (BEP20)</div>
+                        <code id="donation-address" class="donate-code">0xE7A8096362f14152375E9FF0631114044dCe0f91</code>
+                    </div>
+                    <button onclick="copyDonationWallet()" class="donate-copy-btn">
+                        <span>Copiar Dirección</span>
+                    </button>
                 </div>
             </div>
         </section>
@@ -1578,7 +1597,7 @@
             </div>
         </section>
 
-        <!-- === ROADMAP (SECCIÓN MEJORADA) === -->
+        <!-- === ROADMAP === -->
         <section id="roadmap">
             <h2 class="title reveal">ROADMAP</h2>
             <p class="subtitle reveal">Hoja de ruta estratégica para el desarrollo técnico, adopción comunitaria e impacto deportivo</p>
