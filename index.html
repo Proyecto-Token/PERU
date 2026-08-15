@@ -334,9 +334,6 @@
             box-shadow: 0 15px 35px rgba(255, 0, 0, 0.15), inset 0 0 15px rgba(255, 255, 255, 0.05);
         }
 
-        /* ==========================================
-           SECCIÓN PROYECTO (CON PILARES INTEGRADOS)
-           ========================================== */
         .project-main-card {
             background: linear-gradient(145deg, rgba(20, 25, 48, 0.85) 0%, rgba(8, 12, 28, 0.95) 100%);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -421,7 +418,6 @@
             margin-bottom: 12px;
         }
 
-        /* PILARES DE ACCIÓN DIRECTA */
         .pillars-section-title {
             text-align: center;
             margin-top: 70px;
@@ -513,9 +509,6 @@
             pointer-events: none;
         }
 
-        /* ==========================================
-           SECCIÓN BENEFICIARIOS
-           ========================================== */
         .beneficiary-box-modern {
             max-width: 850px;
             margin: 0 auto;
@@ -615,9 +608,6 @@
             line-height: 1.5;
         }
 
-        /* ==========================================
-           SECCIÓN AVISO LEGAL
-           ========================================== */
         .legal-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -659,7 +649,6 @@
             font-weight: 300;
         }
 
-        /* OTRAS SECCIONES */
         .stats-dashboard {
             background: linear-gradient(180deg, rgba(7, 11, 25, 0.7) 0%, rgba(5, 8, 22, 0.95) 100%);
             border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -885,9 +874,6 @@
             font-weight: 300;
         }
 
-        /* ==========================================
-           SECCIÓN ROADMAP
-           ========================================== */
         .timeline {
             display: flex;
             flex-direction: column;
@@ -1199,71 +1185,245 @@
             align-items: center;
         }
 
-        footer {
-            padding: 60px 10%;
-            text-align: center;
-            background: #070b19;
-            border-top: 1px solid rgba(255, 255, 255, .05);
+        /* ==========================================
+           ESTILOS RESTRUCTURADOS Y MODERNOS DE FOOTER
+           ========================================== */
+        .footer-modern {
+            background: linear-gradient(180deg, #050816 0%, #03050d 100%);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 80px 10% 0 10%;
+            position: relative;
+            overflow: hidden;
         }
 
-        footer h2 {
-            font-size: 2.2rem;
+        .footer-modern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.5), transparent);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 1.8fr 1fr 1fr 1.6fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .footer-logo-img {
+            height: 48px;
+            width: auto;
+            filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.4));
+        }
+
+        .footer-brand-title {
+            font-size: 1.8rem;
             font-weight: 900;
             background: linear-gradient(90deg, #ff0000, #ffffff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 15px;
+            letter-spacing: 1px;
         }
 
-        footer .footer-desc {
-            color: #9ca3af;
-            max-width: 550px;
-            margin: 0 auto 35px auto;
-            font-size: 0.95rem;
-            line-height: 1.6;
+        .footer-brand-desc {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            line-height: 1.65;
+            font-weight: 300;
         }
 
-        .footer-links {
+        .footer-status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(34, 197, 94, 0.08);
+            border: 1px solid rgba(34, 197, 94, 0.25);
+            color: #4ade80;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            width: fit-content;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #22c55e;
+            animation: pulseStatus 2s infinite ease-in-out;
+        }
+
+        @keyframes pulseStatus {
+            0%, 100% { opacity: 0.4; transform: scale(0.9); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .footer-heading {
+            color: #ffffff;
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-heading::after {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #ff4d4d;
+            margin-top: 6px;
+            border-radius: 2px;
+        }
+
+        .footer-links-list {
+            list-style: none;
             display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-bottom: 40px;
+            flex-direction: column;
+            gap: 12px;
         }
 
-        .footer-link-item {
+        .footer-links-list a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .footer-links-list a:hover {
+            color: #ff4d4d;
+            transform: translateX(4px);
+        }
+
+        .footer-contact-group {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .footer-contact-card {
             display: flex;
             align-items: center;
-            gap: 10px;
-            color: #cbd5e1;
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: 0.3s;
+            gap: 14px;
             background: rgba(255, 255, 255, 0.02);
-            padding: 12px 24px;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 12px 16px;
+            border-radius: 14px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-contact-card:hover {
+            background: rgba(255, 77, 77, 0.05);
+            border-color: rgba(255, 77, 77, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.1);
+        }
+
+        .contact-card-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: rgba(255, 77, 77, 0.1);
+            border: 1px solid rgba(255, 77, 77, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-card-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: #ff4d4d;
+        }
+
+        .contact-card-info {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .contact-card-label {
+            font-size: 0.7rem;
+            color: #64748b;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-card-value {
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 25px 0;
+        }
+
+        .footer-bottom-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .copyright-text {
+            color: #64748b;
+            font-size: 0.85rem;
+            font-weight: 300;
+        }
+
+        .copyright-text strong {
+            color: #cbd5e1;
+        }
+
+        .footer-bottom-badge {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 6px 16px;
             border-radius: 50px;
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .footer-link-item:hover {
-            color: #ff4d4d;
-            border-color: rgba(255, 77, 77, 0.3);
-            background: rgba(255, 77, 77, 0.05);
-            transform: translateY(-3px);
-        }
-
-        .footer-link-item svg {
-            width: 18px;
-            height: 18px;
-            fill: currentColor;
-        }
-
-        footer .copyright {
-            color: #64748b;
-            font-size: 0.85rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.03);
-            padding-top: 25px;
-            margin-top: 20px;
+        @media(max-width:992px) {
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 35px;
+            }
+            .footer-brand {
+                grid-column: span 2;
+            }
         }
 
         @media(max-width:768px) {
@@ -1291,11 +1451,23 @@
             .timeline::before { left: 15px; }
             .timeline-item { padding-left: 45px; }
             .timeline-dot { left: 4px; }
-            .footer-links { flex-direction: column; align-items: center; }
             .donate-body { flex-direction: column; align-items: stretch; text-align: center; }
             .beneficiary-box-modern { padding: 35px 20px; }
             .project-main-card { padding: 25px; }
             .roadmap-card { padding: 25px 20px; }
+        }
+
+        @media(max-width:600px) {
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+            .footer-brand {
+                grid-column: span 1;
+            }
+            .footer-bottom-wrapper {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -1355,7 +1527,6 @@
             <p class="subtitle reveal">Tecnología Web3 con impacto social real, directo y trazable</p>
 
             <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin-bottom: 40px; gap: 30px;">
-                <!-- Tarjeta Principal de Introducción -->
                 <div class="project-main-card reveal">
                     <span class="project-tag">🌐 Impacto Social Descentralizado</span>
                     <h3 class="project-title">Reinventando el Patrocinio Deportivo Nacional</h3>
@@ -1367,7 +1538,6 @@
                     </p>
                 </div>
 
-                <!-- Visión y Misión Grid -->
                 <div style="display: flex; flex-direction: column; gap: 25px;">
                     <div class="project-subcard reveal">
                         <div class="project-subcard-icon">👁️</div>
@@ -1387,7 +1557,6 @@
                 </div>
             </div>
 
-            <!-- PILARES DE ACCIÓN DIRECTA (INTEGRADOS DENTRO DE LA SECCIÓN PROYECTO) -->
             <div class="pillars-section-title reveal">
                 <h3>Pilares de Acción Directa</h3>
                 <p>Estructura estratégica de financiamiento e impacto para nuestros atletas dentro del proyecto</p>
@@ -1526,7 +1695,6 @@
                     Estamos construyendo la infraestructura de votación para que la comunidad elija a los deportistas nacionales que recibirán apoyo directo de la tesorería social.
                 </p>
 
-                <!-- Pasos de preparación para deportistas -->
                 <div class="steps-grid">
                     <div class="step-item">
                         <div class="step-number">01</div>
@@ -1631,7 +1799,6 @@
             <p class="subtitle reveal">Hoja de ruta estratégica para el desarrollo técnico, adopción comunitaria e impacto deportivo</p>
             
             <div class="timeline">
-                <!-- FASE 1 -->
                 <div class="timeline-item completed reveal">
                     <div class="timeline-dot"></div>
                     <div class="roadmap-card">
@@ -1650,7 +1817,6 @@
                     </div>
                 </div>
 
-                <!-- FASE 2 -->
                 <div class="timeline-item in-progress reveal">
                     <div class="timeline-dot"></div>
                     <div class="roadmap-card">
@@ -1669,7 +1835,6 @@
                     </div>
                 </div>
 
-                <!-- FASE 3 -->
                 <div class="timeline-item reveal">
                     <div class="timeline-dot" style="border-color: #64748b; box-shadow: none;"></div>
                     <div class="roadmap-card">
@@ -1688,7 +1853,6 @@
                     </div>
                 </div>
 
-                <!-- FASE 4 -->
                 <div class="timeline-item reveal">
                     <div class="timeline-dot" style="border-color: #64748b; box-shadow: none;"></div>
                     <div class="roadmap-card">
@@ -1736,7 +1900,6 @@
                     <p class="team-bio">Equipo encargado de verificar los expedientes de deportistas, coordinar las convocatorias y garantizar la asignación transparente de los recursos.</p>
                 </div>
 
-                <!-- NUEVA TARJETA AGREGADA A EQUIPO -->
                 <div class="team-card-modern reveal">
                     <div class="team-avatar-box">🌐</div>
                     <span class="team-role-badge">Moderación & Soporte</span>
@@ -1793,12 +1956,11 @@
             </div>
         </section>
 
-        <!-- === COMUNIDAD (ACTUALIZADA) === -->
+        <!-- === COMUNIDAD === -->
         <section id="community">
             <h2 class="title reveal">ÚNETE A LA COMUNIDAD</h2>
             <p class="subtitle reveal">Sé parte de la primera comunidad Web3 que impulsa el talento deportivo peruano.</p>
 
-            <!-- Bloques de valor comunitarios -->
             <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto 40px auto;">
                 <div class="card reveal" style="padding: 25px 20px; text-align: center;">
                     <span style="font-size: 2rem; display: block; margin-bottom: 10px;">🗳️</span>
@@ -1817,7 +1979,6 @@
                 </div>
             </div>
 
-            <!-- Botones CTA principales -->
             <div class="buttons" style="justify-content:center;">
                 <a href="https://x.com/WWW__PERU" target="_blank" class="btn primary">
                     <span>𝕏 / Twitter</span>
@@ -1863,21 +2024,89 @@
             </div>
         </section>
 
-        <footer>
-            <h2>PERU</h2>
-            <p class="footer-desc">Proyecto Web3 solidario creado para impulsar el deporte peruano mediante tecnología descentralizada.</p>
-            
-            <div class="footer-links">
-                <a href="mailto:www.peru@outlook.es" class="footer-link-item">
-                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                    www.peru@outlook.es
-                </a>
-                <a href="https://www-token-peru.blogspot.com/" target="_blank" class="footer-link-item">
-                    <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95a15.65 15.65 0 0 0-1.38-3.56A8.03 8.03 0 0 1 18.92 8zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.34-.14 2 0 .67.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56A8.03 8.03 0 0 1 5.08 16zm2.95-8H5.08a8.03 8.03 0 0 1 3.56-3.56A15.65 15.65 0 0 0 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.34-.16-2 0-.67.07-1.35.16-2h4.68c.09.65.16 1.33.16 2 0 .66-.07 1.34-.16 2zm.24 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56zM16.36 14c.08-.66.14-1.34.14-2 0-.67-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></svg>
-                    www-token-peru.blogspot.com
-                </a>
+        <!-- ==========================================
+             PIE DE PÁGINA (FOOTER RESTRUCTURADO CON ÍNDICE COMPLETO)
+             ========================================== -->
+        <footer class="footer-modern">
+            <div class="footer-container">
+                
+                <!-- Columna 1: Marca & Propósito -->
+                <div class="footer-brand">
+                    <a href="#" class="footer-logo">
+                        <img src="logo.png" alt="PERU Web3 Logo" class="footer-logo-img">
+                        <span class="footer-brand-title">PERU</span>
+                    </a>
+                    <p class="footer-brand-desc">
+                        Proyecto Web3 solidario creado para impulsar el deporte peruano mediante tecnología descentralizada.
+                    </p>
+                    <div class="footer-status-pill">
+                        <span class="status-dot"></span> Red Activa: BNB Chain (BEP20)
+                    </div>
+                </div>
+
+                <!-- Columna 2: Navegación Principal -->
+                <div class="footer-nav-group">
+                    <h4 class="footer-heading">Navegación</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#about">Proyecto</a></li>
+                        <li><a href="#donate-section">Donar</a></li>
+                        <li><a href="#stats">Estadísticas</a></li>
+                        <li><a href="#beneficiaries">Beneficiarios</a></li>
+                        <li><a href="#utility">Utilidad</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Más del Ecosistema -->
+                <div class="footer-nav-group">
+                    <h4 class="footer-heading">Ecosistema</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#tokenomics">Tokenomics</a></li>
+                        <li><a href="#roadmap">Roadmap</a></li>
+                        <li><a href="#team">Equipo</a></li>
+                        <li><a href="#security">Seguridad</a></li>
+                        <li><a href="#community">Comunidad</a></li>
+                        <li><a href="#legal">Aviso Legal</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 4: Contacto & Canales Oficiales -->
+                <div class="footer-contact-group">
+                    <h4 class="footer-heading">Contacto Oficial</h4>
+                    
+                    <a href="mailto:www.peru@outlook.es" class="footer-contact-card">
+                        <div class="contact-card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        </div>
+                        <div class="contact-card-info">
+                            <span class="contact-card-label">Correo Electrónico</span>
+                            <span class="contact-card-value">www.peru@outlook.es</span>
+                        </div>
+                    </a>
+
+                    <a href="https://www-token-peru.blogspot.com/" target="_blank" class="footer-contact-card">
+                        <div class="contact-card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95a15.65 15.65 0 0 0-1.38-3.56A8.03 8.03 0 0 1 18.92 8zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.34-.14 2 0 .67.06 1.34.14 2H4.26zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56A8.03 8.03 0 0 1 5.08 16zm2.95-8H5.08a8.03 8.03 0 0 1 3.56-3.56A15.65 15.65 0 0 0 8.03 8zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.34-.16-2 0-.67.07-1.35.16-2h4.68c.09.65.16 1.33.16 2 0 .66-.07 1.34-.16 2zm.24 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56zM16.36 14c.08-.66.14-1.34.14-2 0-.67-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"/></svg>
+                        </div>
+                        <div class="contact-card-info">
+                            <span class="contact-card-label">Blog Oficial</span>
+                            <span class="contact-card-value">www-token-peru.blogspot.com</span>
+                        </div>
+                    </a>
+                </div>
+
             </div>
-            <p class="copyright">© 2026 PERU — Community Project. Todos los derechos reservados.</p>
+
+            <!-- Barra Inferior de Derechos Reservados -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-wrapper">
+                    <p class="copyright-text">
+                        © 2026 <strong>PERU</strong> — Community Project. Todos los derechos reservados.
+                    </p>
+                    <div class="footer-bottom-badge">
+                        Descentralizado & Transparente 🇵🇪
+                    </div>
+                </div>
+            </div>
         </footer>
 
         <!-- BOTÓN DE WHATSAPP FLOTANTE -->
