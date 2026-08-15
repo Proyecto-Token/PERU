@@ -39,22 +39,76 @@
             color: white;
         }
 
-        /* === PANTALLA DE BIENVENIDA (SPLASH SCREEN) === */
+        /* === PANTALLA DE BIENVENIDA PRO (SPLASH SCREEN) === */
         #welcome-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, #11162d, #050816);
+            background: #03050c;
             z-index: 10000;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
             padding: 20px;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
+            overflow: hidden;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s ease;
+        }
+
+        /* Auras de neón animadas al fondo */
+        #welcome-screen::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 0, 0, 0.35) 0%, rgba(255, 0, 0, 0) 70%);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            animation: pulseAura 6s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+
+        #welcome-screen::after {
+            content: '';
+            position: absolute;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            animation: pulseAura 4s ease-in-out infinite alternate-reverse;
+            pointer-events: none;
+        }
+
+        @keyframes pulseAura {
+            0% { transform: translate(-50%, -50%) scale(0.85); opacity: 0.5; }
+            100% { transform: translate(-50%, -50%) scale(1.25); opacity: 0.9; }
+        }
+
+        /* Partículas de brillo flotantes */
+        .welcome-particle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+            animation: floatParticle 8s infinite linear;
+            pointer-events: none;
+        }
+
+        .p1 { width: 6px; height: 6px; top: 20%; left: 15%; animation-duration: 7s; }
+        .p2 { width: 8px; height: 8px; top: 75%; left: 80%; animation-duration: 9s; }
+        .p3 { width: 4px; height: 4px; top: 80%; left: 20%; animation-duration: 6s; }
+        .p4 { width: 7px; height: 7px; top: 30%; left: 85%; animation-duration: 11s; }
+
+        @keyframes floatParticle {
+            0% { transform: translateY(0) scale(1); opacity: 0.2; }
+            50% { transform: translateY(-30px) scale(1.3); opacity: 0.8; }
+            100% { transform: translateY(0) scale(1); opacity: 0.2; }
         }
 
         #welcome-screen.hidden {
@@ -63,43 +117,132 @@
             pointer-events: none;
         }
 
-        .welcome-content {
-            max-width: 600px;
+        /* Tarjeta principal Glassmorphism */
+        .welcome-card-pro {
+            position: relative;
+            z-index: 2;
+            max-width: 520px;
+            width: 100%;
+            background: rgba(13, 17, 38, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 32px;
+            padding: 45px 35px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.15);
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 20px;
+            text-align: center;
+            animation: cardAppear 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes cardAppear {
+            0% { transform: translateY(40px) scale(0.95); opacity: 0; }
+            100% { transform: translateY(0) scale(1); opacity: 1; }
+        }
+
+        .welcome-badge-pro {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 77, 77, 0.12);
+            color: #ff4d4d;
+            border: 1px solid rgba(255, 77, 77, 0.3);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 25px;
+        }
+
+        .welcome-logo-container {
+            position: relative;
+            margin-bottom: 20px;
         }
 
         .welcome-logo {
-            width: 200px;
+            width: 180px;
             height: auto;
-            filter: drop-shadow(0 0 35px rgba(255, 0, 0, 0.6));
-            animation: floatWelcome 4s ease-in-out infinite;
+            filter: drop-shadow(0 10px 25px rgba(255, 0, 0, 0.5));
+            animation: floatPro 3.5s ease-in-out infinite alternate;
+        }
+
+        @keyframes floatPro {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-12px) rotate(1deg); }
         }
 
         .welcome-title {
-            font-size: 3rem;
+            font-size: 3.2rem;
             font-weight: 900;
-            background: linear-gradient(90deg, #ff0000, #ffffff);
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, #ffffff 30%, #ff4d4d 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 2px;
+            margin-bottom: 8px;
+            text-shadow: 0 10px 20px rgba(255, 0, 0, 0.2);
         }
 
         .welcome-text {
-            font-size: 1.2rem;
-            color: #cbd5e1;
-            line-height: 1.5;
-            font-weight: 500;
-            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: #94a3b8;
+            line-height: 1.6;
+            font-weight: 400;
+            margin-bottom: 30px;
+            max-width: 400px;
         }
 
-        @keyframes floatWelcome {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+        /* Botón Pro con efecto Neón */
+        .btn-welcome-pro {
+            position: relative;
+            width: 100%;
+            padding: 18px 40px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #ffffff;
+            background: linear-gradient(90deg, #d60000 0%, #ff4d4d 100%);
+            border: none;
+            border-radius: 16px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            letter-spacing: 1px;
         }
 
+        .btn-welcome-pro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+        }
+
+        .btn-welcome-pro:hover::before {
+            left: 100%;
+        }
+
+        .btn-welcome-pro:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 0, 0, 0.6);
+            background: linear-gradient(90deg, #ff0000 0%, #ff6666 100%);
+        }
+
+        .btn-welcome-pro:active {
+            transform: translateY(1px);
+        }
+
+        /* === ESTILOS GENERALES DEL SITIO === */
         .app-wrapper {
             width: 100%;
             overflow-x: hidden;
@@ -1186,7 +1329,7 @@
         }
 
         /* ==========================================
-           ESTILOS RESTRUCTURADOS Y MODERNOS DE FOOTER
+           FOOTER RESTRUCTURADO
            ========================================== */
         .footer-modern {
             background: linear-gradient(180deg, #050816 0%, #03050d 100%);
@@ -1455,6 +1598,8 @@
             .beneficiary-box-modern { padding: 35px 20px; }
             .project-main-card { padding: 25px; }
             .roadmap-card { padding: 25px 20px; }
+            .welcome-card-pro { padding: 35px 20px; }
+            .welcome-title { font-size: 2.5rem; }
         }
 
         @media(max-width:600px) {
@@ -1474,13 +1619,29 @@
 
 <body class="no-scroll">
 
-    <!-- === PANTALLA DE BIENVENIDA (SPLASH SCREEN) === -->
+    <!-- === PANTALLA DE BIENVENIDA NIVEL PRO (SPLASH SCREEN) === -->
     <div id="welcome-screen">
-        <div class="welcome-content">
-            <img src="robot.png" alt="PERU Welcome Robot" class="welcome-logo">
+        <div class="welcome-particle p1"></div>
+        <div class="welcome-particle p2"></div>
+        <div class="welcome-particle p3"></div>
+        <div class="welcome-particle p4"></div>
+
+        <div class="welcome-card-pro">
+            <div class="welcome-badge-pro">
+                <span>🇵🇪 Ecosistema Web3 Oficial</span>
+            </div>
+            
+            <div class="welcome-logo-container">
+                <img src="robot.png" alt="PERU Welcome Robot" class="welcome-logo">
+            </div>
+
             <h1 class="welcome-title">PERU</h1>
-            <p class="welcome-text">Deporte, Blockchain & Futuro.</p>
-            <button onclick="enterSite()" class="btn primary" style="font-size: 1.1rem; padding: 15px 40px;">Ingresar</button>
+            <p class="welcome-text">Deporte, Blockchain & Impacto Social Descentralizado.</p>
+
+            <button onclick="enterSite()" class="btn-welcome-pro">
+                <span>INGRESAR AL SITIO</span>
+                <span style="font-size: 1.2rem;">🚀</span>
+            </button>
         </div>
     </div>
 
@@ -2025,7 +2186,7 @@
         </section>
 
         <!-- ==========================================
-             PIE DE PÁGINA (FOOTER RESTRUCTURADO CON ÍNDICE COMPLETO)
+             PIE DE PÁGINA (FOOTER RESTRUCTURADO)
              ========================================== -->
         <footer class="footer-modern">
             <div class="footer-container">
@@ -2218,33 +2379,32 @@
                     datasets: [{
                         data: [40, 20, 20, 10, 10],
                         backgroundColor: [
-                            '#ff0000', 
-                            '#ff4d4d', 
-                            '#eab308', 
-                            '#1f2937', 
-                            '#4b5563'  
+                            '#ff0000',
+                            '#ff4d4d',
+                            '#eab308',
+                            '#3b82f6',
+                            '#10b981'
                         ],
-                        borderColor: 'rgba(5, 8, 22, 1)',
-                        borderWidth: 3,
-                        hoverOffset: 15
+                        borderWidth: 2,
+                        borderColor: '#050816'
                     }]
                 },
                 options: {
                     responsive: true,
+                    maintainAspectRatio: true,
                     plugins: {
                         legend: {
                             position: 'bottom',
                             labels: {
                                 color: '#cbd5e1',
                                 font: {
-                                    family: "'Poppins', sans-serif",
+                                    family: 'Poppins',
                                     size: 12
                                 },
-                                padding: 20
+                                padding: 15
                             }
                         }
-                    },
-                    cutout: '70%'
+                    }
                 }
             });
         });
