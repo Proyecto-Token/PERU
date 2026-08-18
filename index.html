@@ -14,9 +14,11 @@
     <meta property="og:image" content="https://proyecto-token.github.io/PERU/logo.png"> 
     <meta property="og:type" content="website">
 
+    <!-- Icono de la pestaña usando logo.png -->
     <link rel="icon" href="logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
+    <!-- Librería para el Gráfico de Tokenomics -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
@@ -140,6 +142,7 @@
             100% { transform: translateY(0) scale(1); opacity: 1; }
         }
 
+        /* Estilo para el título PERU sobre el robot */
         .welcome-title {
             font-size: 2.8rem;
             font-weight: 900;
@@ -177,6 +180,7 @@
             max-width: 400px;
         }
 
+        /* Botón Pro con efecto Neón */
         .btn-welcome-pro {
             position: relative;
             width: 100%;
@@ -305,182 +309,1498 @@
             user-select: none;
         }
 
-        /* === NUEVOS ESTILOS PARA LA SECCIÓN HERO === */
-        .hero-modern {
-            position: relative;
+        .hero {
             min-height: 100vh;
             display: flex;
-            align-items: center;
             justify-content: center;
-            padding: 140px 10% 80px 10%;
-            overflow: hidden;
-        }
-
-        .hero-container {
-            max-width: 1200px;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
             align-items: center;
-            position: relative;
-            z-index: 10;
-        }
-
-        .hero-badge-top {
-            display: inline-flex;
-            flex-direction: column;
-            align-items: flex-start;
-            margin-bottom: 20px;
-        }
-
-        .hero-badge-text {
-            font-size: 0.8rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: #ff4d4d;
-            text-transform: uppercase;
-        }
-
-        .hero-badge-line {
-            width: 30px;
-            height: 2px;
-            background: #e60000;
-            margin-top: 4px;
-        }
-
-        .hero-title-main {
-            font-size: 5rem;
-            font-weight: 900;
-            line-height: 1;
-            margin-bottom: 24px;
-            background: linear-gradient(90deg, #ff1a1a 0%, #ff4d4d 40%, #ffffff 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 1px;
-            filter: drop-shadow(0 0 20px rgba(255, 0, 0, 0.3));
-        }
-
-        .hero-description {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            color: #cbd5e1;
-            margin-bottom: 35px;
-            max-width: 520px;
-            font-weight: 300;
-        }
-
-        .hero-buttons-group {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .hero-buttons-row {
-            display: flex;
-            gap: 15px;
+            padding: 120px 10%;
+            gap: 60px;
             flex-wrap: wrap;
         }
 
-        .btn-modern {
+        .hero-text {
+            flex: 1.2;
+            min-width: 300px;
+        }
+
+        .hero-text h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #ff0000, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #d6d6d6;
+            margin-bottom: 30px;
+            max-width: 650px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: .3s;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            padding: 14px 28px;
-            border-radius: 12px;
-            font-size: 0.95rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
+            border: none;
             cursor: pointer;
         }
 
-        .btn-buy {
-            background: linear-gradient(90deg, #d60000 0%, #ff3333 100%);
-            color: #ffffff;
-            border: none;
-            box-shadow: 0 8px 25px rgba(230, 0, 0, 0.4);
+        .primary {
+            background: linear-gradient(90deg, #ff0000, #ff4d4d);
+            color: white;
+            box-shadow: 0 0 30px #ff000088;
+            animation: pulse 2s infinite;
         }
 
-        .btn-buy:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(230, 0, 0, 0.6);
-            background: linear-gradient(90deg, #e60000 0%, #ff4d4d 100%);
+        .secondary {
+            border: 2px solid white;
+            color: white;
+            background: transparent;
         }
 
-        .btn-glass {
-            background: rgba(15, 23, 42, 0.6);
-            color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.12);
+        .btn:hover {
+            transform: translateY(-5px);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+
+        .hero-image {
+            flex: 0.8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 300px;
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 350px;
+            animation: float 5s ease-in-out infinite;
+            filter: drop-shadow(0 0 40px rgba(255, 0, 0, 0.5));
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        section {
+            padding: 100px 10%;
+        }
+
+        .title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-weight: 800;
+            text-align: center;
+            background: linear-gradient(180deg, #ffffff 0%, #a1a1aa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #bbbbbb;
+            margin-bottom: 60px;
+            font-size: 1.1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.7s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+            padding: 35px;
+            border-radius: 20px;
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-        }
-
-        .btn-glass:hover {
-            transform: translateY(-2px);
-            background: rgba(30, 41, 59, 0.8);
-            border-color: rgba(255, 255, 255, 0.25);
-        }
-
-        .btn-bsc {
-            align-self: flex-start;
-            padding: 12px 24px;
-        }
-
-        .hero-image-wrapper {
+            border: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
+            overflow: hidden;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 77, 77, 0.4);
+            box-shadow: 0 15px 35px rgba(255, 0, 0, 0.15), inset 0 0 15px rgba(255, 255, 255, 0.05);
+        }
+
+        .project-main-card {
+            background: linear-gradient(145deg, rgba(20, 25, 48, 0.85) 0%, rgba(8, 12, 28, 0.95) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            backdrop-filter: blur(16px);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .project-main-card:hover {
+            border-color: rgba(255, 77, 77, 0.4);
+            box-shadow: 0 20px 40px rgba(255, 0, 0, 0.12);
+        }
+
+        .project-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 77, 77, 0.12);
+            color: #ff4d4d;
+            border: 1px solid rgba(255, 77, 77, 0.25);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        .project-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 18px;
+            line-height: 1.3;
+        }
+
+        .project-paragraph {
+            color: #cbd5e1;
+            font-size: 1rem;
+            line-height: 1.75;
+            font-weight: 300;
+            margin-bottom: 18px;
+        }
+
+        .project-subcard {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(12px);
+            transition: all 0.35s ease;
+            height: 100%;
+        }
+
+        .project-subcard:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 77, 77, 0.35);
+            background: rgba(255, 77, 77, 0.03);
+        }
+
+        .project-subcard-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            background: rgba(255, 77, 77, 0.12);
+            border: 1px solid rgba(255, 77, 77, 0.25);
             display: flex;
             align-items: center;
             justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
         }
 
-        .hero-glow-back {
+        .project-subcard-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .pillars-section-title {
+            text-align: center;
+            margin-top: 70px;
+            margin-bottom: 35px;
+        }
+
+        .pillars-section-title h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .pillars-section-title p {
+            color: #94a3b8;
+            font-size: 0.98rem;
+            font-weight: 300;
+        }
+
+        .pillar-card {
+            background: linear-gradient(145deg, rgba(20, 25, 45, 0.8) 0%, rgba(8, 12, 28, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 40px 30px;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(16px);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-12px);
+            border-color: rgba(255, 77, 77, 0.35);
+            box-shadow: 0 20px 40px rgba(255, 0, 0, 0.15);
+        }
+
+        .pillar-badge {
+            align-self: flex-start;
+            background: rgba(255, 77, 77, 0.12);
+            color: #ff4d4d;
+            border: 1px solid rgba(255, 77, 77, 0.25);
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .pillar-icon-box {
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+        }
+
+        .pillar-title {
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .pillar-desc {
+            font-size: 0.92rem;
+            color: #94a3b8;
+            line-height: 1.65;
+            font-weight: 300;
+        }
+
+        .pillar-number {
             position: absolute;
-            width: 320px;
-            height: 320px;
-            background: radial-gradient(circle, rgba(230, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 70%);
-            border-radius: 50%;
-            filter: blur(40px);
-            z-index: 1;
+            bottom: -15px;
+            right: 15px;
+            font-size: 6rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.02);
+            user-select: none;
             pointer-events: none;
         }
 
-        .hero-shield-img {
-            width: 100%;
-            max-width: 380px;
-            height: auto;
+        .beneficiary-box-modern {
+            max-width: 850px;
+            margin: 0 auto;
+            background: linear-gradient(145deg, rgba(18, 24, 45, 0.9) 0%, rgba(8, 12, 28, 0.95) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 28px;
+            padding: 50px 40px;
+            backdrop-filter: blur(20px);
+            text-align: center;
             position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        .beneficiary-box-modern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #eab308, transparent);
+        }
+
+        .beneficiary-badge-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(234, 179, 8, 0.12);
+            color: #eab308;
+            border: 1px solid rgba(234, 179, 8, 0.3);
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+        }
+
+        .beneficiary-hero-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            filter: drop-shadow(0 0 20px rgba(234, 179, 8, 0.3));
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .beneficiary-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+
+        .beneficiary-desc {
+            font-size: 1.05rem;
+            color: #cbd5e1;
+            line-height: 1.7;
+            max-width: 650px;
+            margin: 0 auto 40px auto;
+            font-weight: 300;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            text-align: left;
+            margin-bottom: 40px;
+        }
+
+        .step-item {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 20px;
+            border-radius: 16px;
+        }
+
+        .step-number {
+            color: #ff4d4d;
+            font-weight: 900;
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+        }
+
+        .step-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .step-text {
+            font-size: 0.82rem;
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+
+        .legal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .legal-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 20px;
+            padding: 30px 25px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .legal-card:hover {
+            border-color: rgba(255, 77, 77, 0.3);
+            background: rgba(255, 255, 255, 0.03);
+            transform: translateY(-5px);
+        }
+
+        .legal-card-icon {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .legal-card-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .legal-card-text {
+            font-size: 0.88rem;
+            color: #94a3b8;
+            line-height: 1.65;
+            font-weight: 300;
+        }
+
+        .stats-dashboard {
+            background: linear-gradient(180deg, rgba(7, 11, 25, 0.7) 0%, rgba(5, 8, 22, 0.95) 100%);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .stat-card-modern {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            transition: all 0.35s ease;
+        }
+
+        .stat-card-modern:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 77, 77, 0.4);
+            box-shadow: 0 15px 30px rgba(255, 0, 0, 0.12);
+        }
+
+        .stat-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        .stat-number-modern {
+            font-size: 3.2rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 30%, #ff4d4d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+
+        .stat-label {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #f1f5f9;
+            margin-bottom: 6px;
+        }
+
+        .stat-subtext {
+            font-size: 0.82rem;
+            color: #64748b;
+        }
+
+        .utility-card {
+            background: linear-gradient(145deg, rgba(15, 20, 38, 0.85) 0%, rgba(7, 10, 22, 0.95) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 35px 28px;
+            backdrop-filter: blur(16px);
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .utility-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 77, 77, 0.4);
+            box-shadow: 0 18px 40px rgba(255, 0, 0, 0.15);
+        }
+
+        .utility-icon-wrapper {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            background: rgba(255, 77, 77, 0.1);
+            border: 1px solid rgba(255, 77, 77, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .utility-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .utility-desc {
+            font-size: 0.92rem;
+            color: #94a3b8;
+            line-height: 1.65;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+
+        .utility-tag {
+            align-self: flex-start;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #ff4d4d;
+            background: rgba(255, 77, 77, 0.08);
+            padding: 4px 12px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 77, 77, 0.2);
+        }
+
+        .team-card-modern {
+            background: linear-gradient(135deg, rgba(20, 26, 48, 0.7) 0%, rgba(10, 14, 28, 0.9) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 40px 30px;
+            text-align: center;
+            backdrop-filter: blur(14px);
+            transition: all 0.4s ease;
+        }
+
+        .team-card-modern:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 77, 77, 0.35);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .team-avatar-box {
+            width: 85px;
+            height: 85px;
+            margin: 0 auto 20px auto;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(255, 77, 77, 0.2), rgba(255, 255, 255, 0.05));
+            border: 2px solid rgba(255, 77, 77, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+        }
+
+        .team-role-badge {
+            display: inline-block;
+            background: rgba(255, 77, 77, 0.12);
+            color: #ff4d4d;
+            border: 1px solid rgba(255, 77, 77, 0.25);
+            padding: 4px 14px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+
+        .team-name {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 12px;
+        }
+
+        .team-bio {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .team-disclaimer {
+            margin-top: 40px;
+            background: linear-gradient(90deg, rgba(255, 77, 77, 0.05) 0%, rgba(255, 255, 255, 0.02) 100%);
+            border: 1px dashed rgba(255, 77, 77, 0.3);
+            border-radius: 16px;
+            padding: 22px 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .security-section {
+            background: linear-gradient(180deg, rgba(5, 8, 22, 0.95) 0%, rgba(10, 15, 30, 0.95) 100%);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .security-card-modern {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 20px;
+            padding: 30px 25px;
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+            transition: all 0.35s ease;
+        }
+
+        .security-card-modern:hover {
+            transform: translateY(-6px);
+            border-color: rgba(34, 197, 94, 0.4);
+            background: rgba(34, 197, 94, 0.03);
+        }
+
+        .security-check-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(34, 197, 94, 0.12);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #22c55e;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .security-info h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .security-info p {
+            font-size: 0.88rem;
+            color: #94a3b8;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 20px;
+            bottom: 20px;
+            width: 3px;
+            background: linear-gradient(180deg, #ff0000 0%, #eab308 50%, rgba(255, 255, 255, 0.1) 100%);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 75px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 12px;
+            top: 28px;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: #050816;
+            border: 4px solid #ff4d4d;
             z-index: 2;
-            animation: floatShield 4s ease-in-out infinite alternate;
-            filter: drop-shadow(0 15px 30px rgba(230, 0, 0, 0.5));
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.8);
+            transition: all 0.3s ease;
         }
 
-        @keyframes floatShield {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-15px); }
+        .timeline-item.completed .timeline-dot {
+            border-color: #22c55e;
+            box-shadow: 0 0 15px rgba(34, 197, 94, 0.8);
         }
 
-        @media (max-width: 992px) {
-            .hero-container {
+        .timeline-item.in-progress .timeline-dot {
+            border-color: #eab308;
+            box-shadow: 0 0 15px rgba(234, 179, 8, 0.8);
+            animation: pulseDot 2s infinite ease-in-out;
+        }
+
+        .roadmap-card {
+            background: linear-gradient(145deg, rgba(20, 25, 45, 0.85) 0%, rgba(8, 12, 28, 0.95) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 22px;
+            padding: 32px 35px;
+            backdrop-filter: blur(16px);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+
+        .roadmap-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 77, 77, 0.4);
+            box-shadow: 0 15px 35px rgba(255, 0, 0, 0.12);
+        }
+
+        .roadmap-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding-bottom: 15px;
+        }
+
+        .roadmap-phase-title {
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .roadmap-status-badge {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 5px 14px;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .badge-active {
+            background: rgba(34, 197, 94, 0.12);
+            color: #22c55e;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+        }
+
+        .badge-progress {
+            background: rgba(234, 179, 8, 0.12);
+            color: #eab308;
+            border: 1px solid rgba(234, 179, 8, 0.3);
+        }
+
+        .badge-future {
+            background: rgba(148, 163, 184, 0.1);
+            color: #94a3b8;
+            border: 1px solid rgba(148, 163, 184, 0.2);
+        }
+
+        .roadmap-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .roadmap-list li {
+            font-size: 0.95rem;
+            color: #cbd5e1;
+            line-height: 1.6;
+            font-weight: 300;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .roadmap-list li span.icon {
+            font-weight: 700;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .roadmap-list li.done span.icon { color: #22c55e; }
+        .roadmap-list li.pending span.icon { color: #ff4d4d; }
+
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 25px;
+            right: 25px;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 25px rgba(37, 211, 102, 0.5);
+            z-index: 9999;
+            transition: .3s;
+            animation: floatWhatsapp 2s infinite ease-in-out;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 35px rgba(37, 211, 102, 0.8);
+        }
+
+        .whatsapp-float svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+
+        @keyframes floatWhatsapp {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+
+        .copy-btn {
+            background: linear-gradient(90deg, #ff0000, #ff4d4d);
+            color: #fff;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: .3s;
+            box-shadow: 0 0 25px rgba(255, 0, 0, .4);
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 35px rgba(255, 0, 0, .7);
+        }
+
+        .copy-btn.copied {
+            background: #16a34a;
+            box-shadow: 0 0 25px rgba(22, 163, 74, .5);
+        }
+
+        .donate-card-compact {
+            max-width: 680px !important;
+            margin: 40px auto 0 auto !important;
+            padding: 28px 24px !important;
+            background: linear-gradient(135deg, rgba(234, 179, 8, 0.08) 0%, rgba(5, 8, 22, 0.85) 100%) !important;
+            border: 1px solid rgba(234, 179, 8, 0.3) !important;
+            border-radius: 20px;
+        }
+
+        .donate-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .donate-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(234, 179, 8, 0.12);
+            border: 1px solid rgba(234, 179, 8, 0.3);
+            color: #eab308;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 4px 14px;
+            border-radius: 50px;
+            margin-bottom: 12px;
+        }
+
+        .pulse-dot {
+            width: 7px;
+            height: 7px;
+            background-color: #eab308;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #eab308;
+            animation: pulseDot 1.5s infinite ease-in-out;
+        }
+
+        @keyframes pulseDot {
+            0%, 100% { opacity: 0.4; transform: scale(0.9); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .donate-body {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(0, 0, 0, 0.45);
+            padding: 10px 12px 10px 18px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .donate-address-wrapper {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .donate-network-tag {
+            font-size: 0.65rem;
+            color: #eab308;
+            font-weight: 700;
+        }
+
+        .donate-code {
+            font-family: monospace;
+            font-size: 0.88rem;
+            color: #f8fafc;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .donate-copy-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #eab308, #ca8a04);
+            color: #050816;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+
+        .donate-copy-btn:hover {
+            transform: translateY(-2px);
+            background: linear-gradient(135deg, #facc15, #eab308);
+        }
+
+        .tokenomics-container {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .tokenomics-overview {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .token-stat {
+            background: linear-gradient(145deg, rgba(255,255,255,0.055), rgba(255,255,255,0.018));
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 18px;
+            padding: 22px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.16);
+        }
+
+        .token-stat::after {
+            content: '';
+            position: absolute;
+            inset: auto -30px -45px auto;
+            width: 110px;
+            height: 110px;
+            background: radial-gradient(circle, rgba(255,0,0,0.18), transparent 68%);
+            pointer-events: none;
+        }
+
+        .token-stat-label {
+            display: block;
+            color: #94a3b8;
+            font-size: 0.76rem;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 9px;
+            font-weight: 700;
+        }
+
+        .token-stat-value {
+            display: block;
+            color: #f8fafc;
+            font-size: 1.45rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .token-stat-meta {
+            color: #64748b;
+            font-size: 0.78rem;
+            margin-top: 6px;
+        }
+
+        .tokenomics-main {
+            display: grid;
+            grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.1fr);
+            gap: 28px;
+            align-items: stretch;
+        }
+
+        .token-info-card, .token-allocation-card {
+            background: linear-gradient(145deg, rgba(255,255,255,0.045), rgba(255,255,255,0.012));
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 22px;
+            padding: 28px;
+            box-shadow: 0 16px 45px rgba(0,0,0,0.18);
+        }
+
+        .token-card-kicker {
+            color: #ff4d4d;
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 800;
+            margin-bottom: 7px;
+        }
+
+        .token-card-title {
+            margin: 0 0 20px;
+            font-size: 1.35rem;
+            color: #f8fafc;
+        }
+
+        .token-detail-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 13px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.055);
+        }
+
+        .token-detail-row span { color: #94a3b8; }
+        .token-detail-row strong { color: #f8fafc; text-align: right; }
+
+        .contract-box {
+            margin-top: 20px;
+            padding: 17px;
+            border-radius: 14px;
+            background: rgba(0,0,0,0.22);
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .contract-label {
+            display: block;
+            color: #ff4d4d;
+            font-size: 0.72rem;
+            font-weight: 800;
+            letter-spacing: 1.2px;
+            margin-bottom: 8px;
+        }
+
+        .contract-address {
+            display: block;
+            word-break: break-all;
+            font-family: monospace;
+            font-size: 0.78rem;
+            line-height: 1.5;
+            color: #cbd5e1;
+            margin-bottom: 13px;
+        }
+
+        .allocation-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 20px;
+            margin-bottom: 8px;
+        }
+
+        .allocation-note {
+            color: #64748b;
+            font-size: 0.78rem;
+        }
+
+        .allocation-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .allocation-item {
+            padding: 17px;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.025);
+            border: 1px solid rgba(255,255,255,0.055);
+        }
+
+        .allocation-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #ff4d4d;
+            display: inline-block;
+            margin-right: 7px;
+            box-shadow: 0 0 12px rgba(255,77,77,0.55);
+        }
+
+        .allocation-item:nth-child(2) .allocation-dot { background: #f87171; }
+        .allocation-item:nth-child(3) .allocation-dot { background: #64748b; box-shadow: none; }
+
+        .allocation-percent {
+            display: block;
+            color: #f8fafc;
+            font-size: 1.55rem;
+            font-weight: 900;
+            margin-top: 9px;
+        }
+
+        .allocation-amount {
+            display: block;
+            color: #94a3b8;
+            font-size: 0.78rem;
+            margin-top: 2px;
+        }
+
+        .token-purpose {
+            margin-top: 28px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        .purpose-card {
+            padding: 21px;
+            border-radius: 18px;
+            background: rgba(255,255,255,0.025);
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .purpose-icon { font-size: 1.4rem; }
+        .purpose-card h4 { margin: 10px 0 7px; color: #f8fafc; }
+        .purpose-card p { margin: 0; color: #94a3b8; font-size: 0.84rem; line-height: 1.65; }
+
+        .chart-wrapper {
+            min-width: 0;
+            width: 100%;
+            max-width: 520px;
+            min-height: 300px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        @media (max-width: 900px) {
+            .tokenomics-overview { grid-template-columns: repeat(2, 1fr); }
+            .tokenomics-main { grid-template-columns: 1fr; }
+            .allocation-grid, .token-purpose { grid-template-columns: 1fr; }
+            .chart-wrapper { max-width: 470px; }
+        }
+
+        @media (max-width: 560px) {
+            .tokenomics-overview { grid-template-columns: 1fr; }
+            .token-info-card, .token-allocation-card { padding: 21px; }
+            .token-detail-row { flex-direction: column; gap: 5px; }
+            .token-detail-row strong { text-align: left; }
+        }
+
+        /* ==========================================
+           FOOTER RESTRUCTURADO
+           ========================================== */
+        .footer-modern {
+            background: linear-gradient(180deg, #050816 0%, #03050d 100%);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 80px 10% 0 10%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer-modern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.5), transparent);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 1.8fr 1fr 1fr 1.6fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .footer-logo-img {
+            height: 48px;
+            width: auto;
+            filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.4));
+        }
+
+        .footer-brand-title {
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, #ff0000, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+
+        .footer-brand-desc {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            line-height: 1.65;
+            font-weight: 300;
+        }
+
+        .footer-status-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(34, 197, 94, 0.08);
+            border: 1px solid rgba(34, 197, 94, 0.25);
+            color: #4ade80;
+            padding: 6px 14px;
+            border-radius: 50px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            width: fit-content;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #22c55e;
+            animation: pulseStatus 2s infinite ease-in-out;
+        }
+
+        @keyframes pulseStatus {
+            0%, 100% { opacity: 0.4; transform: scale(0.9); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .footer-heading {
+            color: #ffffff;
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-heading::after {
+            content: '';
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #ff4d4d;
+            margin-top: 6px;
+            border-radius: 2px;
+        }
+
+        .footer-links-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .footer-links-list a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 400;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .footer-links-list a:hover {
+            color: #ff4d4d;
+            transform: translateX(4px);
+        }
+
+        .footer-contact-group {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .footer-contact-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 12px 16px;
+            border-radius: 14px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-contact-card:hover {
+            background: rgba(255, 77, 77, 0.05);
+            border-color: rgba(255, 77, 77, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.1);
+        }
+
+        .contact-card-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: rgba(255, 77, 77, 0.1);
+            border: 1px solid rgba(255, 77, 77, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-card-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: #ff4d4d;
+        }
+
+        .contact-card-info {
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .contact-card-label {
+            font-size: 0.7rem;
+            color: #64748b;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .contact-card-value {
+            font-size: 0.85rem;
+            color: #e2e8f0;
+            font-weight: 500;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 25px 0;
+        }
+
+        .footer-bottom-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .copyright-text {
+            color: #64748b;
+            font-size: 0.85rem;
+            font-weight: 300;
+        }
+
+        .copyright-text strong {
+            color: #cbd5e1;
+        }
+
+        .footer-bottom-badge {
+            font-size: 0.8rem;
+            color: #94a3b8;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 6px 16px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        @media(max-width:992px) {
+            .footer-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 35px;
+            }
+            .footer-brand {
+                grid-column: span 2;
+            }
+        }
+
+        @media(max-width:768px) {
+            nav .logo { display: none !important; }
+            .menu-toggle { display: block; }
+            nav ul {
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: #0b1020;
+                flex-direction: column;
+                padding: 30px;
+                display: none;
+                gap: 20px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+            nav ul.active { display: flex; }
+            .hero-text h1 { font-size: 3rem; }
+            .title { font-size: 2.3rem; }
+            .hero { text-align: center; }
+            .buttons { justify-content: center; }
+            .btn { width: 100%; text-align: center; }
+            .hero-image img { width: 220px; }
+            .timeline::before { left: 15px; }
+            .timeline-item { padding-left: 45px; }
+            .timeline-dot { left: 4px; }
+            .donate-body { flex-direction: column; align-items: stretch; text-align: center; }
+            .beneficiary-box-modern { padding: 35px 20px; }
+            .project-main-card { padding: 25px; }
+            .roadmap-card { padding: 25px 20px; }
+            .welcome-card-pro { padding: 35px 20px; }
+        }
+
+        @media(max-width:600px) {
+            .footer-container {
                 grid-template-columns: 1fr;
+            }
+            .footer-brand {
+                grid-column: span 1;
+            }
+            .footer-bottom-wrapper {
+                flex-direction: column;
                 text-align: center;
-                gap: 40px;
-            }
-            .hero-badge-top {
-                align-items: center;
-            }
-            .hero-description {
-                margin: 0 auto 35px auto;
-            }
-            .hero-buttons-row {
-                justify-content: center;
-            }
-            .btn-bsc {
-                align-self: center;
-            }
-            .hero-title-main {
-                font-size: 4rem;
             }
         }
     </style>
@@ -488,6 +1808,7 @@
 
 <body class="no-scroll">
 
+    <!-- === PANTALLA DE BIENVENIDA NIVEL PRO (SPLASH SCREEN) === -->
     <div id="welcome-screen">
         <div class="welcome-particle p1"></div>
         <div class="welcome-particle p2"></div>
@@ -495,14 +1816,17 @@
         <div class="welcome-particle p4"></div>
 
         <div class="welcome-card-pro">
+            <!-- Palabra PERU agregada sobre el robot -->
             <h1 class="welcome-title">PERU</h1>
+
             <div class="welcome-logo-container">
-                <img src="logo.png" alt="Logo PERU Web3" class="welcome-logo">
+                <img src="robot.png" alt="PERU Welcome Robot" class="welcome-logo">
             </div>
-            <p class="welcome-text">El primer proyecto Web3 enfocado en impulsar deportistas de bajos recursos mediante blockchain.</p>
-            <button class="btn-welcome-pro" id="btn-enter-app">
-                <span>INGRESAR A LA PLATAFORMA</span>
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+
+            <p class="welcome-text">Deporte, Blockchain & Impacto Social Descentralizado.</p>
+
+            <button onclick="enterSite()" class="btn-welcome-pro">
+                <span>INGRESAR</span>
             </button>
         </div>
     </div>
@@ -512,71 +1836,814 @@
 
         <nav>
             <div class="logo">
-                <img src="logo.png" alt="Logo PERU" style="height: 40px; margin-right: 10px;">
-                <span style="font-weight: 800; font-size: 1.2rem; letter-spacing: 1px;">PERU</span>
+                <img src="logo.png" alt="PERU Logo" style="height:55px;">
             </div>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Abrir menú de navegación">☰</button>
             <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#proyecto">Proyecto</a></li>
-                <li><a href="#pilares">Pilares</a></li>
-                <li><a href="#atleta">Atleta</a></li>
-                <li><a href="#tokenomics">Tokenomics</a></li>
-                <li><a href="#roadmap">Hoja de Ruta</a></li>
+                <li><a href="#about" onclick="closeMenu()">Proyecto</a></li>
+                <li><a href="#donate-section" onclick="closeMenu()">Donar</a></li>
+                <li><a href="#stats" onclick="closeMenu()">Estadísticas</a></li>
+                <li><a href="#beneficiaries" onclick="closeMenu()">Beneficiarios</a></li>
+                <li><a href="#utility" onclick="closeMenu()">Utilidad</a></li>
+                <li><a href="#tokenomics" onclick="closeMenu()">Tokenomics</a></li>
+                <li><a href="#roadmap" onclick="closeMenu()">Roadmap</a></li>
+                <li><a href="#team" onclick="closeMenu()">Equipo</a></li>
+                <li><a href="#security" onclick="closeMenu()">Seguridad</a></li>
+                <li><a href="#community" onclick="closeMenu()">Comunidad</a></li>
             </ul>
         </nav>
 
-        <section class="hero-modern" id="inicio">
-            <div class="hero-container">
-                
-                <div class="hero-content-left">
-                    <div class="hero-badge-top">
-                        <span class="hero-badge-text">PROYECTO WEB3</span>
-                        <div class="hero-badge-line"></div>
-                    </div>
-
-                    <h1 class="hero-title-main">PERU</h1>
-
-                    <p class="hero-description">
-                        El primer proyecto Web3 peruano enfocado en apoyar deportistas de bajos recursos mediante blockchain, becas, viajes e implementos deportivos.
-                    </p>
-
-                    <div class="hero-buttons-group">
-                        <div class="hero-buttons-row">
-                            <a href="#comprar" class="btn-modern btn-buy">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
-                                Comprar PERU
-                                <span>→</span>
-                            </a>
-
-                            <a href="#whitepaper" class="btn-modern btn-glass">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
-                                Whitepaper
-                                <span>→</span>
-                            </a>
-                        </div>
-
-                        <a href="#bscscan" class="btn-modern btn-glass btn-bsc">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-                            BscScan
-                            <span>→</span>
-                        </a>
-                    </div>
+        <section class="hero">
+            <div class="hero-text">
+                <h1>PERU</h1>
+                <p>El primer proyecto Web3 peruano enfocado en apoyar deportistas de bajos recursos mediante blockchain, becas, viajes e implementos deportivos.</p>
+                <div class="buttons">
+                    <a href="https://pancakeswap.finance/swap?outputCurrency=0x1c647ebe755fe03dc43fa078ca550e837d0b4444" target="_blank" class="btn primary">Comprar PERU</a>
+                    <a href="whitepaper.pdf" target="_blank" class="btn secondary">Whitepaper</a>
+                    <a href="https://bscscan.com/token/0x1c647ebe755fe03dc43fa078ca550e837d0b4444" target="_blank" class="btn secondary">BscScan</a>
                 </div>
-
-                <div class="hero-image-wrapper">
-                    <div class="hero-glow-back"></div>
-                    <img src="logo.png" alt="Escudo PERU Token" class="hero-shield-img">
-                </div>
-
+            </div>
+            <div class="hero-image">
+                <img src="logo.png" alt="Ecosistema PERU Token">
             </div>
         </section>
 
+        <!-- === SECCIÓN PROYECTO (INCLUYE PILARES DE ACCIÓN DIRECTA) === -->
+        <section id="about">
+            <h2 class="title reveal">PROYECTO</h2>
+            <p class="subtitle reveal">Tecnología Web3 con impacto social real, directo y trazable</p>
+
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin-bottom: 40px; gap: 30px;">
+                <div class="project-main-card reveal">
+                    <span class="project-tag">🌐 Impacto Social Descentralizado</span>
+                    <h3 class="project-title">Reinventando el Patrocinio Deportivo Nacional</h3>
+                    <p class="project-paragraph">
+                        PERU es una iniciativa digital comunitaria que une la transparencia de la cadena de bloques con el potencial competitivo de nuestros talentos. Eliminamos la burocracia tradicional para asegurar que el apoyo económico llegue directo y sin fisuras a los deportistas que más lo necesitan.
+                    </p>
+                    <p class="project-paragraph" style="margin-bottom: 0;">
+                        Medición transparente, contratos inteligentes sin comisiones ocultas y votación colectiva forman la base de una infraestructura diseñada para impulsar la representación nacional en competencias internacionales.
+                    </p>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 25px;">
+                    <div class="project-subcard reveal">
+                        <div class="project-subcard-icon">👁️</div>
+                        <h4 class="project-subcard-title">Visión Estratégica</h4>
+                        <p style="color: #94a3b8; font-size: 0.92rem; line-height: 1.6; font-weight: 300;">
+                            Consolidar el ecosistema cripto-social más influyente de Latinoamérica, posicionando a Perú como referente de innovación social descentralizada aplicada al alto rendimiento deportivo.
+                        </p>
+                    </div>
+
+                    <div class="project-subcard reveal">
+                        <div class="project-subcard-icon">🎯</div>
+                        <h4 class="project-subcard-title">Misión Operativa</h4>
+                        <p style="color: #94a3b8; font-size: 0.92rem; line-height: 1.6; font-weight: 300;">
+                            Garantizar financiamiento continuo, equipamiento profesional y viáticos a atletas destacados mediante la gobernanza transparente y participativa de nuestra comunidad.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pillars-section-title reveal">
+                <h3>Pilares de Acción Directa</h3>
+                <p>Estructura estratégica de financiamiento e impacto para nuestros atletas dentro del proyecto</p>
+            </div>
+
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px;">
+                <div class="pillar-card reveal">
+                    <div>
+                        <span class="pillar-badge">Alto Rendimiento</span>
+                        <div class="pillar-icon-box">🏆</div>
+                        <h3 class="pillar-title">Becas Deportivas Integrales</h3>
+                        <p class="pillar-desc">Sustento económico mensual asignado a atletas destacados para cubrir gastos críticos de preparación, nutrición especializada y apoyo técnico continuo.</p>
+                    </div>
+                    <span class="pillar-number">01</span>
+                </div>
+
+                <div class="pillar-card reveal">
+                    <div>
+                        <span class="pillar-badge">Movilidad Global</span>
+                        <div class="pillar-icon-box">✈️</div>
+                        <h3 class="pillar-title">Viajes y Competencias</h3>
+                        <p class="pillar-desc">Financiamiento directo de boletos aéreos, hospedaje, inscripciones y viáticos para torneos internacionales y campeonatos de alto nivel.</p>
+                    </div>
+                    <span class="pillar-number">02</span>
+                </div>
+
+                <div class="pillar-card reveal">
+                    <div>
+                        <span class="pillar-badge">Equipamiento Elite</span>
+                        <div class="pillar-icon-box">⚽</div>
+                        <h3 class="pillar-title">Implementos Profesionales</h3>
+                        <p class="pillar-desc">Dotación de indumentaria de alta competencia, accesorios de última tecnología e instrumental requerido según la disciplina.</p>
+                    </div>
+                    <span class="pillar-number">03</span>
+                </div>
+
+                <div class="pillar-card reveal">
+                    <div>
+                        <span class="pillar-badge">Bienestar Atleta</span>
+                        <div class="pillar-icon-box">🥗</div>
+                        <h3 class="pillar-title">Nutrición y Salud Integral</h3>
+                        <p class="pillar-desc">Acceso a suplementación avanzada, planes de nutrición especializada, medicina deportiva y fisioterapia enfocados en el máximo desempeño físico.</p>
+                    </div>
+                    <span class="pillar-number">04</span>
+                </div>
+            </div>
+
+            <!-- SECCIÓN DONACIONES -->
+            <div id="donate-section" class="card reveal donate-card-compact">
+                <div class="donate-header">
+                    <div class="donate-badge">
+                        <span class="pulse-dot"></span> Fondo de Apoyo Social
+                    </div>
+                    <h3 style="font-size: 1.35rem; color: white; margin-bottom: 6px;">Donaciones Directas en Cadena</h3>
+                    <p style="font-size: 0.88rem; color: #94a3b8; max-width: 500px; margin: 0 auto; line-height: 1.4;">
+                        Tu contribución financia directamente pasajes, inscripciones y equipamiento para nuestros deportistas.
+                    </p>
+                </div>
+
+                <div class="donate-body">
+                    <div class="donate-address-wrapper">
+                        <div class="donate-network-tag">RED BSC (BEP20)</div>
+                        <code id="donation-address" class="donate-code">0xE7A8096362f14152375E9FF0631114044dCe0f91</code>
+                    </div>
+                    <button onclick="copyDonationWallet()" class="donate-copy-btn">
+                        <span>Copiar Dirección</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ESTADÍSTICAS DASHBOARD -->
+        <section id="stats" class="stats-dashboard">
+            <h2 class="title reveal">ESTADÍSTICAS DEL ECOSISTEMA</h2>
+            <p class="subtitle reveal">Métricas clave e impacto comunitario transparente en la cadena</p>
+            
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px;">
+                <div class="stat-card-modern reveal">
+                    <span class="stat-icon">⚡</span>
+                    <div class="stat-number-modern" data-target="100" data-prefix="" data-suffix="%">0%</div>
+                    <div class="stat-label">Descentralizado</div>
+                    <div class="stat-subtext">Sin intermediarios bancarios</div>
+                </div>
+
+                <div class="stat-card-modern reveal">
+                    <span class="stat-icon">💎</span>
+                    <div class="stat-number-modern" data-target="1" data-prefix="" data-suffix="M">0M</div>
+                    <div class="stat-label">Supply Máximo</div>
+                    <div class="stat-subtext">Emisión fija e inmutable</div>
+                </div>
+
+                <div class="stat-card-modern reveal">
+                    <span class="stat-icon">🎁</span>
+                    <div class="stat-number-modern" data-target="20" data-prefix="" data-suffix="%">0%</div>
+                    <div class="stat-label">Fondo de Impacto</div>
+                    <div class="stat-subtext">Reservado para atletas</div>
+                </div>
+
+                <div class="stat-card-modern reveal">
+                    <span class="stat-icon">🛡️</span>
+                    <div class="stat-number-modern" data-target="0" data-prefix="" data-suffix="%">0%</div>
+                    <div class="stat-label">Impuesto Transaccional</div>
+                    <div class="stat-subtext">Comercio 100% libre</div>
+                </div>
+
+                <div class="stat-card-modern reveal">
+                    <span class="stat-icon">👥</span>
+                    <div class="stat-number-modern" data-target="1000" data-prefix="+" data-suffix="">0</div>
+                    <div class="stat-label">Holders Comunitarios</div>
+                    <div class="stat-subtext">Red en constante crecimiento</div>
+                </div>
+
+                <div class="stat-card-modern reveal">
+                    <span class="stat-icon">🔗</span>
+                    <div class="stat-number-modern" data-target="100" data-prefix="" data-suffix="%">0%</div>
+                    <div class="stat-label">Transparencia On-Chain</div>
+                    <div class="stat-subtext">Operaciones verificables en BSC</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- === SECCIÓN BENEFICIARIOS (ACTUALIZADA) === -->
+        <section id="beneficiaries">
+            <h2 class="title reveal">BENEFICIARIOS</h2>
+            <p class="subtitle reveal">El puente entre la comunidad Web3 y las promesas del deporte peruano</p>
+            
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-bottom: 30px;">
+                <div class="card reveal" style="padding: 30px;">
+                    <span style="font-size: 1.2rem; font-weight: 800; color: #ff4d4d; display: block; margin-bottom: 10px;">01</span>
+                    <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 10px;">Expediente Deportivo</h3>
+                    <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.6; font-weight: 300;">
+                        Consolidación de logros, categoría y plan de competencias internacionales.
+                    </p>
+                </div>
+
+                <div class="card reveal" style="padding: 30px;">
+                    <span style="font-size: 1.2rem; font-weight: 800; color: #ff4d4d; display: block; margin-bottom: 10px;">02</span>
+                    <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 10px;">Postulación Abierta</h3>
+                    <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.6; font-weight: 300;">
+                        Envío del perfil a través del formulario de verificación oficial.
+                    </p>
+                </div>
+
+                <div class="card reveal" style="padding: 30px;">
+                    <span style="font-size: 1.2rem; font-weight: 800; color: #ff4d4d; display: block; margin-bottom: 10px;">03</span>
+                    <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 10px;">Votación en Cadena</h3>
+                    <p style="font-size: 0.9rem; color: #94a3b8; line-height: 1.6; font-weight: 300;">
+                        Los holders de $PERU votan de forma transparente la asignación de fondos.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card reveal" style="text-align: center; padding: 45px 30px; background: linear-gradient(145deg, rgba(20, 25, 45, 0.85) 0%, rgba(8, 12, 28, 0.95) 100%); border: 1px solid rgba(255, 255, 255, 0.1);">
+                <span style="display: inline-block; background: rgba(234, 179, 8, 0.12); color: #eab308; border: 1px solid rgba(234, 179, 8, 0.3); padding: 6px 18px; border-radius: 50px; font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px;">
+                    FASE DE PREPARACIÓN — PORTAL DAO
+                </span>
+                
+                <h3 style="font-size: 1.8rem; font-weight: 800; color: #ffffff; margin-bottom: 15px;">
+                    Próxima Convocatoria Abierta
+                </h3>
+                
+                <p style="font-size: 0.98rem; color: #cbd5e1; line-height: 1.7; max-width: 650px; margin: 0 auto 30px auto; font-weight: 300;">
+                    Estamos construyendo la infraestructura de votación para que la comunidad elija a los deportistas nacionales que recibirán apoyo directo de la tesorería social.
+                </p>
+
+                <a href="#community" class="btn primary" style="padding: 14px 38px; font-size: 0.95rem; border-radius: 14px;">
+                    Unirse a la Comunidad
+                </a>
+            </div>
+        </section>
+
+        <!-- SECCIÓN UTILIDAD -->
+        <section id="utility">
+            <h2 class="title reveal">UTILIDAD DEL TOKEN</h2>
+            <p class="subtitle reveal">Infraestructura funcional que impulsa el valor intrínseco del ecosistema</p>
+            
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+                <div class="utility-card reveal">
+                    <div>
+                        <div class="utility-icon-wrapper">🗳️</div>
+                        <h3 class="utility-title">Gobernanza DAO</h3>
+                        <p class="utility-desc">Toma el control directo de las decisiones clave. Los holders votan en la selección de deportistas beneficiarios y en la asignación periódica de fondos comunitarios.</p>
+                    </div>
+                    <span class="utility-tag">Voto en Cadena</span>
+                </div>
+
+                <div class="utility-card reveal">
+                    <div>
+                        <div class="utility-icon-wrapper">💎</div>
+                        <h3 class="utility-title">Staking & Ratios</h3>
+                        <p class="utility-desc">Inmoviliza tus tokens PERU en el contrato oficial para fortalecer la liquidez de red mientras generas recompensas sustentables en el tiempo.</p>
+                    </div>
+                    <span class="utility-tag">Yield DeFi</span>
+                </div>
+
+                <div class="utility-card reveal">
+                    <div>
+                        <div class="utility-icon-wrapper">🏅</div>
+                        <h3 class="utility-title">Pase NFT de Atletas</h3>
+                        <p class="utility-desc">Acceso prioritario y exclusivo a colecciones NFT oficiales. El 100% de las regalías va destinado a la adquisición de indumentaria para atletas.</p>
+                    </div>
+                    <span class="utility-tag">Coleccionables</span>
+                </div>
+
+                <div class="utility-card reveal">
+                    <div>
+                        <div class="utility-icon-wrapper">🎁</div>
+                        <h3 class="utility-title">Experiencias VIP</h3>
+                        <p class="utility-desc">Accede a sorteos de equipamiento deportivo firmado, boletos VIP para torneos nacionales e incentivos comunitarios exclusivos.</p>
+                    </div>
+                    <span class="utility-tag">Beneficios Holders</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- TOKENOMICS -->
+        <section id="tokenomics">
+            <h2 class="title reveal">TOKENOMICS</h2>
+            <p class="subtitle reveal">Distribución transparente del suministro y destino de cada token dentro del ecosistema PERU</p>
+
+            <div class="tokenomics-container">
+                <div class="tokenomics-overview">
+                    <div class="token-stat reveal">
+                        <span class="token-stat-label">Total Supply</span>
+                        <span class="token-stat-value">1,000,000</span>
+                        <span class="token-stat-meta">PERU · suministro declarado</span>
+                    </div>
+                    <div class="token-stat reveal">
+                        <span class="token-stat-label">Red</span>
+                        <span class="token-stat-value">BNB Chain</span>
+                        <span class="token-stat-meta">Estándar BEP20</span>
+                    </div>
+                    <div class="token-stat reveal">
+                        <span class="token-stat-label">Tipo</span>
+                        <span class="token-stat-value">Social</span>
+                        <span class="token-stat-meta">Token comunitario</span>
+                    </div>
+                    <div class="token-stat reveal">
+                        <span class="token-stat-label">Distribución</span>
+                        <span class="token-stat-value">20 / 60 / 20</span>
+                        <span class="token-stat-meta">Impacto · Liquidez · DAO</span>
+                    </div>
+                </div>
+
+                <div class="tokenomics-main">
+                    <div class="token-info-card reveal">
+                        <div class="token-card-kicker">Información oficial</div>
+                        <h3 class="token-card-title">Detalles del token</h3>
+
+                        <div class="token-detail-row">
+                            <span>Nombre</span><strong>PERU</strong>
+                        </div>
+                        <div class="token-detail-row">
+                            <span>Símbolo</span><strong>$PERU</strong>
+                        </div>
+                        <div class="token-detail-row">
+                            <span>Tipo</span><strong>Token social / comunitario</strong>
+                        </div>
+                        <div class="token-detail-row">
+                            <span>Total Supply</span><strong>1,000,000 PERU</strong>
+                        </div>
+                        <div class="token-detail-row">
+                            <span>Blockchain</span><strong>BNB Chain · BEP20</strong>
+                        </div>
+
+                        <div class="contract-box">
+                            <span class="contract-label">CONTRATO OFICIAL · BSC</span>
+                            <span class="contract-address">0x1c647ebe755fe03dc43fa078ca550e837d0b4444</span>
+                            <button onclick="copyContract()" class="copy-btn" style="width: 100%; padding: 12px;">📋 Copiar Contrato</button>
+                        </div>
+                    </div>
+
+                    <div class="token-allocation-card reveal">
+                        <div class="allocation-header">
+                            <div>
+                                <div class="token-card-kicker">Distribución</div>
+                                <h3 class="token-card-title" style="margin-bottom:0;">Asignación del suministro</h3>
+                            </div>
+                            <span class="allocation-note">100% del supply</span>
+                        </div>
+
+                        <div class="chart-wrapper">
+                            <canvas id="tokenomicsChart"></canvas>
+                        </div>
+
+                        <div class="allocation-grid">
+                            <div class="allocation-item">
+                                <span><i class="allocation-dot"></i>Impacto</span>
+                                <strong class="allocation-percent">20%</strong>
+                                <span class="allocation-amount">200,000 PERU</span>
+                            </div>
+                            <div class="allocation-item">
+                                <span><i class="allocation-dot"></i>Venta / Liquidez</span>
+                                <strong class="allocation-percent">60%</strong>
+                                <span class="allocation-amount">600,000 PERU</span>
+                            </div>
+                            <div class="allocation-item">
+                                <span><i class="allocation-dot"></i>Reserva DAO</span>
+                                <strong class="allocation-percent">20%</strong>
+                                <span class="allocation-amount">200,000 PERU</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="token-purpose">
+                    <div class="purpose-card reveal">
+                        <span class="purpose-icon">🏃</span>
+                        <h4>Fondo de Impacto · 20%</h4>
+                        <p>Reserva destinada al propósito social del proyecto: apoyar a deportistas de bajos recursos mediante iniciativas de impacto.</p>
+                    </div>
+                    <div class="purpose-card reveal">
+                        <span class="purpose-icon">💧</span>
+                        <h4>Venta Pública / Liquidez · 60%</h4>
+                        <p>La mayor parte del suministro se asigna a la distribución pública y a la liquidez del ecosistema.</p>
+                    </div>
+                    <div class="purpose-card reveal">
+                        <span class="purpose-icon">🏛️</span>
+                        <h4>Reserva DAO · 20%</h4>
+                        <p>Reserva destinada al componente de gobernanza y evolución comunitaria contemplado por el proyecto.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- === ROADMAP === -->
+        <section id="roadmap">
+            <h2 class="title reveal">ROADMAP</h2>
+            <p class="subtitle reveal">Hoja de ruta estratégica para el desarrollo técnico, adopción comunitaria e impacto deportivo</p>
+            
+            <div class="timeline">
+                <div class="timeline-item completed reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="roadmap-card">
+                        <div class="roadmap-header">
+                            <div class="roadmap-phase-title">
+                                <span>🚀</span> FASE 1 — Despliegue & Fundación
+                            </div>
+                            <span class="roadmap-status-badge badge-active">Completado</span>
+                        </div>
+                        <ul class="roadmap-list">
+                            <li class="done"><span class="icon">✓</span> Despliegue, verificación e indexación del Smart Contract en Binance Smart Chain (BSC).</li>
+                            <li class="done"><span class="icon">✓</span> Creación del sitio web oficial e infraestructura digital comunitaria.</li>
+                            <li class="done"><span class="icon">✓</span> Apertura y verificación de canales sociales principales (X, TikTok, Discord, Telegram).</li>
+                            <li class="done"><span class="icon">✓</span> Publicación oficial del Whitepaper estructurado y documentación de Tokenomics.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item in-progress reveal">
+                    <div class="timeline-dot"></div>
+                    <div class="roadmap-card">
+                        <div class="roadmap-header">
+                            <div class="roadmap-phase-title">
+                                <span>📈</span> FASE 2 — Consolidación & Primer Impacto
+                            </div>
+                            <span class="roadmap-status-badge badge-progress">En Progreso</span>
+                        </div>
+                        <ul class="roadmap-list">
+                            <li class="done"><span class="icon">✓</span> Lanzamiento del Fondo Social de Donaciones Directas en Cadena (BEP20).</li>
+                            <li class="pending"><span class="icon">→</span> Campañas de concientización y difusión con micro-influencers Web3 nacionales.</li>
+                            <li class="pending"><span class="icon">→</span> Primera convocatoria para auditoría y selección del deportista beneficiario inicial.</li>
+                            <li class="pending"><span class="icon">→</span> Aplicación e integración de métricas en plataformas de seguimiento (CoinGecko / CoinMarketCap).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot" style="border-color: #64748b; box-shadow: none;"></div>
+                    <div class="roadmap-card">
+                        <div class="roadmap-header">
+                            <div class="roadmap-phase-title">
+                                <span>🌐</span> FASE 3 — Gobernanza & Infraestructura
+                            </div>
+                            <span class="roadmap-status-badge badge-future">Próximamente</span>
+                        </div>
+                        <ul class="roadmap-list">
+                            <li class="pending"><span class="icon">→</span> Desarrollo e implementación del portal de Gobernanza DAO para votaciones en cadena.</li>
+                            <li class="pending"><span class="icon">→</span> Lanzamiento del sistema de Staking / Yield para recompensar a holders de largo plazo.</li>
+                            <li class="pending"><span class="icon">→</span> Alianzas estratégicas formales con academias deportivas, clubes y federaciones peruanas.</li>
+                            <li class="pending"><span class="icon">→</span> Lanzamiento de la primera colección oficial de NFT de Atletas con beneficio directo a deportistas.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal">
+                    <div class="timeline-dot" style="border-color: #64748b; box-shadow: none;"></div>
+                    <div class="roadmap-card">
+                        <div class="roadmap-header">
+                            <div class="roadmap-phase-title">
+                                <span>🏆</span> FASE 4 — Escalamiento & Expansión Global
+                            </div>
+                            <span class="roadmap-status-badge badge-future">Planificado</span>
+                        </div>
+                        <ul class="roadmap-list">
+                            <li class="pending"><span class="icon">→</span> Expansión del modelo de financiamiento crypto-social hacia otros países de Latinoamérica.</li>
+                            <li class="pending"><span class="icon">→</span> Patrocinio integral en torneos e itinerarios competitivos internacionales de alto nivel.</li>
+                            <li class="pending"><span class="icon">→</span> Organización de competencias y torneos deportivos oficiales bajo el sello PERU Web3.</li>
+                            <li class="pending"><span class="icon">→</span> Negociación y cotización en Intercambios Centralizados (CEX) estratégicos.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EQUIPO -->
+        <section id="team">
+            <h2 class="title reveal">EQUIPO DESARROLLADOR</h2>
+            <p class="subtitle reveal">Estructura organizativa especializada responsable del crecimiento del proyecto</p>
+            
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;">
+                <div class="team-card-modern reveal">
+                    <div class="team-avatar-box">💻</div>
+                    <span class="team-role-badge">Arquitectura Blockchain</span>
+                    <h3 class="team-name">Core Developers</h3>
+                    <p class="team-bio">Ingenieros de software a cargo del despliegue de Smart Contracts, auditoría constante de código, seguridad en BSC y desarrollo front-end.</p>
+                </div>
+
+                <div class="team-card-modern reveal">
+                    <div class="team-avatar-box">📣</div>
+                    <span class="team-role-badge">Estrategia Digital</span>
+                    <h3 class="team-name">Marketing & Social Ops</h3>
+                    <p class="team-bio">Especialistas encargados del crecimiento orgánico de la comunidad, alianzas con creadores Web3, prensa y posicionamiento de marca.</p>
+                </div>
+
+                <div class="team-card-modern reveal">
+                    <div class="team-avatar-box">🤝</div>
+                    <span class="team-role-badge">Impacto Social</span>
+                    <h3 class="team-name">Coordinación Deportiva</h3>
+                    <p class="team-bio">Equipo encargado de verificar los expedientes de deportistas, coordinar las convocatorias y garantizar la asignación transparente de los recursos.</p>
+                </div>
+
+                <div class="team-card-modern reveal">
+                    <div class="team-avatar-box">🌐</div>
+                    <span class="team-role-badge">Moderación & Soporte</span>
+                    <h3 class="team-name">Community Managers</h3>
+                    <p class="team-bio">Líderes comunitarios encargados de la gestión de canales oficiales (Discord, Telegram, X), moderación activa y soporte directo a los miembros del ecosistema.</p>
+                </div>
+            </div>
+
+            <div class="team-disclaimer reveal">
+                <span style="font-size: 1.5rem;">🛡️</span>
+                <p style="font-size: 0.88rem; color: #cbd5e1; line-height: 1.5; font-weight: 300;">
+                    <strong>Resguardo Cripto-Estándar:</strong> Por motivos de estricto resguardo personal y seguridad cibernética, el equipo opera bajo seudónimos digitales verificados en la red, garantizando un enfoque 100% centrado en el desarrollo del producto y neutralidad comunitaria.
+                </p>
+            </div>
+        </section>
+
+        <!-- SEGURIDAD -->
+        <section id="security" class="security-section">
+            <h2 class="title reveal">SEGURIDAD Y TRANSPARENCIA</h2>
+            <p class="subtitle reveal">Protocolos y arquitectura técnica diseñados para proteger los fondos de los inversores</p>
+            
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px;">
+                <div class="security-card-modern reveal">
+                    <div class="security-check-icon">✓</div>
+                    <div class="security-info">
+                        <h4>Contrato Verificado</h4>
+                        <p>Código fuente completamente abierto, público y rastreable en BscScan, permitiendo auditar la lógica interna en todo momento.</p>
+                    </div>
+                </div>
+
+                <div class="security-card-modern reveal">
+                    <div class="security-check-icon">✓</div>
+                    <div class="security-info">
+                        <h4>Emisión Fija e Inmutable</h4>
+                        <p>Tokenomics blindada mediante contrato. No existe posibilidad técnica de acuñar nuevas monedas (Mint disabled).</p>
+                    </div>
+                </div>
+
+                <div class="security-card-modern reveal">
+                    <div class="security-check-icon">✓</div>
+                    <div class="security-info">
+                        <h4>Trazabilidad en Cadena</h4>
+                        <p>Cada donación, gasto o retiro ejecutado por la DAO queda registrado de forma pública e indeleble en la blockchain.</p>
+                    </div>
+                </div>
+
+                <div class="security-card-modern reveal">
+                    <div class="security-check-icon">✓</div>
+                    <div class="security-info">
+                        <h4>Sin Impuestos Ocultos</h4>
+                        <p>Comercio completamente libre (0% Tax de compra / 0% Tax de venta), otorgando la máxima flexibilidad de trading a la comunidad.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- === COMUNIDAD === -->
+        <section id="community">
+            <h2 class="title reveal">ÚNETE A LA COMUNIDAD</h2>
+            <p class="subtitle reveal">Sé parte de la primera comunidad Web3 que impulsa el talento deportivo peruano.</p>
+
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; max-width: 900px; margin: 0 auto 40px auto;">
+                <div class="card reveal" style="padding: 25px 20px; text-align: center;">
+                    <span style="font-size: 2rem; display: block; margin-bottom: 10px;">🗳️</span>
+                    <h4 style="font-size: 1.1rem; margin-bottom: 6px; color: #fff;">Voto en Cadena</h4>
+                    <p style="font-size: 0.85rem; color: #94a3b8; line-height: 1.5; font-weight: 300;">Participa activamente en la DAO para elegir a los deportistas beneficiados.</p>
+                </div>
+                <div class="card reveal" style="padding: 25px 20px; text-align: center;">
+                    <span style="font-size: 2rem; display: block; margin-bottom: 10px;">⚡</span>
+                    <h4 style="font-size: 1.1rem; margin-bottom: 6px; color: #fff;">Avances Exclusivos</h4>
+                    <p style="font-size: 0.85rem; color: #94a3b8; line-height: 1.5; font-weight: 300;">Acceso anticipado a anuncios, convocatorias y eventos comunitarios.</p>
+                </div>
+                <div class="card reveal" style="padding: 25px 20px; text-align: center;">
+                    <span style="font-size: 2rem; display: block; margin-bottom: 10px;">🤝</span>
+                    <h4 style="font-size: 1.1rem; margin-bottom: 6px; color: #fff;">Red de Impacto</h4>
+                    <p style="font-size: 0.85rem; color: #94a3b8; line-height: 1.5; font-weight: 300;">Conecta directamente con la comunidad de holders, atletas y desarrolladores.</p>
+                </div>
+            </div>
+
+            <div class="buttons" style="justify-content:center;">
+                <a href="https://x.com/WWW__PERU" target="_blank" class="btn primary">
+                    <span>𝕏 / Twitter</span>
+                </a>
+                <a href="https://discord.gg/TU-INVITACION" target="_blank" class="btn secondary">
+                    <span>Discord</span>
+                </a>
+                <a href="https://www.tiktok.com/@token.peru" target="_blank" class="btn secondary">
+                    <span>TikTok</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- === SECCIÓN AVISO LEGAL === -->
+        <section id="legal">
+            <h2 class="title reveal">AVISO LEGAL & DISCLAIMER</h2>
+            <p class="subtitle reveal">Términos, exención de responsabilidad y marco regulatorio transparente</p>
+            
+            <div class="legal-grid reveal">
+                <div class="legal-card">
+                    <span class="legal-card-icon">⚠️</span>
+                    <h4 class="legal-card-title">Naturaleza del Activo</h4>
+                    <p class="legal-card-text">
+                        $PERU es un token utilitario y comunitario basado en la blockchain de BSC. No constituye un título valor, fondo de inversión ni contrato de valores según ninguna regulación gubernamental.
+                    </p>
+                </div>
+
+                <div class="legal-card">
+                    <span class="legal-card-icon">📉</span>
+                    <h4 class="legal-card-title">Riesgo de Mercado</h4>
+                    <p class="legal-card-text">
+                        Los mercados de criptomonedas son inherentemente volátiles y están sujetos a fluctuaciones impredecibles. Invierta únicamente el capital que esté dispuesto a perder. Haga su propia investigación (DYOR).
+                    </p>
+                </div>
+
+                <div class="legal-card">
+                    <span class="legal-card-icon">⚖️</span>
+                    <h4 class="legal-card-title">Sin Asesoramiento Financiero</h4>
+                    <p class="legal-card-text">
+                        La información disponible en este sitio web no constituye asesoramiento financiero, legal ni comercial. Todo participante asume de forma voluntary la gestión de sus activos digitales.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             PIE DE PÁGINA (FOOTER RESTRUCTURADO)
+             ========================================== -->
+        <footer class="footer-modern">
+            <div class="footer-container">
+                
+                <!-- Columna 1: Marca & Propósito -->
+                <div class="footer-brand">
+                    <a href="#" class="footer-logo">
+                        <img src="logo.png" alt="PERU Web3 Logo" class="footer-logo-img">
+                        <span class="footer-brand-title">PERU</span>
+                    </a>
+                    <p class="footer-brand-desc">
+                        Proyecto Web3 solidario creado para impulsar el deporte peruano mediante tecnología descentralizada.
+                    </p>
+                    <div class="footer-status-pill">
+                        <span class="status-dot"></span> Red Activa: BNB Chain (BEP20)
+                    </div>
+                </div>
+
+                <!-- Columna 2: Navegación Principal -->
+                <div class="footer-nav-group">
+                    <h4 class="footer-heading">Navegación</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#about">Proyecto</a></li>
+                        <li><a href="#donate-section">Donar</a></li>
+                        <li><a href="#stats">Estadísticas</a></li>
+                        <li><a href="#beneficiaries">Beneficiarios</a></li>
+                        <li><a href="#utility">Utilidad</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Más del Ecosistema -->
+                <div class="footer-nav-group">
+                    <h4 class="footer-heading">Ecosistema</h4>
+                    <ul class="footer-links-list">
+                        <li><a href="#tokenomics">Tokenomics</a></li>
+                        <li><a href="#roadmap">Roadmap</a></li>
+                        <li><a href="#team">Equipo</a></li>
+                        <li><a href="#security">Seguridad</a></li>
+                        <li><a href="#community">Comunidad</a></li>
+                        <li><a href="#legal">Aviso Legal</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 4: Contacto & Canales Oficiales -->
+                <div class="footer-contact-group">
+                    <h4 class="footer-heading">Contacto Oficial</h4>
+                    
+                    <a href="mailto:www.peru@outlook.es" class="footer-contact-card">
+                        <div class="contact-card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        </div>
+                        <div class="contact-card-info">
+                            <span class="contact-card-label">Correo Electrónico</span>
+                            <span class="contact-card-value">www.peru@outlook.es</span>
+                        </div>
+                    </a>
+
+                    <a href="https://www-token-peru.blogspot.com/" target="_blank" class="footer-contact-card">
+                        <div class="contact-card-icon">
+                            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.93 6h-2.95a15.65 15.65 0 0 0-1.38-3.56A8.03 8.03 0 0 1 18.92 8zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38v4H4.26zM12 19.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66v-4h4.68v4zm1.4 0v-4h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38zm1.33 2h2.95a8.03 8.03 0 0 1-3.84 4.44c.59-1.12 1.07-2.32 1.38-3.56zM8.38 8A15.65 15.65 0 0 0 7 4.44 8.03 8.03 0 0 1 10.84 8H8.38zM7 16c-.31-1.24-.79-2.44-1.38-3.56A8.03 8.03 0 0 1 1.78 8h2.95c.38 1.24.86 2.44 1.38 3.56z"/></svg>
+                        </div>
+                        <div class="contact-card-info">
+                            <span class="contact-card-label">Blog Oficial</span>
+                            <span class="contact-card-value">www-token-peru.blogspot.com</span>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Copyright e info extra -->
+            <div class="footer-bottom">
+                <div class="footer-bottom-wrapper">
+                    <p class="copyright-text">
+                        © 2026 <strong>PERU Token</strong>. Todos los derechos reservados. Impulsado por la comunidad.
+                    </p>
+                    <span class="footer-bottom-badge">Transparencia & Deporte Web3</span>
+                </div>
+            </div>
+        </footer>
     </div>
 
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/51900000000" target="_blank" class="whatsapp-float" aria-label="Contacto por WhatsApp">
+        <svg viewBox="0 0 32 32">
+            <path d="M16 2A13 13 0 0 0 4.68 21.25L3 27.5l6.43-1.65A13 13 0 1 0 16 2zm0 23.8a10.74 10.74 0 0 1-5.48-1.5l-.39-.23-4.08 1.05 1.08-3.95-.26-.41A10.78 10.78 0 1 1 16 25.8zm5.91-8.08c-.32-.16-1.92-.95-2.22-1.06s-.51-.16-.73.16-.85 1.06-1.05 1.28-.39.24-.71.08a9 9 0 0 1-2.65-1.63 9.87 9.87 0 0 1-1.83-2.28c-.19-.32 0-.49.15-.65s.32-.37.48-.56a2.18 2.18 0 0 0 .32-.53.59.59 0 0 0 0-.56c-.08-.16-.73-1.75-1-2.4-.26-.63-.53-.55-.73-.55h-.62a1.2 1.2 0 0 0-.87.4 3.65 3.65 0 0 0-1.14 2.71 6.35 6.35 0 0 0 1.33 3.37c.16.22 2.3 3.52 5.58 4.93 2.12.92 2.92.93 3.96.78a3.39 3.39 0 0 0 2.25-1.58 2.75 2.75 0 0 0 .19-1.58c-.07-.15-.31-.24-.63-.4z"/>
+        </svg>
+    </a>
+
+    <!-- Scripts de interactividad -->
     <script>
-        document.getElementById('btn-enter-app').addEventListener('click', function() {
-            document.getElementById('welcome-screen').classList.add('hidden');
+        // Entrar desde la pantalla de bienvenida
+        function enterSite() {
+            const welcomeScreen = document.getElementById('welcome-screen');
+            welcomeScreen.classList.add('hidden');
             document.body.classList.remove('no-scroll');
+        }
+
+        // Menú hamburguesa responsivo
+        function toggleMenu() {
+            const navUl = document.querySelector('nav ul');
+            navUl.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const navUl = document.querySelector('nav ul');
+            navUl.classList.remove('active');
+        }
+
+        // Copiar dirección de donación
+        function copyDonationWallet() {
+            const address = document.getElementById('donation-address').innerText;
+            navigator.clipboard.writeText(address).then(() => {
+                const btn = document.querySelector('.donate-copy-btn span');
+                const orig = btn.innerText;
+                btn.innerText = '¡Copiado!';
+                setTimeout(() => { btn.innerText = orig; }, 2000);
+            });
+        }
+
+        // Copiar contrato
+        function copyContract() {
+            const address = '0x1c647ebe755fe03dc43fa078ca550e837d0b4444';
+            navigator.clipboard.writeText(address).then(() => {
+                const btn = document.querySelector('.contract-box .copy-btn');
+                btn.classList.add('copied');
+                btn.innerText = '✓ ¡Contrato Copiado!';
+                setTimeout(() => {
+                    btn.classList.remove('copied');
+                    btn.innerText = '📋 Copiar Contrato';
+                }, 2000);
+            });
+        }
+
+        // Animación Scroll Reveal
+        window.addEventListener('scroll', revealElements);
+        function revealElements() {
+            const reveals = document.querySelectorAll('.reveal');
+            reveals.forEach(el => {
+                const windowHeight = window.innerHeight;
+                const elementTop = el.getBoundingClientRect().top;
+                const elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    el.classList.add('active');
+                }
+            });
+        }
+        revealElements();
+
+        // Gráfico de Tokenomics con Chart.js
+        document.addEventListener('DOMContentLoaded', function () {
+            const ctx = document.getElementById('tokenomicsChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Fondo Impacto Social', 'Venta Pública / Liquidez', 'Reserva DAO'],
+                    datasets: [{
+                        data: [20, 60, 20],
+                        backgroundColor: ['#ff4d4d', '#f87171', '#64748b'],
+                        borderColor: '#050816',
+                        borderWidth: 4,
+                        hoverOffset: 8
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return ` ${context.label}: ${context.raw}%`;
+                                }
+                            }
+                        }
+                    },
+                    cutout: '70%'
+                }
+            });
         });
     </script>
 </body>
