@@ -40,7 +40,7 @@
         }
 
         /* === PANTALLA DE BIENVENIDA PRO (SPLASH SCREEN) === */
-        #welcome-screen {
+        #welcome-screen { display:none !important;
             position: fixed;
             top: 0;
             left: 0;
@@ -309,101 +309,65 @@
             user-select: none;
         }
 
+        /* === HERO RECREADO FIELMENTE DESDE LA REFERENCIA === */
         .hero {
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 120px 10%;
-            gap: 60px;
-            flex-wrap: wrap;
-        }
-
-        .hero-text {
-            flex: 1.2;
-            min-width: 300px;
-        }
-
-        .hero-text h1 {
-            font-size: 5rem;
-            font-weight: 900;
-            line-height: 1;
-            margin-bottom: 20px;
-            background: linear-gradient(90deg, #ff0000, #ffffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-text p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            color: #d6d6d6;
-            margin-bottom: 30px;
-            max-width: 650px;
-        }
-
-        .buttons {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            padding: 15px 35px;
-            border-radius: 14px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: .3s;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            border: none;
-            cursor: pointer;
-        }
-
-        .primary {
-            background: linear-gradient(90deg, #ff0000, #ff4d4d);
-            color: white;
-            box-shadow: 0 0 30px #ff000088;
-            animation: pulse 2s infinite;
-        }
-
-        .secondary {
-            border: 2px solid white;
-            color: white;
-            background: transparent;
-        }
-
-        .btn:hover {
-            transform: translateY(-5px);
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.03); }
-            100% { transform: scale(1); }
-        }
-
-        .hero-image {
-            flex: 0.8;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-width: 300px;
             position: relative;
-        }
-
-        .hero-image img {
             width: 100%;
-            max-width: 350px;
-            animation: float 5s ease-in-out infinite;
-            filter: drop-shadow(0 0 40px rgba(255, 0, 0, 0.5));
+            height: calc(100vh - 0px);
+            min-height: 480px;
+            padding: 0;
+            margin: 0;
+            display: block;
+            background: #05060b url("hero-referencia.png") center top / cover no-repeat;
+            overflow: hidden;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+        /* La imagen ya contiene la navegación, textos y arte del hero.
+           Estos elementos mantienen la funcionalidad original sin alterar la apariencia. */
+        .hero-text, .hero-image { position: absolute; opacity: 0; pointer-events: none; }
+        .hero-text { left: 5%; top: 20%; width: 42%; }
+        .hero-image { right: 5%; top: 15%; width: 50%; }
+        .hero-text h1, .hero-text p, .buttons { pointer-events: auto; }
+
+        .reference-hotspots {
+            position: absolute;
+            inset: 0;
+            z-index: 5;
+            pointer-events: none;
+        }
+        .reference-hotspots a {
+            position: absolute;
+            display: block;
+            pointer-events: auto;
+            cursor: pointer;
+            background: transparent;
+            border: 0;
+            text-decoration: none;
+        }
+        .hot-proyecto { left: 12.5%; top: 0; width: 8%; height: 9%; }
+        .hot-donar { left: 21%; top: 0; width: 8%; height: 9%; }
+        .hot-estadisticas { left: 28.5%; top: 0; width: 10%; height: 9%; }
+        .hot-beneficiarios { left: 38%; top: 0; width: 10%; height: 9%; }
+        .hot-utilidad { left: 47%; top: 0; width: 8%; height: 9%; }
+        .hot-tokenomics { left: 55%; top: 0; width: 10%; height: 9%; }
+        .hot-roadmap { left: 65%; top: 0; width: 9%; height: 9%; }
+        .hot-equipo { left: 74%; top: 0; width: 8%; height: 9%; }
+        .hot-seguridad { left: 82%; top: 0; width: 10%; height: 9%; }
+        .hot-buy { left: 5%; top: 65%; width: 21%; height: 10%; }
+        .hot-whitepaper { left: 27%; top: 65%; width: 20%; height: 10%; }
+        .hot-bscscan { left: 5%; top: 75%; width: 18%; height: 10%; }
+
+        @media(max-width:768px) {
+            .hero {
+                height: 100vh;
+                min-height: 600px;
+                background-size: cover;
+                background-position: center top;
+            }
+            .reference-hotspots a { pointer-events: auto; }
+            .hot-buy { left: 5%; top: 67%; width: 90%; height: 8%; }
+            .hot-whitepaper { left: 5%; top: 76%; width: 90%; height: 8%; }
+            .hot-bscscan { left: 5%; top: 85%; width: 90%; height: 8%; }
         }
 
         section {
@@ -1803,49 +1767,6 @@
                 text-align: center;
             }
         }
-    
-        /* === HERO BASADO DIRECTAMENTE EN LA IMAGEN DE REFERENCIA === */
-        #welcome-screen { display:none !important; }
-        .reference-hero {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            min-height: 487px;
-            overflow: hidden;
-            background: #05070d url('hero-referencia.png') center center / cover no-repeat;
-        }
-        .reference-hero-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            display: block;
-        }
-        .reference-hotspot {
-            position:absolute;
-            display:block;
-            z-index:5;
-            background:transparent;
-            border:0;
-            cursor:pointer;
-        }
-        /* Coordenadas calculadas sobre 773x487 de la referencia */
-        .hs-proyecto{left:14.2%;top:0;width:7.5%;height:9.8%;}
-        .hs-donar{left:21.3%;top:0;width:7.2%;height:9.8%;}
-        .hs-estadisticas{left:28.3%;top:0;width:10%;height:9.8%;}
-        .hs-beneficiarios{left:37.7%;top:0;width:10%;height:9.8%;}
-        .hs-utilidad{left:46.7%;top:0;width:9.5%;height:9.8%;}
-        .hs-tokenomics{left:55.8%;top:0;width:10.2%;height:9.8%;}
-        .hs-roadmap{left:65.5%;top:0;width:8.8%;height:9.8%;}
-        .hs-equipo{left:74.2%;top:0;width:7.5%;height:9.8%;}
-        .hs-seguridad{left:82.0%;top:0;width:10%;height:9.8%;}
-        .hs-comprar{left:5.0%;top:65.7%;width:21.0%;height:8.2%;}
-        .hs-whitepaper{left:27.3%;top:65.7%;width:18.5%;height:8.2%;}
-        .hs-bscscan{left:5.0%;top:76.5%;width:17.5%;height:8.2%;}
-        @media (max-width: 768px){
-            .reference-hero{min-height:0;height:100svh;}
-        }
-
     </style>
 </head>
 
@@ -1876,20 +1797,46 @@
 
     <div class="app-wrapper">
         <div class="bg"></div>
-        <section class="reference-hero" aria-label="PERU Web3">
-            <img class="reference-hero-image" src="hero-referencia.png" alt="PERU Web3">
-            <a class="reference-hotspot hs-proyecto" href="#about" aria-label="Proyecto"></a>
-            <a class="reference-hotspot hs-donar" href="#donate-section" aria-label="Donar"></a>
-            <a class="reference-hotspot hs-estadisticas" href="#stats" aria-label="Estadísticas"></a>
-            <a class="reference-hotspot hs-beneficiarios" href="#beneficiaries" aria-label="Beneficiarios"></a>
-            <a class="reference-hotspot hs-utilidad" href="#utility" aria-label="Utilidad"></a>
-            <a class="reference-hotspot hs-tokenomics" href="#tokenomics" aria-label="Tokenomics"></a>
-            <a class="reference-hotspot hs-roadmap" href="#roadmap" aria-label="Roadmap"></a>
-            <a class="reference-hotspot hs-equipo" href="#team" aria-label="Equipo"></a>
-            <a class="reference-hotspot hs-seguridad" href="#security" aria-label="Seguridad"></a>
-            <a class="reference-hotspot hs-comprar" href="https://pancakeswap.finance/swap?outputCurrency=0x1c647ebe755fe03dc43fa078ca550e837d0b4444" target="_blank" rel="noopener" aria-label="Comprar PERU"></a>
-            <a class="reference-hotspot hs-whitepaper" href="whitepaper.pdf" target="_blank" rel="noopener" aria-label="Whitepaper"></a>
-            <a class="reference-hotspot hs-bscscan" href="https://bscscan.com/token/0x1c647ebe755fe03dc43fa078ca550e837d0b4444" target="_blank" rel="noopener" aria-label="BscScan"></a>
+
+        <nav>
+            <div class="logo">
+                <img src="logo.png" alt="PERU Logo" style="height:55px;">
+            </div>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Abrir menú de navegación">☰</button>
+            <ul>
+                <li><a href="#about" onclick="closeMenu()">Proyecto</a></li>
+                <li><a href="#donate-section" onclick="closeMenu()">Donar</a></li>
+                <li><a href="#stats" onclick="closeMenu()">Estadísticas</a></li>
+                <li><a href="#beneficiaries" onclick="closeMenu()">Beneficiarios</a></li>
+                <li><a href="#utility" onclick="closeMenu()">Utilidad</a></li>
+                <li><a href="#tokenomics" onclick="closeMenu()">Tokenomics</a></li>
+                <li><a href="#roadmap" onclick="closeMenu()">Roadmap</a></li>
+                <li><a href="#team" onclick="closeMenu()">Equipo</a></li>
+                <li><a href="#security" onclick="closeMenu()">Seguridad</a></li>
+                <li><a href="#community" onclick="closeMenu()">Comunidad</a></li>
+            </ul>
+        </nav>
+
+        <section class="hero" aria-label="PERU Web3">
+            <div class="reference-hotspots">
+                <a class="hot-proyecto" href="#about" aria-label="Proyecto"></a>
+                <a class="hot-donar" href="#donate-section" aria-label="Donar"></a>
+                <a class="hot-estadisticas" href="#stats" aria-label="Estadísticas"></a>
+                <a class="hot-beneficiarios" href="#beneficiaries" aria-label="Beneficiarios"></a>
+                <a class="hot-utilidad" href="#utility" aria-label="Utilidad"></a>
+                <a class="hot-tokenomics" href="#tokenomics" aria-label="Tokenomics"></a>
+                <a class="hot-roadmap" href="#roadmap" aria-label="Roadmap"></a>
+                <a class="hot-equipo" href="#team" aria-label="Equipo"></a>
+                <a class="hot-seguridad" href="#security" aria-label="Seguridad"></a>
+                <a class="hot-buy" href="https://pancakeswap.finance/swap?outputCurrency=0x1c647ebe755fe03dc43fa078ca550e837d0b4444" target="_blank" rel="noopener" aria-label="Comprar PERU"></a>
+                <a class="hot-whitepaper" href="whitepaper.pdf" target="_blank" rel="noopener" aria-label="Whitepaper"></a>
+                <a class="hot-bscscan" href="https://bscscan.com/token/0x1c647ebe755fe03dc43fa078ca550e837d0b4444" target="_blank" rel="noopener" aria-label="BscScan"></a>
+            </div>
+            <div class="hero-text" aria-hidden="true">
+                <h1>PERU</h1>
+                <p>El primer proyecto Web3 peruano enfocado en apoyar deportistas de bajos recursos mediante blockchain, becas, viajes e implementos deportivos.</p>
+            </div>
+            <div class="hero-image" aria-hidden="true"></div>
         </section>
 
         <!-- === SECCIÓN PROYECTO (INCLUYE PILARES DE ACCIÓN DIRECTA) === -->
