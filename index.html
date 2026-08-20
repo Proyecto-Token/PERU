@@ -309,13 +309,14 @@
             user-select: none;
         }
 
+        /* === SECCIÓN HERO REFINADA === */
         .hero {
             min-height: 100vh;
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            padding: 120px 10%;
-            gap: 60px;
+            padding: 140px 10% 80px 10%;
+            gap: 50px;
             flex-wrap: wrap;
         }
 
@@ -385,25 +386,102 @@
             100% { transform: scale(1); }
         }
 
+        /* === CONTENEDOR PROYECCIÓN HOLOGRÁFICA (SIN CÍRCULOS EXCESIVOS) === */
         .hero-image {
-            flex: 0.8;
+            flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-width: 300px;
+            min-width: 320px;
             position: relative;
+            padding: 20px 0;
         }
 
-        .hero-image img {
+        .holo-stage {
+            position: relative;
             width: 100%;
-            max-width: 350px;
-            animation: float 5s ease-in-out infinite;
-            filter: drop-shadow(0 0 40px rgba(255, 0, 0, 0.5));
+            max-width: 480px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
+        /* Halo neón de fondo sutil */
+        .holo-aura {
+            position: absolute;
+            width: 380px;
+            height: 380px;
+            background: radial-gradient(circle, rgba(255, 0, 0, 0.28) 0%, rgba(255, 0, 0, 0) 70%);
+            border-radius: 50%;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        /* Logo ampliado con levitación holográfica */
+        .hero-image img.holo-logo {
+            width: 100%;
+            max-width: 420px;
+            height: auto;
+            position: relative;
+            z-index: 3;
+            filter: drop-shadow(0 15px 35px rgba(255, 0, 0, 0.6)) drop-shadow(0 0 15px rgba(255, 255, 255, 0.4));
+            animation: holoFloat 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes holoFloat {
+            0% {
+                transform: translateY(0) scale(1);
+            }
+            100% {
+                transform: translateY(-18px) scale(1.02);
+            }
+        }
+
+        /* Haz de luz holográfico desde el pedestal */
+        .holo-beam {
+            position: absolute;
+            bottom: 25px;
+            width: 280px;
+            height: 200px;
+            background: linear-gradient(180deg, rgba(255, 77, 77, 0.25) 0%, rgba(255, 0, 0, 0) 100%);
+            clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+            z-index: 2;
+            pointer-events: none;
+            animation: beamGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes beamGlow {
+            0% { opacity: 0.5; }
+            100% { opacity: 0.9; }
+        }
+
+        /* Base / Pedestal Emisor Holográfico Elegante */
+        .holo-base {
+            position: relative;
+            width: 220px;
+            height: 18px;
+            background: linear-gradient(90deg, rgba(255, 0, 0, 0.6), rgba(255, 255, 255, 0.9), rgba(255, 0, 0, 0.6));
+            border-radius: 50%;
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.9), 0 0 45px rgba(255, 0, 0, 0.5);
+            z-index: 2;
+            margin-top: -10px;
+        }
+
+        .holo-base::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 260px;
+            height: 35px;
+            border: 1.5px solid rgba(255, 77, 77, 0.5);
+            border-radius: 50%;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.4);
         }
 
         section {
@@ -1141,8 +1219,13 @@
             line-height: 1.6;
         }
 
-        .roadmap-list li.done span.icon { color: #22c55e; }
-        .roadmap-list li.pending span.icon { color: #ff4d4d; }
+        .roadmap-list li.done span.icon {
+            color: #22c55e;
+        }
+
+        .roadmap-list li.pending span.icon {
+            color: #ff4d4d;
+        }
 
         .whatsapp-float {
             position: fixed;
@@ -1235,1160 +1318,43 @@
             height: 7px;
             background-color: #eab308;
             border-radius: 50%;
-            box-shadow: 0 0 8px #eab308;
-            animation: pulseDot 1.5s infinite ease-in-out;
         }
 
-        @keyframes pulseDot {
-            0%, 100% { opacity: 0.4; transform: scale(0.9); }
-            50% { opacity: 1; transform: scale(1.2); }
-        }
-
-        .donate-body {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: rgba(0, 0, 0, 0.45);
-            padding: 10px 12px 10px 18px;
-            border-radius: 14px;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .donate-address-wrapper {
-            flex: 1;
-            min-width: 0;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .donate-network-tag {
-            font-size: 0.65rem;
-            color: #eab308;
-            font-weight: 700;
-        }
-
-        .donate-code {
-            font-family: monospace;
-            font-size: 0.88rem;
-            color: #f8fafc;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .donate-copy-btn {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            background: linear-gradient(135deg, #eab308, #ca8a04);
-            color: #050816;
-            border: none;
-            padding: 10px 18px;
-            border-radius: 10px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: all 0.25s ease;
-        }
-
-        .donate-copy-btn:hover {
-            transform: translateY(-2px);
-            background: linear-gradient(135deg, #facc15, #eab308);
-        }
-
-        .tokenomics-container {
-            display: flex;
-            flex-direction: column;
-            gap: 28px;
-        }
-
-        .tokenomics-overview {
-            display: grid;
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-            gap: 16px;
-        }
-
-        .token-stat {
-            background: linear-gradient(145deg, rgba(255,255,255,0.055), rgba(255,255,255,0.018));
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 18px;
-            padding: 22px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 12px 35px rgba(0,0,0,0.16);
-        }
-
-        .token-stat::after {
-            content: '';
-            position: absolute;
-            inset: auto -30px -45px auto;
-            width: 110px;
-            height: 110px;
-            background: radial-gradient(circle, rgba(255,0,0,0.18), transparent 68%);
-            pointer-events: none;
-        }
-
-        .token-stat-label {
-            display: block;
-            color: #94a3b8;
-            font-size: 0.76rem;
-            text-transform: uppercase;
-            letter-spacing: 1.2px;
-            margin-bottom: 9px;
-            font-weight: 700;
-        }
-
-        .token-stat-value {
-            display: block;
-            color: #f8fafc;
-            font-size: 1.45rem;
-            font-weight: 800;
-            line-height: 1.2;
-        }
-
-        .token-stat-meta {
-            color: #64748b;
-            font-size: 0.78rem;
-            margin-top: 6px;
-        }
-
-        .tokenomics-main {
-            display: grid;
-            grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.1fr);
-            gap: 28px;
-            align-items: stretch;
-        }
-
-        .token-info-card, .token-allocation-card {
-            background: linear-gradient(145deg, rgba(255,255,255,0.045), rgba(255,255,255,0.012));
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 22px;
-            padding: 28px;
-            box-shadow: 0 16px 45px rgba(0,0,0,0.18);
-        }
-
-        .token-card-kicker {
-            color: #ff4d4d;
-            font-size: 0.72rem;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            font-weight: 800;
-            margin-bottom: 7px;
-        }
-
-        .token-card-title {
-            margin: 0 0 20px;
-            font-size: 1.35rem;
-            color: #f8fafc;
-        }
-
-        .token-detail-row {
-            display: flex;
-            justify-content: space-between;
-            gap: 16px;
-            padding: 13px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.055);
-        }
-
-        .token-detail-row span { color: #94a3b8; }
-        .token-detail-row strong { color: #f8fafc; text-align: right; }
-
-        .contract-box {
-            margin-top: 20px;
-            padding: 17px;
-            border-radius: 14px;
-            background: rgba(0,0,0,0.22);
-            border: 1px solid rgba(255,255,255,0.06);
-        }
-
-        .contract-label {
-            display: block;
-            color: #ff4d4d;
-            font-size: 0.72rem;
-            font-weight: 800;
-            letter-spacing: 1.2px;
-            margin-bottom: 8px;
-        }
-
-        .contract-address {
-            display: block;
-            word-break: break-all;
-            font-family: monospace;
-            font-size: 0.78rem;
-            line-height: 1.5;
-            color: #cbd5e1;
-            margin-bottom: 13px;
-        }
-
-        .allocation-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            gap: 20px;
-            margin-bottom: 8px;
-        }
-
-        .allocation-note {
-            color: #64748b;
-            font-size: 0.78rem;
-        }
-
-        .allocation-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-top: 20px;
-        }
-
-        .allocation-item {
-            padding: 17px;
-            border-radius: 15px;
-            background: rgba(255,255,255,0.025);
-            border: 1px solid rgba(255,255,255,0.055);
-        }
-
-        .allocation-dot {
-            width: 9px;
-            height: 9px;
-            border-radius: 50%;
-            background: #ff4d4d;
-            display: inline-block;
-            margin-right: 7px;
-            box-shadow: 0 0 12px rgba(255,77,77,0.55);
-        }
-
-        .allocation-item:nth-child(2) .allocation-dot { background: #f87171; }
-        .allocation-item:nth-child(3) .allocation-dot { background: #64748b; box-shadow: none; }
-
-        .allocation-percent {
-            display: block;
-            color: #f8fafc;
-            font-size: 1.55rem;
-            font-weight: 900;
-            margin-top: 9px;
-        }
-
-        .allocation-amount {
-            display: block;
-            color: #94a3b8;
-            font-size: 0.78rem;
-            margin-top: 2px;
-        }
-
-        .token-purpose {
-            margin-top: 28px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-        }
-
-        .purpose-card {
-            padding: 21px;
-            border-radius: 18px;
-            background: rgba(255,255,255,0.025);
-            border: 1px solid rgba(255,255,255,0.06);
-        }
-
-        .purpose-icon { font-size: 1.4rem; }
-        .purpose-card h4 { margin: 10px 0 7px; color: #f8fafc; }
-        .purpose-card p { margin: 0; color: #94a3b8; font-size: 0.84rem; line-height: 1.65; }
-
-        .chart-wrapper {
-            min-width: 0;
-            width: 100%;
-            max-width: 520px;
-            min-height: 300px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        @media (max-width: 900px) {
-            .tokenomics-overview { grid-template-columns: repeat(2, 1fr); }
-            .tokenomics-main { grid-template-columns: 1fr; }
-            .allocation-grid, .token-purpose { grid-template-columns: 1fr; }
-            .chart-wrapper { max-width: 470px; }
-        }
-
-        @media (max-width: 560px) {
-            .tokenomics-overview { grid-template-columns: 1fr; }
-            .token-info-card, .token-allocation-card { padding: 21px; }
-            .token-detail-row { flex-direction: column; gap: 5px; }
-            .token-detail-row strong { text-align: left; }
-        }
-
-        /* ==========================================
-           FOOTER RESTRUCTURADO
-           ========================================== */
-        .footer-modern {
-            background: linear-gradient(180deg, #050816 0%, #03050d 100%);
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 80px 10% 0 10%;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .footer-modern::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255, 0, 0, 0.5), transparent);
-        }
-
-        .footer-container {
-            display: grid;
-            grid-template-columns: 1.8fr 1fr 1fr 1.6fr;
-            gap: 40px;
-            margin-bottom: 60px;
-        }
-
-        .footer-brand {
-            display: flex;
-            flex-direction: column;
-            gap: 18px;
-        }
-
-        .footer-logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            text-decoration: none;
-        }
-
-        .footer-logo-img {
-            height: 48px;
-            width: auto;
-            filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.4));
-        }
-
-        .footer-brand-title {
-            font-size: 1.8rem;
-            font-weight: 900;
-            background: linear-gradient(90deg, #ff0000, #ffffff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 1px;
-        }
-
-        .footer-brand-desc {
-            color: #94a3b8;
-            font-size: 0.9rem;
-            line-height: 1.65;
-            font-weight: 300;
-        }
-
-        .footer-status-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: rgba(34, 197, 94, 0.08);
-            border: 1px solid rgba(34, 197, 94, 0.25);
-            color: #4ade80;
-            padding: 6px 14px;
-            border-radius: 50px;
-            font-size: 0.78rem;
-            font-weight: 600;
-            width: fit-content;
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background-color: #22c55e;
-            border-radius: 50%;
-            box-shadow: 0 0 8px #22c55e;
-            animation: pulseStatus 2s infinite ease-in-out;
-        }
-
-        @keyframes pulseStatus {
-            0%, 100% { opacity: 0.4; transform: scale(0.9); }
-            50% { opacity: 1; transform: scale(1.2); }
-        }
-
-        .footer-heading {
-            color: #ffffff;
-            font-size: 1.05rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            position: relative;
-            letter-spacing: 0.5px;
-        }
-
-        .footer-heading::after {
-            content: '';
-            display: block;
-            width: 24px;
-            height: 2px;
-            background: #ff4d4d;
-            margin-top: 6px;
-            border-radius: 2px;
-        }
-
-        .footer-links-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .footer-links-list a {
-            color: #94a3b8;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 400;
-            transition: all 0.25s ease;
-            display: inline-flex;
-            align-items: center;
-        }
-
-        .footer-links-list a:hover {
-            color: #ff4d4d;
-            transform: translateX(4px);
-        }
-
-        .footer-contact-group {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-        }
-
-        .footer-contact-card {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            padding: 12px 16px;
-            border-radius: 14px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .footer-contact-card:hover {
-            background: rgba(255, 77, 77, 0.05);
-            border-color: rgba(255, 77, 77, 0.3);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.1);
-        }
-
-        .contact-card-icon {
-            width: 38px;
-            height: 38px;
-            border-radius: 10px;
-            background: rgba(255, 77, 77, 0.1);
-            border: 1px solid rgba(255, 77, 77, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .contact-card-icon svg {
-            width: 18px;
-            height: 18px;
-            fill: #ff4d4d;
-        }
-
-        .contact-card-info {
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        .contact-card-label {
-            font-size: 0.7rem;
-            color: #64748b;
-            text-transform: uppercase;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-
-        .contact-card-value {
-            font-size: 0.85rem;
-            color: #e2e8f0;
-            font-weight: 500;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 25px 0;
-        }
-
-        .footer-bottom-wrapper {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .copyright-text {
-            color: #64748b;
-            font-size: 0.85rem;
-            font-weight: 300;
-        }
-
-        .copyright-text strong {
-            color: #cbd5e1;
-        }
-
-        .footer-bottom-badge {
-            font-size: 0.8rem;
-            color: #94a3b8;
-            background: rgba(255, 255, 255, 0.03);
-            padding: 6px 16px;
-            border-radius: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        @media(max-width:992px) {
-            .footer-container {
-                grid-template-columns: 1fr 1fr;
-                gap: 35px;
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
             }
-            .footer-brand {
-                grid-column: span 2;
-            }
-        }
 
-        @media(max-width:768px) {
-            nav .logo { display: none !important; }
-            .menu-toggle { display: block; }
             nav ul {
+                display: none;
+                flex-direction: column;
                 position: absolute;
-                top: 80px;
+                top: 100%;
                 left: 0;
                 width: 100%;
-                background: #0b1020;
-                flex-direction: column;
-                padding: 30px;
-                display: none;
-                gap: 20px;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                background: rgba(5, 8, 22, 0.95);
+                padding: 20px;
+                backdrop-filter: blur(15px);
             }
-            nav ul.active { display: flex; }
-            .hero-text h1 { font-size: 3rem; }
-            .title { font-size: 2.3rem; }
-            .hero { text-align: center; }
-            .buttons { justify-content: center; }
-            .btn { width: 100%; text-align: center; }
-            .hero-image img { width: 220px; }
-            .timeline::before { left: 15px; }
-            .timeline-item { padding-left: 45px; }
-            .timeline-dot { left: 4px; }
-            .donate-body { flex-direction: column; align-items: stretch; text-align: center; }
-            .beneficiary-box-modern { padding: 35px 20px; }
-            .project-main-card { padding: 25px; }
-            .roadmap-card { padding: 25px 20px; }
-            .welcome-card-pro { padding: 35px 20px; }
-        }
 
-        @media(max-width:600px) {
-            .footer-container {
-                grid-template-columns: 1fr;
+            nav ul.show {
+                display: flex;
             }
-            .footer-brand {
-                grid-column: span 1;
+
+            .hero-text h1 {
+                font-size: 3.2rem;
             }
-            .footer-bottom-wrapper {
-                flex-direction: column;
-                text-align: center;
+
+            .title {
+                font-size: 2.2rem;
             }
         }
-    
-        /* ==========================================================
-           HERO REDISEÑADO — Proyección Holográfica Limpia y Logo Ampliado
-           ========================================================== */
-        #welcome-screen {
-            display: none !important;
-        }
-
-        body.no-scroll {
-            overflow: auto;
-        }
-
-        body {
-            background:
-                radial-gradient(circle at 76% 42%, rgba(220, 0, 20, 0.18), transparent 25%),
-                radial-gradient(circle at 18% 72%, rgba(90, 0, 15, 0.16), transparent 30%),
-                #03040a;
-        }
-
-        .app-wrapper {
-            background:
-                radial-gradient(circle at 72% 38%, rgba(255, 0, 25, 0.08), transparent 24%),
-                linear-gradient(180deg, #03040a 0%, #05060d 58%, #02030a 100%);
-        }
-
-        .bg {
-            background:
-                radial-gradient(circle at 72% 38%, rgba(255, 0, 20, 0.13), transparent 22%),
-                radial-gradient(circle at 15% 80%, rgba(170, 0, 15, 0.10), transparent 25%),
-                #03040a;
-            opacity: .9;
-        }
-
-        .bg::before {
-            background-image:
-                radial-gradient(rgba(255, 255, 255, .22) 1px, transparent 1px),
-                linear-gradient(rgba(255, 0, 20, .025) 1px, transparent 1px);
-            background-size: 42px 42px, 100% 100%;
-            opacity: .28;
-        }
-
-        nav {
-            height: 64px;
-            padding: 0 40px;
-            background: rgba(2, 3, 9, .86);
-            border-bottom: 1px solid rgba(255,255,255,.07);
-            box-shadow: 0 10px 40px rgba(0,0,0,.18);
-        }
-
-        .logo img {
-            width: 39px;
-            height: 39px !important;
-            object-fit: contain;
-            filter: drop-shadow(0 0 9px rgba(255, 0, 20, .42));
-        }
-
-        nav ul {
-            gap: 31px;
-            height: 100%;
-        }
-
-        nav ul li {
-            height: 100%;
-            display: flex;
-            align-items: center;
-        }
-
-        nav a {
-            position: relative;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            color: #e6e6e9;
-            font-size: 11px;
-            font-weight: 600;
-            white-space: nowrap;
-        }
-
-        nav a:hover {
-            color: #fff;
-        }
-
-        nav ul li:first-child a {
-            color: #fff;
-        }
-
-        nav ul li:first-child a::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 9px;
-            height: 2px;
-            border-radius: 5px;
-            background: #ff1025;
-            box-shadow: 0 0 10px rgba(255,0,25,.65);
-        }
-
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            height: 100vh;
-            overflow: hidden;
-            display: grid;
-            grid-template-columns: minmax(330px, 43%) minmax(430px, 57%);
-            align-items: center;
-            gap: 0;
-            padding: 64px 40px 0;
-            flex-wrap: nowrap;
-            isolation: isolate;
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            z-index: -2;
-            background:
-                radial-gradient(circle at 76% 45%, rgba(255, 0, 26, .18), transparent 21%),
-                radial-gradient(circle at 87% 70%, rgba(255, 0, 0, .10), transparent 24%),
-                linear-gradient(90deg, rgba(0,0,0,.12), transparent 52%, rgba(255,0,0,.035));
-        }
-
-        .hero::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            height: 30%;
-            z-index: -1;
-            pointer-events: none;
-            background:
-                linear-gradient(170deg, transparent 48%, rgba(255,0,20,.11) 49%, transparent 50%),
-                linear-gradient(10deg, transparent 48%, rgba(255,0,20,.08) 49%, transparent 50%),
-                linear-gradient(180deg, transparent, rgba(0,0,0,.72));
-            opacity: .75;
-        }
-
-        .hero-text {
-            position: relative;
-            z-index: 5;
-            flex: none;
-            min-width: 0;
-            width: 100%;
-            max-width: 390px;
-            align-self: center;
-            padding-bottom: 30px;
-        }
-
-        .hero-kicker {
-            display: block;
-            color: #ff1b2e;
-            font-size: 10px;
-            font-weight: 800;
-            letter-spacing: .25px;
-            text-transform: uppercase;
-            margin-bottom: 17px;
-        }
-
-        .hero-text h1 {
-            margin: 0;
-            font-size: clamp(68px, 7vw, 82px);
-            font-weight: 900;
-            letter-spacing: -3px;
-            line-height: .88;
-            background: linear-gradient(100deg, #ff111f 5%, #e92332 42%, #fff 92%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 20px rgba(255,0,20,.18));
-        }
-
-        .hero-line {
-            display: block;
-            width: 32px;
-            height: 2px;
-            margin: 15px 0 16px;
-            background: #ff1024;
-            box-shadow: 0 0 9px rgba(255,0,20,.55);
-        }
-
-        .hero-text p {
-            font-size: 13px;
-            line-height: 1.8;
-            color: #ececf0;
-            font-weight: 400;
-            margin: 0 0 21px;
-            max-width: 335px;
-        }
-
-        .buttons {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            max-width: 365px;
-        }
-
-        .btn {
-            min-height: 40px;
-            padding: 0 14px;
-            border-radius: 9px;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0;
-            gap: 8px;
-            transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease;
-        }
-
-        .btn svg {
-            width: 16px;
-            height: 16px;
-            fill: currentColor;
-            flex: 0 0 auto;
-        }
-
-        .btn b {
-            margin-left: 5px;
-            font-size: 16px;
-            line-height: 1;
-            font-weight: 500;
-        }
-
-        .primary {
-            min-width: 161px;
-            background: linear-gradient(135deg, #ff141f 0%, #ff3138 100%);
-            color: #fff;
-            box-shadow: 0 8px 25px rgba(255, 0, 15, .26);
-            animation: none;
-        }
-
-        .primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 30px rgba(255, 0, 15, .42);
-        }
-
-        .secondary {
-            min-width: 143px;
-            color: #f5f5f6;
-            border: 1px solid rgba(210,214,224,.45);
-            background: rgba(8, 9, 16, .48);
-            box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
-        }
-
-        .secondary:hover {
-            transform: translateY(-2px);
-            border-color: rgba(255,255,255,.8);
-            background: rgba(255,255,255,.06);
-        }
-
-        .hero-image {
-            position: relative;
-            min-width: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: visible;
-        }
-
-        .hero-visual {
-            position: relative;
-            width: min(720px, 72vw);
-            height: min(620px, 72vh);
-            min-width: 470px;
-            min-height: 450px;
-            transform: translate(2%, 3%);
-        }
-
-        .hero-aura {
-            position: absolute;
-            width: 450px;
-            height: 450px;
-            left: 50%;
-            top: 45%;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255,0,24,.35) 0%, rgba(255,0,24,.12) 40%, transparent 70%);
-            filter: blur(8px);
-            animation: heroAura 4s ease-in-out infinite alternate;
-        }
-
-        @keyframes heroAura {
-            from { transform: translate(-50%, -50%) scale(.94); opacity: .72; }
-            to { transform: translate(-50%, -50%) scale(1.08); opacity: 1; }
-        }
-
-        .hero-ring {
-            position: absolute;
-            left: 50%;
-            top: 42%;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        /* Anillo holográfico principal tecnológico simplificado */
-        .ring-holo-main {
-            width: 440px;
-            height: 440px;
-            border: 2px dashed rgba(255, 31, 43, 0.6);
-            box-shadow: 0 0 25px rgba(255, 0, 20, 0.25), inset 0 0 20px rgba(255, 0, 20, 0.15);
-            animation: spin 30s linear infinite;
-        }
-
-        .ring-holo-main::after {
-            content: "";
-            position: absolute;
-            inset: -12px;
-            border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .hero-orbit {
-            position: absolute;
-            left: 50%;
-            top: 42%;
-            width: 520px;
-            height: 140px;
-            border: 1px solid rgba(255, 35, 50, .45);
-            border-radius: 50%;
-            transform: translate(-50%, -50%) rotate(-18deg);
-            box-shadow: 0 0 15px rgba(255,0,20,.15);
-        }
-
-        @keyframes spin {
-            to { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-
-        /* Contenedor central del Logo Ampliado con efecto Holográfico */
-        .hero-core {
-            position: absolute;
-            left: 50%;
-            top: 42%;
-            width: 310px;
-            height: 310px;
-            transform: translate(-50%, -50%);
-            z-index: 5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero-core img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            filter: drop-shadow(0 0 35px rgba(255, 0, 30, 0.8)) drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
-            animation: coreHoloFloat 4s ease-in-out infinite;
-        }
-
-        /* Haz de luz vertical que conecta el logo con la plataforma */
-        .holo-beam {
-            position: absolute;
-            left: 50%;
-            top: 42%;
-            width: 220px;
-            height: 220px;
-            transform: translate(-50%, -10%);
-            background: linear-gradient(180deg, rgba(255, 0, 30, 0.35) 0%, rgba(255, 0, 30, 0.05) 80%, transparent 100%);
-            clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
-            pointer-events: none;
-            z-index: 4;
-            opacity: 0.85;
-            animation: beamPulse 3s ease-in-out infinite alternate;
-        }
-
-        @keyframes beamPulse {
-            0% { opacity: 0.6; }
-            100% { opacity: 0.95; }
-        }
-
-        @keyframes coreHoloFloat {
-            0%, 100% { transform: translateY(0) scale(1); filter: drop-shadow(0 0 35px rgba(255, 0, 30, 0.8)); }
-            50% { transform: translateY(-12px) scale(1.03); filter: drop-shadow(0 0 45px rgba(255, 0, 30, 1)); }
-        }
-
-        .hero-platform {
-            position: absolute;
-            left: 50%;
-            top: 71%;
-            width: 430px;
-            height: 80px;
-            transform: translateX(-50%);
-            border-radius: 50%;
-            background:
-                radial-gradient(ellipse at center, rgba(255,255,255,.55) 0 1%, rgba(255,45,50,.9) 3%, rgba(255,0,20,.22) 18%, transparent 54%),
-                linear-gradient(180deg, rgba(255,0,20,.18), rgba(0,0,0,0));
-            border: 2px solid rgba(255, 30, 45, .72);
-            box-shadow:
-                0 -3px 12px rgba(255,0,20,.8),
-                0 0 35px rgba(255,0,20,.45),
-                inset 0 0 30px rgba(255,0,20,.45);
-            z-index: 4;
-        }
-
-        .hero-platform::before,
-        .hero-platform::after {
-            content: "";
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 50%;
-            border: 1px solid rgba(255,255,255,.28);
-        }
-
-        .hero-platform::before {
-            width: 330px;
-            height: 43px;
-            top: 16px;
-        }
-
-        .hero-platform::after {
-            width: 500px;
-            height: 90px;
-            top: -8px;
-            border-color: rgba(255,0,20,.34);
-        }
-
-        .hero-platform span {
-            position: absolute;
-            left: 50%;
-            top: -10px;
-            width: 3px;
-            height: 75px;
-            transform: translateX(-50%);
-            background: linear-gradient(180deg, transparent, #fff 20%, #ff2638 65%, transparent);
-            box-shadow: 0 0 13px #ff2638;
-        }
-
-        .hero-platform i,
-        .hero-platform b {
-            position: absolute;
-            width: 70px;
-            height: 3px;
-            top: 35px;
-            background: #ff2838;
-            box-shadow: 0 0 12px #ff2838;
-        }
-
-        .hero-platform i { left: 25px; }
-        .hero-platform b { right: 25px; }
-
-        .hero-ground-grid {
-            position: absolute;
-            left: -15%;
-            right: -15%;
-            bottom: -1%;
-            height: 35%;
-            opacity: .65;
-            transform: perspective(180px) rotateX(58deg);
-            transform-origin: bottom;
-            background-image:
-                linear-gradient(rgba(255, 0, 25, .18) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 0, 25, .14) 1px, transparent 1px);
-            background-size: 45px 26px;
-            mask-image: linear-gradient(to top, black 5%, transparent 100%);
-            -webkit-mask-image: linear-gradient(to top, black 5%, transparent 100%);
-        }
-
-        .hero-mountains {
-            position: absolute;
-            left: -6%;
-            right: -6%;
-            bottom: 7%;
-            height: 30%;
-            opacity: .65;
-            background: linear-gradient(160deg, transparent 0 28%, rgba(10,12,20,.98) 29% 100%);
-            clip-path: polygon(
-                0 90%, 7% 75%, 12% 82%, 18% 58%, 22% 72%, 28% 47%,
-                33% 67%, 39% 38%, 44% 70%, 49% 50%, 53% 72%, 59% 34%,
-                64% 63%, 70% 44%, 75% 72%, 81% 50%, 87% 75%, 93% 57%,
-                100% 77%, 100% 100%, 0 100%
-            );
-            filter: drop-shadow(0 -4px 7px rgba(255,0,20,.15));
-        }
-
-        .hero-spark {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            border-radius: 50%;
-            background: #ff2537;
-            box-shadow: 0 0 9px 2px rgba(255,0,20,.65);
-            animation: sparkFloat 3.5s ease-in-out infinite;
-        }
-
-        .spark-1 { left: 17%; top: 39%; animation-delay: -.8s; }
-        .spark-2 { left: 73%; top: 15%; animation-delay: -1.8s; }
-        .spark-3 { left: 82%; top: 31%; animation-delay: -2.4s; width: 2px; height: 2px; }
-        .spark-4 { left: 66%; top: 67%; animation-delay: -.3s; }
-        .spark-5 { left: 42%; top: 19%; animation-delay: -1.1s; width: 2px; height: 2px; }
-
-        @keyframes sparkFloat {
-            0%,100% { transform: translateY(0) scale(.8); opacity: .25; }
-            50% { transform: translateY(-10px) scale(1.5); opacity: 1; }
-        }
-
-        /* Ajustes de entrada para que el hero no dependa del splash */
-        .hero .hero-text,
-        .hero .hero-image {
-            animation: heroEnter .8s ease both;
-        }
-
-        .hero .hero-image {
-            animation-delay: .12s;
-        }
-
-        @keyframes heroEnter {
-            from { opacity: 0; transform: translateY(14px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 1050px) {
-            nav { padding: 0 24px; }
-            nav ul { gap: 18px; }
-            .hero { grid-template-columns: minmax(300px, 44%) minmax(420px, 56%); padding-left: 30px; padding-right: 20px; }
-            .hero-visual { transform: translate(-1%, 4%) scale(.9); }
-            .hero-text h1 { font-size: 68px; }
-        }
-
-        @media (max-width: 820px) {
-            nav { height: 62px; padding: 0 20px; }
-            nav .logo { display: flex !important; }
-            nav ul { gap: 14px; }
-            nav a { font-size: 10px; }
-            .hero {
-                height: auto;
-                min-height: 100vh;
-                grid-template-columns: 1fr;
-                padding: 100px 24px 55px;
-                text-align: center;
-            }
-            .hero-text {
-                max-width: 520px;
-                margin: 0 auto;
-                padding-bottom: 0;
-            }
-            .hero-kicker { margin-bottom: 12px; }
-            .hero-line { margin: 13px auto 15px; }
-            .hero-text p { margin-left: auto; margin-right: auto; }
-            .buttons { justify-content: center; margin: 0 auto; }
-            .hero-image { min-height: 460px; height: 470px; }
-            .hero-visual { min-width: 470px; transform: scale(.82); }
-        }
-
-        @media (max-width: 600px) {
-            nav { padding: 0 16px; }
-            nav .logo { display: none !important; }
-            .menu-toggle { display: block; }
-            nav ul {
-                position: absolute;
-                top: 62px;
-                left: 0;
-                width: 100%;
-                height: auto;
-                background: rgba(4,5,12,.98);
-                flex-direction: column;
-                padding: 22px;
-                display: none;
-                gap: 0;
-                border-bottom: 1px solid rgba(255,255,255,.08);
-            }
-            nav ul.active { display: flex; }
-            nav ul li { height: 42px; width: 100%; }
-            nav a { width: 100%; height: 42px; font-size: 12px; }
-            nav ul li:first-child a::after { bottom: 0; left: 0; right: auto; width: 28px; }
-            .hero {
-                padding: 92px 20px 35px;
-            }
-            .hero-text h1 { font-size: 64px; }
-            .hero-text p { font-size: 12.5px; line-height: 1.7; }
-            .buttons { width: 100%; max-width: 360px; }
-            .btn { width: 100%; }
-            .hero-image { min-height: 385px; height: 385px; margin-top: -8px; }
-            .hero-visual { min-width: 430px; transform: scale(.66); }
-        }
-
     </style>
 </head>
 
 <body class="no-scroll">
 
-    <!-- === PANTALLA DE BIENVENIDA NIVEL PRO (SPLASH SCREEN) === -->
+    <!-- PANTALLA DE BIENVENIDA (SPLASH SCREEN) -->
     <div id="welcome-screen">
         <div class="welcome-particle p1"></div>
         <div class="welcome-particle p2"></div>
@@ -2396,287 +1362,358 @@
         <div class="welcome-particle p4"></div>
 
         <div class="welcome-card-pro">
-            <!-- Palabra PERU agregada sobre el robot -->
             <h1 class="welcome-title">PERU</h1>
-
             <div class="welcome-logo-container">
-                <img src="robot.png" alt="PERU Welcome Robot" class="welcome-logo">
+                <img src="logo.png" alt="PERU Logo" class="welcome-logo">
             </div>
-
-            <p class="welcome-text">Deporte, Blockchain & Impacto Social Descentralizado.</p>
-
-            <button onclick="enterSite()" class="btn-welcome-pro">
-                <span>INGRESAR</span>
+            <p class="welcome-text">El primer ecosistema Web3 diseñado para impulsar y financiar el talento deportivo peruano a través de la tecnología blockchain.</p>
+            <button class="btn-welcome-pro" id="enter-btn">
+                <span>INGRESAR AL SITIO</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </button>
         </div>
     </div>
 
-    <div class="app-wrapper">
-        <div class="bg"></div>
+    <div class="bg"></div>
 
+    <div class="app-wrapper">
         <nav>
             <div class="logo">
-                <img src="logo.png" alt="PERU Logo">
+                <img src="logo.png" alt="PERU Logo" style="width: 45px; height: auto; margin-right: 10px;">
+                <span style="font-weight: 800; font-size: 1.2rem; background: linear-gradient(90deg, #ff0000, #ffffff); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">PERU</span>
             </div>
-            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Abrir menú de navegación">☰</button>
-            <ul>
-                <li><a href="#about" onclick="closeMenu()">Proyecto</a></li>
-                <li><a href="#donate-section" onclick="closeMenu()">Donar</a></li>
-                <li><a href="#stats" onclick="closeMenu()">Estadísticas</a></li>
-                <li><a href="#beneficiaries" onclick="closeMenu()">Beneficiarios</a></li>
-                <li><a href="#utility" onclick="closeMenu()">Utilidad</a></li>
-                <li><a href="#tokenomics" onclick="closeMenu()">Tokenomics</a></li>
-                <li><a href="#roadmap" onclick="closeMenu()">Roadmap</a></li>
-                <li><a href="#team" onclick="closeMenu()">Equipo</a></li>
-                <li><a href="#security" onclick="closeMenu()">Seguridad</a></li>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <ul id="navMenu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#proyecto">Proyecto</a></li>
+                <li><a href="#utilidad">Utilidad</a></li>
+                <li><a href="#tokenomics">Tokenomics</a></li>
+                <li><a href="#equipo">Equipo</a></li>
+                <li><a href="#hoja-de-ruta">Roadmap</a></li>
+                <li><a href="#comunidad">Comunidad</a></li>
             </ul>
         </nav>
 
-        <section class="hero">
+        <!-- SECCIÓN HERO MODIFICADA -->
+        <section class="hero" id="inicio">
             <div class="hero-text">
-                <span class="hero-kicker">PROYECTO WEB3</span>
-                <h1>PERU</h1>
-                <span class="hero-line"></span>
-                <p>El primer proyecto Web3 peruano enfocado en apoyar deportistas de bajos recursos mediante blockchain, becas, viajes e implementos deportivos.</p>
-
+                <h1>Deporte & Blockchain</h1>
+                <p>Unimos la pasión del deporte con la tecnología blockchain para crear oportunidades reales para nuestros deportistas peruanos.</p>
                 <div class="buttons">
-                    <a href="https://pancakeswap.finance/swap?outputCurrency=0x1c647ebe755fe03dc43fa078ca550e837d0b4444" target="_blank" rel="noopener noreferrer" class="btn primary">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8V6a5 5 0 0 1 10 0v2h2a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1h2Zm2 0h6V6a3 3 0 0 0-6 0v2Z"/></svg>
-                        <span>Comprar PERU</span><b>→</b>
-                    </a>
-
-                    <a href="whitepaper.pdf" target="_blank" rel="noopener noreferrer" class="btn secondary">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm8 1.5V8h3.5L14 4.5ZM8 11h7v1.5H8V11Zm0 3h7v1.5H8V14Zm0 3h5v1.5H8V17Z"/></svg>
-                        <span>Whitepaper</span><b>→</b>
-                    </a>
-
-                    <a href="https://bscscan.com/token/0x1c647ebe755fe03dc43fa078ca550e837d0b4444" target="_blank" rel="noopener noreferrer" class="btn secondary">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8.5 3H6a3 3 0 0 0-3 3v2.5h2V6a1 1 0 0 1 1-1h2.5V3Zm7 0v2H18a1 1 0 0 1 1 1v2.5h2V6a3 3 0 0 0-3-3h-2.5ZM3 15.5V18a3 3 0 0 0 3 3h2.5v-2H6a1 1 0 0 1-1-1v-2.5H3Zm16 0V18a1 1 0 0 1-1 1h-2.5v2H18a3 3 0 0 0 3-3v-2.5h-2ZM8 8h8v8H8V8Z"/></svg>
-                        <span>BscScan</span><b>→</b>
-                    </a>
+                    <a href="#proyecto" class="btn primary">Conoce Más</a>
+                    <a href="#comunidad" class="btn secondary">Unirme</a>
                 </div>
             </div>
-
             <div class="hero-image">
-                <div class="hero-visual" aria-hidden="true">
-                    <div class="hero-aura"></div>
-                    <div class="hero-ring ring-holo-main"></div>
-                    <div class="hero-orbit"></div>
+                <div class="holo-stage">
+                    <div class="holo-aura"></div>
+                    <img src="logo.png" alt="PERU Logo Holográfico" class="holo-logo">
                     <div class="holo-beam"></div>
-                    <div class="hero-core">
-                        <img src="logo.png" alt="Escudo PERU">
-                    </div>
-                    <div class="hero-platform">
-                        <span></span><i></i><b></b>
-                    </div>
-                    <div class="hero-ground-grid"></div>
-                    <div class="hero-mountains"></div>
-                    <div class="hero-spark spark-1"></div>
-                    <div class="hero-spark spark-2"></div>
-                    <div class="hero-spark spark-3"></div>
-                    <div class="hero-spark spark-4"></div>
-                    <div class="hero-spark spark-5"></div>
+                    <div class="holo-base"></div>
                 </div>
             </div>
         </section>
 
-        <!-- === SECCIÓN PROYECTO (INCLUYE PILARES DE ACCIÓN DIRECTA) === -->
-        <section id="about">
-            <h2 class="title reveal">PROYECTO</h2>
-            <p class="subtitle reveal">Tecnología Web3 con impacto social real, directo y trazable</p>
+        <!-- SECCIÓN EL PROYECTO -->
+        <section id="proyecto" class="reveal">
+            <h2 class="title">El Proyecto PERU</h2>
+            <p class="subtitle">Blockchain con propósito e impacto social directo en el deportista</p>
 
-            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); margin-bottom: 40px; gap: 30px;">
-                <div class="project-main-card reveal">
-                    <span class="project-tag">🌐 Impacto Social Descentralizado</span>
-                    <h3 class="project-title">Reinventando el Patrocinio Deportivo Nacional</h3>
-                    <p class="project-paragraph">
-                        PERU es una iniciativa digital comunitaria que une la transparencia de la cadena de bloques con el potencial competitivo de nuestros talentos. Eliminamos la burocracia tradicional para asegurar que el apoyo económico llegue directo y sin fisuras a los deportistas que más lo necesitan.
-                    </p>
-                    <p class="project-paragraph" style="margin-bottom: 0;">
-                        Medición transparente, contratos inteligentes sin comisiones ocultas y votación colectiva forman la base de una infraestructura diseñada para impulsar la representación nacional en competencias internacionales.
-                    </p>
-                </div>
-
-                <div style="display: flex; flex-direction: column; gap: 25px;">
-                    <div class="project-subcard reveal">
-                        <div class="project-subcard-icon">👁️</div>
-                        <h4 class="project-subcard-title">Visión Estratégica</h4>
-                        <p style="color: #94a3b8; font-size: 0.92rem; line-height: 1.6; font-weight: 300;">
-                            Consolidar el ecosistema cripto-social más influyente de Latinoamérica, posicionando a Perú como referente de innovación social descentralizada aplicada al alto rendimiento deportivo.
-                        </p>
-                    </div>
-
-                    <div class="project-subcard reveal">
-                        <div class="project-subcard-icon">🎯</div>
-                        <h4 class="project-subcard-title">Misión Operativa</h4>
-                        <p style="color: #94a3b8; font-size: 0.92rem; line-height: 1.6; font-weight: 300;">
-                            Garantizar financiamiento continuo, equipamiento profesional y viáticos a atletas destacados mediante la gobernanza transparente y participativa de nuestra comunidad.
-                        </p>
-                    </div>
-                </div>
+            <div class="project-main-card">
+                <div class="project-tag">Visión Social Web3</div>
+                <h3 class="project-title">Impulsando a los atletas peruanos mediante financiamiento transparente y descentralizado</h3>
+                <p class="project-paragraph">PERU nace de la necesidad imperiosa de apoyar a deportistas locales que enfrentan serias dificultades económicas para competir a nivel nacional e internacional. A través de la tecnología blockchain, canalizamos recursos mediante microdonaciones, patrocinios transparentes y programas de recompensas comunitarias.</p>
+                <p class="project-paragraph">Al combinar el impacto social con dinámicas DeFi y memecoins, buscamos transformar el apoyo deportivo en una experiencia sostenible, participativa y global.</p>
             </div>
 
-            <div class="pillars-section-title reveal">
-                <h3>Pilares de Acción Directa</h3>
-                <p>Estructura estratégica de financiamiento e impacto para nuestros atletas dentro del proyecto</p>
+            <div class="pillars-section-title">
+                <h3>Pilares Estratégicos</h3>
+                <p>Principios fundamentales que guían el ecosistema PERU</p>
             </div>
 
-            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px;">
-                <div class="pillar-card reveal">
+            <div class="grid">
+                <div class="pillar-card">
+                    <div class="pillar-badge">Pilar 01</div>
                     <div>
-                        <span class="pillar-badge">Alto Rendimiento</span>
                         <div class="pillar-icon-box">🏆</div>
-                        <h3 class="pillar-title">Becas Deportivas Integrales</h3>
-                        <p class="pillar-desc">Sustento económico mensual asignado a atletas destacados para cubrir gastos críticos de preparación, nutrición especializada y apoyo técnico continuo.</p>
+                        <h4 class="pillar-title">Fondo Solidario Deportivo</h4>
+                        <p class="pillar-desc">Un porcentaje de las comisiones generadas por el ecosistema se transfiere a una tesorería transparente destinada exclusivamente a pasajes, equipamiento y viáticos de atletas seleccionados.</p>
                     </div>
-                    <span class="pillar-number">01</span>
+                    <div class="pillar-number">01</div>
                 </div>
 
-                <div class="pillar-card reveal">
+                <div class="pillar-card">
+                    <div class="pillar-badge">Pilar 02</div>
                     <div>
-                        <span class="pillar-badge">Movilidad Global</span>
-                        <div class="pillar-icon-box">✈️</div>
-                        <h3 class="pillar-title">Viajes y Competencias</h3>
-                        <p class="pillar-desc">Financiamiento directo de boletos aéreos, hospedaje, inscripciones y viáticos para torneos internacionales y campeonatos de alto nivel.</p>
+                        <div class="pillar-icon-box">🌐</div>
+                        <h4 class="pillar-title">Gobernanza Comunitaria</h4>
+                        <p class="pillar-desc">Los holders de $PERU votan de manera transparente en la blockchain para definir qué deportistas o disciplinas reciben financiamiento prioritario.</p>
                     </div>
-                    <span class="pillar-number">02</span>
+                    <div class="pillar-number">02</div>
                 </div>
 
-                <div class="pillar-card reveal">
+                <div class="pillar-card">
+                    <div class="pillar-badge">Pilar 03</div>
                     <div>
-                        <span class="pillar-badge">Equipamiento Elite</span>
-                        <div class="pillar-icon-box">⚽</div>
-                        <h3 class="pillar-title">Implementos Profesionales</h3>
-                        <p class="pillar-desc">Dotación de indumentaria de alta competencia, accesorios de última tecnología e instrumental requerido según la disciplina.</p>
+                        <div class="pillar-icon-box">⚡</div>
+                        <h4 class="pillar-title">Sostenibilidad DeFi</h4>
+                        <p class="pillar-desc">Mecanismos de quema programada y stakenomic que aseguran la constante generación de valor para los usuarios mientras apoyan a la comunidad deportiva.</p>
                     </div>
-                    <span class="pillar-number">03</span>
-                </div>
-
-                <div class="pillar-card reveal">
-                    <div>
-                        <span class="pillar-badge">Bienestar Atleta</span>
-                        <div class="pillar-icon-box">🥗</div>
-                        <h3 class="pillar-title">Nutrición y Salud Integral</h3>
-                        <p class="pillar-desc">Acceso a suplementación avanzada, planes de nutrición especializada, medicina deportiva y fisioterapia enfocados en el máximo desempeño físico.</p>
-                    </div>
-                    <span class="pillar-number">04</span>
-                </div>
-            </div>
-
-            <!-- SECCIÓN DONACIONES -->
-            <div id="donate-section" class="card reveal donate-card-compact">
-                <div class="donate-header">
-                    <div class="donate-badge">
-                        <span class="pulse-dot"></span> Fondo de Apoyo Social
-                    </div>
-                    <h3 style="font-size: 1.35rem; color: white; margin-bottom: 6px;">Donaciones Directas en Cadena</h3>
-                    <p style="font-size: 0.88rem; color: #94a3b8; max-width: 500px; margin: 0 auto; line-height: 1.4;">
-                        Tu contribución financia directamente pasajes, inscripciones y equipamiento para nuestros deportistas.
-                    </p>
-                </div>
-
-                <div class="donate-body">
-                    <div class="donate-address-wrapper">
-                        <div class="donate-network-tag">RED BSC (BEP20)</div>
-                        <code id="donation-address" class="donate-code">0xE7A8096362f14152375E9FF0631114044dCe0f91</code>
-                    </div>
-                    <button onclick="copyDonationWallet()" class="donate-copy-btn">
-                        <span>Copiar Dirección</span>
-                    </button>
+                    <div class="pillar-number">03</div>
                 </div>
             </div>
         </section>
 
-        <!-- ESTADÍSTICAS DASHBOARD -->
-        <section id="stats" class="stats-dashboard">
-            <h2 class="title reveal">ESTADÍSTICAS DEL ECOSISTEMA</h2>
-            <p class="subtitle reveal">Métricas clave e impacto comunitario transparente en la cadena</p>
-            
-            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px;">
-                <div class="stat-card-modern reveal">
-                    <span class="stat-icon">⚡</span>
-                    <div class="stat-number-modern" data-target="100" data-prefix="" data-suffix="%">0%</div>
-                    <div class="stat-label">Descentralizado</div>
-                    <div class="stat-subtext">Sin intermediarios bancarios</div>
-                </div>
-
-                <div class="stat-card-modern reveal">
-                    <span class="stat-icon">💎</span>
-                    <div class="stat-number-modern" data-target="1" data-prefix="" data-suffix="M">0M</div>
-                    <div class="stat-label">Supply Máximo</div>
-                    <div class="stat-subtext">Emisión fija e inmutable</div>
-                </div>
-
-                <div class="stat-card-modern reveal">
-                    <span class="stat-icon">🎁</span>
-                    <div class="stat-number-modern" data-target="20" data-prefix="" data-suffix="%">0%</div>
-                    <div class="stat-label">Fondo de Impacto</div>
-                    <div class="stat-subtext">Reservado para atletas</div>
-                </div>
-
-                <div class="stat-card-modern reveal">
-                    <span class="stat-icon">🛡️</span>
-                    <div class="stat-number-modern" data-target="0" data-prefix="" data-suffix="%">0%</div>
-                    <div class="stat-label">Impuesto Transaccional</div>
-                    <div class="stat-subtext">Comercio 100% libre</div>
-                </div>
-
-                <div class="stat-card-modern reveal">
-                    <span class="stat-icon">👥</span>
-                    <div class="stat-number-modern" data-target="1000" data-prefix="+" data-suffix="">0</div>
-                    <div class="stat-label">Holders Comunitarios</div>
-                    <div class="stat-subtext">Red en constante crecimiento</div>
-                </div>
-
-                <div class="stat-card-modern reveal">
-                    <span class="stat-icon">🔗</span>
-                    <div class="stat-number-modern" data-target="100" data-prefix="" data-suffix="%">0%</div>
-                    <div class="stat-label">Transparencia On-Chain</div>
-                    <div class="stat-subtext">Operaciones verificables en BSC</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- === SECCIÓN BENEFICIARIOS === -->
-        <section id="beneficiaries">
-            <h2 class="title reveal">BENEFICIARIOS</h2>
-            <p class="subtitle reveal">El puente entre la comunidad Web3 y las promesas del deporte peruano</p>
-            
-            <div class="beneficiary-box-modern reveal">
+        <!-- SECCIÓN PRIMER BENEFICIARIO -->
+        <section class="reveal">
+            <div class="beneficiary-box-modern">
                 <div class="beneficiary-badge-status">
-                    <span class="pulse-dot"></span> Fase de Preparación — Portal DAO
+                    <span class="pulse-dot"></span>
+                    Primer Caso de Impacto
                 </div>
-                
-                <span class="beneficiary-hero-icon">🏆</span>
-                <h3 class="beneficiary-title">Becas y Apoyo a Atletas Peruanos</h3>
-                <p class="beneficiary-desc">
-                    Diseñamos un sistema justo, transparente y auditable on-chain para recibir solicitudes de patrocinio deportivo en disciplinas individuales y colectivas.
-                </p>
+                <div class="beneficiary-hero-icon">🥊</div>
+                <h3 class="beneficiary-title">Primer Deportista Beneficiado</h3>
+                <p class="beneficiary-desc">Nuestro primer objetivo es financiar el equipamiento completo y pasajes de competencia para un talento emergente del boxeo nacional.</p>
 
                 <div class="steps-grid">
                     <div class="step-item">
                         <div class="step-number">01</div>
-                        <div class="step-title">Postulación Abierta</div>
-                        <p class="step-text">Deportistas envían su historial de logros y sus necesidades específicas de financiamiento.</p>
+                        <div class="step-title">Selección</div>
+                        <div class="step-text">Evaluación de perfil y necesidades técnicas.</div>
                     </div>
                     <div class="step-item">
                         <div class="step-number">02</div>
-                        <div class="step-title">Evaluación Técnica</div>
-                        <p class="step-text">Revisión de veracidad, méritos deportivos y viabilidad del apoyo solicitado.</p>
+                        <div class="step-title">Fondo Meta</div>
+                        <div class="step-text">Asignación transparente de la tesorería.</div>
                     </div>
                     <div class="step-item">
                         <div class="step-number">03</div>
-                        <div class="step-title">Votación Comunitaria</div>
-                        <p class="step-text">La DAO de holders del token vota para aprobar la asignación directa de los fondos.</p>
-                    </div>
-                    <div class="step-item">
-                        <div class="step-number">04</div>
-                        <div class="step-title">Desembolso Trazable</div>
-                        <p class="step-text">Entrega de recursos con boletas publicadas en cadena para garantizar la transparencia total.</p>
+                        <div class="step-title">Entregable</div>
+                        <div class="step-text">Evidencia pública de compra y viajes.</div>
                     </div>
                 </div>
             </div>
         </section>
+
+        <!-- SECCIÓN UTILIDAD -->
+        <section id="utilidad" class="reveal">
+            <h2 class="title">Utilidad del Token</h2>
+            <p class="subtitle">Casos de uso reales que impulsan la economía del proyecto $PERU</p>
+
+            <div class="grid">
+                <div class="utility-card">
+                    <div class="utility-icon-wrapper">🗳️</div>
+                    <div>
+                        <h3 class="utility-title">Voto en Gobernanza</h3>
+                        <p class="utility-desc">Participa activamente en la toma de decisiones para elegir a qué atletas o disciplinas se otorgan las becas y fondos de desarrollo deportivo.</p>
+                    </div>
+                    <div class="utility-tag">Decisión 100% On-Chain</div>
+                </div>
+
+                <div class="utility-card">
+                    <div class="utility-icon-wrapper">🥇</div>
+                    <div>
+                        <h3 class="utility-title">NFTs Deportivos Exclusivos</h3>
+                        <p class="utility-desc">Obtén coleccionables digitales únicos respaldados por atletas peruanos que brindan beneficios en el mundo real, eventos y merchandising.</p>
+                    </div>
+                    <div class="utility-tag">Digital Collectibles</div>
+                </div>
+
+                <div class="utility-card">
+                    <div class="utility-icon-wrapper">💎</div>
+                    <div>
+                        <h3 class="utility-title">Staking & Recompensas</h3>
+                        <p class="utility-desc">Bloquea tus tokens $PERU para obtener rendimientos pasivos mientras contribuyes a la estabilidad y liquidez del ecosistema.</p>
+                    </div>
+                    <div class="utility-tag">Yield & Passive Income</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN TOKENOMICS -->
+        <section id="tokenomics" class="reveal">
+            <h2 class="title">Tokenomics</h2>
+            <p class="subtitle">Distribución transparente y sostenible de nuestro suministro</p>
+
+            <div style="max-width: 500px; margin: 0 auto 40px auto;">
+                <canvas id="tokenomicsChart"></canvas>
+            </div>
+        </section>
+
+        <!-- SECCIÓN EQUIPO -->
+        <section id="equipo" class="reveal">
+            <h2 class="title">Nuestro Equipo</h2>
+            <p class="subtitle">El grupo interdisciplinario que hace posible el desarrollo de PERU</p>
+
+            <div class="grid">
+                <div class="team-card-modern">
+                    <div class="team-avatar-box">👨‍💻</div>
+                    <div class="team-role-badge">Founder & Lead Dev</div>
+                    <h3 class="team-name">Alex Rivera</h3>
+                    <p class="team-bio">Desarrollador Blockchain con más de 5 años de experiencia en proyectos DeFi y apasionado de la gestión deportiva.</p>
+                </div>
+
+                <div class="team-card-modern">
+                    <div class="team-avatar-box">🥊</div>
+                    <div class="team-role-badge">Co-Founder & Sports Liaison</div>
+                    <h3 class="team-name">Marco Silva</h3>
+                    <p class="team-bio">Exdeportista nacional y gestor social enfocado en la vinculación directa con federaciones y atletas emergentes.</p>
+                </div>
+
+                <div class="team-card-modern">
+                    <div class="team-avatar-box">📣</div>
+                    <div class="team-role-badge">Marketing & Community</div>
+                    <h3 class="team-name">Sofia Castro</h3>
+                    <p class="team-bio">Especialista en crecimiento de comunidades Web3 y relaciones públicas con foco en impacto social.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN ROADMAP -->
+        <section id="hoja-de-ruta" class="reveal">
+            <h2 class="title">Hoja de Ruta</h2>
+            <p class="subtitle">Nuestro plan de ejecución paso a paso</p>
+
+            <div class="timeline">
+                <div class="timeline-item completed">
+                    <div class="timeline-dot"></div>
+                    <div class="roadmap-card">
+                        <div class="roadmap-header">
+                            <div class="roadmap-phase-title">Fase 1: Lanzamiento y Fundaciones</div>
+                            <div class="roadmap-status-badge badge-active">Completado</div>
+                        </div>
+                        <ul class="roadmap-list">
+                            <li class="done"><span class="icon">✓</span> Creación del Smart Contract y Whitepaper.</li>
+                            <li class="done"><span class="icon">✓</span> Despliegue de la Landing Page Oficial.</li>
+                            <li class="done"><span class="icon">✓</span> Creación de la comunidad oficial en Telegram y Redes Sociales.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item in-progress">
+                    <div class="timeline-dot"></div>
+                    <div class="roadmap-card">
+                        <div class="roadmap-header">
+                            <div class="roadmap-phase-title">Fase 2: Expansión e Impacto Inicial</div>
+                            <div class="roadmap-status-badge badge-progress">En Progreso</div>
+                        </div>
+                        <ul class="roadmap-list">
+                            <li class="pending"><span class="icon">⏳</span> Pre-venta publica y auditoria de contrato.</li>
+                            <li class="pending"><span class="icon">⏳</span> Entrega del primer fondo solidario al deportista seleccionado.</li>
+                            <li class="pending"><span class="icon">⏳</span> Listado en exchanges descentralizados (DEX).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="roadmap-card">
+                        <div class="roadmap-header">
+                            <div class="roadmap-phase-title">Fase 3: Ecosistema y Gobernanza</div>
+                            <div class="roadmap-status-badge badge-future">Próximamente</div>
+                        </div>
+                        <ul class="roadmap-list">
+                            <li class="pending"><span class="icon">○</span> Plataforma DAO de votación activa.</li>
+                            <li class="pending"><span class="icon">○</span> Plataforma de Staking e incentivos.</li>
+                            <li class="pending"><span class="icon">○</span> Alianzas estratégicas con federaciones deportivas.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN COMUNIDAD / COMUNICACIÓN -->
+        <section id="comunidad" class="reveal">
+            <h2 class="title">Únete a la Comunidad</h2>
+            <p class="subtitle">Sé parte de la revolución que une deporte y tecnología en Perú</p>
+
+            <div class="grid">
+                <div class="card" style="text-align: center;">
+                    <div style="font-size: 2.5rem; margin-bottom: 15px;">💬</div>
+                    <h3>Telegram</h3>
+                    <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 20px;">Mantente al día con los últimos anuncios y debate con el equipo.</p>
+                    <a href="https://t.me/" target="_blank" class="btn primary" style="width: 100%;">Unirme a Telegram</a>
+                </div>
+
+                <div class="card" style="text-align: center;">
+                    <div style="font-size: 2.5rem; margin-bottom: 15px;">🌐</div>
+                    <h3>X (Twitter)</h3>
+                    <p style="color: #94a3b8; font-size: 0.9rem; margin-bottom: 20px;">Sigue las novedades, eventos y noticias en tiempo real.</p>
+                    <a href="https://x.com/" target="_blank" class="btn primary" style="width: 100%;">Seguir en X</a>
+                </div>
+            </div>
+        </section>
     </div>
+
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
+    <a href="https://wa.me/" class="whatsapp-float" target="_blank" aria-label="Contacto WhatsApp">
+        <svg viewBox="0 0 32 32">
+            <path d="M16 2a13 13 0 0 0-11.25 19.5L3 29l7.71-1.7A13 13 0 1 0 16 2zm0 24a10.9 10.9 0 0 1-5.56-1.52l-.4-.24-4.58 1 1-4.46-.26-.41A10.91 10.91 0 1 1 16 26z"/>
+        </svg>
+    </a>
+
+    <script>
+        // Lógica para ocultar el Splash Screen
+        document.getElementById('enter-btn').addEventListener('click', function() {
+            const welcomeScreen = document.getElementById('welcome-screen');
+            welcomeScreen.classList.add('hidden');
+            document.body.classList.remove('no-scroll');
+        });
+
+        // Menú responsive
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
+
+        // Scroll Reveal Animation
+        function reveal() {
+            const reveals = document.querySelectorAll('.reveal');
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        window.addEventListener('scroll', reveal);
+        reveal();
+
+        // Renderizado del Gráfico de Tokenomics
+        const ctx = document.getElementById('tokenomicsChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Fondo Deportivo', 'Liquidez DEX', 'Desarrollo & Marketing', 'Comunidad / Staking'],
+                datasets: [{
+                    data: [40, 30, 15, 15],
+                    backgroundColor: [
+                        '#ff0000',
+                        '#ffffff',
+                        '#eab308',
+                        '#3b82f6'
+                    ],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            color: '#ffffff',
+                            font: { family: 'Poppins' }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
 </body>
+
 </html>
