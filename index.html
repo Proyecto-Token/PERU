@@ -2460,6 +2460,91 @@
             .hero-visual { min-width: 430px; transform: scale(.66); }
         }
 
+
+        /* ==========================================
+           REDES SOCIALES - BOTONES ALINEADOS
+           ========================================== */
+        .social-buttons {
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            gap: 12px;
+            flex-wrap: nowrap;
+        }
+
+        .social-buttons .social-btn {
+            flex: 1 1 0;
+            width: auto;
+            min-width: 0;
+            height: 50px;
+            padding: 12px 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            white-space: nowrap;
+            font-size: 0.85rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .social-primary {
+            background: linear-gradient(90deg, #ff0000, #ff3030);
+            color: #fff;
+            border: 1px solid #ff3030;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.25);
+        }
+
+        .social-secondary {
+            background: rgba(255, 255, 255, 0.02);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .social-buttons .social-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .social-primary:hover {
+            background: linear-gradient(90deg, #ff1515, #ff5050);
+            box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4);
+        }
+
+        .social-secondary:hover {
+            border-color: #ff4d4d;
+            background: rgba(255, 77, 77, 0.08);
+        }
+
+        @media (max-width: 768px) {
+            .social-buttons {
+                gap: 8px;
+                flex-wrap: nowrap;
+            }
+
+            .social-buttons .social-btn {
+                width: auto !important;
+                flex: 1 1 0;
+                padding: 10px 8px;
+                font-size: 0.78rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .social-buttons {
+                gap: 6px;
+            }
+
+            .social-buttons .social-btn {
+                height: 46px;
+                padding: 8px 4px;
+                font-size: 0.68rem;
+            }
+        }
+
     </style>
 </head>
 
@@ -3098,14 +3183,14 @@
                 </div>
             </div>
 
-            <div class="buttons" style="justify-content:center;">
-                <a href="https://x.com/WWW__PERU" target="_blank" class="btn primary">
+            <div class="social-buttons">
+                <a href="https://x.com/WWW__PERU" target="_blank" class="btn social-btn social-primary">
                     <span>𝕏 / Twitter</span>
                 </a>
-                <a href="https://discord.gg/TU-INVITACION" target="_blank" class="btn secondary">
+                <a href="https://discord.gg/TU-INVITACION" target="_blank" class="btn social-btn social-secondary">
                     <span>Discord</span>
                 </a>
-                <a href="https://www.tiktok.com/@token.peru" target="_blank" class="btn secondary">
+                <a href="https://www.tiktok.com/@token.peru" target="_blank" class="btn social-btn social-secondary">
                     <span>TikTok</span>
                 </a>
             </div>
