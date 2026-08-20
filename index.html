@@ -260,7 +260,7 @@
             100% { transform: translate(-200px, -200px); }
         }
 
-        /* NAVEGACIÓN Y MENÚ MEJORADO */
+        /* NAVEGACIÓN Y MENÚ */
         nav {
             position: fixed;
             width: 100%;
@@ -303,7 +303,7 @@
             align-items: center;
         }
 
-        /* Letras del menú con mayor tamaño */
+        /* MODIFICACIÓN 1: Letras del menú más grandes y legibles */
         nav a {
             position: relative;
             height: 100%;
@@ -312,7 +312,7 @@
             text-decoration: none;
             color: #e6e6e9;
             font-weight: 600;
-            font-size: 0.95rem; /* ~15px para óptima legibilidad */
+            font-size: 15px;
             white-space: nowrap;
             transition: color .3s ease;
         }
@@ -331,7 +331,7 @@
             user-select: none;
         }
 
-        /* SECCIÓN HERO Y BOTONES ALINEADOS */
+        /* SECCIÓN HERO */
         .hero {
             position: relative;
             min-height: 100vh;
@@ -389,10 +389,10 @@
             margin: 0 0 25px;
         }
 
-        /* Alineación perfecta de los botones de la comunidad */
+        /* MODIFICACIÓN 2: Botones alineados y del mismo tamaño */
         .buttons {
             display: flex;
-            align-items: stretch;
+            align-items: center;
             gap: 12px;
             flex-wrap: wrap;
             width: 100%;
@@ -513,7 +513,7 @@
         /* RESPONSIVE DESIGN */
         @media (max-width: 1024px) {
             nav ul { gap: 14px; }
-            nav a { font-size: 0.85rem; }
+            nav a { font-size: 14px; }
         }
 
         @media (max-width: 850px) {
