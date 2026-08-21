@@ -2463,31 +2463,43 @@
     
 
         /* === ALINEACIÓN SOLO DE BOTONES DE REDES EN COMUNIDAD === */
-        .community-social-buttons {
+        #community .community-social-buttons {
+            display: flex !important;
+            flex-direction: row !important;
             justify-content: center !important;
-            align-items: center;
-            gap: 12px;
-            flex-wrap: wrap;
+            align-items: stretch !important;
+            gap: 12px !important;
+            flex-wrap: nowrap !important;
+            width: 100% !important;
+            max-width: none !important;
+            margin: 0 auto !important;
         }
 
-        .community-social-buttons .btn {
-            width: 160px;
-            min-width: 160px;
-            margin: 0;
+        #community .community-social-buttons .btn {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 160px !important;
+            min-width: 160px !important;
+            max-width: 160px !important;
+            height: 40px !important;
+            min-height: 40px !important;
+            margin: 0 !important;
+            padding: 0 14px !important;
+            box-sizing: border-box !important;
         }
 
         @media (max-width: 560px) {
-            .community-social-buttons {
-                width: 100%;
-                max-width: 360px;
-                margin-left: auto;
-                margin-right: auto;
+            #community .community-social-buttons {
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 10px !important;
             }
 
-            .community-social-buttons .btn {
-                width: 100%;
-                min-width: 0;
-                max-width: 360px;
+            #community .community-social-buttons .btn {
+                width: 100% !important;
+                min-width: 0 !important;
+                max-width: 360px !important;
             }
         }
 </style>
